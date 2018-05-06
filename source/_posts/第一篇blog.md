@@ -5,6 +5,7 @@ tags: 生活
 description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面
 copyright: true
 top: 12
+categories: 随记
 ---
 
 # 前言

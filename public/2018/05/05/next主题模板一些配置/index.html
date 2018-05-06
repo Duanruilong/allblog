@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-05T15:54:54.858Z">
+<meta property="og:updated_time" content="2018-05-06T16:46:11.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="next主题模板一些配置">
 <meta name="twitter:description" content="使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。">
@@ -389,6 +389,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -410,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,218
+                  4,327
                 </span>
               
 
@@ -515,6 +537,8 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">接着打开主题配置文件，在最后写下如下代码：</span><br><span class="line">```hash</span><br><span class="line"># Online contact </span><br><span class="line">daovoice: true</span><br><span class="line">daovoice_app_id: 这里填你的刚才获得的 app_id</span><br></pre></td></tr></table></figure>
 <p>重新 <code>hexo g &amp;&amp; hexo s</code> 就能看到效果了。<br>安装成功后可以在DaoVoice 控制台上的聊天设置里设置聊天窗口样式</p>
+<h1 id="22-添加跟帖-来必力"><a href="#22-添加跟帖-来必力" class="headerlink" title="22.添加跟帖(来必力)"></a>22.添加跟帖(来必力)</h1><p>有两种实现方法：<br>①更新next主题，因为最新版本的主题已经支持这种评论。直接在主题配置文件<code>_config.yml</code> 文件中添加如下配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gentie_productKey: #your-gentie-product-key</span><br></pre></td></tr></table></figure></p>
+<p>②如果你不想更新的话，那么按下面步骤进行：<br>首先，还是在主题配置文件<code>_config.yml</code> 文件中添加如下配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gentie_productKey: #your-gentie-product-key</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -529,13 +553,13 @@
   <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
 
   <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript"  src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
   <p><span>本文标题:</span><a href="/blog/2018/05/05/next主题模板一些配置/">next主题模板一些配置</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
   <p><span>发布时间:</span>2018年05月05日 - 21:05</p>
-  <p><span>最后更新:</span>2018年05月05日 - 23:05</p>
+  <p><span>最后更新:</span>2018年05月07日 - 00:05</p>
   <p><span>原始链接:</span><a href="/blog/2018/05/05/next主题模板一些配置/" title="next主题模板一些配置">https://duanruilong.github.io/2018/05/05/next主题模板一些配置/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/05/next主题模板一些配置/"  aria-label="复制成功！"></i></span>
   </p>
@@ -578,27 +602,22 @@
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
-  <div id="QR" style="display: none;">
+  <div id="QR" style="display: block;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/drl.png" alt="DRLong WeChat Pay"/>
+        <img id="wechat_qr" src="/blog/images/alipay.png" alt="DRLong WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/drl.png" alt="DRLong Alipay"/>
+        <img id="alipay_qr" src="/blog/images/wechatpay.png" alt="DRLong Alipay"/>
         <p>Alipay</p>
       </div>
     
 
-    
-      <div id="bitcoin" style="display: inline-block">
-        <img id="bitcoin_qr" src="/images/drl.png" alt="DRLong Bitcoin"/>
-        <p>Bitcoin</p>
-      </div>
     
 
   </div>
@@ -635,6 +654,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/" rel="prev" title="记一次Hexo文章里的图片不显示问题">
+                记一次Hexo文章里的图片不显示问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -733,12 +756,21 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
@@ -746,7 +778,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -780,7 +812,7 @@
               <span class="links-of-author-item">
                 <a href="https://github.com/Duanruilong" target="_blank" title="CSDN">
                   
-                    <i class="fa fa-fw fa-crosshairs"></i>
+                    <i class="fa fa-fw fa-map-signs"></i>
                   
                     
                       CSDN
@@ -863,7 +895,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-修改文章底部的那个带-号的标签"><span class="nav-number">1.</span> <span class="nav-text">1.修改文章底部的那个带#号的标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在每篇文章末尾统一添加“本文结束”标记"><span class="nav-number">2.</span> <span class="nav-text">2.在每篇文章末尾统一添加“本文结束”标记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-修改“代码块自定义样式"><span class="nav-number">3.</span> <span class="nav-text">3.修改“代码块自定义样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-侧边栏社交小图标设置"><span class="nav-number">4.</span> <span class="nav-text">4.侧边栏社交小图标设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-在网站底部加上访问量"><span class="nav-number">5.</span> <span class="nav-text">5.在网站底部加上访问量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-添加热度"><span class="nav-number">6.</span> <span class="nav-text">6.添加热度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-网站底部字数统计"><span class="nav-number">7.</span> <span class="nav-text">7.网站底部字数统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-添加-README-md-文件"><span class="nav-number">8.</span> <span class="nav-text">8.添加 README.md 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-设置网站的图标Favicon"><span class="nav-number">9.</span> <span class="nav-text">9.设置网站的图标Favicon</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-实现统计功能"><span class="nav-number">10.</span> <span class="nav-text">11.实现统计功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-添加顶部加载条"><span class="nav-number">11.</span> <span class="nav-text">12.添加顶部加载条</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-在文章底部增加版权信息"><span class="nav-number">12.</span> <span class="nav-text">13.在文章底部增加版权信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-修改网页底部的桃心"><span class="nav-number">13.</span> <span class="nav-text">14.修改网页底部的桃心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-文章加密访问"><span class="nav-number">14.</span> <span class="nav-text">15.文章加密访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16-添加jiathis分享"><span class="nav-number">15.</span> <span class="nav-text">16.添加jiathis分享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17-博文置顶或者排序"><span class="nav-number">16.</span> <span class="nav-text">17.博文置顶或者排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18-修改字体大小"><span class="nav-number">17.</span> <span class="nav-text">18.修改字体大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19-修改打赏字体不闪动"><span class="nav-number">18.</span> <span class="nav-text">19.修改打赏字体不闪动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20-点击爆炸效果"><span class="nav-number">19.</span> <span class="nav-text">20.点击爆炸效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21-DaoVoice-在线联系"><span class="nav-number">20.</span> <span class="nav-text">21.DaoVoice 在线联系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-修改文章底部的那个带-号的标签"><span class="nav-number">1.</span> <span class="nav-text">1.修改文章底部的那个带#号的标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在每篇文章末尾统一添加“本文结束”标记"><span class="nav-number">2.</span> <span class="nav-text">2.在每篇文章末尾统一添加“本文结束”标记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-修改“代码块自定义样式"><span class="nav-number">3.</span> <span class="nav-text">3.修改“代码块自定义样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-侧边栏社交小图标设置"><span class="nav-number">4.</span> <span class="nav-text">4.侧边栏社交小图标设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-在网站底部加上访问量"><span class="nav-number">5.</span> <span class="nav-text">5.在网站底部加上访问量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-添加热度"><span class="nav-number">6.</span> <span class="nav-text">6.添加热度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-网站底部字数统计"><span class="nav-number">7.</span> <span class="nav-text">7.网站底部字数统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-添加-README-md-文件"><span class="nav-number">8.</span> <span class="nav-text">8.添加 README.md 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-设置网站的图标Favicon"><span class="nav-number">9.</span> <span class="nav-text">9.设置网站的图标Favicon</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-实现统计功能"><span class="nav-number">10.</span> <span class="nav-text">11.实现统计功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-添加顶部加载条"><span class="nav-number">11.</span> <span class="nav-text">12.添加顶部加载条</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-在文章底部增加版权信息"><span class="nav-number">12.</span> <span class="nav-text">13.在文章底部增加版权信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-修改网页底部的桃心"><span class="nav-number">13.</span> <span class="nav-text">14.修改网页底部的桃心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-文章加密访问"><span class="nav-number">14.</span> <span class="nav-text">15.文章加密访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16-添加jiathis分享"><span class="nav-number">15.</span> <span class="nav-text">16.添加jiathis分享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17-博文置顶或者排序"><span class="nav-number">16.</span> <span class="nav-text">17.博文置顶或者排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18-修改字体大小"><span class="nav-number">17.</span> <span class="nav-text">18.修改字体大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19-修改打赏字体不闪动"><span class="nav-number">18.</span> <span class="nav-text">19.修改打赏字体不闪动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20-点击爆炸效果"><span class="nav-number">19.</span> <span class="nav-text">20.点击爆炸效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21-DaoVoice-在线联系"><span class="nav-number">20.</span> <span class="nav-text">21.DaoVoice 在线联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22-添加跟帖-来必力"><span class="nav-number">21.</span> <span class="nav-text">22.添加跟帖(来必力)</span></a></li></ol></div>
             
 
           </div>
@@ -899,7 +931,7 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共4.5k字</span>
+    <span class="post-count">博客全站共4.9k字</span>
   </div>
 </div>
 
@@ -1383,10 +1415,6 @@
     <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
     </script>
   
-  
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-    <script type="text/javascript" src="./js/src/fireworks.js"></script>
   
 </body>
 </html>

@@ -124,8 +124,8 @@ social_icons:
   知乎: envelope
   QQ: qq
   微信: weixin
-  CSDN: crosshairs
-  links_title: discord
+  CSDN: map-signs
+  links_title: map-signs
 
 
 # Blog rolls /设置友情链接
@@ -228,9 +228,9 @@ post_wordcount:
 
 # Reward /文章打赏功能
 reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
-wechatpay: /images/drl.png
-alipay: /images/drl.png
-bitcoin: /images/drl.png
+wechatpay: /blog/images/alipay.png
+alipay: /blog/images/wechatpay.png
+# bitcoin: /images/drl.png
 
 # Declare license on posts
 post_copyright:
@@ -692,7 +692,7 @@ passage_end_tag:
   enabled: true
 
   # Fireworks /点击爆炸
-fireworks: true
+fireworks: false
 
 # Online contact /DaoVoice 在线联系
 daovoice: true
