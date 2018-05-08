@@ -77,11 +77,16 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+# deploy:
+#   type: git
+#   repository: git@github.com:Duanruilong/blog.git
+#   branch: master
+
 deploy:
   type: git
-  repository: git@github.com:Duanruilong/blog.git
-  branch: master
-
+  repo: 
+    github: git@github.com:Duanruilong/blog.git,master
+    coding: git@git.coding.net:DRuilong/blog.git,master
 # rss
  # Extensions 
    ## Plugins: http://hexo.io/plugins/

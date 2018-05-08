@@ -15,7 +15,7 @@ keywords: "Hexo, NexT"
 rss: /atom.xml
 
 # Specify the date when the site was setup
-#since: 2015
+since: 2018
 
 # icon between year and author @Footer
 authoricon: heart
@@ -94,10 +94,10 @@ scheme: Gemini
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
   GitHub: https://github.com/Duanruilong
-  CSDN: https://github.com/Duanruilong
-  微博: https://github.com/Duanruilong
-  QQ: https://github.com/Duanruilong
-  知乎: https://github.com/Duanruilong
+  CSDN: https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705
+  微博: https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+  QQ: http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes
+  
 
 # Social Links Icons/设定链接的图标
 # Icon Mapping:
@@ -125,7 +125,7 @@ social_icons:
   QQ: qq
   微信: weixin
   CSDN: map-signs
-  links_title: map-signs
+  links_title: folder-open
 
 
 # Blog rolls /设置友情链接
@@ -133,8 +133,9 @@ links_title: DRL的链接
 # links_layout: block
 # links_layout: inline
 links:
-  哔哩哔哩: https://space.bilibili.com/91427434/#/
-  CSDN: https://my.csdn.net/
+  哔哩哔哩: https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705
+  知乎: https://www.zhihu.com/people/duan-rui-long-16/activities
+  掘金: https://juejin.im/user/5856b3461b69e60056dd1fc1
 
 # Sidebar Avatar  设置头像
 # in theme directory(source/images): /images/avatar.jpg
@@ -220,16 +221,16 @@ post_wordcount:
   min2read: true
   separated_meta: true
 
-# Wechat Subscriber
-#wechat_subscriber:
-  #enabled: true
-  #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
-  #description: ex. subscribe to my blog by scanning my public wechat account
+# Wechat Subscriber/订阅微信公众号
+wechat_subscriber:
+  enabled: false
+  qcode: /blog/images/drl.png
+  description: 欢迎您扫一扫上面的微信公众号，订阅我的博客！
 
 # Reward /文章打赏功能
 reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
-wechatpay: /blog/images/alipay.png
-alipay: /blog/images/wechatpay.png
+wechatpay: /blog/images/wechatpay.png
+alipay: /blog/images/alipay.png
 # bitcoin: /images/drl.png
 
 # Declare license on posts
@@ -262,7 +263,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night bright
 
 
 # ---------------------------------------------------------------
@@ -361,11 +362,12 @@ changyan:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
-##  type: button
+baidushare: 
+  type: button
+  # baidushare: true
 
 # Share 分享
-jiathis: true
+# jiathis: true
 # Warning: JiaThis does not support https.
 #add_this_id:
 
@@ -698,6 +700,9 @@ fireworks: false
 daovoice: true
 daovoice_app_id: dc2acf9e
 
+# 禁止hexo编译static文件夹
+skip_render:
+  – static/**
 
 # Assets
 css: css

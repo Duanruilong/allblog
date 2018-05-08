@@ -7,4 +7,10 @@ comments: false
 
 # 段瑞龙
 
-前端开发工程师
+
+{% note danger %} 前端开发工程师 (md partial supported) {% endnote %}
+{% note default %} 前端开发工程师 (md partial supported) {% endnote %}
+{% note primary %} 前端开发工程师 (md partial supported) {% endnote %}
+{% note success %} 前端开发工程师 (md partial supported) {% endnote %}
+{% note warning %} 前端开发工程师 (md partial supported) {% endnote %}
+{% note info %} 前端开发工程师 (md partial supported) {% endnote %}
