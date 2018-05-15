@@ -133,7 +133,7 @@ links_title: DRL的链接
 # links_layout: block
 # links_layout: inline
 links:
-  哔哩哔哩: https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705
+  哔哩哔哩: https://space.bilibili.com/91427434/#/
   知乎: https://www.zhihu.com/people/duan-rui-long-16/activities
   掘金: https://juejin.im/user/5856b3461b69e60056dd1fc1
 
@@ -263,7 +263,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: night bright
+highlight_theme: night eighties
 
 
 # ---------------------------------------------------------------

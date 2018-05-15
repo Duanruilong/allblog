@@ -1,7 +1,7 @@
 ---
 title: 记一次Hexo文章里的图片不显示问题
 date: 2018-05-06 00:46:29
-tags: 编码
+tags: 编程
 description: 记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！
 copyright: true
 categories: Hexo
