@@ -7,7 +7,11 @@ copyright: true
 categories: React
 top:
 ---
+React路由Prompt、Redirect、match、Switch。
 
+![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+
+<!--more-->
 # 1、Prompt组件 
 > 除了Router、Route、Link这三个react路由的基础搭配使用，还有一些其他的比较重要的组件，比如我们在页面切换时，需要进行一些提示，我们就能使用Prompt组件。
 

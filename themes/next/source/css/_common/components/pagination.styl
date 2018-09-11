@@ -1,7 +1,8 @@
 .pagination {
-  margin: 120px 0 40px;
+  margin: 40px 0 40px;
   text-align: center;
-  border-top: 1px solid $pagination-border;
+  border-top: 1px solid #0b6679;
+  // border-top: 1px solid $pagination-border;
 }
 
 .page-number-basic {
@@ -19,7 +20,7 @@
   .prev, .next, .page-number {
     @extend .page-number-basic;
     border-bottom: 0;
-    border-top: 1px solid $pagination-link-border;
+    // border-top: 1px solid $pagination-link-border;  
     transition-property: border-color;
     the-transition();
 
@@ -30,15 +31,19 @@
     @extend .page-number-basic;
     padding: 0;
     margin: 0;
+    color: #0e869f;
   }
 
   .prev { margin-left: 0; }
   .next { margin-right: 0; }
 
   .page-number.current {
-    color: $pagination-active-color;
-    background: $pagination-active-bg;
-    border-top-color: $pagination-active-border;
+    color: #13b1d2;
+    background: #0b6679;
+    border-top-color: #0b6679;
+    // color: $pagination-active-color;
+    // background: $pagination-active-bg;
+    // border-top-color: $pagination-active-border;
   }
 }
 

@@ -122,10 +122,12 @@
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T16:46:11.157Z">
+<meta property="og:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png">
+<meta property="og:updated_time" content="2018-06-16T09:02:54.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="next主题模板一些配置">
 <meta name="twitter:description" content="使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。">
+<meta name="twitter:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png">
 
 
 
@@ -432,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,327
+                  4,358
                 </span>
               
 
@@ -455,10 +457,6 @@
           
 
           
-              <div class="post-description">
-                  使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。
-              </div>
-          
 
         </div>
       </header>
@@ -473,7 +471,10 @@
       
 
       
-        <h1 id="1-修改文章底部的那个带-号的标签"><a href="#1-修改文章底部的那个带-号的标签" class="headerlink" title="1.修改文章底部的那个带#号的标签"></a>1.修改文章底部的那个带#号的标签</h1><p>实现效果图</p>
+        <p>使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。</p>
+<p><img src="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png" alt="js"></p>
+<a id="more"></a>
+<h1 id="1-修改文章底部的那个带-号的标签"><a href="#1-修改文章底部的那个带-号的标签" class="headerlink" title="1.修改文章底部的那个带#号的标签"></a>1.修改文章底部的那个带#号的标签</h1><p>实现效果图</p>
 <p>具体实现方法</p>
 <pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/themes/next/layout/_macro/post.swig</span><br><span class="line">找到 </span><br><span class="line">rel=<span class="string">"tag"</span>&gt;<span class="comment">#</span></span><br><span class="line">修改为</span><br><span class="line">&lt;i class=<span class="string">"fa fa-tag"</span>&gt;&lt;/i&gt;</span><br><span class="line">完整的应该是这样的：  &lt;a href=<span class="string">"&#123;&#123; url_for(tag.path) &#125;&#125;"</span> rel=<span class="string">"tag"</span>&gt;&lt;i class=<span class="string">"fa fa-tag"</span>&gt;&lt;/i&gt; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 </code></pre><h1 id="2-在每篇文章末尾统一添加“本文结束”标记"><a href="#2-在每篇文章末尾统一添加“本文结束”标记" class="headerlink" title="2.在每篇文章末尾统一添加“本文结束”标记"></a>2.在每篇文章末尾统一添加“本文结束”标记</h1><p>实现效果图</p>
@@ -558,10 +559,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
   <p><span>本文标题:</span><a href="/blog/2018/05/05/next主题模板一些配置/">next主题模板一些配置</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
-  <p><span>发布时间:</span>2018年05月05日 - 21:05</p>
-  <p><span>最后更新:</span>2018年05月07日 - 00:05</p>
+  <!-- <p><span>发布时间:</span>2018年05月05日 - 21:05</p> -->
+  <!-- <p><span>最后更新:</span>2018年06月16日 - 17:06</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/05/next主题模板一些配置/" title="next主题模板一些配置">https://duanruilong.github.io/2018/05/05/next主题模板一些配置/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/05/next主题模板一些配置/"  aria-label="复制成功！"></i></span>
+copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/05/next主题模板一些配置/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -771,7 +772,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -782,7 +783,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -793,7 +794,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -939,13 +940,13 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共14.5k字</span>
+    <span class="post-count">博客全站共43.9k字</span>
   </div>
 </div>
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
@@ -990,8 +991,6 @@
   
 
 
-  
-
 
 
 
@@ -1019,9 +1018,6 @@
 
   
   <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -1419,9 +1415,6 @@
   
 
 
-  
-    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-    </script>
   
   
 </body>

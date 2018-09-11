@@ -2,12 +2,16 @@
 title: 记一次Hexo文章里的图片不显示问题
 date: 2018-05-06 00:46:29
 tags: 编程
-description: 记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！
+description: 
 copyright: true
 categories: Hexo
 top:
 ---
+记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！
 
+![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png)
+
+<!-- more -->
 # First
 1 把主页配置文件`_config.yml` 里的`post_asset_folder:`这个选项设置为true
 

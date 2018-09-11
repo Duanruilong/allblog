@@ -577,8 +577,8 @@ pace: true
 # pace_theme: pace-theme-center-simple
 pace_theme: pace-theme-flash
 
-# Canvas-nest
-canvas_nest: true
+# Canvas-nest 
+canvas_nest: false
   # color: '115,170,232'
   # opacity: 0.5
   # count: 150

@@ -96,7 +96,7 @@
 <link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Javascript,编程," />
+  <meta name="keywords" content="编程,Javascript," />
 
 
 
@@ -115,17 +115,19 @@
 
 
 <meta name="description" content="针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。">
-<meta name="keywords" content="Javascript,编程">
+<meta name="keywords" content="编程,Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript正则速查表">
 <meta property="og:url" content="https://duanruilong.github.io/2018/05/13/Javascript正则速查表/index.html">
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-12T16:27:36.347Z">
+<meta property="og:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/js_d.png">
+<meta property="og:updated_time" content="2018-06-16T08:45:37.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript正则速查表">
 <meta name="twitter:description" content="针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。">
+<meta name="twitter:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/js_d.png">
 
 
 
@@ -432,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  946
+                  990
                 </span>
               
 
@@ -455,10 +457,6 @@
           
 
           
-              <div class="post-description">
-                  针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。
-              </div>
-          
 
         </div>
       </header>
@@ -473,7 +471,10 @@
       
 
       
-        <h1 id="replace"><a href="#replace" class="headerlink" title="replace:"></a>replace:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 使用正则匹配中文字节, 将其替换为xx, 再获取字符串的长度就是完整的长度了.</span><br><span class="line">function getLen(str) &#123;</span><br><span class="line">  return str.replace(/[^\x00-\xff]/g, &apos;xx&apos;).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。</p>
+<p><img src="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/js_d.png" alt="js"></p>
+<a id="more"></a>
+<h1 id="replace"><a href="#replace" class="headerlink" title="replace:"></a>replace:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 使用正则匹配中文字节, 将其替换为xx, 再获取字符串的长度就是完整的长度了.</span><br><span class="line">function getLen(str) &#123;</span><br><span class="line">  return str.replace(/[^\x00-\xff]/g, &apos;xx&apos;).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="test"><a href="#test" class="headerlink" title="test:"></a>test:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 匹配是否符合邮件规则</span><br><span class="line">var reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;</span><br><span class="line"></span><br><span class="line">// test返回一个布尔值, 表示是否匹配到制定字符串</span><br><span class="line">var mail = reg.test(&apos;anran758@gmail.com&apos;)</span><br><span class="line"></span><br><span class="line">if (mail) &#123;</span><br><span class="line">  // 如果邮件格式正确的话, 就可以做点啥了(雾</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 用户名正则，4到16位（字母，数字，下划线，减号）</span><br><span class="line">var userNameReg = /^[a-zA-Z0-9_-]&#123;4,16&#125;$/;</span><br><span class="line"></span><br><span class="line">// 密码强度正则，最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符</span><br><span class="line">var passwordReg = /^.*(?=.&#123;6,&#125;)(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&amp;*? ]).*$/;</span><br><span class="line"></span><br><span class="line">// 匹配邮箱地址</span><br><span class="line">var mailReg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;</span><br><span class="line"></span><br><span class="line">// 中国六位数的邮政编码</span><br><span class="line">var postalCode = /^\d&#123;6&#125;$/;</span><br><span class="line"></span><br><span class="line">// 匹配15~18位身份证</span><br><span class="line">var IDCard = /(^[1-9]\d&#123;5&#125;(18|19|([23]\d))\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d&#123;3&#125;[0-9Xx]$)|(^[1-9]\d&#123;5&#125;\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d&#123;2&#125;$)/;</span><br><span class="line"></span><br><span class="line">// 匹配18位的新版身份证</span><br><span class="line">var IDCard_18 = /^[1-9]\d&#123;5&#125;(18|19|([23]\d))\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d&#123;3&#125;[0-9Xx]$/;</span><br></pre></td></tr></table></figure>
 <h1 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//ipv4地址正则</span><br><span class="line">var IPReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;</span><br><span class="line"></span><br><span class="line">// Reg Hex颜色正则</span><br><span class="line">var pattern = /^#?([a-fA-F0-9]&#123;6&#125;|[a-fA-F0-9]&#123;3&#125;)$/;</span><br><span class="line"></span><br><span class="line">// URL正则</span><br><span class="line">var urlReg= /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]&#123;2,6&#125;)([\/\w \.-]*)*\/?$/;</span><br><span class="line"></span><br><span class="line">// 匹配JSON格式</span><br><span class="line">var reg = /^\w+\((&#123;[^()]+&#125;)\)$/</span><br></pre></td></tr></table></figure>
@@ -499,10 +500,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
   <p><span>本文标题:</span><a href="/blog/2018/05/13/Javascript正则速查表/">Javascript正则速查表</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
-  <p><span>发布时间:</span>2018年05月13日 - 00:05</p>
-  <p><span>最后更新:</span>2018年05月13日 - 00:05</p>
+  <!-- <p><span>发布时间:</span>2018年05月13日 - 00:05</p> -->
+  <!-- <p><span>最后更新:</span>2018年06月16日 - 16:06</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/13/Javascript正则速查表/" title="Javascript正则速查表">https://duanruilong.github.io/2018/05/13/Javascript正则速查表/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/13/Javascript正则速查表/"  aria-label="复制成功！"></i></span>
+copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/13/Javascript正则速查表/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -573,9 +574,9 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
-          
             <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
           
         </div>
       
@@ -714,7 +715,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -725,7 +726,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -736,7 +737,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -882,13 +883,13 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共14.5k字</span>
+    <span class="post-count">博客全站共43.9k字</span>
   </div>
 </div>
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
@@ -933,8 +934,6 @@
   
 
 
-  
-
 
 
 
@@ -962,9 +961,6 @@
 
   
   <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -1362,9 +1358,6 @@
   
 
 
-  
-    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-    </script>
   
   
 </body>

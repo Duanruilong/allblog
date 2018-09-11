@@ -2,11 +2,17 @@
 title: Javascript正则速查表
 date: 2018-05-13 00:22:33
 tags: [Javascript,编程]
-description: 针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。
+description: 
 copyright: true
 categories: Javascript
 top:
 ---
+针对工作中所需的正则表达式. 多适用于字符串处理、表单验证、日志数据分析等场合，实用高效, 将长期维护。
+
+![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/js_d.png)
+
+<!-- more -->
+
 # replace:
 ``` hash
 // 使用正则匹配中文字节, 将其替换为xx, 再获取字符串的长度就是完整的长度了.

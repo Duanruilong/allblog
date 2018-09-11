@@ -1,26 +1,30 @@
 ---
-title: 第一篇blog
+title: 我们第一次相遇
 date: 2018-05-04 23:38:11
 tags: 生活
-description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面
+description: 
 copyright: true
-top: 
+top: 10
 categories: 随记
+# photos: /blog/images/drl.png
 ---
 
-# 前言
+欢迎来到我的blog，这里是我记录生活和一些事情的地方，这里会收录一些好的文章，值得学习的东西；也是一个随记的地方。我们的遇到就是缘分的开始，互相学习，互相认识。
 
-使用github pages服务搭建博客的好处有：
-![image](/blog/images/drl.png)
+![wo](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/drlong.png)
 
-1. 全是静态文件，访问速度快；
-2. 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；
-3. 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；
+<!-- more -->
 
-<!--more-->
+# 我
 
-4. 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；
-5. 博客内容可以轻松打包、转移、发布到其它平台；
-6. 等等；
 
-copyright ---- 是不是有权限
+{% note danger %} 来自七彩云南  {% endnote %}
+{% note danger %} 读书于古都西安{% endnote %}
+{% note warning %} 现在坐标上海  {% endnote %}
+
+{% note danger %} 耕织于前端开发，菜鸟到大神的过程是漫长的，不断学习，不断进步，说不定哪一天......  {% endnote %}
+{% note default %} 路要一步一步走，知识也要慢慢啃  {% endnote %}
+{% note info %} 喜欢运动打篮球，欢迎各大球友结识，还喜欢搞搞摄影视频剪辑，喜欢看到的色彩，等等还要就是美食烹饪  {% endnote %}
+
+{% note primary %} 好吧就这样吧！  {% endnote %}
+

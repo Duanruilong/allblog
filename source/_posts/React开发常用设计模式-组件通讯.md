@@ -7,6 +7,12 @@ copyright: true
 categories: React
 top:
 ---
+每个 React 组件就像一个独立运行的小型系统。它有自己的状态、输入和输出。我们可以将每个 React 组件想象成是一个黑盒，这种方式很不错。它有自己的输入、生命周期及输出。我们所需要做的只是将这些盒子组合起来。这或许就是 React 所提供的优势之一:易于抽象，易于组合。
+
+![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+
+<!--more-->
+
 # 组件通讯
 每个 React 组件就像一个独立运行的小型系统。它有自己的状态、输入和输出。
 

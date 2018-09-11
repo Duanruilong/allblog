@@ -2,10 +2,16 @@
 title: next主题模板一些配置
 date: 2018-05-05 21:23:49
 tags: 编程
-description: 使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。
+description: 
 copyright: true
 categories: Hexo
 ---
+使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。
+
+![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png)
+
+<!-- more -->
+
 
 # 1.修改文章底部的那个带#号的标签
     
