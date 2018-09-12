@@ -90,13 +90,13 @@ Base64的原理很简单，首先，准备一个包含64个字符的数组：
 ## (2).在底图上添加需求图片
 前提是我们已经知道了需要合并的图片链接地址
 ```h
-    $item_img='https://img.alicdn.com/bao/uploaded/i1/1750208593/TB1rgM3hhtnkeRjSZSgXXXAuXXa_!!0-item_pic.jpg'
+$item_img='https://img.alicdn.com/bao/uploaded/i1/1750208593/TB1rgM3hhtnkeRjSZSgXXXAuXXa_!!0-item_pic.jpg'
 
 第一步：实例化图片
-    $imgtwo = new Imagick($item_img);
+$imgtwo = new Imagick($item_img);
 
 第二步：设置添加图片的大小
-    $imgtwo->resizeImage(750,764,Imagick::FILTER_LANCZOS,1);
+$imgtwo->resizeImage(750,764,Imagick::FILTER_LANCZOS,1);
 
 关于resizeImage参数说明
     bool Imagick::resizeImage ( int $columns , int $rows , int $filter , float $blur [, bool $bestfit = false ] )
@@ -108,7 +108,7 @@ Base64的原理很简单，首先，准备一个包含64个字符的数组：
   ● blur blur=1 为虚化， blur =-1 为锐化
 
 第三步：与底图合并
-        $img->compositeImage($imgtwo,$imgtwo->getImageCompose(),0,0);
+$img->compositeImage($imgtwo,$imgtwo->getImageCompose(),0,0);
 
 使用compositeImage();
     bool Imagick::compositeImage ( Imagick $composite_object , int $composite , int $x , int $y [, int $channel = Imagick::CHANNEL_ALL ] )
