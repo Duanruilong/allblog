@@ -9,7 +9,7 @@ top:
 ---
 记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！
 
-![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png)
+![js](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/hexo_d.png)
 
 <!-- more -->
 # First

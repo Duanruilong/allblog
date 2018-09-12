@@ -122,12 +122,12 @@
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png">
-<meta property="og:updated_time" content="2018-06-16T09:12:29.925Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
+<meta property="og:updated_time" content="2018-08-07T16:25:32.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React开发常用设计模式-展示型组件和容器型组件">
 <meta name="twitter:description" content="万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。">
-<meta name="twitter:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
 
 
 
@@ -476,7 +476,7 @@
 
       
         <p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。</p>
-<p><img src="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png" alt="React"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png" alt="React"></p>
 <a id="more"></a>
 <h1 id="展示型组件和容器型组件"><a href="#展示型组件和容器型组件" class="headerlink" title="展示型组件和容器型组件"></a>展示型组件和容器型组件</h1><p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为<code>展示型组件</code>和<code>容器型组件</code>。</p>
 <p>我们先从一个简单示例开始，首先说明此示例的问题，然后将组件分成容器型组件和展示型组件。示例中使用的是 <code>Clock</code> 组件，它接收 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener">Date</a> 对象作为属性并显示实时时间。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="title">extends</span> <span class="title">React</span>.<span class="title">Component</span> &#123;</span></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; time: <span class="keyword">this</span>.props.time &#125;;</span><br><span class="line">    <span class="keyword">this</span>._update = <span class="keyword">this</span>._updateTime.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> time = <span class="keyword">this</span>._formatTime(<span class="keyword">this</span>.state.time);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;</span><br><span class="line">        &#123; time.hours &#125; : &#123; time.minutes &#125; : &#123; time.seconds &#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._interval = setInterval(<span class="keyword">this</span>._update, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._interval);</span><br><span class="line">  &#125;</span><br><span class="line">  _formatTime(time) &#123;</span><br><span class="line">    var [ hours, minutes, seconds ] = [</span><br><span class="line">      time.getHours(),</span><br><span class="line">      time.getMinutes(),</span><br><span class="line">      time.getSeconds()</span><br><span class="line">    ].<span class="built_in">map</span>(num =&gt; num &lt; <span class="number">10</span> ? <span class="string">'0'</span> + num : num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; hours, minutes, seconds &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  _updateTime() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      time: <span class="keyword">new</span> Date(<span class="keyword">this</span>.state.time.getTime() + <span class="number">1000</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;Clock time=&#123; <span class="keyword">new</span> Date() &#125;/&gt;, ...);</span><br></pre></td></tr></table></figure></p>
@@ -515,7 +515,7 @@
   <p><span>本文标题:</span><a href="/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/">React开发常用设计模式-展示型组件和容器型组件</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
   <!-- <p><span>发布时间:</span>2018年05月15日 - 23:05</p> -->
-  <!-- <p><span>最后更新:</span>2018年06月16日 - 17:06</p> -->
+  <!-- <p><span>最后更新:</span>2018年08月08日 - 00:08</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/" title="React开发常用设计模式-展示型组件和容器型组件">https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/</a>
 copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/"  aria-label="复制成功！"></i></span>
   </p>
@@ -729,7 +729,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -740,7 +740,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -751,7 +751,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -897,7 +897,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共43.9k字</span>
+    <span class="post-count">博客全站共65.9k字</span>
   </div>
 </div>
 

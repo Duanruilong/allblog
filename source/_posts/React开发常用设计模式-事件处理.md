@@ -9,7 +9,7 @@ top:
 ---
 对于事件处理，React 提供了一系列属性。解决方案几乎和使用标准化 DOM 完全一样。也有一些不同点，比如使用驼峰式或传入的是函数，但总体来说，还是十分相似的。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 
 <!--more-->

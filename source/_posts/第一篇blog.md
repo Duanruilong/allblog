@@ -11,12 +11,11 @@ categories: 随记
 
 欢迎来到我的blog，这里是我记录生活和一些事情的地方，这里会收录一些好的文章，值得学习的东西；也是一个随记的地方。我们的遇到就是缘分的开始，互相学习，互相认识。
 
-![wo](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/drlong.png)
+![wo](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/drlong.png)
 
 <!-- more -->
 
 # 我
-
 
 {% note danger %} 来自七彩云南  {% endnote %}
 {% note danger %} 读书于古都西安{% endnote %}

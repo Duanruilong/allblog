@@ -9,7 +9,7 @@ top:
 ---
 React 或许是构建 UI 的最佳选择之一。良好的设计与强大的支持，还有庞大的社区。但是，有些情况下，想要使用外部服务或想要集成一些完全不同的东西。众所周知，React 在底层与实际 DOM 有大量的交互并控制页面上渲染什么，基本上它是开发者与实际 DOM 间的桥梁。这也正是为什么 React 集成第三方组件有些麻烦的地方。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 <!--more-->
 

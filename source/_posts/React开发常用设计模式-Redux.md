@@ -9,7 +9,7 @@ top:
 ---
 [Redux](https://redux.js.org/) 是一个库，它扮演着状态容器的角色，并负责管理应用的数据流。它是 Dan Abramov 在 2015 年的 ReactEurope 开发者大会上推出的 ([视频](https://www.youtube.com/watch?v=xsSnOQynTHs))。它类似于 [Flux 架构](https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md#flux-architecture-and-its-main-characteristics) 并有很多共同点。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 <!--more-->
 

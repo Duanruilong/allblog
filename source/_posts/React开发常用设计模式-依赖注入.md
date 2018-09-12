@@ -11,7 +11,7 @@ top:
 
 在 React 中，对依赖注入的需要是显而易见的。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 <!--more-->
 

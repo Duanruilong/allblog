@@ -9,7 +9,7 @@ top:
 ---
 React路由Prompt、Redirect、match、Switch。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 <!--more-->
 # 1、Prompt组件 

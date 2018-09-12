@@ -8,7 +8,7 @@ categories: Hexo
 ---
 使用Hexo + Github去搭建一个属于自己的博客站点，这里是一些next相关的细节配置。
 
-![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/hexo_d.png)
+![js](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/hexo_d.png)
 
 <!-- more -->
 

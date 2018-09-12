@@ -9,7 +9,7 @@ top:
 ---
 React 是视图层。因此，它可以控制在浏览器中渲染的标记。众所周知，页面上的 HTML 标记与 CSS 的样式是紧密联系在一起的。有几种方式来处理 React 应用的样式，接下来介绍这些最流行的方式。
 
-![React](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/react_d.png)
+![React](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png)
 
 <!--more-->
 

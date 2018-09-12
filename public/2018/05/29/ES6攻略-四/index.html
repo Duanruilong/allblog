@@ -122,13 +122,13 @@
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="ES6的改版，主要是通过引入JAVA等静态语言的优秀思想来解决老版本的一些痼疾，如作用域，回调，继承和封装等问题。这些改革措施是非常成功的，ES6让JS真正变成了一种好用的语言。这里是关于Reflect和Proxy。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/es6_d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/amhuPdMsm1nZRR0oA8QqZfcQGqUNYUJzkRiclCN5500iaJhsyUpyjt8bu7xM47zaUoDJibSN1iazVaKN9wQjLkctgw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
-<meta property="og:updated_time" content="2018-06-16T08:37:47.517Z">
+<meta property="og:updated_time" content="2018-08-07T16:21:19.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6攻略(四)">
 <meta name="twitter:description" content="ES6的改版，主要是通过引入JAVA等静态语言的优秀思想来解决老版本的一些痼疾，如作用域，回调，继承和封装等问题。这些改革措施是非常成功的，ES6让JS真正变成了一种好用的语言。这里是关于Reflect和Proxy。">
-<meta name="twitter:image" content="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/es6_d.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png">
 
 
 
@@ -473,7 +473,7 @@
 
       
         <p>ES6的改版，主要是通过引入JAVA等静态语言的优秀思想来解决老版本的一些痼疾，如作用域，回调，继承和封装等问题。这些改革措施是非常成功的，ES6让JS真正变成了一种好用的语言。这里是关于Reflect和Proxy。</p>
-<p><img src="https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/es6_d.png" alt="ES6攻略"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png" alt="ES6攻略"></p>
 <a id="more"></a>
 <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>之前的JS只提供了两种容器：<code>数组</code>和<code>对象</code>。es6又添加了另一种非常有用的数据结构：<code>Set</code>。他就是<code>集合</code>的意思，本身也是一种容器。<br>既然是容器，肯定有对应的增查改删的操作了。增查改删是容器必备的职能。那么这种新式容器，到底有什么特点呢？<br>拿他跟数组比较的话，<code>Set</code>的最大的特点就是<code>每个值都是唯一的，不能有重复值</code>。经常会遇到数组去重的问题吧？自从有了Set，就开始变得美好了。</p>
 <figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let container = <span class="keyword">new</span> Set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);<span class="comment">//可以直接传入数组进行初始化</span></span><br><span class="line">container.add(<span class="number">5</span>);<span class="comment">//添加元素</span></span><br><span class="line">container.<span class="keyword">delete</span>(<span class="number">5</span>);<span class="comment">//删除元素</span></span><br><span class="line">console.<span class="built_in">log</span>(container.has(<span class="number">5</span>));<span class="comment">//false，5这个元素被删除了</span></span><br><span class="line">console.<span class="built_in">log</span>(container);<span class="comment">//Set &#123; 1, 2, 3, 4 &#125;</span></span><br><span class="line">console.<span class="built_in">log</span>(container.size);<span class="comment">//长度4</span></span><br><span class="line">let unique_arr = [...container];<span class="comment">//省略号语法</span></span><br><span class="line">console.<span class="built_in">log</span>(unique_arr);<span class="comment">//唯一值数组：[ 1, 2, 3, 4 ]</span></span><br></pre></td></tr></table></figure>
@@ -716,7 +716,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -727,7 +727,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -738,7 +738,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -884,7 +884,7 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共43.9k字</span>
+    <span class="post-count">博客全站共65.9k字</span>
   </div>
 </div>
 

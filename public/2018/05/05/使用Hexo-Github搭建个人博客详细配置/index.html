@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="开始使用Hexo + Github去搭建一个属于自己的博客站点，可以在这里发布一下自己的想法，一些问题积累，一些发现。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T16:46:38.088Z">
+<meta property="og:updated_time" content="2018-07-22T15:59:46.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo + Github搭建个人博客详细配置">
 <meta name="twitter:description" content="开始使用Hexo + Github去搭建一个属于自己的博客站点，可以在这里发布一下自己的想法，一些问题积累，一些发现。">
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  1,155
                 </span>
               
 
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -473,7 +473,35 @@
       
 
       
-        
+        <h1 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h1><p><code>hexo new &#39;文章标题&#39;</code></p>
+<h1 id="生成静态网页-amp-部署"><a href="#生成静态网页-amp-部署" class="headerlink" title="生成静态网页&amp;部署"></a>生成静态网页&amp;部署</h1><p><code>hexo clean</code> 清除缓存<br><code>hexo g</code> 生成静态网页<br><code>hexo d</code> 开始部署</p>
+<p>连接写法：<code>hexo c &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
+<h1 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h1><p>1.我使用多说代替自带的评论，在<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a> 网站注册 &gt; 后台管理 &gt; 添加新站点 &gt; 工具 === 复制通用代码 里面有 short_name</p>
+<p>在根目录 _config.yml 添加一行 disqus_shortname: jslite 是在多说注册时产生的</p>
+<p>复制到 themes\landscape\layout_partial\article.ejs<br>把<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">  &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">    &lt;!-- 多说评论框 start --&gt;</span><br><span class="line">    &lt;div class=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> data-title=<span class="string">"&lt;%= post.title %&gt;"</span> data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;!-- 多说评论框 end --&gt;</span><br><span class="line">    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    var duoshuoQuery = &#123;short_name:'&lt;%= config.disqus_shortname %&gt;'&#125;;</span><br><span class="line">      (function() &#123;</span><br><span class="line">        var ds = document.createElement('script');</span><br><span class="line">        ds.type = 'text/javascript';ds.async = true;</span><br><span class="line">        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';</span><br><span class="line">        ds.charset = 'UTF-8';</span><br><span class="line">        (document.getElementsByTagName('head')[0] </span><br><span class="line">         || document.getElementsByTagName('body')[0]).appendChild(ds);</span><br><span class="line">      &#125;)();</span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">    &lt;!-- 多说公共JS代码 end --&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="hexo相处里的错误"><a href="#hexo相处里的错误" class="headerlink" title="hexo相处里的错误"></a>hexo相处里的错误</h1><h2 id="部署没有权限"><a href="#部署没有权限" class="headerlink" title="部署没有权限"></a>部署没有权限</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[master <span class="number">74</span>ddc79] Site updated: <span class="number">2018</span><span class="number">-07</span><span class="number">-22</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">27</span></span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+), <span class="number">1</span> deletion(-)</span><br><span class="line">Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">fatal: Could <span class="keyword">not</span> read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line"><span class="keyword">and</span> the repository exists.</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: http:<span class="comment">//hexo.io/docs/troubleshooting.html</span></span><br><span class="line">Error: Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line">fatal: Could <span class="keyword">not</span> read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line"><span class="keyword">and</span> the repository exists.</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/duanruilong/Github/hexo/node_modules/hexo-util/lib/spawn.js:<span class="number">37</span>:<span class="number">17</span>)</span><br><span class="line">    <span class="function">at <span class="title">emitTwo</span> <span class="params">(events.js:<span class="number">106</span>:<span class="number">13</span>)</span></span></span><br><span class="line">    at ChildProcess.emit (events.js:191:7)</span><br><span class="line">    <span class="function">at <span class="title">maybeClose</span> <span class="params">(internal/child_process.js:<span class="number">877</span>:<span class="number">16</span>)</span></span></span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</span><br></pre></td></tr></table></figure>
+<p>查看权限</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">➜  ~ ssh -T git@github.com</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br><span class="line"></span><br><span class="line">&lt;!--就是没有权限 --&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="接下来这样来"><a href="#接下来这样来" class="headerlink" title="接下来这样来"></a>接下来这样来</h3><h4 id="1、检查是否有SSH-key"><a href="#1、检查是否有SSH-key" class="headerlink" title="1、检查是否有SSH key"></a>1、检查是否有SSH key</h4><ul>
+<li>登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ，查看是否有SSH keys。如果有，直接进行第三步。</li>
+</ul>
+<h4 id="2、新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><a href="#2、新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写：" class="headerlink" title="2、新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写："></a>2、新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</h4><p><code>ssh-keygen -t rsa -C &quot;邮箱名&quot;</code></p>
+<p>然后会出现：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/dell/.ssh/id_rsa):</span><br><span class="line"></span><br><span class="line">直接回车就可以。</span><br><span class="line">然后会出现：</span><br><span class="line"></span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line"></span><br><span class="line">要求你输入密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。</span><br><span class="line"></span><br><span class="line">注意：输入密码的时候没有*字样的，直接输入就好。</span><br><span class="line">然后会出现：</span><br><span class="line"></span><br><span class="line">Your identification has been saved in /c/Users/dell/.ssh/id_rsa.</span><br><span class="line">Your <span class="keyword">public</span> key has been saved in /c/Users/dell/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line"><span class="number">65</span>:<span class="number">69</span>:······<span class="number">02</span>:<span class="number">4b</span> emailname@email.com</span><br><span class="line">The key's randomart image is:</span><br><span class="line">+--[ RSA <span class="number">2048</span>]----+</span><br><span class="line">|                 |</span><br><span class="line">|       .   o .   |</span><br><span class="line">|    . o o = o    |</span><br><span class="line">|   . o * = o     |</span><br><span class="line">|  E  o + o .     |</span><br><span class="line">| . o.   . .      |</span><br><span class="line">|     ..          |</span><br><span class="line">+-----------------+</span><br><span class="line"></span><br><span class="line">至此，密钥已经成功生成。</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、接下来在github上添加SSH-key："><a href="#3、接下来在github上添加SSH-key：" class="headerlink" title="3、接下来在github上添加SSH key："></a>3、接下来在github上添加SSH key：</h4><ul>
+<li><p>① 打开本地文件：id_rsa.pub（文件路径可以在上一步SSH生成成功后看到路径，比如我的是/Users/duanruilong/.ssh/id_rsa.pub），可以将这个文件在编辑器中打开，然后全选复制。</p>
+</li>
+<li><p>② 登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ——&gt; New SSH key，点击新建SSH key。</p>
+</li>
+<li><p>③ 将 ① 中复制的内容粘贴在key文本框里，title可以不用填（或者自己起一个名字也可以）。</p>
+</li>
+</ul>
+<h4 id="4、测试设置是否成功"><a href="#4、测试设置是否成功" class="headerlink" title="4、测试设置是否成功"></a>4、测试设置是否成功</h4><p><code>ssh -T git@github.com</code></p>
+<p>有可能会出现：</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</span><br><span class="line">RSA key fingerprint is <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1b</span>:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48.</span></span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br><span class="line"></span><br><span class="line">或者是</span><br><span class="line"></span><br><span class="line">The authenticity of host 'github.com (192.30.252.1)' can't be established.</span><br><span class="line">RSA key fingerprint is nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br><span class="line"></span><br><span class="line">这种情况下，直接 yes 回车</span><br><span class="line"></span><br><span class="line">然后会出现（也可能在 ++$ ssh -T git@github.com++ 之后，直接出现的就是这个，我就是这样~）：</span><br><span class="line"></span><br><span class="line">Hi username! You've successfully authenticated, but GitHub does <span class="keyword">not</span> </span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure>
+<h4 id="5、设置用户信息"><a href="#5、设置用户信息" class="headerlink" title="5、设置用户信息"></a>5、设置用户信息</h4><p><code>~ git config --global user.name</code><br><code>~ git config --global user.email</code></p>
+<h4 id="6、然后就可以部署你的博客"><a href="#6、然后就可以部署你的博客" class="headerlink" title="6、然后就可以部署你的博客"></a>6、然后就可以部署你的博客</h4><p><code>hexo g  &amp;&amp; hexo d</code></p>
+
       
     </div>
     
@@ -493,7 +521,7 @@
   <p><span>本文标题:</span><a href="/blog/2018/05/05/使用Hexo-Github搭建个人博客详细配置/">使用Hexo + Github搭建个人博客详细配置</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
   <!-- <p><span>发布时间:</span>2018年05月05日 - 19:05</p> -->
-  <!-- <p><span>最后更新:</span>2018年05月07日 - 00:05</p> -->
+  <!-- <p><span>最后更新:</span>2018年07月22日 - 23:07</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/05/使用Hexo-Github搭建个人博客详细配置/" title="使用Hexo + Github搭建个人博客详细配置">https://duanruilong.github.io/2018/05/05/使用Hexo-Github搭建个人博客详细配置/</a>
 copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/05/使用Hexo-Github搭建个人博客详细配置/"  aria-label="复制成功！"></i></span>
   </p>
@@ -680,8 +708,17 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/blog/images/drl.png"
@@ -696,7 +733,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -707,7 +744,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -718,7 +755,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -819,6 +856,22 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新建文章"><span class="nav-number">1.</span> <span class="nav-text">新建文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成静态网页-amp-部署"><span class="nav-number">2.</span> <span class="nav-text">生成静态网页&amp;部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开启评论"><span class="nav-number">3.</span> <span class="nav-text">开启评论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo相处里的错误"><span class="nav-number">4.</span> <span class="nav-text">hexo相处里的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署没有权限"><span class="nav-number">4.1.</span> <span class="nav-text">部署没有权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来这样来"><span class="nav-number">4.1.1.</span> <span class="nav-text">接下来这样来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、检查是否有SSH-key"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">1、检查是否有SSH key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><span class="nav-number">4.1.1.2.</span> <span class="nav-text">2、新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、接下来在github上添加SSH-key："><span class="nav-number">4.1.1.3.</span> <span class="nav-text">3、接下来在github上添加SSH key：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、测试设置是否成功"><span class="nav-number">4.1.1.4.</span> <span class="nav-text">4、测试设置是否成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、设置用户信息"><span class="nav-number">4.1.1.5.</span> <span class="nav-text">5、设置用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、然后就可以部署你的博客"><span class="nav-number">4.1.1.6.</span> <span class="nav-text">6、然后就可以部署你的博客</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -848,7 +901,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共43.9k字</span>
+    <span class="post-count">博客全站共65.9k字</span>
   </div>
 </div>
 

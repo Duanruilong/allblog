@@ -10,7 +10,7 @@ top:
 
 突然间需要使用这个东西了，调试还遇到了问题，所以还是简单了解一下他吧。
 
-![js](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/mongodb_d.png)
+![js](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/mongodb_d.png)
 
 <!-- more -->
 

@@ -9,7 +9,7 @@ top:
 ---
 ES6的改版，主要是通过引入JAVA等静态语言的优秀思想来解决老版本的一些痼疾，如作用域，回调，继承和封装等问题。这些改革措施是非常成功的，ES6让JS真正变成了一种好用的语言。这里是关于Reflect和Proxy。
 
-![ES6攻略](https://coding.net/u/DRuilong/p/phone_drl/git/raw/master/image/es6_d.png)
+![ES6攻略](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png)
 
 <!-- more -->
 
