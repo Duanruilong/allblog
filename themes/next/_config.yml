@@ -558,7 +558,7 @@ use_motion: true
 fancybox: true
 
 # Progress bar in the top during page loading./顶部加载条
-pace: true
+pace: false
 # Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
