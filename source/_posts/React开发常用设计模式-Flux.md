@@ -2,7 +2,7 @@
 title: React开发常用设计模式-Flux
 date: 2018-05-18 00:37:45
 tags: [React,Javascript]
-description: Flux 是一种构建用户界面的架构设计模式。它是由 Facebook 在它们的 F8 开发者大会上推出的。在此之后，许多公司都采纳了这个想法，这种模式用来构建前端应用似乎非常不错。Flux 通常和 React 搭配使用。React 是 Facebook 发布的另外一个库。在 日常工作 中使用的是 React+Flux/Redux ，敢说这种架构真的非常简单和灵活。该模式有助于更快地创建应用，同时使代码保持良好的组织结构。
+description: 
 copyright: true
 categories: React
 top:

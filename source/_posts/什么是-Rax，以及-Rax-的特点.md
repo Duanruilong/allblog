@@ -2,7 +2,7 @@
 title: 什么是 Rax，以及 Rax 的特点
 date: 2018-05-11 00:29:57
 tags: [编程,React]
-description: React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。
+description: 
 copyright: true
 categories: React
 top:
@@ -10,7 +10,11 @@ top:
 
 ![Rac](https://img.alicdn.com/tps/TB1LxebPVXXXXaHXpXXXXXXXXXX-900-500.png)
 
+
+
 Rax is a universal JavaScript library with a largely React-compatible API. If you use React, you already know how to use Rax.
+
+<!-- more -->
 # Rax
 经过这次试水，Weex 的方案开始逐步使用，证明了这套方案未来的场景及可行性，2016 年 Weex 开始进入快速发展的阶段。但是使用 Weex 就意味着必须用 Vue 的语法，这对于整个团队来说是一个不小的挑战：PC 场景下的项目，小伙伴们普遍基于 React 开发，已经有了相当多的经验与沉淀。如果无线的项目要采用一个不同方案（Vue）去做，强推未必会不奏效，但是小伙伴们大概会伤心吧。
 于是我们尝试将 React 与 Weex 结合起来，但是由于方案太过 hack 导致各种问题，遂无奈放弃。接着 Rax 的方案应运而生：「Rax 基于 React 的标准，支持在不同容器中渲染，当前最重要的容器即 Weex 和 Web」。

@@ -2,7 +2,7 @@
 title: React开发常用设计模式-受控输入和非受控输入
 date: 2018-05-15 00:19:01
 tags: [React,Javascript]
-description: 在 React 表单管理中有两个经常使用的术语:受控输入和非受控输入。受控输入是指输入值的来源是单一的。与之相反的是非受控输入，它让浏览器来处理用户的输入。使用受控输入还是非受控输入，这个选择常常不被人所重视。但我相信这是一个最基本的决策，因为它决定了 React 组件的数据流。我个人认为非受控输入更像是一种反模式，应该尽量避免使用。
+description: 
 copyright: true
 categories: React
 top:

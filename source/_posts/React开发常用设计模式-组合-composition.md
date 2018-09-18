@@ -2,7 +2,7 @@
 title: React开发常用设计模式-组合 (composition)
 date: 2018-05-14 23:52:47
 tags: [React,Javascript]
-description: 对于事件处理，React 提供了一系列属性。解决方案几乎和使用标准化 DOM 完全一样。也有一些不同点，比如使用驼峰式或传入的是函数，但总体来说，还是十分相似的。你是否对为何还在使用 HTML 感到奇怪？HTML 是在互联网创建之初创建的，直到现在我们仍然在使用它。原因在于它的高度可组合性。React 和它的 JSX 看起来像进化的 HTML ，因此它具备同样的功能。因此，请确保精通组合，因为它是 React 最大的好处之一。
+description: 
 copyright: true
 categories: React
 top:

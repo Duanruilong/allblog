@@ -107,19 +107,19 @@
 
 
 
-<meta name="description" content="React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。">
+<meta name="description" content="Rax is a universal JavaScript library with a largely React-compatible API. If you use React, you already know how to use Rax.">
 <meta name="keywords" content="编程,React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什么是 Rax，以及 Rax 的特点">
 <meta property="og:url" content="https://duanruilong.github.io/2018/05/11/什么是-Rax，以及-Rax-的特点/index.html">
 <meta property="og:site_name" content="About-龙大">
-<meta property="og:description" content="React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。">
+<meta property="og:description" content="Rax is a universal JavaScript library with a largely React-compatible API. If you use React, you already know how to use Rax.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img.alicdn.com/tps/TB1LxebPVXXXXaHXpXXXXXXXXXX-900-500.png">
-<meta property="og:updated_time" content="2018-05-10T16:54:08.145Z">
+<meta property="og:updated_time" content="2018-09-18T13:07:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是 Rax，以及 Rax 的特点">
-<meta name="twitter:description" content="React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。">
+<meta name="twitter:description" content="Rax is a universal JavaScript library with a largely React-compatible API. If you use React, you already know how to use Rax.">
 <meta name="twitter:image" content="https://img.alicdn.com/tps/TB1LxebPVXXXXaHXpXXXXXXXXXX-900-500.png">
 
 
@@ -450,10 +450,6 @@
           
 
           
-              <div class="post-description">
-                  React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。
-              </div>
-          
 
         </div>
       </header>
@@ -470,6 +466,7 @@
       
         <p><img src="https://img.alicdn.com/tps/TB1LxebPVXXXXaHXpXXXXXXXXXX-900-500.png" alt="Rac"></p>
 <p>Rax is a universal JavaScript library with a largely React-compatible API. If you use React, you already know how to use Rax.</p>
+<a id="more"></a>
 <h1 id="Rax"><a href="#Rax" class="headerlink" title="Rax"></a>Rax</h1><p>经过这次试水，Weex 的方案开始逐步使用，证明了这套方案未来的场景及可行性，2016 年 Weex 开始进入快速发展的阶段。但是使用 Weex 就意味着必须用 Vue 的语法，这对于整个团队来说是一个不小的挑战：PC 场景下的项目，小伙伴们普遍基于 React 开发，已经有了相当多的经验与沉淀。如果无线的项目要采用一个不同方案（Vue）去做，强推未必会不奏效，但是小伙伴们大概会伤心吧。<br>于是我们尝试将 React 与 Weex 结合起来，但是由于方案太过 hack 导致各种问题，遂无奈放弃。接着 Rax 的方案应运而生：「Rax 基于 React 的标准，支持在不同容器中渲染，当前最重要的容器即 Weex 和 Web」。</p>
 <h1 id="Rax-与-React"><a href="#Rax-与-React" class="headerlink" title="Rax 与 React"></a>Rax 与 React</h1><p>React 是一种标准，Rax 是对该标准的一个实现。Rax 只是无线端的解决方案，与 React 并无冲突。事实上淘宝 PC 端的新项目，依然主要是基于 React。当然，Rax 跟 Preact 之类的方案也有本质区别，前者偏向于解决多端问题，后者偏向于解决性能问题，具体可参考下文「Rax 的特点」。</p>
 <h1 id="Rax-的特点"><a href="#Rax-的特点" class="headerlink" title="Rax 的特点"></a>Rax 的特点</h1><h4 id="1、设计上支持不同容器"><a href="#1、设计上支持不同容器" class="headerlink" title="1、设计上支持不同容器"></a>1、设计上支持不同容器</h4><p>Rax 在设计上抽象出 Driver 的概念，用来支持在不同容器中渲染，比如目前所支持的：Web, Weex, Node.js. 基于 Driver 的概念，未来即使出现更多的容器（如 VR 等），Rax 也可以从容应对。Rax 在设计上尽量抹平各个端的差异性，这也使得开发者在差异性和兼容性方面再也不需要投入太多精力了。</p>
@@ -498,7 +495,7 @@
   <p><span>本文标题:</span><a href="/blog/2018/05/11/什么是-Rax，以及-Rax-的特点/">什么是 Rax，以及 Rax 的特点</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
   <!-- <p><span>发布时间:</span>2018年05月11日 - 00:05</p> -->
-  <!-- <p><span>最后更新:</span>2018年05月11日 - 00:05</p> -->
+  <!-- <p><span>最后更新:</span>2018年09月18日 - 21:09</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/11/什么是-Rax，以及-Rax-的特点/" title="什么是 Rax，以及 Rax 的特点">https://duanruilong.github.io/2018/05/11/什么是-Rax，以及-Rax-的特点/</a>
 copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/11/什么是-Rax，以及-Rax-的特点/"  aria-label="复制成功！"></i></span>
   </p>
@@ -880,7 +877,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共66.9k字</span>
+    <span class="post-count">博客全站共68.9k字</span>
   </div>
 </div>
 

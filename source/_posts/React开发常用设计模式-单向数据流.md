@@ -2,7 +2,7 @@
 title: React开发常用设计模式-单向数据流
 date: 2018-05-16 22:57:28
 tags: [React,Javascript]
-description: 单向数据流这种模式十分适合跟 React 搭配使用。它的主要思想是组件不会改变接收的数据。它们只会监听数据的变化，当数据发生变化时它们会使用接收到的新值，而不是去修改已有的值。当组件的更新机制触发后，它们只是使用新值进行重新渲染而已。
+description: 
 copyright: true
 categories: React
 top:
