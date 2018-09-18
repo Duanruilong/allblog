@@ -43,7 +43,7 @@ ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实
 convert -resize 200x200 goods.png goods.jpg
 
 ```
-
+***
 
 
 
