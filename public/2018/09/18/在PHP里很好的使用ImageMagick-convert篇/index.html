@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_4.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_5.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_8.png">
-<meta property="og:updated_time" content="2018-09-18T14:14:40.000Z">
+<meta property="og:updated_time" content="2018-09-18T14:16:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在PHP里很好的使用ImageMagick---convert篇">
 <meta name="twitter:description" content="ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实现base64图片的逻辑在服务器端可能会造成溢出的事故，所以在接下的文章里会介绍另外一种好的实现方式就是—-convert命令。使用命令格式的形式去生成图片和大小的裁剪数据格式的转换。">
@@ -494,6 +494,7 @@
 <p>将一张宽高 300x300 的图片 goods.png 转换成 200x200 的goods.jpg，可以这样用</p>
 </blockquote>
 <figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert -resize <span class="number">200</span>x200 goods.png goods.jpg</span><br></pre></td></tr></table></figure>
+<hr>
 <h1 id="开始绘制生成图片"><a href="#开始绘制生成图片" class="headerlink" title="开始绘制生成图片"></a>开始绘制生成图片</h1><h2 id="一些前期参数"><a href="#一些前期参数" class="headerlink" title="一些前期参数"></a>一些前期参数</h2><h3 id="1、入参"><a href="#1、入参" class="headerlink" title="1、入参"></a>1、入参</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$item_img='https://img.alicdn.com/bao/uploaded/i1/1750208593/TB1rgM3hhtnkeRjSZSgXXXAuXXa_!!0-item_pic.jpg';</span><br><span class="line">$item_title='测试字体';</span><br><span class="line">$shop_title='测试店铺';</span><br><span class="line">$shop_img='http://q.aiyongbao.com/item/web/images/qap_img/mobile/userAvatar.png';</span><br><span class="line">$qr_img='https://img.alicdn.com/tfscom/TB1uJDStYZnBKNjSZFKwu3GOVXa.png';</span><br><span class="line">$numid_share='0000000';</span><br><span class="line">$qr_title='长按识别二维码';</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对宝贝标题裁剪</span></span><br><span class="line">$drawtitone=mb_substr($item_title,0,13, 'utf-8');</span><br><span class="line">$drawtittow=mb_substr($item_title,13,13, 'utf-8');</span><br><span class="line">$drawtitthree=mb_substr($item_title,26,13, 'utf-8');</span><br><span class="line">$time_date = time(); <span class="comment">// 时间戳</span></span><br><span class="line">$workDir = '/data/tmp/'.$numid_share.'_con'.$time_date; // 目标路径----&gt;指定一个文件夹保存生成图片过程里的图片</span><br></pre></td></tr></table></figure>
 <h3 id="2、先下载素材文件"><a href="#2、先下载素材文件" class="headerlink" title="2、先下载素材文件"></a>2、先下载素材文件</h3><p>我们这里需要一个拼接图片的链接，所以先下载到之前的创建的文件夹下，因为这些素材图片只是为了最后的拼接，最后可以完全删除。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$item_img_down = $workDir<span class="number">.'</span>/itemimage.jpg';</span><br><span class="line">$shop_img_down = $workDir<span class="number">.'</span>/shopimage.jpg';</span><br><span class="line">$qr_img_down = $workDir<span class="number">.'</span>/qrimage.jpg';</span><br><span class="line"><span class="comment">// 下载宝贝主图</span></span><br><span class="line">\NetworkUtils::curlDownload($item_img, $item_img_down);</span><br><span class="line"><span class="comment">// 下载店铺图片</span></span><br><span class="line">\NetworkUtils::curlDownload($shop_img, $shop_img_down);</span><br><span class="line"><span class="comment">// 下载二维码</span></span><br><span class="line">\NetworkUtils::curlDownload($qr_img, $qr_img_down);</span><br></pre></td></tr></table></figure></p>
 <p><code>\NetworkUtils::curlDownload($item_img, $item_img_down);</code> 下载<code>$item_img</code>保存在目标路径文件夹下的<code>$workDir.&#39;/itemimage.jpg&#39;</code>路径。</p>
@@ -662,8 +663,8 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2018/09/07/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/blog/2018/09/05/在PHP里很好的使用ImageMagick/" rel="next" title="在PHP里使用ImageMagick生成base64图片">
+                <i class="fa fa-chevron-left"></i> 在PHP里使用ImageMagick生成base64图片
               </a>
             
           </div>
