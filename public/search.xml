@@ -34,8 +34,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -47,8 +47,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -61,8 +61,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -74,8 +74,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -88,8 +88,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +100,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -125,8 +125,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -137,8 +137,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -150,8 +150,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -163,8 +163,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -176,8 +176,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -237,8 +237,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -250,8 +250,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -263,8 +263,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -276,8 +276,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -289,8 +289,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -302,8 +302,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -315,8 +315,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>ES6</tag>
         <tag>CSS</tag>
       </tags>
@@ -329,8 +329,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -391,8 +391,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -464,8 +464,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>Javascript</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -493,9 +493,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[记一次Hexo文章里的图片不显示问题]]></title>
+    <title><![CDATA[Hexo搭建博客问题收集器]]></title>
     <url>%2Fblog%2F2018%2F05%2F06%2F%E8%AE%B0%E4%B8%80%E6%AC%A1Hexo%E6%96%87%E7%AB%A0%E9%87%8C%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！ First1 把主页配置文件_config.yml 里的post_asset_folder:这个选项设置为true 2 在你的hexo目录下执行这样一句话npm install hexo-asset-image --save，这是下载安装一个可以上传本地图片的插件，来自dalao：dalao的git 3 等待一小段时间后，再运行hexo n &quot;xxxx&quot;来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹 Second4 最后在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片： ![你想输入的替代文字](记一次Hexo文章里的图片不显示问题/long.png)![直接给地址咋样](http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg) 也可以直接使用如下方式：1&#123;% asset_img long.png 记一次Hexo文章里的图片不显示问题 %&#125; 注意： xxxx是这个md文件的名字，也是同名文件夹的名字。只需要有文件夹名字即可，不需要有什么绝对路径。你想引入的图片就只需要放入xxxx这个文件夹内就好了，很像引用相对路径。 5 最后检查一下，hexo g生成页面后，进入public\2017\02\26\index.html文件中查看相关字段，可以发现，html标签内的语句是&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;，而不是&lt;img src=&quot;xxxx/图片名.jpg&gt;。这很重要，关乎你的网页是否可以真正加载你想插入的图片。]]></content>
+    <content type="text"><![CDATA[记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！ First1 把主页配置文件_config.yml 里的post_asset_folder:这个选项设置为true 2 在你的hexo目录下执行这样一句话npm install hexo-asset-image --save，这是下载安装一个可以上传本地图片的插件，来自dalao：dalao的git 3 等待一小段时间后，再运行hexo n &quot;xxxx&quot;来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹 Second4 最后在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片： ![你想输入的替代文字](记一次Hexo文章里的图片不显示问题/long.png)![直接给地址咋样](http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg) 也可以直接使用如下方式：1&#123;% asset_img long.png 记一次Hexo文章里的图片不显示问题 %&#125; 注意： xxxx是这个md文件的名字，也是同名文件夹的名字。只需要有文件夹名字即可，不需要有什么绝对路径。你想引入的图片就只需要放入xxxx这个文件夹内就好了，很像引用相对路径。 5 最后检查一下，hexo g生成页面后，进入public\2017\02\26\index.html文件中查看相关字段，可以发现，html标签内的语句是&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;，而不是&lt;img src=&quot;xxxx/图片名.jpg&gt;。这很重要，关乎你的网页是否可以真正加载你想插入的图片。 Hexo Next 解决 Busuanzi 统计浏览失效由于busuanzi(不蒜子)的网址更新,导致了使用Hexo Next主题时统计浏览数失效. 不蒜子官网:http://ibruce.info/2015/04/04/busuanzi/ 解决方法: 到hexo的themes文件夹下, 进入 \themes\next\layout_third-party\analytics 打开: busuanzi-counter.swig 将src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js” 修改为src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”`]]></content>
       <categories>
         <category>Hexo</category>
       </categories>

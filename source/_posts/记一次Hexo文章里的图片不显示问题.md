@@ -1,5 +1,5 @@
 ---
-title: 记一次Hexo文章里的图片不显示问题
+title: Hexo搭建博客问题收集器
 date: 2018-05-06 00:46:29
 tags: 编程
 description: 
@@ -37,3 +37,26 @@ top:
 注意： xxxx是这个md文件的名字，也是同名文件夹的名字。只需要有文件夹名字即可，不需要有什么绝对路径。你想引入的图片就只需要放入xxxx这个文件夹内就好了，很像引用相对路径。
 
 5 最后检查一下，`hexo g`生成页面后，进入`public\2017\02\26\index.html`文件中查看相关字段，可以发现，html标签内的语句是`<img src="2017/02/26/xxxx/图片名.jpg">`，而不是`<img src="xxxx/图片名.jpg>`。这很重要，关乎你的网页是否可以真正加载你想插入的图片。
+
+
+***
+
+# Hexo Next 解决 Busuanzi 统计浏览失效
+
+由于busuanzi(不蒜子)的网址更新,导致了使用Hexo Next主题时统计浏览数失效.
+
+不蒜子官网:http://ibruce.info/2015/04/04/busuanzi/
+
+解决方法:
+
+到hexo的themes文件夹下, 进入
+
+`\themes\next\layout_third-party\analytics`
+
+打开: `busuanzi-counter.swig`
+
+将`src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js”`
+
+修改为`src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”``
+
+
