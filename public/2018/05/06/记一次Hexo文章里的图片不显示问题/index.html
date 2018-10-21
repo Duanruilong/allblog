@@ -110,7 +110,7 @@
 <meta name="description" content="记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！">
 <meta name="keywords" content="编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次Hexo文章里的图片不显示问题">
+<meta property="og:title" content="Hexo搭建博客问题收集器">
 <meta property="og:url" content="https://duanruilong.github.io/2018/05/06/记一次Hexo文章里的图片不显示问题/index.html">
 <meta property="og:site_name" content="About-龙大">
 <meta property="og:description" content="记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！">
@@ -119,9 +119,9 @@
 <meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/long.png">
 <meta property="og:image" content="http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg">
 <meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/long.png">
-<meta property="og:updated_time" content="2018-08-07T16:23:48.389Z">
+<meta property="og:updated_time" content="2018-10-12T10:03:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次Hexo文章里的图片不显示问题">
+<meta name="twitter:title" content="Hexo搭建博客问题收集器">
 <meta name="twitter:description" content="记一次Hexo文章里的图片不显示问题，不然超级麻烦！！！！">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/hexo_d.png">
 
@@ -158,7 +158,7 @@
 
 
 
-  <title>记一次Hexo文章里的图片不显示问题 | About-龙大</title>
+  <title>Hexo搭建博客问题收集器 | About-龙大</title>
   
 
 
@@ -364,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">记一次Hexo文章里的图片不显示问题</h1>
+          <h1 class="post-title" itemprop="name headline">Hexo搭建博客问题收集器</h1>
         
 
         <div class="post-meta">
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  410
+                  513
                 </span>
               
 
@@ -479,6 +479,15 @@
 <p>也可以直接使用如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img long.png 记一次Hexo文章里的图片不显示问题 %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>注意： xxxx是这个md文件的名字，也是同名文件夹的名字。只需要有文件夹名字即可，不需要有什么绝对路径。你想引入的图片就只需要放入xxxx这个文件夹内就好了，很像引用相对路径。</p>
 <p>5 最后检查一下，<code>hexo g</code>生成页面后，进入<code>public\2017\02\26\index.html</code>文件中查看相关字段，可以发现，html标签内的语句是<code>&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;</code>，而不是<code>&lt;img src=&quot;xxxx/图片名.jpg&gt;</code>。这很重要，关乎你的网页是否可以真正加载你想插入的图片。</p>
+<hr>
+<h1 id="Hexo-Next-解决-Busuanzi-统计浏览失效"><a href="#Hexo-Next-解决-Busuanzi-统计浏览失效" class="headerlink" title="Hexo Next 解决 Busuanzi 统计浏览失效"></a>Hexo Next 解决 Busuanzi 统计浏览失效</h1><p>由于busuanzi(不蒜子)的网址更新,导致了使用Hexo Next主题时统计浏览数失效.</p>
+<p>不蒜子官网:<a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="noopener">http://ibruce.info/2015/04/04/busuanzi/</a></p>
+<p>解决方法:</p>
+<p>到hexo的themes文件夹下, 进入</p>
+<p><code>\themes\next\layout_third-party\analytics</code></p>
+<p>打开: <code>busuanzi-counter.swig</code></p>
+<p>将<code>src=“https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js”</code></p>
+<p>修改为<code>src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”`</code></p>
 
       
     </div>
@@ -496,11 +505,11 @@
   <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
-  <p><span>本文标题:</span><a href="/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/">记一次Hexo文章里的图片不显示问题</a></p>
+  <p><span>本文标题:</span><a href="/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/">Hexo搭建博客问题收集器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
   <!-- <p><span>发布时间:</span>2018年05月06日 - 00:05</p> -->
-  <!-- <p><span>最后更新:</span>2018年08月08日 - 00:08</p> -->
-  <p><span>原始链接:</span><a href="/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/" title="记一次Hexo文章里的图片不显示问题">https://duanruilong.github.io/2018/05/06/记一次Hexo文章里的图片不显示问题/</a>
+  <!-- <p><span>最后更新:</span>2018年10月12日 - 18:10</p> -->
+  <p><span>原始链接:</span><a href="/blog/2018/05/06/记一次Hexo文章里的图片不显示问题/" title="Hexo搭建博客问题收集器">https://duanruilong.github.io/2018/05/06/记一次Hexo文章里的图片不显示问题/</a>
 copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/05/06/记一次Hexo文章里的图片不显示问题/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -843,7 +852,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#First"><span class="nav-number">1.</span> <span class="nav-text">First</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Second"><span class="nav-number">2.</span> <span class="nav-text">Second</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#First"><span class="nav-number">1.</span> <span class="nav-text">First</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Second"><span class="nav-number">2.</span> <span class="nav-text">Second</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Next-解决-Busuanzi-统计浏览失效"><span class="nav-number">3.</span> <span class="nav-text">Hexo Next 解决 Busuanzi 统计浏览失效</span></a></li></ol></div>
             
 
           </div>
@@ -863,7 +872,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright" >
   
   &copy; 
@@ -879,7 +888,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共68.9k字</span>
+    <span class="post-count">博客全站共69.0k字</span>
   </div>
 </div>
 
