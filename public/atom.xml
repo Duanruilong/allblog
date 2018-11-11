@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://duanruilong.github.io/"/>
-  <updated>2018-09-18T14:16:16.000Z</updated>
+  <updated>2018-11-11T10:05:39.000Z</updated>
   <id>https://duanruilong.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript: 什么是纯函数以及为什么要用纯函数</title>
+    <link href="https://duanruilong.github.io/2018/11/11/JavaScript-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%AF%E5%87%BD%E6%95%B0%E4%BB%A5%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E7%BA%AF%E5%87%BD%E6%95%B0/"/>
+    <id>https://duanruilong.github.io/2018/11/11/JavaScript-什么是纯函数以及为什么要用纯函数/</id>
+    <published>2018-11-11T09:57:25.000Z</published>
+    <updated>2018-11-11T10:05:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>当我第一次听到 “纯函数 (Pure Function)” 这个术语的时候我很疑惑。常规的函数做错了什么？为什么要变纯？ 为什么我需要纯的函数？</p><p>除非你已经知道什么是纯函数，否则你可能会问同样的疑惑。不过这个概念其实很简单。可以花点时间一起来看以下。</p><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/js_d.png" alt="js"></p><a id="more"></a><h1 id="什么函数是纯"><a href="#什么函数是纯" class="headerlink" title="什么函数是纯"></a>什么函数是纯</h1><p>纯函数的定义是：</p><ul><li><p>1、如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。</p></li><li><p>2、该函数不会产生任何可观察的副作用，例如网络请求，输入和输出设备或数据突变（mutation）。</p></li></ul><p>这就是纯的函数。 如果一个函数符合上述 2 个要求，它就是纯函数。 你可能在过去甚至无意地情况下编写过纯函数。</p><p>在我们研究一个函数一个纯或不纯之前，让我们先讨论一下可怕的“副作用”。</p><h1 id="什么是可观察的副作用"><a href="#什么是可观察的副作用" class="headerlink" title="什么是可观察的副作用"></a>什么是可观察的副作用</h1><p>一个可以被观察的副作用是在函数内部与其外部的任意交互。这可能是在函数内修改外部的变量，或者在函数里调用另外一个函数等。</p><p>注: 如果纯函数调用纯函数，则不产生副作用依旧是纯函数。</p><p>副作用来自，但不限于：</p><ul><li><p>进行一个 HTTP 请求</p></li><li><p>Mutating data</p></li><li><p>输出数据到屏幕或者控制台</p></li><li><p>DOM 查询/操作</p></li><li><p>Math.random()</p></li><li><p>获取的当前时间</p></li></ul><p>副作用本身并不是毒药，某些时候往往是必需的。 但是，对于要保持纯粹的函数，它不能包含任何副作用。当然，并非所有函数都需要是纯函数。 我将在稍后讨论这个情况。</p><p>不过首先，让我们来看一些纯的和不纯的函数对比的例子……</p><h1 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h1><p>以下是一个计算产品税后价格（英国税率是20%）的纯函数的例子：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">priceAfterTax</span><span class="params">(productPrice)</span> </span>&#123; <span class="keyword">return</span> (productPrice * <span class="number">0.20</span>) + productPrice;&#125;</span><br></pre></td></tr></table></figure></p><p>它符合我们所说的两条纯函数的定义。<code>不依赖于任何外部输入，不改变任何外部数据、没有副作用</code>。</p><p>即使你用同样的输入运行运行这个函数 100,000,000 次它依旧产生同样的结果。</p><h1 id="非纯函数"><a href="#非纯函数" class="headerlink" title="非纯函数"></a>非纯函数</h1><p>我们已经看了纯函数的例子，现在一起来看一个非纯函数（Impure function）的 JavaScript 例子:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var tax = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">calculateTax</span><span class="params">(productPrice)</span> </span>&#123; <span class="keyword">return</span> (productPrice * (tax/<span class="number">100</span>)) + productPrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>暂停片刻，看看你是否能看出为什么这个函数不纯。</p><p>其中函数的计算结果取决于外部 tax 变量，而纯函数不能依赖外部变量。它没有满足定义中的第一个要求，因此这个函数是不纯的。</p><h1 id="为什么说纯函数在-JavaScript-很重要"><a href="#为什么说纯函数在-JavaScript-很重要" class="headerlink" title="为什么说纯函数在 JavaScript 很重要"></a>为什么说纯函数在 JavaScript 很重要</h1><p>纯函数在函数式编程中被大量使用。而且诸如 ReactJS 和 Redux 等优质的库都需要使用纯函数。</p><p>不过，纯函数也可以用在平常的 JavaScript 开发中使用，不一定要限死在某个编程范例中。 你可以混合纯的和不纯的函数，这完全没问题。</p><p>并非所有函数都需要是纯的。 例如，操作 DOM 的按钮按下的事件处理程序就不适合纯函数。 不过，这种事件处理函数可以调用其他纯函数来处理，以此减少项目中不纯函数的数量。</p><h1 id="可测试性和重构"><a href="#可测试性和重构" class="headerlink" title="可测试性和重构"></a>可测试性和重构</h1><p>另一个使用纯函数的原因是测试以及重构。</p><p>使用纯函数的一个主要好处是它们可以直接测。 如果传入相同的参数，它们将始终产生相同的结果。</p><p>同时纯函数还使得维护和重构代码变得更加容易。你可以放心地重构一个纯函数，不必操心没注意到的副作用搞乱了整个应用而导致终调试地狱。（译注：如果项目中充斥着副作用，那么函数/模块之间的逻辑可能互相交织耦合，在后期新增逻辑时可能由于依赖复杂而难以重构，更常见的是开发为了应付需求而不断的引入新的副作用到原本的逻辑上从而导致代码变得越来越糟糕。）</p><p><code>正确地使用纯函数可以产生更加高质量的代码。并且也是一种更加干净的编码方式。</code></p><p>此外，纯函数不不是 JavaScript 的专利。想要了解更多内容可以参见 <a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank" rel="noopener">Wiki</a>。同时也推荐阅读 <a href="https://drboolean.gitbooks.io/mostly-adequate-guide/ch3.html" target="_blank" rel="noopener">开发建议手册</a> 以及 <a href="https://toddmotto.com/pure-versus-impure-functions" target="_blank" rel="noopener">纯函数 vs. 非纯函数</a>.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当我第一次听到 “纯函数 (Pure Function)” 这个术语的时候我很疑惑。常规的函数做错了什么？为什么要变纯？ 为什么我需要纯的函数？&lt;/p&gt;
+&lt;p&gt;除非你已经知道什么是纯函数，否则你可能会问同样的疑惑。不过这个概念其实很简单。可以花点时间一起来看以下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/js_d.png&quot; alt=&quot;js&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
+    
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>在PHP里很好的使用ImageMagick---convert篇</title>
@@ -89,9 +115,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -115,9 +141,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="React" scheme="https://duanruilong.github.io/tags/React/"/>
     
@@ -144,9 +170,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -170,9 +196,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="React" scheme="https://duanruilong.github.io/tags/React/"/>
     
@@ -199,9 +225,9 @@
       <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -224,9 +250,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -276,9 +302,9 @@
       <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -301,9 +327,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -328,9 +354,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -355,9 +381,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -382,9 +408,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -510,9 +536,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -537,9 +563,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -564,9 +590,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -591,9 +617,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -618,9 +644,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -645,9 +671,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -672,9 +698,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -701,9 +727,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -773,31 +799,6 @@
     <summary type="html">
     
       &lt;p&gt;单向数据流这种模式十分适合跟 React 搭配使用。它的主要思想是组件不会改变接收的数据。它们只会监听数据的变化，当数据发生变化时它们会使用接收到的新值，而不是去修改已有的值。当组件的更新机制触发后，它们只是使用新值进行重新渲染而已。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png&quot; alt=&quot;React&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="React" scheme="https://duanruilong.github.io/categories/React/"/>
-    
-    
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
-      <category term="React" scheme="https://duanruilong.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React开发常用设计模式-展示型组件和容器型组件</title>
-    <link href="https://duanruilong.github.io/2018/05/15/React%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B1%95%E7%A4%BA%E5%9E%8B%E7%BB%84%E4%BB%B6%E5%92%8C%E5%AE%B9%E5%99%A8%E5%9E%8B%E7%BB%84%E4%BB%B6/"/>
-    <id>https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/</id>
-    <published>2018-05-15T15:34:58.000Z</published>
-    <updated>2018-09-18T12:23:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。</p><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png" alt="React"></p><a id="more"></a><h1 id="展示型组件和容器型组件"><a href="#展示型组件和容器型组件" class="headerlink" title="展示型组件和容器型组件"></a>展示型组件和容器型组件</h1><p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为<code>展示型组件</code>和<code>容器型组件</code>。</p><p>我们先从一个简单示例开始，首先说明此示例的问题，然后将组件分成容器型组件和展示型组件。示例中使用的是 <code>Clock</code> 组件，它接收 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener">Date</a> 对象作为属性并显示实时时间。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="title">extends</span> <span class="title">React</span>.<span class="title">Component</span> &#123;</span></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; time: <span class="keyword">this</span>.props.time &#125;;</span><br><span class="line">    <span class="keyword">this</span>._update = <span class="keyword">this</span>._updateTime.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> time = <span class="keyword">this</span>._formatTime(<span class="keyword">this</span>.state.time);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;</span><br><span class="line">        &#123; time.hours &#125; : &#123; time.minutes &#125; : &#123; time.seconds &#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._interval = setInterval(<span class="keyword">this</span>._update, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._interval);</span><br><span class="line">  &#125;</span><br><span class="line">  _formatTime(time) &#123;</span><br><span class="line">    var [ hours, minutes, seconds ] = [</span><br><span class="line">      time.getHours(),</span><br><span class="line">      time.getMinutes(),</span><br><span class="line">      time.getSeconds()</span><br><span class="line">    ].<span class="built_in">map</span>(num =&gt; num &lt; <span class="number">10</span> ? <span class="string">'0'</span> + num : num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; hours, minutes, seconds &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  _updateTime() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      time: <span class="keyword">new</span> Date(<span class="keyword">this</span>.state.time.getTime() + <span class="number">1000</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;Clock time=&#123; <span class="keyword">new</span> Date() &#125;/&gt;, ...);</span><br></pre></td></tr></table></figure></p><p>在组件的构造函数中，我们初始化了组件的状态，这里只保存了当前时间。通过使用 <code>setInterval</code> ，我们每秒更新一次状态，然后组件会重新渲染。要想看起来像个真正的时钟，我们还使用了两个辅助函数: <code>_formatTime</code> 和<code>_updateTime</code> 。<code>_formatTime</code> 用来提取时分秒并确保它们是两位数的形式。<code>_updateTime</code> 用来将<code>time</code> 对象设置为当前时间加一秒。</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>这个组件中它做了好几件事，似乎承担了太多的职责。</p><ul><li>它通过自身来修改状态。在组件中更改时间可能不是一个好主意，因为只有 Clock 组件知道当前时间。如果系统中的其他部分也需要此数据，那么将很难进行共享。</li><li><code>_formatTime</code> 实际上做了两件事，它从时间对象中提取出所需信息，并确保这些值永远以两位数字的形式进行展示。这没什么问题，但如果提取操作不是函数的一部分那就更好了，因为函数绑定了 time 对象的类型。即此函数既要知道数据结构，同时又要对数据进行可视化处理。</li></ul><h1 id="提取出容器型组件"><a href="#提取出容器型组件" class="headerlink" title="提取出容器型组件"></a>提取出容器型组件</h1><p>容器型组件知道数据及其结构，以及数据的来源。它们知道是如何运转的，或所谓的业务逻辑。它们接收信息并对其进行处理，以方便展示型组件使用。通常，我们使用 <a href="https://github.com/krasimir/react-in-patterns/tree/master/patterns/higher-order-components" target="_blank" rel="noopener">高阶组件</a> 来创建容器型组件，因为它们为我们的自定义逻辑提供了缓冲区。</p><p>下面是 <code>ClockContainer</code> 的代码:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clock/index.js</span></span><br><span class="line">import Clock from './Clock.jsx'; // &lt;-- 展示型组件</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ClockContainer</span> <span class="title">extends</span> <span class="title">React</span>.<span class="title">Component</span> &#123;</span></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; time: props.time &#125;;</span><br><span class="line">    <span class="keyword">this</span>._update = <span class="keyword">this</span>._updateTime.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;Clock &#123; ...<span class="keyword">this</span>._extract(<span class="keyword">this</span>.state.time) &#125;/&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._interval = setInterval(<span class="keyword">this</span>._update, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._interval);</span><br><span class="line">  &#125;</span><br><span class="line">  _extract(time) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      hours: time.getHours(),</span><br><span class="line">      minutes: time.getMinutes(),</span><br><span class="line">      seconds: time.getSeconds()</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  _updateTime() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      time: <span class="keyword">new</span> Date(<span class="keyword">this</span>.state.time.getTime() + <span class="number">1000</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>它接收 <code>time</code> (date 对象) 属性，使用<code>setInterval</code> 循环并了解数据 (<code>getHours</code>、<code>getMinutes</code> 和 <code>getSeconds</code>) 的详情。最后渲染展示型组件并传入时分秒三个数字。这里没有任何展示相关的内容。只有业务逻辑。</p><h1 id="展示型组件"><a href="#展示型组件" class="headerlink" title="展示型组件"></a>展示型组件</h1><p>展示型组件只涉及组件的外在展现形式。它们会有附加的 HTML 标记来使得页面更加漂亮。这种组件没有任何绑定及依赖。通常都是实现成 <a href="https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components" target="_blank" rel="noopener">无状态组件</a>，它们没有内部状态。</p><p>在本示例中，展示型组件只包含两位数的检查并返回 <code>&lt;h1&gt;</code> 标签:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clock/Clock.jsx</span></span><br><span class="line"><span class="function"><span class="keyword">export</span> <span class="keyword">default</span> function <span class="title">Clock</span><span class="params">(props)</span> </span>&#123;</span><br><span class="line">  var [ hours, minutes, seconds ] = [</span><br><span class="line">    props.hours,</span><br><span class="line">    props.minutes,</span><br><span class="line">    props.seconds</span><br><span class="line">  ].<span class="built_in">map</span>(num =&gt; num &lt; <span class="number">10</span> ? <span class="string">'0'</span> + num : num);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;&#123; hours &#125; : &#123; minutes &#125; : &#123; seconds &#125;&lt;/h1&gt;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>将组件分成容器型组件和展示型组件可以增加组件的可复用性。不改变时间或不使用 JavaScript Date 对象的应用中，都可以使用 Clock 函数/组件。原因是它相当单纯，不需要对所需数据的详情有任何了解。</p><p>容器型组件封装了逻辑，它们可以搭配不同的展示型组件使用，因为它们不参与任何展示相关的工作。我们上面所采用的方法是一个很好的示例，它阐明了容器型组件是如何不关心展示部分的内容的。我们可以很容易地从数字时钟切换到模拟时钟，唯一的变化就是替换 <code>render</code> 方法中的 ·<clock>· 组件。</clock></p><p>测试也将变得更容易，因为组件承担的职责更少。容器型组件不关心 UI 。展示型组件只是纯粹地负责展示，它可以很好地预测出渲染后的 HTML 标记。</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>容器型和展示型的并非是新概念，但是它真的非常适合 React 。它使得应用具有更好的结构，易于管理和扩展。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png&quot; alt=&quot;React&quot;&gt;&lt;/p&gt;
     
     </summary>
