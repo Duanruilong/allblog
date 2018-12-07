@@ -116,7 +116,7 @@
 <meta property="og:description" content="React的16版本，采用了MIT开源许可证,React16新特性来认识一波。  Fragments：render函数可以返回数组和字符串 error boundaries：错误处理 portals ：支持声明性地将子树渲染到另一个DOM节点 custom DOM attributes ：ReactDom允许传递非标准属性 improved server-side rendering:提升服务端渲">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react16.png">
-<meta property="og:updated_time" content="2018-11-29T10:49:28.000Z">
+<meta property="og:updated_time" content="2018-12-04T02:29:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React16新特性来认识一波">
 <meta name="twitter:description" content="React的16版本，采用了MIT开源许可证,React16新特性来认识一波。  Fragments：render函数可以返回数组和字符串 error boundaries：错误处理 portals ：支持声明性地将子树渲染到另一个DOM节点 custom DOM attributes ：ReactDom允许传递非标准属性 improved server-side rendering:提升服务端渲">
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  124
+                  981
                 </span>
               
 
@@ -443,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -478,7 +478,20 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react16.png" alt="React"></p>
 <a id="more"></a>
-<h1 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h1>
+<h1 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h1><h1 id="1、render可以return数组-，字符串"><a href="#1、render可以return数组-，字符串" class="headerlink" title="1、render可以return数组 ，字符串"></a>1、render可以return数组 ，字符串</h1><p> React16新增加了render的返回格式，你可以return返回<code>string，number，boolean，null，portal，以及fragments(带有key属性的数组)</code>，且不需要外层包含div标签。不过需要添加对应的key值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">    //string</span><br><span class="line">    render()&#123;</span><br><span class="line">        return &apos;Hello,world&apos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //number</span><br><span class="line">    render()&#123;</span><br><span class="line">        return 0123456789</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //boolean</span><br><span class="line">    render()&#123;</span><br><span class="line">        return isTrue ? true : false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //null</span><br><span class="line">    render()&#123;</span><br><span class="line">        return null</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //fragments，遇到控制台出现warning,是未加key标识符，</span><br><span class="line">    render()&#123;</span><br><span class="line">        return [</span><br><span class="line">            &lt;div&gt;Hello&lt;/div&gt;,</span><br><span class="line">            &lt;span&gt;world&lt;/span&gt;,</span><br><span class="line">            &lt;p&gt;DRL&lt;/p&gt;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">```h</span><br><span class="line"></span><br><span class="line"># 2、error boundaries错误处理</span><br><span class="line"></span><br><span class="line">React16新增加了抛异常的生命周期函数`componentDidCatch`</span><br></pre></td></tr></table></figure>
+<p>  componentDidCatch(err,info){<br>        this.setState({isError:1});<br>    }<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">运用这个寿命周期在遇到页面报错的时候就可以定义报错方式，给用户更好的体验。React <span class="number">16</span>之前页面内的组件如果发生错误，那么整个组件树就会从根节点被卸载，到了React <span class="number">16</span> 产生了一个“错误边界（error boundaries）”的概念,它会捕捉页面内的错误并且对这些错误进行处理。我们可以把它比喻为`<span class="keyword">try</span>-<span class="keyword">catch</span>`</span><br><span class="line"></span><br><span class="line">在容易出错的组件外使用ErrorBoundary将它包裹起来:</span><br></pre></td></tr></table></figure></p>
+<p>//使用方式</p>
+<p>import React, { Component } from ‘react’</p>
+<p>export default class ErrorBoundary extends Component {<br>    constructor(props) {<br>        super(props)<br>        this.state = { hasError: false }<br>    }<br>    componentDidCatch(err, info) {<br>        this.setState({ hasError: true })<br>    }<br>    render(){<br>        if(this.state.hasError){<br>            return <div>Something wrong!</div><br>        }<br>        return this.props.children<br>    }<br>}</p>
+<p>render(){<br>    return (<br>        <div><br>            <errorboundary><br>                <listview user="{this.state.data}"><br>            </listview></errorboundary><br>            <button onclick="{this.onClickChange}">toUpdate</button><br>        </div><br>    )<br>}</p>
+<p><code>`</code>h</p>
+<p>如果Listview组件发生错误，将会使用ErrorBoundary提供的<code>&lt;div&gt;Something went wrong&lt;/div&gt;</code>代替它，不会引起整个组件树的卸载。</p>
+<h1 id="3、portals支持声明性地将子树渲染到另一个DOM节点"><a href="#3、portals支持声明性地将子树渲染到另一个DOM节点" class="headerlink" title="3、portals支持声明性地将子树渲染到另一个DOM节点"></a>3、<code>portals</code>支持声明性地将子树渲染到另一个DOM节点</h1><p>Portals机制提供了一种最直接的方式可以把一个子组件渲染到父组件渲染的DOM树之外。默认情况下，React组件树和DOM树是完全对应的，因此对于一些Modal,Overlay之类的组件，通常是将它们放在顶层，但逻辑上它们可能只是属于某个子组件，不利于组件的代码组织。通过使用createPortal，我们可以将组件渲染到我们想要的任意DOM节点中，但该组件依然处在React的父组件之内。带来的一个特性就是，在子组件产生的event依然可以被React父组件捕获，但在DOM结构中，它却不是你的父组件。对于组件组织，代码切割来说，这是一个很好的属性。</p>
+<p>//实现一个简易蒙层效果，抽象出一个通用的Overlay组件<br>import React, { Component } from ‘react’;<br>import ReactDOM from ‘react-dom’;</p>
+<p>export default class Overlay extends Component {<br>    constructor(props) {<br>        super(props);<br>        this.container = document.createElement(‘div’);<br>        document.body.appendChild(this.container);<br>    }<br>    componentWillUnmount() {<br>        document.body.removeChild(this.container);<br>    }<br>    render() {<br>        return ReactDOM.createPortal(<br>            <div classname="overlay"><br>                <span classname="overlay-close" onclick="{this.props.onClose}">&times;</span><br>                {this.props.children}<br>            </div>,<br>            this.container<br>        )<br>    }<br>}<br>//该组件对应的样式如下<br>.overlay{<br>    box-sizing:border-box;<br>    position: fixed;<br>    top:50%;<br>    left:50%;<br>    width:260px;<br>    height:200px;<br>    margin-left:-130px;<br>    margin-top:-100px;<br>    padding:10px;<br>    background-color: #fff;<br>    outline: rgba(0,0,0,.5) solid 9999px;<br>}<br>.overlay-close{<br>    position: absolute;<br>    top:10px;<br>    right:10px;<br>    color:red;<br>    cursor: pointer;<br>}</p>
+<p>使用方式如下：<br>class App extends Component {<br>  constructor(props) {<br>    super(props);<br>    this.state = {<br>      overlayActive: false<br>    }<br>    this.closeOverlay = this.closeOverlay.bind(this);<br>    this.showOverlay = this.showOverlay.bind(this);<br>  }<br>  closeOverlay() {<br>    this.setState({ overlayActive: false })<br>  }<br>  showOverlay() {<br>    this.setState({ overlayActive: true })<br>  }<br>  render() {<br>    return (<br>      <div classname="App"><br>        <div>hello world!</div><br>        {this.state.overlayActive &amp;&amp;<br>          <overlay onclose="{this.closeOverlay}">overlay content</overlay>}<br>        <button onclick="{this.showOverlay}">show</button><br>      </div><br>    );<br>  }<br>}</p>
+<h1 id="4、custom-DOM-attributes-：ReactDom允许传递非标准属性"><a href="#4、custom-DOM-attributes-：ReactDom允许传递非标准属性" class="headerlink" title="4、custom DOM attributes ：ReactDom允许传递非标准属性"></a>4、<code>custom DOM attributes</code> ：ReactDom允许传递非标准属性</h1><h1 id="5、-improved-server-side-rendering-提升服务端渲染性能"><a href="#5、-improved-server-side-rendering-提升服务端渲染性能" class="headerlink" title="5、 improved server-side rendering:提升服务端渲染性能"></a>5、 <code>improved server-side rendering</code>:提升服务端渲染性能</h1><h1 id="6、-支持自定义DOM属性"><a href="#6、-支持自定义DOM属性" class="headerlink" title="6、 支持自定义DOM属性"></a>6、 支持自定义DOM属性</h1><h1 id="7、-setState传入null时不会再触发更新"><a href="#7、-setState传入null时不会再触发更新" class="headerlink" title="7、 setState传入null时不会再触发更新"></a>7、 setState传入null时不会再触发更新</h1><h1 id="8、-更好的服务器端渲染"><a href="#8、-更好的服务器端渲染" class="headerlink" title="8、 更好的服务器端渲染"></a>8、 更好的服务器端渲染</h1><h1 id="9、-新的打包策略"><a href="#9、-新的打包策略" class="headerlink" title="9、 新的打包策略"></a>9、 新的打包策略</h1>
       
     </div>
     
@@ -488,37 +501,6 @@
     <div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
-  <p><span>本文标题:</span><a href="/blog/2018/11/29/React16新特性来认识一波/">React16新特性来认识一波</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
-  <!-- <p><span>发布时间:</span>2018年11月29日 - 18:11</p> -->
-  <!-- <p><span>最后更新:</span>2018年11月29日 - 18:11</p> -->
-  <p><span>原始链接:</span><a href="/blog/2018/11/29/React16新特性来认识一波/" title="React16新特性来认识一波">https://duanruilong.github.io/2018/11/29/React16新特性来认识一波/</a>
-copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/2018/11/29/React16新特性来认识一波/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    clipboard.on('success', $(function(){
-      $(".fa-clipboard").click(function(){
-        swal({   
-          title: "",   
-          text: '复制成功',   
-          html: false,
-          timer: 500,   
-          showConfirmButton: false
-        });
-      });
-    }));  
-</script>
-
       
     </div>
 
@@ -595,6 +577,10 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/12/07/Gitment使用-GitHub-Issues-搭建评论系统/" rel="prev" title="Gitment使用 GitHub Issues 搭建评论系统">
+                Gitment使用 GitHub Issues 搭建评论系统 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -708,7 +694,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -840,7 +826,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新特性"><span class="nav-number">1.</span> <span class="nav-text">新特性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新特性"><span class="nav-number">1.</span> <span class="nav-text">新特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、render可以return数组-，字符串"><span class="nav-number">2.</span> <span class="nav-text">1、render可以return数组 ，字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、portals支持声明性地将子树渲染到另一个DOM节点"><span class="nav-number">3.</span> <span class="nav-text">3、portals支持声明性地将子树渲染到另一个DOM节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、custom-DOM-attributes-：ReactDom允许传递非标准属性"><span class="nav-number">4.</span> <span class="nav-text">4、custom DOM attributes ：ReactDom允许传递非标准属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、-improved-server-side-rendering-提升服务端渲染性能"><span class="nav-number">5.</span> <span class="nav-text">5、 improved server-side rendering:提升服务端渲染性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6、-支持自定义DOM属性"><span class="nav-number">6.</span> <span class="nav-text">6、 支持自定义DOM属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7、-setState传入null时不会再触发更新"><span class="nav-number">7.</span> <span class="nav-text">7、 setState传入null时不会再触发更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8、-更好的服务器端渲染"><span class="nav-number">8.</span> <span class="nav-text">8、 更好的服务器端渲染</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9、-新的打包策略"><span class="nav-number">9.</span> <span class="nav-text">9、 新的打包策略</span></a></li></ol></div>
             
 
           </div>
@@ -876,7 +862,7 @@ copy-path    <span class=""  title="点击复制文章链接"><i class="fa fa-cl
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共70.4k字</span>
+    <span class="post-count">博客全站共71.9k字</span>
   </div>
 </div>
 

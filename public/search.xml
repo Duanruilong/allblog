@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Gitment使用 GitHub Issues 搭建评论系统]]></title>
+    <url>%2Fblog%2F2018%2F12%2F07%2FGitment%E4%BD%BF%E7%94%A8-GitHub-Issues-%E6%90%AD%E5%BB%BA%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%2F</url>
+    <content type="text"><![CDATA[Gitment 是一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。 基础使用1. 注册 OAuth Application点击此处 来注册一个新的 OAuth Application。其他内容可以随意填写，但要确保填入正确的 callback URL（一般是评论页面对应的域名，如 https://imsun.net）。 你会得到一个 client ID 和一个 client secret，这个将被用于之后的用户登录。 2. 引入 Gitment将下面的代码添加到你的页面： 123456789101112131415&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/default.css&quot;&gt;&lt;script src=&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;&lt;script&gt;var gitment = new Gitment(&#123; id: &apos;页面 ID&apos;, // 可选。默认为 location.href owner: &apos;你的 GitHub ID&apos;, repo: &apos;存储评论的 repo&apos;, oauth: &#123; client_id: &apos;你的 client ID&apos;, client_secret: &apos;你的 client secret&apos;, &#125;,&#125;)gitment.render(&apos;container&apos;)&lt;/script&gt; 注意，上述代码引用的 Gitment 将会随着开发变动。如果你希望始终使用最新的界面与特性即可引入上述代码。 如果你希望引用确定版本的 Gitment，则应该使用 npm 进行安装。 $ npm install --save gitment关于构造函数中的更多可用参数请查看 Gitment Options 3. 初始化评论页面发布后，你需要访问页面并使用你的 GitHub 账号登录（请确保你的账号是第二步所填 repo 的 owner），点击初始化按钮。 之后其他用户即可在该页面发表评论。 自定义Gitment 很容易进行自定义，你可以写一份自定义的 CSS 或者使用一个新的主题。（主题可以改变 DOM 结构而自定义 CSS 不能） 比如你可以通过自定义主题将评论框放在评论列表前面： 1234567891011121314151617const myTheme = &#123; render(state, instance) &#123; const container = document.createElement(&apos;div&apos;) container.lang = &quot;en-US&quot; container.className = &apos;gitment-container gitment-root-container&apos; container.appendChild(instance.renderHeader(state, instance)) container.appendChild(instance.renderEditor(state, instance)) container.appendChild(instance.renderComments(state, instance)) container.appendChild(instance.renderFooter(state, instance)) return container &#125;,&#125;const gitment = new Gitment(&#123; // ... theme: myTheme,&#125;)gitment.render(&apos;container&apos;) 更多自定义内容请查看文档。 其他问题语言问题考虑到 GitHub 本身使用英文，而本项目面向用户均为 GitHub 用户，所以作者没有提供中文支持的打算。实在有需求的可以通过自定义主题支持中文。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[React16新特性来认识一波]]></title>
     <url>%2Fblog%2F2018%2F11%2F29%2FReact16%E6%96%B0%E7%89%B9%E6%80%A7%E6%9D%A5%E8%AE%A4%E8%AF%86%E4%B8%80%E6%B3%A2%2F</url>
-    <content type="text"><![CDATA[React的16版本，采用了MIT开源许可证,React16新特性来认识一波。 Fragments：render函数可以返回数组和字符串 error boundaries：错误处理 portals ：支持声明性地将子树渲染到另一个DOM节点 custom DOM attributes ：ReactDom允许传递非标准属性 improved server-side rendering:提升服务端渲染性能 支持自定义DOM属性 setState传入null时不会再触发更新 更好的服务器端渲染 新的打包策略 新特性]]></content>
+    <content type="text"><![CDATA[React的16版本，采用了MIT开源许可证,React16新特性来认识一波。 Fragments：render函数可以返回数组和字符串 error boundaries：错误处理 portals ：支持声明性地将子树渲染到另一个DOM节点 custom DOM attributes ：ReactDom允许传递非标准属性 improved server-side rendering:提升服务端渲染性能 支持自定义DOM属性 setState传入null时不会再触发更新 更好的服务器端渲染 新的打包策略 新特性1、render可以return数组 ，字符串 React16新增加了render的返回格式，你可以return返回string，number，boolean，null，portal，以及fragments(带有key属性的数组)，且不需要外层包含div标签。不过需要添加对应的key值。 12345678910111213141516171819202122232425262728293031323334 //string render()&#123; return &apos;Hello,world&apos; &#125; //number render()&#123; return 0123456789 &#125; //boolean render()&#123; return isTrue ? true : false &#125; //null render()&#123; return null &#125; //fragments，遇到控制台出现warning,是未加key标识符， render()&#123; return [ &lt;div&gt;Hello&lt;/div&gt;, &lt;span&gt;world&lt;/span&gt;, &lt;p&gt;DRL&lt;/p&gt; ] &#125;```h# 2、error boundaries错误处理React16新增加了抛异常的生命周期函数`componentDidCatch` componentDidCatch(err,info){ this.setState({isError:1}); }1234运用这个寿命周期在遇到页面报错的时候就可以定义报错方式，给用户更好的体验。React 16之前页面内的组件如果发生错误，那么整个组件树就会从根节点被卸载，到了React 16 产生了一个“错误边界（error boundaries）”的概念,它会捕捉页面内的错误并且对这些错误进行处理。我们可以把它比喻为`try-catch`在容易出错的组件外使用ErrorBoundary将它包裹起来: //使用方式 import React, { Component } from ‘react’ export default class ErrorBoundary extends Component { constructor(props) { super(props) this.state = { hasError: false } } componentDidCatch(err, info) { this.setState({ hasError: true }) } render(){ if(this.state.hasError){ return Something wrong! } return this.props.children }} render(){ return ( toUpdate )} `h 如果Listview组件发生错误，将会使用ErrorBoundary提供的&lt;div&gt;Something went wrong&lt;/div&gt;代替它，不会引起整个组件树的卸载。 3、portals支持声明性地将子树渲染到另一个DOM节点Portals机制提供了一种最直接的方式可以把一个子组件渲染到父组件渲染的DOM树之外。默认情况下，React组件树和DOM树是完全对应的，因此对于一些Modal,Overlay之类的组件，通常是将它们放在顶层，但逻辑上它们可能只是属于某个子组件，不利于组件的代码组织。通过使用createPortal，我们可以将组件渲染到我们想要的任意DOM节点中，但该组件依然处在React的父组件之内。带来的一个特性就是，在子组件产生的event依然可以被React父组件捕获，但在DOM结构中，它却不是你的父组件。对于组件组织，代码切割来说，这是一个很好的属性。 //实现一个简易蒙层效果，抽象出一个通用的Overlay组件import React, { Component } from ‘react’;import ReactDOM from ‘react-dom’; export default class Overlay extends Component { constructor(props) { super(props); this.container = document.createElement(‘div’); document.body.appendChild(this.container); } componentWillUnmount() { document.body.removeChild(this.container); } render() { return ReactDOM.createPortal( &times; {this.props.children} , this.container ) }}//该组件对应的样式如下.overlay{ box-sizing:border-box; position: fixed; top:50%; left:50%; width:260px; height:200px; margin-left:-130px; margin-top:-100px; padding:10px; background-color: #fff; outline: rgba(0,0,0,.5) solid 9999px;}.overlay-close{ position: absolute; top:10px; right:10px; color:red; cursor: pointer;} 使用方式如下：class App extends Component { constructor(props) { super(props); this.state = { overlayActive: false } this.closeOverlay = this.closeOverlay.bind(this); this.showOverlay = this.showOverlay.bind(this); } closeOverlay() { this.setState({ overlayActive: false }) } showOverlay() { this.setState({ overlayActive: true }) } render() { return ( hello world! {this.state.overlayActive &amp;&amp; overlay content} show ); }} 4、custom DOM attributes ：ReactDom允许传递非标准属性5、 improved server-side rendering:提升服务端渲染性能6、 支持自定义DOM属性7、 setState传入null时不会再触发更新8、 更好的服务器端渲染9、 新的打包策略]]></content>
       <categories>
         <category>React</category>
       </categories>
@@ -20,8 +32,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -58,8 +70,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -71,8 +83,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -85,8 +97,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -98,8 +110,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -112,8 +124,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -124,8 +136,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -149,8 +161,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -161,8 +173,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -174,8 +186,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -187,8 +199,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -200,8 +212,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -261,8 +273,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -274,8 +286,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -287,8 +299,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -300,8 +312,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -313,8 +325,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -326,8 +338,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -339,8 +351,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
         <tag>CSS</tag>
       </tags>
@@ -353,8 +365,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -415,8 +427,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -488,8 +500,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
