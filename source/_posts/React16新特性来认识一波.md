@@ -28,7 +28,7 @@ React的16版本，采用了MIT开源许可证,React16新特性来认识一波�
 
  React16新增加了render的返回格式，你可以return返回`string，number，boolean，null，portal，以及fragments(带有key属性的数组)`，且不需要外层包含div标签。不过需要添加对应的key值。
 
-```
+```h
     //string
     render(){
         return 'Hello,world'
@@ -58,23 +58,23 @@ React的16版本，采用了MIT开源许可证,React16新特性来认识一波�
         ]
     }
 
-```h
+```
 
 # 2、error boundaries错误处理
 
 React16新增加了抛异常的生命周期函数`componentDidCatch`
 
-```
+```h
   componentDidCatch(err,info){
         this.setState({isError:1});
     }
-```h
+```
  
  运用这个寿命周期在遇到页面报错的时候就可以定义报错方式，给用户更好的体验。React 16之前页面内的组件如果发生错误，那么整个组件树就会从根节点被卸载，到了React 16 产生了一个“错误边界（error boundaries）”的概念,它会捕捉页面内的错误并且对这些错误进行处理。我们可以把它比喻为`try-catch`
 
  在容易出错的组件外使用ErrorBoundary将它包裹起来:
 
- ```
+ ```h
 //使用方式
 
 import React, { Component } from 'react'
@@ -107,7 +107,7 @@ render(){
     )
 }
 
-```h
+```
 
 如果Listview组件发生错误，将会使用ErrorBoundary提供的`<div>Something went wrong</div>`代替它，不会引起整个组件树的卸载。
 
@@ -116,7 +116,7 @@ render(){
 
 Portals机制提供了一种最直接的方式可以把一个子组件渲染到父组件渲染的DOM树之外。默认情况下，React组件树和DOM树是完全对应的，因此对于一些Modal,Overlay之类的组件，通常是将它们放在顶层，但逻辑上它们可能只是属于某个子组件，不利于组件的代码组织。通过使用createPortal，我们可以将组件渲染到我们想要的任意DOM节点中，但该组件依然处在React的父组件之内。带来的一个特性就是，在子组件产生的event依然可以被React父组件捕获，但在DOM结构中，它却不是你的父组件。对于组件组织，代码切割来说，这是一个很好的属性。
 
-
+```h
 //实现一个简易蒙层效果，抽象出一个通用的Overlay组件
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -189,7 +189,8 @@ class App extends Component {
     );
   }
 }
-
+ 
+```
 
 
 
