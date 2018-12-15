@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,PHP,后端," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实现base64图片的逻辑在服务器端可能会造成溢出的事故，所以在接下的文章里会介绍另外一种好的实现方式就是—-convert命令。使用命令格式的形式去生成图片和大小的裁剪数据格式的转换。">
+<meta name="keywords" content="编程,PHP,后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在PHP里很好的使用ImageMagick---convert篇">
+<meta property="og:url" content="https://duanruilong.github.io/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实现base64图片的逻辑在服务器端可能会造成溢出的事故，所以在接下的文章里会介绍另外一种好的实现方式就是—-convert命令。使用命令格式的形式去生成图片和大小的裁剪数据格式的转换。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/php.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_8.png">
+<meta property="og:updated_time" content="2018-09-18T14:16:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在PHP里很好的使用ImageMagick---convert篇">
+<meta name="twitter:description" content="ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实现base64图片的逻辑在服务器端可能会造成溢出的事故，所以在接下的文章里会介绍另外一种好的实现方式就是—-convert命令。使用命令格式的形式去生成图片和大小的裁剪数据格式的转换。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/php.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/"/>
+
+
+
+
+
+  <title>在PHP里很好的使用ImageMagick---convert篇 | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在PHP里很好的使用ImageMagick---convert篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T00:15:54+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,998
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ImageMagick 包括一组命令行工具来操作图片，之前的ImageMagick实现base64图片的逻辑在服务器端可能会造成溢出的事故，所以在接下的文章里会介绍另外一种好的实现方式就是—-convert命令。使用命令格式的形式去生成图片和大小的裁剪数据格式的转换。</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/php.jpg" alt="PHP"></p>
+<a id="more"></a>
+<h1 id="基本命令与格式"><a href="#基本命令与格式" class="headerlink" title="基本命令与格式"></a>基本命令与格式</h1><h2 id="1、基本命令"><a href="#1、基本命令" class="headerlink" title="1、基本命令"></a>1、基本命令</h2><ul>
+<li><code>magick:</code> 创建、编辑图像，转换图像格式，以及调整图像大小、模糊、裁切、除去杂点、抖动 ( dither )、绘图、翻转、合并、重新采样等。</li>
+<li><code>convert:</code> 等同于 magick 命令。</li>
+<li><code>identify:</code> 输出一个或多个图像文件的格式和特征信息，如分辨率、大小、尺寸、色彩空间等。</li>
+<li><code>mogrify:</code> 与 magick 功能一样，不过不需要指定输出文件，自动覆盖原始图像文件。</li>
+<li><code>composite:</code> 将一个图片或多个图片组合成新图片。</li>
+<li><p><code>montage:</code> 组合多个独立的图像来创建合成图像。每个图像都可以用边框，透明度等特性进行装饰。</p>
+</li>
+<li><p><code>compare:</code> 从数学和视觉角度比较源图像与重建图像之间的差异。</p>
+</li>
+<li><code>display:</code>在任何 X server 上显示一个图像或图像序列。</li>
+<li><code>animate:</code> 在任何 X server 上显示图像序列。</li>
+<li><code>import:</code> 保存 X server 上的任何可见窗口并把它作为图像文件输出。可以捕捉单个窗口，整个屏幕或屏幕的任意矩形部分。</li>
+<li><code>conjure:</code>解释并执行 MSL ( Magick Scripting Language ) 写的脚本。</li>
+<li><code>stream:</code> 一个轻量级工具，用于将图像或部分图像的一个或多个像素组件流式传输到存储设备。在处理大图像或原始像素组件时很有用。</li>
+</ul>
+<h2 id="2、命令格式"><a href="#2、命令格式" class="headerlink" title="2、命令格式"></a>2、命令格式</h2><p>基本命令的使用，遵循 Unix 风格的标准格式，例如  <code>command [options] input_image output_image</code></p>
+<blockquote>
+<p>将一张宽高 300x300 的图片 goods.png 转换成 200x200 的goods.jpg，可以这样用</p>
+</blockquote>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert -resize <span class="number">200</span>x200 goods.png goods.jpg</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="开始绘制生成图片"><a href="#开始绘制生成图片" class="headerlink" title="开始绘制生成图片"></a>开始绘制生成图片</h1><h2 id="一些前期参数"><a href="#一些前期参数" class="headerlink" title="一些前期参数"></a>一些前期参数</h2><h3 id="1、入参"><a href="#1、入参" class="headerlink" title="1、入参"></a>1、入参</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$item_img='https://img.alicdn.com/bao/uploaded/i1/1750208593/TB1rgM3hhtnkeRjSZSgXXXAuXXa_!!0-item_pic.jpg';</span><br><span class="line">$item_title='测试字体';</span><br><span class="line">$shop_title='测试店铺';</span><br><span class="line">$shop_img='http://q.aiyongbao.com/item/web/images/qap_img/mobile/userAvatar.png';</span><br><span class="line">$qr_img='https://img.alicdn.com/tfscom/TB1uJDStYZnBKNjSZFKwu3GOVXa.png';</span><br><span class="line">$numid_share='0000000';</span><br><span class="line">$qr_title='长按识别二维码';</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对宝贝标题裁剪</span></span><br><span class="line">$drawtitone=mb_substr($item_title,0,13, 'utf-8');</span><br><span class="line">$drawtittow=mb_substr($item_title,13,13, 'utf-8');</span><br><span class="line">$drawtitthree=mb_substr($item_title,26,13, 'utf-8');</span><br><span class="line">$time_date = time(); <span class="comment">// 时间戳</span></span><br><span class="line">$workDir = '/data/tmp/'.$numid_share.'_con'.$time_date; // 目标路径----&gt;指定一个文件夹保存生成图片过程里的图片</span><br></pre></td></tr></table></figure>
+<h3 id="2、先下载素材文件"><a href="#2、先下载素材文件" class="headerlink" title="2、先下载素材文件"></a>2、先下载素材文件</h3><p>我们这里需要一个拼接图片的链接，所以先下载到之前的创建的文件夹下，因为这些素材图片只是为了最后的拼接，最后可以完全删除。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$item_img_down = $workDir<span class="number">.'</span>/itemimage.jpg';</span><br><span class="line">$shop_img_down = $workDir<span class="number">.'</span>/shopimage.jpg';</span><br><span class="line">$qr_img_down = $workDir<span class="number">.'</span>/qrimage.jpg';</span><br><span class="line"><span class="comment">// 下载宝贝主图</span></span><br><span class="line">\NetworkUtils::curlDownload($item_img, $item_img_down);</span><br><span class="line"><span class="comment">// 下载店铺图片</span></span><br><span class="line">\NetworkUtils::curlDownload($shop_img, $shop_img_down);</span><br><span class="line"><span class="comment">// 下载二维码</span></span><br><span class="line">\NetworkUtils::curlDownload($qr_img, $qr_img_down);</span><br></pre></td></tr></table></figure></p>
+<p><code>\NetworkUtils::curlDownload($item_img, $item_img_down);</code> 下载<code>$item_img</code>保存在目标路径文件夹下的<code>$workDir.&#39;/itemimage.jpg&#39;</code>路径。</p>
+<h3 id="3、指定字体和颜色"><a href="#3、指定字体和颜色" class="headerlink" title="3、指定字体和颜色"></a>3、指定字体和颜色</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$fontFamily = '/usr/share/fonts/chinese/msyh.ttf';</span><br><span class="line">$fontColor = '#333333';</span><br><span class="line">$fontColor_shoptitle = '#999999';</span><br><span class="line">$fontColor_qrtitlt = '#666666';</span><br></pre></td></tr></table></figure>
+<h3 id="4、创建一个底图"><a href="#4、创建一个底图" class="headerlink" title="4、创建一个底图"></a>4、创建一个底图</h3><p>创建一个<code>750x1046</code>白色的底图，我们可以在上面绘制文字</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个底图(并且加上一些文字)</span></span><br><span class="line"></span><br><span class="line">$back_img=$workDir<span class="number">.'</span>/bg.jpg'; <span class="comment">//要生成的图片的路径----&gt;可以在服务器端看到</span></span><br><span class="line">$back_cmds=<span class="string">"convert 'xc:[750x1046!]' -background white -font &#123;$fontFamily&#125; -draw 'text 580,994 \"&#123;$qr_title&#125;\"' -fill \"&#123;$fontColor_qrtitlt&#125;\" </span></span><br><span class="line"><span class="string">            -pointsize 20 -draw 'text 114,990 \"&#123;$shop_title&#125;\"' -font &#123;$fontFamily&#125; -pointsize 22 -fill '#999999' &#123;$workDir&#125;/bg.jpg"</span>;</span><br><span class="line">$result_back_cmds = \SystemCommon::runningCmd($back_cmds);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里需要注意一下文字的绘制命令顺序，否则会出现没有生效的问题。<br><code>-font {$fontFamily} -draw &#39;text 580,994 \&quot;{$qr_title}\&quot;&#39; -fill \&quot;{$fontColor_qrtitlt}\&quot; -pointsize 20</code></p>
+</blockquote>
+<p>解释一下：</p>
+<ul>
+<li><code>xc:[100x40!]</code>: 设置画布大小的一种简写方式，方括号里写入画布宽高，注意要加 !</li>
+<li><code>-fill &#39;rgba(0, 0, 0, 0)&#39;</code>：设置了文本的填充颜色</li>
+<li><code>text 114,990</code>: 对文字进行定位</li>
+<li><code>-font</code>：指定字体</li>
+<li><code>-pointsize</code>：指定文本的字体大小</li>
+<li><code>-draw</code>：绘图选项，text 声明绘制文本， 0,0 声明文本距离图片左上角的偏移值，绘制文本的格式为 text x,y string，当然还可以绘制其他类型，诸如圆 ( circle )、折线 ( polyline )</li>
+</ul>
+<p>继续添加文字：</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$back_img_shoptitle=$workDir<span class="number">.'</span>/btitle.jpg'; <span class="comment">//要生成的图片的路径</span></span><br><span class="line">$back_cmds_shoptitle=<span class="string">"convert -draw 'text 40,820 \"&#123;$drawtitone&#125;\"' -font &#123;$fontFamily&#125; -pointsize 32 -fill \"&#123;$fontColor&#125;\" -draw 'text 40,866 \"&#123;$drawtittow&#125;\"' </span></span><br><span class="line"><span class="string">                    -font &#123;$fontFamily&#125; -pointsize 32 -fill \"&#123;$fontColor&#125;\" -draw 'text 40,912 \"&#123;$drawtitthree&#125;\"' -font &#123;$fontFamily&#125; -pointsize 32 -fill \"&#123;$fontColor&#125;\"  </span></span><br><span class="line"><span class="string">                    &#123;$back_img&#125; &#123;$workDir&#125;/btitle.jpg"</span>;</span><br><span class="line">$result_back_cmds_shoptitle = \SystemCommon::runningCmd($back_cmds_shoptitle);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_6.png" alt="convert"></p>
+<h3 id="5、拼接图片"><a href="#5、拼接图片" class="headerlink" title="5、拼接图片"></a>5、拼接图片</h3><p>现在就可以在之前得到的图片上拼接所需要的图片了</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 在底图上合并商品主图</span></span><br><span class="line">$back_img_itemimg='/data/tmp/' . md5(microtime(true)).'.jpg';  //要生成的图片的路径</span><br><span class="line">$geometryX = <span class="string">"+"</span> . <span class="number">0</span>; <span class="comment">// 定位</span></span><br><span class="line">$geometryY = <span class="string">"+"</span> . <span class="number">0</span>; <span class="comment">// 定位</span></span><br><span class="line">$customPicPos = <span class="string">"northwest"</span>;</span><br><span class="line">$back_cmds_itemimg = <span class="string">"convert &#123;$back_img_shoptitle&#125; &#123;$workDir&#125;/item_img_mag.jpg -gravity &#123;$customPicPos&#125; -geometry &#123;$geometryX&#125;&#123;$geometryY&#125; </span></span><br><span class="line"><span class="string">                    -compose over -composite -antialias -set colorspace sRGB -colorspace sRGB &#123;$workDir&#125;/result.jpg"</span>;</span><br><span class="line">$result_back_cmds_itemimg = \SystemCommon::runningCmd($back_cmds_itemimg);</span><br></pre></td></tr></table></figure>
+<p>解释一下：</p>
+<ul>
+<li><code>-geometry</code>: 设置文本在图片里的排列方式 ( 类似 CSS 里的 align-items + justify-content )，center 表示水平垂直都居中，其他值还可以是：NorthWest, North, NorthEast, West, East, SouthWest, South, SouthEast，不记大小写</li>
+<li><code>composite</code>: 将一个图片或多个图片组合成新图片。</li>
+</ul>
+<p>这里是把<code>{$workDir}/item_img_mag.jpg</code>路径的图片绘制到之前绘制文字的图片上<code>$back_img_shoptitle</code>，最终得到的图片保存路径是在<code>{$workDir}/result.jpg</code></p>
+<p>让我们继续操作图片</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合并二维码 </span></span><br><span class="line">$geometryXshop = <span class="string">"+"</span> . <span class="number">40</span>;</span><br><span class="line">$geometryYshop = <span class="string">"+"</span> . <span class="number">950</span>;</span><br><span class="line">$back_cmds_shopimg = <span class="string">"convert &#123;$workDir&#125;/result.jpg &#123;$workDir&#125;/shop_img_mag.jpg -gravity &#123;$customPicPos&#125; -geometry &#123;$geometryXshop&#125;&#123;$geometryYshop&#125; -compose over -composite -antialias -set colorspace sRGB -colorspace sRGB &#123;$workDir&#125;/result1.jpg"</span>;</span><br><span class="line">$result_back_cmds_shopimg = \SystemCommon::runningCmd($back_cmds_shopimg);  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并店铺图标</span></span><br><span class="line">$geometryXqr = <span class="string">"+"</span> . <span class="number">520</span>;</span><br><span class="line">$geometryYqr = <span class="string">"+"</span> . <span class="number">784</span>;</span><br><span class="line">$back_cmds_qrimg = <span class="string">"convert &#123;$workDir&#125;/result1.jpg &#123;$workDir&#125;/qr_img_mag.jpg -gravity &#123;$customPicPos&#125; -geometry &#123;$geometryXqr&#125;&#123;$geometryYqr&#125; -compose over -composite -antialias -set colorspace sRGB -colorspace sRGB &#123;$workDir&#125;/result2.jpg"</span>;</span><br><span class="line">$result_back_cmds_qrimg = \SystemCommon::runningCmd($back_cmds_qrimg);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_7.png" alt="convert"></p>
+<p>发现图片并不是我们预期的效果，拼接我们也设置了图片的大小，但是没有起作用，尝试过不同的方案后决定在拼接之前把图片统一放大为需要拼接的尺寸来操作。</p>
+<h3 id="6、放大拼接图片尺寸"><a href="#6、放大拼接图片尺寸" class="headerlink" title="6、放大拼接图片尺寸"></a>6、放大拼接图片尺寸</h3><p>需要对多拼接的图片都进行操作</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 看来需要先放大主图</span></span><br><span class="line">$item_img_m=<span class="string">"convert -resize '750x766!' &#123;$item_img_down&#125; &#123;$workDir&#125;/item_img_mag.jpg"</span>;</span><br><span class="line">$item_img_mag = \SystemCommon::runningCmd($item_img_m);  </span><br><span class="line"><span class="comment">// 看来需要先放大二维码</span></span><br><span class="line">$shop_img_m=<span class="string">"convert -resize 64x64 &#123;$shop_img_down&#125; &#123;$workDir&#125;/shop_img_mag.jpg"</span>;</span><br><span class="line">$shop_img_mag = \SystemCommon::runningCmd($shop_img_m);  </span><br><span class="line"><span class="comment">// 看来需要先放大店铺图标</span></span><br><span class="line">$qr_img_m=<span class="string">"convert -resize 200x200 &#123;$qr_img_down&#125; &#123;$workDir&#125;/qr_img_mag.jpg"</span>;</span><br><span class="line">$qr_img_mag = \SystemCommon::runningCmd($qr_img_m);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-resize 延伸解读</p>
+</blockquote>
+<p> IamgeMagick 提供了几种符号来定义缩放</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">convert -resize '150x100!' goods.jpg thumbnail.jpg</span><br><span class="line"></span><br><span class="line">convert -resize '150x100&gt;' goods.jpg thumbnail.jpg</span><br><span class="line"></span><br><span class="line">convert -resize '150x100&lt;' goods.jpg thumbnail.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>!</code>：不管图片宽高如何，都缩放成 150x100 这样的尺寸。</li>
+<li><code>&gt;</code>：只有宽高均大于 150x100 的图片才缩放成该尺寸 ( 按比例取最大值 )，小于的图片不做处理。</li>
+<li><code>&lt;</code>：与 &gt; 功能相反</li>
+</ul>
+<p>缩放对比</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_1.png" alt="convert"></p>
+<p>这样的结果也不是我们需要的<br><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_4.png" alt="convert"></p>
+<p>只有<code>convert -resize &#39;750x766!&#39; {$item_img_down} {$workDir}/item_img_mag.jpg</code>这样固定尺寸之后可以得到：</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_5.png" alt="convert"></p>
+<h3 id="7、图片转换为-base64格式"><a href="#7、图片转换为-base64格式" class="headerlink" title="7、图片转换为 base64格式"></a>7、图片转换为 base64格式</h3><p>我们最后同样的以base64格式输出给前端</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$<span class="built_in">stdout</span> = trim($result_back_cmds_qrimg[<span class="string">"stdout"</span>]);</span><br><span class="line">$Return = <span class="built_in">array</span>();</span><br><span class="line"><span class="keyword">if</span> (empty($<span class="built_in">stdout</span>) || strpos($result_back_cmds_qrimg[<span class="string">"stderr"</span>], <span class="string">"identify"</span>) != <span class="literal">false</span>) &#123;  <span class="comment">// runningCmd执行成功</span></span><br><span class="line">    $dest_img = $workDir<span class="number">.'</span>/result2.jpg';</span><br><span class="line">    <span class="comment">// /*图片转换为 base64格式编码*/</span></span><br><span class="line">    $base64_image = '';</span><br><span class="line">    $image_info = getimagesize($dest_img);</span><br><span class="line">    $image_data = fread(fopen($dest_img, <span class="string">'r'</span>), filesize($dest_img));</span><br><span class="line">    $base64_image = 'data:' . $image_info['mime'] . ';base64,' . chunk_split(base64_encode($image_data));</span><br><span class="line"></span><br><span class="line">    $Return['data']=$base64_image;</span><br><span class="line">    $Return['dest_img']=$dest_img;</span><br><span class="line">    $Return['type']='success';</span><br><span class="line">    $Return['msg']=1;</span><br><span class="line">    <span class="keyword">return</span> $Return;</span><br><span class="line">&#125;</span><br><span class="line">$Return['data']='';</span><br><span class="line">$Return['msg']=2;</span><br><span class="line"><span class="keyword">return</span> $Return;</span><br></pre></td></tr></table></figure>
+<p><code>$workDir.&#39;/result2.jpg</code>是我们最终的拼接图片，至于文件夹下的其他图片，可以选择删除。我们只要得到结果就好了。</p>
+<p>（小姐姐拼接图）<br><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/php/php_convert_8.png" alt="convert"></p>
+<p>这次<code>convert命令</code>的介绍是以解读整个方法的形式，对拼接的开始进行到结尾生成最终的图片，希望对大家有力所能及的帮助。</p>
+<p>欢迎光顾个人<a href="https://duanruilong.github.io/blog">Blog</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
+  <p><span>本文标题:</span><a href="/blog/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/">在PHP里很好的使用ImageMagick---convert篇</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
+  <p><span>发布时间:</span>2018年09月18日 - 00:09</p>
+  <!-- <p><span>最后更新:</span>2018年09月18日 - 22:09</p> -->
+  <p><span>原始链接:</span><a href="/blog/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/" title="在PHP里很好的使用ImageMagick---convert篇">https://duanruilong.github.io/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/</a>
+复制文章链接=>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/blog2018/09/18/在PHP里很好的使用ImageMagick-convert篇/"  aria-label="复制成功！"></i></span>
+  </p>
+  <!--<p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  -->
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '文章链接,复制成功!',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/PHP/" rel="tag"><i class="fa fa-tag"></i>PHP</a>
+          
+            <a href="/blog/tags/后端/" rel="tag"><i class="fa fa-tag"></i>后端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/blog2018/09/05/在PHP里很好的使用ImageMagick/" rel="next" title="在PHP里使用ImageMagick生成base64图片">
+                <i class="fa fa-chevron-left"></i> 在PHP里使用ImageMagick生成base64图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/blog2018/11/11/JavaScript-什么是纯函数以及为什么要用纯函数/" rel="prev" title="JavaScript: 什么是纯函数以及为什么要用纯函数">
+                JavaScript: 什么是纯函数以及为什么要用纯函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.png"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本命令与格式"><span class="nav-number">1.</span> <span class="nav-text">基本命令与格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、基本命令"><span class="nav-number">1.1.</span> <span class="nav-text">1、基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、命令格式"><span class="nav-number">1.2.</span> <span class="nav-text">2、命令格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始绘制生成图片"><span class="nav-number">2.</span> <span class="nav-text">开始绘制生成图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些前期参数"><span class="nav-number">2.1.</span> <span class="nav-text">一些前期参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、入参"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、入参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、先下载素材文件"><span class="nav-number">2.1.2.</span> <span class="nav-text">2、先下载素材文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、指定字体和颜色"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、指定字体和颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、创建一个底图"><span class="nav-number">2.1.4.</span> <span class="nav-text">4、创建一个底图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、拼接图片"><span class="nav-number">2.1.5.</span> <span class="nav-text">5、拼接图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、放大拼接图片尺寸"><span class="nav-number">2.1.6.</span> <span class="nav-text">6、放大拼接图片尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、图片转换为-base64格式"><span class="nav-number">2.1.7.</span> <span class="nav-text">7、图片转换为 base64格式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共72.0k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>

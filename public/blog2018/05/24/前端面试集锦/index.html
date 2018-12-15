@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,Javascript,ES6,CSS," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这是一份关于面试的集锦，会收集广泛的面试点或者热点资讯，及时掌握前端的动态和储备自己的面试库，才可以在面试过程里游刃有余，持续积累。">
+<meta name="keywords" content="编程,Javascript,ES6,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试集锦">
+<meta property="og:url" content="https://duanruilong.github.io/blog2018/05/24/前端面试集锦/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="这是一份关于面试的集锦，会收集广泛的面试点或者热点资讯，及时掌握前端的动态和储备自己的面试库，才可以在面试过程里游刃有余，持续积累。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/webtry_d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react/reactSMZQ.png">
+<meta property="og:updated_time" content="2018-09-17T15:58:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试集锦">
+<meta name="twitter:description" content="这是一份关于面试的集锦，会收集广泛的面试点或者热点资讯，及时掌握前端的动态和储备自己的面试库，才可以在面试过程里游刃有余，持续积累。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/webtry_d.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/blog2018/05/24/前端面试集锦/"/>
+
+
+
+
+
+  <title>前端面试集锦 | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/blog2018/05/24/前端面试集锦/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端面试集锦</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T22:30:17+08:00">
+                2018-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4,823
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是一份关于面试的集锦，会收集广泛的面试点或者热点资讯，及时掌握前端的动态和储备自己的面试库，才可以在面试过程里游刃有余，持续积累。</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/webtry_d.png" alt="js"></p>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>一些更新从最新的开始</p>
+</blockquote>
+<h1 id="Ract"><a href="#Ract" class="headerlink" title="Ract"></a>Ract</h1><h2 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期?"></a>React生命周期?</h2><h3 id="React-生命周期分为三种状态-1-初始化-2-更新-3-销毁"><a href="#React-生命周期分为三种状态-1-初始化-2-更新-3-销毁" class="headerlink" title="React 生命周期分为三种状态 1. 初始化 2.更新 3.销毁"></a>React 生命周期分为三种状态 <code>1. 初始化</code> <code>2.更新</code> <code>3.销毁</code></h3><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react/reactSMZQ.png" alt="react生命周期"></p>
+<!-- ![react生命周期](https://segmentfault.com/img/bVLyCB?w=2803&h=2945) -->
+<blockquote>
+<p>初始化</p>
+</blockquote>
+<p>1、<code>getDefaultProps()</code> 设置默认的props，也可以使用<code>dufaultProps</code>设置组件的默认属性<br>2、<code>getInitialState()</code>在es6的class语法里是没有这个函数的，可直接在<code>construction</code>里去定义<code>this.state</code>也就可以访问到<code>this.props</code><br>3、<code>compontentWillMount()</code>整个生命周期只调用一次，在组件初始化时调用，之后就不会再调用，此时可以修改<code>state</code>值<br>4、<code>render</code> 这个时期是最重要的步骤，创建虚拟DOM，进行diff算法，更新DOM树，此时不可以修改state了<br>5、<code>compontentDidMount()</code> 组件渲染完成之后调用，且只调用一次</p>
+<blockquote>
+<p>更新</p>
+</blockquote>
+<p>6、<code>componentWillReceiverProps(nextProps)</code> 在组件初始化的时候不会触发，组件接收到新的<code>props</code>时触发<br>7、<code>shouldCompontUpdate(nextProps, nextState)</code> 这里是<code>React</code>性能优化非常重要的生命周期。在组件接收到新的<code>props</code>或者<code>state</code>时可以触发这个生命周期，可以对比前后<code>props</code>和<code>state</code>是否一样，如果相同一样则返回<code>false</code>去阻止组件更新，这样就避免了重新生成相同DOM树的过程，也就不需要创建新的DOM树和旧的DOM树进行<code>diff</code>算法对比，极大地节省性能。<br>8、<code>componentWillUpdate(nextProps, nextState)</code> 在组件初始化的时候不调用，在组件将要更新的时候才会调用，此时可以去修改<code>state</code><br>9、<code>render()</code> 渲染组件<br>10、 <code>componentDidUpdate()</code> 在组件初始化的时候不调用，在组件更新完之后调用，这里可以去获取<code>dom</code>节点</p>
+<blockquote>
+<p>卸载</p>
+</blockquote>
+<p>11、<code>componentWillUnmount()</code> 在组件将要卸载的时候调用，这里可以去清理一些页面的定时器任务和事件监听等</p>
+<hr>
+<h1 id="前端的一些知识模块"><a href="#前端的一些知识模块" class="headerlink" title="前端的一些知识模块"></a>前端的一些知识模块</h1><p><strong> HTML </strong><br>对Web理解，不同浏览器的内核区分和兼容性，选择器的优先级，标签元素类型，HTML5，HTML网页缓存与存储</p>
+<p><strong> CSS </strong><br>flex布局，简单布局，圣杯布局和双飞翼布局，响应式布局，动画，编译工具（Sass,Less,Stylus），盒子模型，定位机制，iconfont字体，CSS3常见新特性</p>
+<p><strong> JavaScript </strong><br>数据类型，对象操作，算法运算，继承，闭包，作用域，原型链，事件，function，JSON，AJax，RegExp，跨域，异步操作，DOM，BOM，内存泄漏，前端MVC，模块化，路由，Canvas，ES6，NodeJs，React，VUE</p>
+<p><strong> 其他 </strong><br>移动端，自动化构建，WEB安全，项目优化，项目重构，职业规划，学习，团队协作</p>
+<p>作为一名前端工程师，应该有一颗随时学习的心态，学会总结，对于有些知识点我们应该时常记住。</p>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="Doctype作用？标准模式与兼容模式各有什么区别"><a href="#Doctype作用？标准模式与兼容模式各有什么区别" class="headerlink" title="Doctype作用？标准模式与兼容模式各有什么区别?"></a>Doctype作用？标准模式与兼容模式各有什么区别?</h2><p>1、<code>&lt;!DOCTYPE&gt;</code>声明位于位于HTML文档中的第一行，处于 <code>&lt;html&gt;</code>标签之前。告知浏览器的解析器用什么文档标准解析这个文档。<code>DOCTYPE</code>不存在或格式不正确会导致文档以兼容模式呈现。</p>
+<p>2、<code>标准模式的排版</code> 和 <code>JS运作模式</code>都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的形式向后兼容的方式显示,模拟老式浏览器的行为防止页面渲染失败。</p>
+<hr>
+<h2 id="HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><a href="#HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？" class="headerlink" title="HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？"></a>HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</h2><p>HTML5不基于<code>SGML</code>,所以不需要对DTD进行引用，但是他也需要<code>DOCTYPE</code>来规范浏览器的行为。</p>
+<hr>
+<h2 id="常见的浏览器有哪些，及其浏览器的内核是啥？"><a href="#常见的浏览器有哪些，及其浏览器的内核是啥？" class="headerlink" title="常见的浏览器有哪些，及其浏览器的内核是啥？"></a>常见的浏览器有哪些，及其浏览器的内核是啥？</h2><p>Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。  [又称MSHTML]<br>Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等<br>Presto内核：Opera7及以上。          [Opera内核原为：Presto，现为：Blink;]<br>Webkit内核：Safari,Chrome等。      [ Chrome的：Blink（WebKit的分支）]</p>
+<hr>
+<h2 id="浏览器内核的理解？"><a href="#浏览器内核的理解？" class="headerlink" title="浏览器内核的理解？"></a>浏览器内核的理解？</h2><p>主要分为两部分：<code>渲染引擎（Layout engineer或Rendering Engine）</code>和<code>JS引擎</code></p>
+<blockquote>
+<p>渲染引擎:负责网页的内容（HTML、XML、图像等）、整理讯息（引入CSS、JS等），计算网页的显示方式，输出显示。不同的浏览器内核对于网页的语法解释也就不同，就存在网页渲染的效果不同，这也就是兼容性。</p>
+</blockquote>
+<blockquote>
+<p>JS引擎：解析和执行JavaScript实现网页动态效果。</p>
+</blockquote>
+<hr>
+<h2 id="页面样式引入，link与-import-的区别？"><a href="#页面样式引入，link与-import-的区别？" class="headerlink" title="页面样式引入，link与@import`的区别？"></a>页面样式引入，<code>link</code>与<code></code>@import`的区别？</h2><p>1、<code>link</code>属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；<br>2、<code>@import</code>是CSS提供的，只能用于加载CSS;<br>3、页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;<br>4、<code>import</code>是CSS2.1 提出的，只在IE5以上才能被识别，而<code>link</code>是XHTML标签，<code>无兼容问题</code>;</p>
+<hr>
+<h2 id="行内元素有哪些，块级元素有哪些，空元素有哪些？"><a href="#行内元素有哪些，块级元素有哪些，空元素有哪些？" class="headerlink" title="行内元素有哪些，块级元素有哪些，空元素有哪些？"></a>行内元素有哪些，块级元素有哪些，空元素有哪些？</h2><blockquote>
+<p>CSS规范规定，每个元素都有<code>display</code>属性，确定该元素的类型，每个元素都有默认的<code>display</code>值，如div的display默认值为“block”，则为“块级”元素；span默认display属性值为“inline”，是“行内”元素。</p>
+</blockquote>
+<p>行内元素: <code>a b span img input select strong(强调的语气)</code><br>块级元素：<code>div p ul ol li dl dt dd h1 h2 h3 h4 ...</code><br>常见的空元素: <code>&lt;br&gt; &lt;hr&gt; &lt;img&gt; &lt;input&gt; &lt;link&gt; &lt;meta&gt;</code>和<code>&lt;area&gt; &lt;base&gt; &lt;col&gt; &lt;command&gt; &lt;embed&gt; &lt;keygen&gt; &lt;param&gt; &lt;source&gt; &lt;track&gt; &lt;wbr&gt;</code></p>
+<hr>
+<h2 id="HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？"><a href="#HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？" class="headerlink" title="HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？"></a>HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</span><br><span class="line">    - 绘画 canvas;</span><br><span class="line">    - 用于媒介回放的 video 和 audio 元素;</span><br><span class="line">    - 本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;</span><br><span class="line">    - sessionStorage 的数据在浏览器关闭后自动删除;</span><br><span class="line">    - 语意化更好的内容元素，比如 article、footer、header、nav、section;</span><br><span class="line">    - 表单控件，calendar、date、time、email、url、search;</span><br><span class="line">    - 新的技术webworker, websocket, Geolocation;</span><br><span class="line"></span><br><span class="line">    - 移除的元素：</span><br><span class="line">        纯表现的元素：basefont，big，center，font, s，strike，tt，u;</span><br><span class="line">        对可用性产生负面影响的元素：frame，frameset，noframes；</span><br><span class="line"></span><br><span class="line">   - 支持HTML5新标签：</span><br><span class="line">        IE8/IE7/IE6支持通过document.createElement方法产生的标签，</span><br><span class="line">        可以利用这一特性让这些浏览器支持HTML5新标签，</span><br><span class="line">        浏览器支持新标签后，还需要添加标签默认的样式。</span><br><span class="line"></span><br><span class="line">        当然也可以直接使用成熟的框架、比如html5shim;</span><br><span class="line">        &lt;!--[<span class="keyword">if</span> lt IE <span class="number">9</span>]&gt;</span><br><span class="line">            &lt;script&gt; src=<span class="string">"http://html5shim.googlecode.com/svn/trunk/html5.js"</span>&lt;/script&gt;</span><br><span class="line">        &lt;![endif]--&gt;</span><br><span class="line"></span><br><span class="line">如何区分HTML5： DOCTYPE声明\新增的结构元素\功能元素</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="简述一下你对HTML语义化的理解？"><a href="#简述一下你对HTML语义化的理解？" class="headerlink" title="简述一下你对HTML语义化的理解？"></a>简述一下你对HTML语义化的理解？</h2><p><code>用正确的标签做正确的事情。</code><br>html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;<br>即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;<br>搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;<br>使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+<hr>
+<h2 id="HTML5的离线储存怎么使用，工作原理能不能解释一下？"><a href="#HTML5的离线储存怎么使用，工作原理能不能解释一下？" class="headerlink" title="HTML5的离线储存怎么使用，工作原理能不能解释一下？"></a>HTML5的离线储存怎么使用，工作原理能不能解释一下？</h2><blockquote>
+<p> 原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。</p>
+</blockquote>
+<p>如何使用：<br>1、页面头部像下面一样加入一个<code>manifest</code>的属性；<br>2、在<code>cache.manifest</code>文件的编写离线存储的资源；<br>    <code>CACHE  MANIFEST #v0.11 CACHE: js/app.js css/style.css NETWORK: resourse/logo.png FALLBACK: / /offline.html</code><br>3、在离线状态时，操作<code>window.applicationCache</code>进行需求实现。</p>
+<p>详细的使用请参考：<a href="http://yanhaijing.com/html/2014/12/28/html5-manifest/" target="_blank" rel="noopener">HTML5 离线缓存-manifest简介</a>,<a href="http://segmentfault.com/a/1190000000732617" target="_blank" rel="noopener">有趣的HTML5：离线存储</a></p>
+<hr>
+<h2 id="浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？"><a href="#浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？" class="headerlink" title="浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？"></a>浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</h2><p>在线的情况下，浏览器发现html头部有<code>manifest</code>属性，它会请求<code>manifest</code>文件，如果是第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。<br>离线的情况下，浏览器就直接使用离线存储的资源。<br>详细请参考：<a href="http://segmentfault.com/a/1190000000732617" target="_blank" rel="noopener">有趣的HTML5：离线存储</a></p>
+<hr>
+<h2 id="描述一下-Cookies，SessionStorage-和-LocalStorage-的区别？"><a href="#描述一下-Cookies，SessionStorage-和-LocalStorage-的区别？" class="headerlink" title="描述一下 Cookies，SessionStorage 和 LocalStorage 的区别？"></a>描述一下 <code>Cookies</code>，<code>SessionStorage</code> 和 <code>LocalStorage</code> 的区别？</h2><p><code>cookie</code>是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。<br>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。<br><code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发给服务器，仅在本地保存。<br>存储大小：</p>
+<ul>
+<li>cookie数据大小不能超过4k。</li>
+<li>sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+</ul>
+<p>有期时间：</p>
+<ul>
+<li>localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
+<li>sessionStorage  数据在当前浏览器窗口关闭后自动删除。</li>
+<li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+</ul>
+<hr>
+<h2 id="Iframe有那些缺点？"><a href="#Iframe有那些缺点？" class="headerlink" title="Iframe有那些缺点？"></a><strong>Iframe有那些缺点？</strong></h2><p>iframe会阻塞主页面的Onload事件；<br>搜索引擎的检索程序无法解读这种页面，不利于SEO;</p>
+<p>iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。</p>
+<blockquote>
+<p>使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以绕开以上两个问题。</p>
+</blockquote>
+<hr>
+<h2 id="Label的作用是什么？是怎么用的？"><a href="#Label的作用是什么？是怎么用的？" class="headerlink" title="Label的作用是什么？是怎么用的？"></a>Label的作用是什么？是怎么用的？</h2><blockquote>
+<p><code>label</code>标签来定义表单控制间的关系,当用户选择该标签时，浏览器会自动将焦点转到和标签相关的表单控件上。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;label for=&quot;Name&quot;&gt;Number:&lt;/label&gt;</span><br><span class="line">&lt;input type=“text“name=&quot;Name&quot; id=&quot;Name&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;Date:&lt;input type=&quot;text&quot; name=&quot;B&quot;/&gt;&lt;/label&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"><a href="#介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？" class="headerlink" title="介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"></a>介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</h2><p>（1）有两种， <code>IE 盒子模型</code>、<code>W3C 盒子模型</code>；<br>（2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)；<br>（3）区  别： IE的content部分把 border 和 padding计算了进去;</p>
+<hr>
+<h1 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h1><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>思路:</p>
+<ul>
+<li>随机选择数组中的一个数 A，以这个数为基准</li>
+<li>其他数字跟这个数进行比较，比这个数小的放在其左边，大的放到其右边</li>
+<li>经过一次循环之后，A 左边为小于 A 的，右边为大于 A 的</li>
+<li>这时候将左边和右边的数再递归上面的过程<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Arr = [<span class="number">85</span>, <span class="number">24</span>, <span class="number">63</span>, <span class="number">45</span>, <span class="number">17</span>, <span class="number">31</span>, <span class="number">96</span>, <span class="number">50</span>];</span><br><span class="line"><span class="function">function <span class="title">quickSort</span><span class="params">(arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    let pivotIndex = Math.<span class="built_in">floor</span>(arr.length / <span class="number">2</span>);</span><br><span class="line">    let pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    let left = [];</span><br><span class="line">    let right = [];</span><br><span class="line">    <span class="keyword">for</span> (let i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt; pivot) &#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归</span></span><br><span class="line">    <span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(quickSort(Arr));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ps:<br>这是阮老师的一个快排写法，网上对于这个的争论很多，第一说了阮老师不应该用splice去取值，应该用下标，还有就是不应该每次都从新开俩个新数组。<br>其实我觉得算法题重要的是思路，实现的方式有很多，不一定说谁对谁错，效率越好的算法的确是我们想要的，但是更多的理解一些不同的实现思路，我觉得也是可以的～。</p>
+<p>这里是不同的声音： <a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5af4902a6fb9a07abf728c40" target="_blank" rel="noopener">面试官：阮一峰版的快速排序完全是错的</a></p>
+<hr>
+<h3 id="二分排序法"><a href="#二分排序法" class="headerlink" title="二分排序法"></a>二分排序法</h3><p>二分查找法主要是解决「在一堆有序的数中找出指定的数」这类问题，不管这些数是一维数组还是多维数组，只要有序，就可以用二分查找来优化。<br>二分查找是一种「分治」思想的算法，大概流程如下：</p>
+<ul>
+<li>数组中排在中间的数字 A，与要找的数字比较大小</li>
+<li>因为数组是有序的，所以： a) A 较大则说明要查找的数字应该从前半部分查找 b) A</li>
+<li>较小则说明应该从查找数字的后半部分查找</li>
+<li>这样不断查找缩小数量级（扔掉一半数据），直到找完数组为止</li>
+</ul>
+<p>题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">function <span class="title">Find</span><span class="params">(target, <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">    let i = <span class="number">0</span>;</span><br><span class="line">    let j = <span class="built_in">array</span>[i].length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; <span class="built_in">array</span>.length &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[i][j] &lt; target) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[i][j] &gt; target) &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试用例</span></span><br><span class="line">console.<span class="built_in">log</span>(Find(<span class="number">10</span>, [</span><br><span class="line">    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], </span><br><span class="line">    [<span class="number">5</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>], </span><br><span class="line">    [<span class="number">13</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">23</span>]</span><br><span class="line">    ])</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="解析url后的参数"><a href="#解析url后的参数" class="headerlink" title="解析url后的参数"></a>解析url后的参数</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">parseParam</span><span class="params">(url)</span> </span>&#123;</span><br><span class="line">  let obj = &#123;&#125;;</span><br><span class="line">  let arr = url.split(<span class="string">"?"</span>);</span><br><span class="line">  <span class="keyword">if</span> (arr.length == <span class="number">1</span>) &#123; <span class="comment">//判断没有问号</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"无参数"</span></span><br><span class="line">  &#125;</span><br><span class="line">  let total = arr[<span class="number">1</span>].split(<span class="string">"&amp;"</span>);</span><br><span class="line">  <span class="keyword">for</span> (let i = <span class="number">0</span>; i &lt; total.length; i++) &#123;</span><br><span class="line">    let single = total[i].split(<span class="string">"="</span>);</span><br><span class="line">    if (single[0] == '') &#123; //判断有？但是没有参数</span><br><span class="line">      return '无参数'</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!single[<span class="number">1</span>]) &#123;</span><br><span class="line">      obj[single[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (obj[single[<span class="number">0</span>]]) &#123;</span><br><span class="line">        let concat</span><br><span class="line">        <span class="keyword">if</span> (!Array.isArray(obj[single[<span class="number">0</span>]])) &#123; <span class="comment">//判断是否数组</span></span><br><span class="line">          concat = [obj[single[<span class="number">0</span>]]]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          concat = obj[single[<span class="number">0</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        concat.push(single[<span class="number">1</span>]);</span><br><span class="line">        concat = <span class="keyword">new</span> Set(concat);</span><br><span class="line">        concat = Array.from(concat) <span class="comment">//数组去重</span></span><br><span class="line">        obj[single[<span class="number">0</span>]] = concat</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        obj[single[<span class="number">0</span>]] = decodeURI(single[<span class="number">1</span>]) <span class="comment">//进行转码</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var url = 'http://www.baidu.com/?user=huixin&amp;id=123&amp;id=456&amp;city=%E5%8C%97%E4%BA%AC&amp;enabled';</span><br><span class="line"></span><br><span class="line">var params = parseParam(url)</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(params)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="实现一个简单的模版引擎："><a href="#实现一个简单的模版引擎：" class="headerlink" title="实现一个简单的模版引擎："></a>实现一个简单的模版引擎：</h3><p>例如：我叫a,年龄b，性别c； let data = { name: ‘小明’, age: 18, } 没有定义的返回undefined</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let template = '我是&#123;name&#125;，年龄&#123;age&#125;，性别&#123;sex&#125;';</span><br><span class="line">let data = &#123;</span><br><span class="line">    name: '小明',</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span>  reg= /(&#123;([a-zA-Z]+)&#125;)/g;</span><br><span class="line">var r= '',regrounp=&#123;&#125;;</span><br><span class="line"><span class="keyword">while</span>( r = reg.exec(<span class="keyword">template</span>) )&#123;</span><br><span class="line">    Object.defineProperty(regrounp,r[<span class="number">2</span>],&#123;</span><br><span class="line">        enumerable:<span class="literal">true</span>,</span><br><span class="line">        value:r[<span class="number">2</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var render = (<span class="keyword">template</span>,regrounp)=&gt;&#123;</span><br><span class="line">    var result='';</span><br><span class="line">    <span class="keyword">for</span>( key in regrounp)&#123;</span><br><span class="line">        <span class="keyword">if</span>(data[key] == undefined)&#123;</span><br><span class="line">            result  = (result || <span class="keyword">template</span>).replace(<span class="keyword">new</span> RegExp(`&#123;$&#123;regrounp[key]&#125;&#125;`,<span class="string">"g"</span>),undefined);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;		</span><br><span class="line">            result  = (result || <span class="keyword">template</span>).replace(<span class="keyword">new</span> RegExp(`&#123;$&#123;regrounp[key]&#125;&#125;`,<span class="string">"g"</span>),data[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">let newtemple = render(<span class="keyword">template</span>, regrounp);</span><br><span class="line">console.<span class="built_in">log</span>(newtemple) <span class="comment">// 结果： 我是小明，年龄18，性别undefined</span></span><br></pre></td></tr></table></figure>
+<p>对于{}这样声明的对象，可以直接枚举，Object.defineProperty声明出的对象，如果不定义enumerable:true的话，是不能用for-in 枚举的。</p>
+<p>这里有一片很好的文章 推荐 <a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5b3b93115188251afa62ad46" target="_blank" rel="noopener">编写一个简单的JavaScript模板引擎</a></p>
+<hr>
+<h3 id="如何快速让字符串变成已千为精度的数字"><a href="#如何快速让字符串变成已千为精度的数字" class="headerlink" title="如何快速让字符串变成已千为精度的数字"></a>如何快速让字符串变成已千为精度的数字</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">exchange</span><span class="params">(num)</span> </span>&#123;</span><br><span class="line">    num += ''; //转成字符串</span><br><span class="line">    <span class="keyword">if</span> (num.length &lt;= <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    num = num.replace(/\d&#123;<span class="number">1</span>,<span class="number">3</span>&#125;(?=(\d&#123;<span class="number">3</span>&#125;)+$)/g, (v) =&gt; &#123;</span><br><span class="line">        console.<span class="built_in">log</span>(v)</span><br><span class="line">        <span class="keyword">return</span> v + <span class="string">','</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(exchange(<span class="number">1234567</span>));</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="实现-JS-对象的深拷贝"><a href="#实现-JS-对象的深拷贝" class="headerlink" title="实现 JS 对象的深拷贝"></a>实现 JS 对象的深拷贝</h3><p>深拷贝就是在拷贝数据的时候，将数据的所有引用结构都拷贝一份。简单的说就是，在内存中存在两个数据结构完全相同又相互独立的数据，将引用型类型进行复制，而不是只复制其引用关系。<br>分析下怎么做 深拷贝 ：</p>
+<ul>
+<li>首先假设深拷贝这个方法已经完成，为 deepClo</li>
+<li>要拷贝一个数据，我们肯定要去遍历它的属性，如果这个对象的属性仍是对象，继续使用这个方法，如此往复</li>
+</ul>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">deepClo</span><span class="params">(o1, o2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (let k in o2) &#123;</span><br><span class="line">        if (typeof o2[k] === 'object') &#123;</span><br><span class="line">            o1[k] = &#123;&#125;;</span><br><span class="line">            deepClo(o1[k], o2[k]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            o1[k] = o2[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 测试用例</span></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    c: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">let emptyObj = Object.create(null);</span><br><span class="line">deepClo(emptyObj, obj);</span><br><span class="line">console.<span class="built_in">log</span>(emptyObj.a == obj.a);</span><br><span class="line">console.<span class="built_in">log</span>(emptyObj.b == obj.b);</span><br></pre></td></tr></table></figure>
+<p>递归容易造成爆栈，尾部调用可以解决递归的这个问题，Chrome 的 V8 引擎做了尾部调用优化，我们在写代码的时候也要注意尾部调用写法。递归的爆栈问题可以通过将递归改写成枚举的方式来解决，就是通过for或者while来代替递归。</p>
+<hr>
+<h3 id="求斐波那契数列（兔子数列）-1-1-2-3-5-8-13-21-34-55-89…中的第-n-项"><a href="#求斐波那契数列（兔子数列）-1-1-2-3-5-8-13-21-34-55-89…中的第-n-项" class="headerlink" title="求斐波那契数列（兔子数列） 1,1,2,3,5,8,13,21,34,55,89…中的第 n 项"></a>求斐波那契数列（兔子数列） 1,1,2,3,5,8,13,21,34,55,89…中的第 n 项</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">下面的代码中count记录递归的次数，我们看下两种差异性的代码中的count的值：</span><br><span class="line"> let count = <span class="number">0</span>;</span><br><span class="line"> <span class="function">function <span class="title">fn</span><span class="params">(n)</span> </span>&#123;</span><br><span class="line">    let cache = &#123;&#125;;</span><br><span class="line">    function _fn(n) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cache[n]) &#123;</span><br><span class="line">            <span class="keyword">return</span> cache[n];</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        let prev = _fn(n - <span class="number">1</span>);</span><br><span class="line">        cache[n - <span class="number">1</span>] = prev;</span><br><span class="line">        let next = _fn(n - <span class="number">2</span>);</span><br><span class="line">        cache[n - <span class="number">2</span>] = next;</span><br><span class="line">        <span class="keyword">return</span> prev + next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _fn(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let count2 = <span class="number">0</span>;</span><br><span class="line"><span class="function">function <span class="title">fn2</span><span class="params">(n)</span> </span>&#123;</span><br><span class="line">    count2++;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn2(n - <span class="number">1</span>) + fn2(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(fn(<span class="number">20</span>), count); <span class="comment">// 6765 20</span></span><br><span class="line">console.<span class="built_in">log</span>(fn2(<span class="number">20</span>), count2); <span class="comment">// 6765 13529</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="算法的效率"><a href="#算法的效率" class="headerlink" title="算法的效率"></a>算法的效率</h3><p>算法的好坏可以通过算法复杂度来衡量，算法复杂度包括时间复杂度和空间复杂度两个。时间复杂度由于好估算、好评估等特点，是面试中考查的重点。空间复杂度在面试中考查得不多。<br>常见的时间复杂度有：</p>
+<ul>
+<li>常数阶 O(1)</li>
+<li>对数阶 O(logN)</li>
+<li>线性阶 O(n)</li>
+<li>线性对数阶 O(nlogN)</li>
+<li>平方阶 O(n^2)</li>
+<li>立方阶 O(n^3)</li>
+<li>!k次方阶 O(n^k)</li>
+<li>指数阶 O(2^n)</li>
+</ul>
+<p>随着问题规模 n 的不断增大，上述时间复杂度不断增大，算法的执行效率越低。<br>一般做算法复杂度分析的时候，遵循下面的技巧：</p>
+<ul>
+<li>看看有几重循环，一般来说一重就是O(n)，两重就是 O(n^2)，以此类推</li>
+<li>如果有二分，则为O(logN)</li>
+<li>保留最高项，去除常数项</li>
+</ul>
+<p>题目：分析下面代码的算法复杂度</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let i =<span class="number">0</span>; <span class="comment">// 语句执行一次 </span></span><br><span class="line"><span class="keyword">while</span> (i &lt; n) &#123; <span class="comment">// 语句执行 n 次 </span></span><br><span class="line">  console.<span class="built_in">log</span>(`Current i is $&#123;i&#125;`); <span class="comment">//语句执行 n 次</span></span><br><span class="line">  i++; <span class="comment">// 语句执行 n 次</span></span><br><span class="line">&#125;</span><br><span class="line">根据注释可以得到，算法复杂度为<span class="number">1</span> + n + n + n = <span class="number">1</span> + <span class="number">3</span>n，去除常数项，为O(n)。</span><br></pre></td></tr></table></figure>
+<p>更多阅读：<br><a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F594dfe795188250d725a220a%23heading-18" target="_blank" rel="noopener">在 JavaScript 中学习数据结构与算法</a><br><a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5958bac35188250d892f5c91%3Futm_source%3Dgold_browser_extension" target="_blank" rel="noopener">我接触过的前端数据结构与算法</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
+  <p><span>本文标题:</span><a href="/blog/blog2018/05/24/前端面试集锦/">前端面试集锦</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
+  <p><span>发布时间:</span>2018年05月24日 - 22:05</p>
+  <!-- <p><span>最后更新:</span>2018年09月17日 - 23:09</p> -->
+  <p><span>原始链接:</span><a href="/blog/blog2018/05/24/前端面试集锦/" title="前端面试集锦">https://duanruilong.github.io/blog2018/05/24/前端面试集锦/</a>
+复制文章链接=>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/blog2018/05/24/前端面试集锦/"  aria-label="复制成功！"></i></span>
+  </p>
+  <!--<p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  -->
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '文章链接,复制成功!',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
+          
+            <a href="/blog/tags/ES6/" rel="tag"><i class="fa fa-tag"></i>ES6</a>
+          
+            <a href="/blog/tags/CSS/" rel="tag"><i class="fa fa-tag"></i>CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/blog2018/05/22/小程序之旅—-认识一下/" rel="next" title="小程序之旅—认识一下">
+                <i class="fa fa-chevron-left"></i> 小程序之旅—认识一下
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/blog2018/05/25/ES6攻略/" rel="prev" title="ES6攻略">
+                ES6攻略 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.png"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ract"><span class="nav-number">2.</span> <span class="nav-text">Ract</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">React生命周期?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-生命周期分为三种状态-1-初始化-2-更新-3-销毁"><span class="nav-number">2.1.1.</span> <span class="nav-text">React 生命周期分为三种状态 1. 初始化 2.更新 3.销毁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前端的一些知识模块"><span class="nav-number">3.</span> <span class="nav-text">前端的一些知识模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-number">4.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Doctype作用？标准模式与兼容模式各有什么区别"><span class="nav-number">4.1.</span> <span class="nav-text">Doctype作用？标准模式与兼容模式各有什么区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><span class="nav-number">4.2.</span> <span class="nav-text">HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的浏览器有哪些，及其浏览器的内核是啥？"><span class="nav-number">4.3.</span> <span class="nav-text">常见的浏览器有哪些，及其浏览器的内核是啥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器内核的理解？"><span class="nav-number">4.4.</span> <span class="nav-text">浏览器内核的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面样式引入，link与-import-的区别？"><span class="nav-number">4.5.</span> <span class="nav-text">页面样式引入，link与@import`的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内元素有哪些，块级元素有哪些，空元素有哪些？"><span class="nav-number">4.6.</span> <span class="nav-text">行内元素有哪些，块级元素有哪些，空元素有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？"><span class="nav-number">4.7.</span> <span class="nav-text">HTML5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述一下你对HTML语义化的理解？"><span class="nav-number">4.8.</span> <span class="nav-text">简述一下你对HTML语义化的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5的离线储存怎么使用，工作原理能不能解释一下？"><span class="nav-number">4.9.</span> <span class="nav-text">HTML5的离线储存怎么使用，工作原理能不能解释一下？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？"><span class="nav-number">4.10.</span> <span class="nav-text">浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述一下-Cookies，SessionStorage-和-LocalStorage-的区别？"><span class="nav-number">4.11.</span> <span class="nav-text">描述一下 Cookies，SessionStorage 和 LocalStorage 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iframe有那些缺点？"><span class="nav-number">4.12.</span> <span class="nav-text">Iframe有那些缺点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Label的作用是什么？是怎么用的？"><span class="nav-number">4.13.</span> <span class="nav-text">Label的作用是什么？是怎么用的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">5.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"><span class="nav-number">5.1.</span> <span class="nav-text">介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法题"><span class="nav-number">6.</span> <span class="nav-text">算法题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">6.0.1.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二分排序法"><span class="nav-number">6.0.2.</span> <span class="nav-text">二分排序法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析url后的参数"><span class="nav-number">6.0.3.</span> <span class="nav-text">解析url后的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个简单的模版引擎："><span class="nav-number">6.0.4.</span> <span class="nav-text">实现一个简单的模版引擎：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何快速让字符串变成已千为精度的数字"><span class="nav-number">6.0.5.</span> <span class="nav-text">如何快速让字符串变成已千为精度的数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-JS-对象的深拷贝"><span class="nav-number">6.0.6.</span> <span class="nav-text">实现 JS 对象的深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求斐波那契数列（兔子数列）-1-1-2-3-5-8-13-21-34-55-89…中的第-n-项"><span class="nav-number">6.0.7.</span> <span class="nav-text">求斐波那契数列（兔子数列） 1,1,2,3,5,8,13,21,34,55,89…中的第 n 项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法的效率"><span class="nav-number">6.0.8.</span> <span class="nav-text">算法的效率</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共72.0k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>

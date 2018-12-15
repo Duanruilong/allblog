@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,Javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="“很多场景，for来的更直接，更明了。”  “最喜欢for循环了。想break就break。可能会多数据的还是for循环。” “for循环灵活易用，高阶函数简洁明了，合适的用合适方式，还是不能限制的太死吧，不然思维也会受影响”,这是很多时候都会考虑的问题。">
+<meta name="keywords" content="编程,Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎样在JS里尽量少写for循环">
+<meta property="og:url" content="https://duanruilong.github.io/blog2018/07/29/怎样在JS里尽量少写for循环/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="“很多场景，for来的更直接，更明了。”  “最喜欢for循环了。想break就break。可能会多数据的还是for循环。” “for循环灵活易用，高阶函数简洁明了，合适的用合适方式，还是不能限制的太死吧，不然思维也会受影响”,这是很多时候都会考虑的问题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/js_d.png">
+<meta property="og:updated_time" content="2018-09-17T15:58:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎样在JS里尽量少写for循环">
+<meta name="twitter:description" content="“很多场景，for来的更直接，更明了。”  “最喜欢for循环了。想break就break。可能会多数据的还是for循环。” “for循环灵活易用，高阶函数简洁明了，合适的用合适方式，还是不能限制的太死吧，不然思维也会受影响”,这是很多时候都会考虑的问题。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/js_d.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/blog2018/07/29/怎样在JS里尽量少写for循环/"/>
+
+
+
+
+
+  <title>怎样在JS里尽量少写for循环 | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/blog2018/07/29/怎样在JS里尽量少写for循环/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">怎样在JS里尽量少写for循环</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T23:39:15+08:00">
+                2018-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,287
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>“很多场景，for来的更直接，更明了。”  “最喜欢for循环了。想break就break。可能会多数据的还是for循环。” “for循环灵活易用，高阶函数简洁明了，合适的用合适方式，还是不能限制的太死吧，不然思维也会受影响”,这是很多时候都会考虑的问题。</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/js_d.png" alt="js"></p>
+<a id="more"></a>
+<h1 id="用好-filter，map，和其它-ES6-新增的高阶遍历函数"><a href="#用好-filter，map，和其它-ES6-新增的高阶遍历函数" class="headerlink" title="用好 filter，map，和其它 ES6 新增的高阶遍历函数"></a>用好 filter，map，和其它 ES6 新增的高阶遍历函数</h1><p>问题一： 将数组中的空值去除<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrContainsEmptyVal = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, undefined, null, <span class="number">0</span>, <span class="string">""</span>];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> compact = arr =&gt; arr.filter(Boolean);</span><br></pre></td></tr></table></figure></p>
+<p>问题二： 将数组中的 VIP 用户余额加 10<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; username: <span class="string">"Kelly"</span>, isVIP: <span class="literal">true</span>, balance: <span class="number">20</span> &#125;,</span><br><span class="line">  &#123; username: <span class="string">"Tom"</span>, isVIP: <span class="literal">false</span>, balance: <span class="number">19</span> &#125;,</span><br><span class="line">  &#123; username: <span class="string">"Stephanie"</span>, isVIP: <span class="literal">true</span>, balance: <span class="number">30</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line">users.<span class="built_in">map</span>(</span><br><span class="line">  user =&gt; (user.isVIP ? &#123; ...user, balance: user.balance + <span class="number">10</span> &#125; : user)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">补充：有人说很明显这里该用 forEach，你为了举例而举例！我比较无语。forEach 是用来执行副作用的好吗？你把原数据都改了。我的习惯是使用 Immutable 数据。你要改数据的话，开心就好。</span><br></pre></td></tr></table></figure></p>
+<p>问题三： 判断字符串中是否含有元音字母<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> randomStr = <span class="string">"hdjrwqpi"</span>;</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isVowel = <span class="keyword">char</span> =&gt; [<span class="string">"a"</span>, <span class="string">"e"</span>, <span class="string">"o"</span>, <span class="string">"i"</span>, <span class="string">"u"</span>].includes(<span class="keyword">char</span>);</span><br><span class="line"><span class="keyword">const</span> containsVowel = str =&gt; [...str].some(isVowel);</span><br><span class="line"></span><br><span class="line">containsVowel(randomStr);</span><br></pre></td></tr></table></figure></p>
+<p>问题四： 判断用户是否全部是成年人<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; name: <span class="string">"Jim"</span>, age: <span class="number">23</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Lily"</span>, age: <span class="number">17</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Will"</span>, age: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line">users.every(user =&gt; user.age &gt;= <span class="number">18</span>);</span><br></pre></td></tr></table></figure></p>
+<p>问题五： 找出上面用户中的未成年人<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; name: <span class="string">"Jim"</span>, age: <span class="number">23</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Lily"</span>, age: <span class="number">17</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Will"</span>, age: <span class="number">25</span> &#125;</span><br><span class="line">];</span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> findTeen = users =&gt; users.find(user =&gt; user.age &lt; <span class="number">18</span>);</span><br><span class="line"></span><br><span class="line">findTeen(users);</span><br></pre></td></tr></table></figure></p>
+<p>问题六： 将数组中重复项清除<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> dupArr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> uniq = arr =&gt; [...<span class="keyword">new</span> Set(arr)];</span><br><span class="line"></span><br><span class="line">uniq(dupArr);</span><br></pre></td></tr></table></figure></p>
+<p>问题七： 生成由随机整数组成的数组，数组长度和元素大小可自定义<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">答案：</span><br><span class="line"><span class="keyword">const</span> genNumArr = (length, limit) =&gt;</span><br><span class="line">  Array.from(&#123; length &#125;, _ =&gt; Math.<span class="built_in">floor</span>(Math.random() * limit));</span><br><span class="line"></span><br><span class="line">genNumArr(<span class="number">10</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<h1 id="理解和熟练使用-reduce"><a href="#理解和熟练使用-reduce" class="headerlink" title="理解和熟练使用 reduce"></a>理解和熟练使用 reduce</h1><p>问题一： 不借助原生高阶函数，定义 reduce<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">答案：</span><br><span class="line"><span class="keyword">const</span> reduce = (f, acc, arr) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr.length === <span class="number">0</span>) <span class="keyword">return</span> acc;</span><br><span class="line">  <span class="keyword">const</span> [head, ...tail] = arr;</span><br><span class="line">  <span class="keyword">return</span> reduce(f, f(head, acc), tail);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>问题二： 将多层数组转换成一层数组<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> nestedArr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flatten = arr =&gt;</span><br><span class="line">  arr.reduce(</span><br><span class="line">    (flat, next) =&gt; flat.concat(Array.isArray(next) ? flatten(next) : next),</span><br><span class="line">    []</span><br><span class="line">  );</span><br></pre></td></tr></table></figure></p>
+<p>问题三：将下面数组转成对象，key/value 对应里层数组的两个值<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> objLikeArr = [[<span class="string">"name"</span>, <span class="string">"Jim"</span>], [<span class="string">"age"</span>, <span class="number">18</span>], [<span class="string">"single"</span>, <span class="literal">true</span>]];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fromPairs = pairs =&gt;</span><br><span class="line">  pairs.reduce((res, pair) =&gt; ((res[pair[<span class="number">0</span>]] = pair[<span class="number">1</span>]), res), &#123;&#125;);</span><br><span class="line"></span><br><span class="line">fromPairs(objLikeArr);</span><br></pre></td></tr></table></figure></p>
+<p>问题四： 取出对象中的深层属性<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> deepAttr = &#123; a: &#123; b: &#123; c: <span class="number">15</span> &#125; &#125; &#125;;</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pluckDeep = path =&gt; obj =&gt;</span><br><span class="line">  path.split(<span class="string">"."</span>).reduce((val, attr) =&gt; val[attr], obj);</span><br><span class="line"></span><br><span class="line">pluckDeep(<span class="string">"a.b.c"</span>)(deepAttr);</span><br></pre></td></tr></table></figure></p>
+<p>问题五：将用户中的男性和女性分别放到不同的数组里：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; name: <span class="string">"Adam"</span>, age: <span class="number">30</span>, sex: <span class="string">"male"</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Helen"</span>, age: <span class="number">27</span>, sex: <span class="string">"female"</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Amy"</span>, age: <span class="number">25</span>, sex: <span class="string">"female"</span> &#125;,</span><br><span class="line">  &#123; name: <span class="string">"Anthony"</span>, age: <span class="number">23</span>, sex: <span class="string">"male"</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> partition = (arr, isValid) =&gt;</span><br><span class="line">  arr.reduce(</span><br><span class="line">    ([pass, fail], elem) =&gt;</span><br><span class="line">      isValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]],</span><br><span class="line">    [[], []],</span><br><span class="line">  );</span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> isMale = person =&gt; person.sex === <span class="string">"male"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [maleUser, femaleUser] = partition(users, isMale);</span><br></pre></td></tr></table></figure></p>
+<p>问题六： reduce 的计算过程，在范畴论里面叫 catamorphism，即一种连接的变形。和它相反的变形叫 anamorphism。现在我们定义一个和 reduce 计算过程相反的函数 unfold（注：reduce 在 Haskell 里面叫 fold，对应 unfold）</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> unfold = (f, seed) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> go = (f, seed, acc) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> res = f(seed);</span><br><span class="line">    <span class="keyword">return</span> res ? go(f, res[<span class="number">1</span>], acc.concat(res[<span class="number">0</span>])) : acc;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> go(f, seed, []);</span><br><span class="line">&#125;;</span><br><span class="line">根据这个 unfold 函数，定义一个 Python 里面的 range 函数。</span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> range = (min, max, step = <span class="number">1</span>) =&gt;</span><br><span class="line">  unfold(x =&gt; x &lt; max &amp;&amp; [x, x + step], min);</span><br></pre></td></tr></table></figure>
+<h1 id="用递归代替循环（可以break！）"><a href="#用递归代替循环（可以break！）" class="headerlink" title="用递归代替循环（可以break！）"></a>用递归代替循环（可以break！）</h1><p>问题一： 将两个数组每个元素一一对应相加。注意，第二个数组比第一个多出两个，不要把第二个数组遍历完。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> num1 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line"><span class="keyword">const</span> num2 = [<span class="number">43</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">67</span>, <span class="number">87</span>, <span class="number">3</span>, <span class="number">6</span>];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> zipWith = f =&gt; xs =&gt; ys =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (xs.length === <span class="number">0</span> || ys.length === <span class="number">0</span>) <span class="keyword">return</span> [];</span><br><span class="line">  <span class="keyword">const</span> [xHead, ...xTail] = xs;</span><br><span class="line">  <span class="keyword">const</span> [yHead, ...yTail] = ys;</span><br><span class="line">  <span class="keyword">return</span> [f(xHead)(yHead), ...zipWith(f)(xTail)(yTail)];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add = x =&gt; y =&gt; x + y;</span><br><span class="line"></span><br><span class="line">zipWith(add)(num1)(num2);</span><br></pre></td></tr></table></figure></p>
+<p>问题二： 将 Stark 家族成员提取出来。注意，目标数据在数组前面，使用 filter 方法遍历整个数组是浪费。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> houses = [</span><br><span class="line">  <span class="string">"Eddard Stark"</span>,</span><br><span class="line">  <span class="string">"Catelyn Stark"</span>,</span><br><span class="line">  <span class="string">"Rickard Stark"</span>,</span><br><span class="line">  <span class="string">"Brandon Stark"</span>,</span><br><span class="line">  <span class="string">"Rob Stark"</span>,</span><br><span class="line">  <span class="string">"Sansa Stark"</span>,</span><br><span class="line">  <span class="string">"Arya Stark"</span>,</span><br><span class="line">  <span class="string">"Bran Stark"</span>,</span><br><span class="line">  <span class="string">"Rickon Stark"</span>,</span><br><span class="line">  <span class="string">"Lyanna Stark"</span>,</span><br><span class="line">  <span class="string">"Tywin Lannister"</span>,</span><br><span class="line">  <span class="string">"Cersei Lannister"</span>,</span><br><span class="line">  <span class="string">"Jaime Lannister"</span>,</span><br><span class="line">  <span class="string">"Tyrion Lannister"</span>,</span><br><span class="line">  <span class="string">"Joffrey Baratheon"</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> takeWhile = f =&gt; ([head, ...tail]) =&gt;</span><br><span class="line">  f(head) ? [head, ...takeWhile(f)(tail)] : [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isStark = name =&gt; name.toLowerCase().includes(<span class="string">"stark"</span>);</span><br><span class="line"></span><br><span class="line">takeWhile(isStark)(houses);</span><br></pre></td></tr></table></figure></p>
+<p>问题二： 找出数组中的奇数，然后取出前4个：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> numList = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">11</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> takeFirst = (limit, f, arr) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (limit === <span class="number">0</span> || arr.length === <span class="number">0</span>) <span class="keyword">return</span> [];</span><br><span class="line">  <span class="keyword">const</span> [head, ...tail] = arr;</span><br><span class="line">  <span class="keyword">return</span> f(head)</span><br><span class="line">    ? [head, ...takeFirst(limit - <span class="number">1</span>, f, tail)]</span><br><span class="line">    : takeFirst(limit, f, tail);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isOdd = n =&gt; n % <span class="number">2</span> === <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">takeFirst(<span class="number">4</span>, isOdd, numList);</span><br></pre></td></tr></table></figure></p>
+<h1 id="使用高阶函数遍历数组时可能遇到的陷阱"><a href="#使用高阶函数遍历数组时可能遇到的陷阱" class="headerlink" title="使用高阶函数遍历数组时可能遇到的陷阱"></a>使用高阶函数遍历数组时可能遇到的陷阱</h1><p>问题一：  从长度为 100 万的随机整数组成的数组中取出偶数，再把所有数字乘以 3<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 用我们刚刚定义的辅助函数来生成符合要求的数组</span></span><br><span class="line"><span class="keyword">const</span> bigArr = genNumArr(<span class="number">1e6</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isEven = num =&gt; num % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> triple = num =&gt; num * <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">bigArr.filter(isEven).<span class="built_in">map</span>(triple);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意，上面的解决方案将数组遍历了两次，无疑是浪费。如果写 for 循环，只用遍历一次：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> results = [];</span><br><span class="line"><span class="keyword">for</span> (let i = <span class="number">0</span>; i &lt; bigArr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (isEven(bigArr[i])) &#123;</span><br><span class="line">    results.push(triple(bigArr[i]));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试，先 filter 再 map 的方法耗时 105.024 ms，而采用 for 循环的方法耗时仅 25.598 ms！那是否说明遇到此类情况必须用 for 循环解决呢? No！</span></span><br><span class="line"></span><br><span class="line"># Transduce</span><br><span class="line"></span><br><span class="line">先用 reduce 来定义 filter 和 <span class="built_in">map</span>，至于为什么这样做等下再解释。</span><br><span class="line">```h</span><br><span class="line"><span class="keyword">const</span> filter = (f, arr) =&gt;</span><br><span class="line">  arr.reduce((acc, val) =&gt; (f(val) &amp;&amp; acc.push(val), acc), []);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = (f, arr) =&gt; arr.reduce((acc, val) =&gt; (acc.push(f(val)), acc), []);</span><br></pre></td></tr></table></figure></p>
+<p>重新定义的 filter 和 map 有共有的逻辑。我们把这部分共有的逻辑叫做 reducer。有了共有的逻辑后，我们可以进一步地抽象，把 reducer 抽离出来，然后传入 filter 和 map：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filter = f =&gt; reducer =&gt; (acc, value) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (f(value)) <span class="keyword">return</span> reducer(acc, value);</span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = f =&gt; reducer =&gt; (acc, value) =&gt; reducer(acc, f(value));</span><br></pre></td></tr></table></figure></p>
+<p>现在 filter 和 map 的函数 signature 一样，我们就可以进行函数组合（function composition）了。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pushReducer = (acc, value) =&gt; (acc.push(value), acc);</span><br><span class="line"></span><br><span class="line">bigNum.reduce(<span class="built_in">map</span>(triple)(filter(isEven)(pushReducer)), []);</span><br></pre></td></tr></table></figure></p>
+<p>但是这样嵌套写法易读性太差，很容易出错。我们可以写一个工具函数来辅助函数组合：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pipe = (...fns) =&gt; (...args) =&gt; fns.reduce((fx, fy) =&gt; fy(fx), ...args);</span><br></pre></td></tr></table></figure></p>
+<p>然后我们就可以优雅地组合函数了：<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bigNum.reduce(</span><br><span class="line">  pipe(</span><br><span class="line">    filter(isEven),</span><br><span class="line">    <span class="built_in">map</span>(triple)</span><br><span class="line">  )(pushReducer),</span><br><span class="line">  []</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>经过测试（用 console.time()/console.timeEnd()）,上面的写法耗时 33.898 ms，仅比 for 循环慢 8 ms。为了代码的易维护性和易读性，这点性能上的微小牺牲，我认为是可以接受的。<br>这种写法叫 transduce。有很多工具库提供了 transducer 函数。比如 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fcognitect-labs%2Ftransducers-js" target="_blank" rel="noopener">transducers-js</a>。除了用 transducer 来遍历数组，还能用它来遍历对象和其它数据集。功能相当强大。</p>
+<h1 id="for-循环和-for-…-of-循环的区别"><a href="#for-循环和-for-…-of-循环的区别" class="headerlink" title="for 循环和 for … of 循环的区别"></a>for 循环和 for … of 循环的区别</h1><p>for … of 循环是在 ES6 引入 Iterator 后，为了遍历 Iterable 数据类型才产生的。EcmaScript 的 Iterable 数据类型有数组，字符串，Set 和 Map。for … of 循环属于重型的操作（具体细节我也没了解过），如果用 AirBNB 的 ESLint 规则，在代码中使用 for … of 来遍历数组是会被禁止的。<br>那么，for … of 循环应该在哪些场景使用呢？目前我发现的合理使用场景是遍历自定义的 Iterable。来看这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">问题： 将 Stark 家族成员名字遍历，每次遍历暂停一秒，然后将当前遍历的名字打印来，遍历完后回到第一个元素再重新开始，无限循环。</span><br><span class="line">```h</span><br><span class="line"></span><br><span class="line">const starks = [</span><br><span class="line">  &quot;Eddard Stark&quot;,</span><br><span class="line">  &quot;Catelyn Stark&quot;,</span><br><span class="line">  &quot;Rickard Stark&quot;,</span><br><span class="line">  &quot;Brandon Stark&quot;,</span><br><span class="line">  &quot;Rob Stark&quot;,</span><br><span class="line">  &quot;Sansa Stark&quot;,</span><br><span class="line">  &quot;Arya Stark&quot;,</span><br><span class="line">  &quot;Bran Stark&quot;,</span><br><span class="line">  &quot;Rickon Stark&quot;,</span><br><span class="line">  &quot;Lyanna Stark&quot;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">答案：</span><br><span class="line"></span><br><span class="line">function* repeatedArr(arr) &#123;</span><br><span class="line">  let i = 0;</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    yield arr[i++ % arr.length];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const infiniteNameList = repeatedArr(starks);</span><br><span class="line"></span><br><span class="line">const wait = ms =&gt;</span><br><span class="line">  new Promise(resolve =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      resolve();</span><br><span class="line">    &#125;, ms);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">(async () =&gt; &#123;</span><br><span class="line">  for (const name of infiniteNameList) &#123;</span><br><span class="line">    await wait(1000);</span><br><span class="line">    console.log(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>前面讲到的问题基本覆盖了大部分需要使用 for 循环的场景。那是否我们可以保证永远不用 for 循环呢？其实不是。常用的数组原型链上的 map，filter 等高阶函数，底层其实是用 for 循环实现的。在需要写一些底层代码的时候，还是需要写 for 循环的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/blog2018/07/22/小程序之旅-五/" rel="next" title="小程序之旅(五)">
+                <i class="fa fa-chevron-left"></i> 小程序之旅(五)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/blog2018/07/30/开发小锦囊/" rel="prev" title="开发小锦囊">
+                开发小锦囊 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.png"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用好-filter，map，和其它-ES6-新增的高阶遍历函数"><span class="nav-number">1.</span> <span class="nav-text">用好 filter，map，和其它 ES6 新增的高阶遍历函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#理解和熟练使用-reduce"><span class="nav-number">2.</span> <span class="nav-text">理解和熟练使用 reduce</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用递归代替循环（可以break！）"><span class="nav-number">3.</span> <span class="nav-text">用递归代替循环（可以break！）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用高阶函数遍历数组时可能遇到的陷阱"><span class="nav-number">4.</span> <span class="nav-text">使用高阶函数遍历数组时可能遇到的陷阱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-循环和-for-…-of-循环的区别"><span class="nav-number">5.</span> <span class="nav-text">for 循环和 for … of 循环的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共72.0k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>

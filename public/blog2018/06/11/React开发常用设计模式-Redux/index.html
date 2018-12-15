@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Javascript,React," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Redux 是一个库，它扮演着状态容器的角色，并负责管理应用的数据流。它是 Dan Abramov 在 2015 年的 ReactEurope 开发者大会上推出的 (视频)。它类似于 Flux 架构 并有很多共同点。">
+<meta name="keywords" content="Javascript,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React开发常用设计模式-Redux">
+<meta property="og:url" content="https://duanruilong.github.io/blog2018/06/11/React开发常用设计模式-Redux/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="Redux 是一个库，它扮演着状态容器的角色，并负责管理应用的数据流。它是 Dan Abramov 在 2015 年的 ReactEurope 开发者大会上推出的 (视频)。它类似于 Flux 架构 并有很多共同点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
+<meta property="og:image" content="https://duanruilong.github.io/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-architecture.jpg">
+<meta property="og:image" content="https://duanruilong.github.io/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-counter-app.png">
+<meta property="og:image" content="https://duanruilong.github.io/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-reallife.jpg">
+<meta property="og:updated_time" content="2018-09-17T15:58:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React开发常用设计模式-Redux">
+<meta name="twitter:description" content="Redux 是一个库，它扮演着状态容器的角色，并负责管理应用的数据流。它是 Dan Abramov 在 2015 年的 ReactEurope 开发者大会上推出的 (视频)。它类似于 Flux 架构 并有很多共同点。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/blog2018/06/11/React开发常用设计模式-Redux/"/>
+
+
+
+
+
+  <title>React开发常用设计模式-Redux | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/blog2018/06/11/React开发常用设计模式-Redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React开发常用设计模式-Redux</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-11T23:52:51+08:00">
+                2018-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,980
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://redux.js.org/" target="_blank" rel="noopener">Redux</a> 是一个库，它扮演着状态容器的角色，并负责管理应用的数据流。它是 Dan Abramov 在 2015 年的 ReactEurope 开发者大会上推出的 (<a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank" rel="noopener">视频</a>)。它类似于 <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md#flux-architecture-and-its-main-characteristics" target="_blank" rel="noopener">Flux 架构</a> 并有很多共同点。</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png" alt="React"></p>
+<a id="more"></a>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="Redux-架构及其主要特点"><a href="#Redux-架构及其主要特点" class="headerlink" title="Redux 架构及其主要特点"></a>Redux 架构及其主要特点</h2><p><img src="/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-architecture.jpg" alt="redux"></p>
+<p>类似于 <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md" target="_blank" rel="noopener">Flux</a> 架构，由视图组件 (React) 来派发动作。同一个动作也可能是由系统的其他部分派发的，例如引导逻辑。动作不是派发到中心枢纽中，而是直接派发到 <code>store</code>中。注意，我们说的是 <code>store</code>，而不是 <code>stores</code> ，这是因为在 <code>Redux</code> 中只有一个 <code>store</code> ，这是 <code>Redux</code> 与 <code>Flux</code> 的最重要的区别之一。决定数据如何改变的逻辑以纯函数 ( pure functions ) 的形式存在，我们称之为 <code>reducers</code> 。一旦 <code>store</code>接收到动作，它会将当前状态和给定动作发送给<code>reducer</code>并要求其返回一个新的状态。然后，在数据不可变的方式下， <code>reducer</code>需要返回新的状态。再然后， <code>store</code>更新自身的内部状态。最后，与 <code>store</code>连接的 <code>React</code>组件会重新渲染。</p>
+<p>概念相当清晰并再次遵循了 <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-7/README.md" target="_blank" rel="noopener">单向数据流</a> 。我们来讨论每一个部分并引入一些支持 <code>Redux</code> 模式工作的新术语。</p>
+<h2 id="动作-Actions"><a href="#动作-Actions" class="headerlink" title="动作 ( Actions )"></a>动作 ( Actions )</h2><p><code>Redux</code> 中的动作和 <code>Flux</code>一样，也只是有 <code>type</code>属性的对象而已。该对象中的其他所有内容都被视为特定于上下文的数据，并且与模式无关，而与应用的逻辑相关。例如:</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const CHANGE_VISIBILITY = 'CHANGE_VISIBILITY';</span><br><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">  type: CHANGE_VISIBILITY,</span><br><span class="line">  visible: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用像 <code>CHANGE_VISIBILITY</code> 这样的常量作为动作的类型是一种最佳实践。有很多支持 <code>Redux</code>的工具和库，它们用来解决不用的问题，并且都只需要动作的类型即可。所以说，动作只是传递信息的一种便捷方式。</p>
+<p><code>visible</code> 属性是我们所提到过的元数据。它与 <code>Redux</code>本身无关，它表示应用中某处需要使用的数据。</p>
+<p>每次我们想要派发动作时都需要使用这样的对象。但是，一遍又一遍地写确实是让太人烦躁了。这也正是概念 <code>action creators</code> 诞生的原因。<code>action creator</code> 是返回动作对象的函数，它可选项性地接收与动作相关联的属性。例如，如果将上面的 action 写成 action creator 会是这样:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> changeVisibility = visible =&gt; (&#123;</span><br><span class="line">  type: CHANGE_VISIBILITY,</span><br><span class="line">  visible</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">changeVisibility(<span class="literal">false</span>);</span><br><span class="line"><span class="comment">// &#123; type: CHANGE_VISIBILITY, visible: false &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意，将 <code>visible</code> 的值作为参数传入，这样我们不必去记住 (或导入) 动作的确切类型。使用这种辅助函数可以让代码更紧凑，更易于阅读。</p>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p><code>Redux</code> 提供辅助函数 <code>createStore</code> 来创建 <code>store</code> 。它的函数签名如下:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from 'redux';</span><br><span class="line"></span><br><span class="line">createStore([reducer], [initial state], [enhancer]);</span><br></pre></td></tr></table></figure></p>
+<p>正如之前所提到的，<code>reducer</code> 是一个函数，它接收当前状态和动作，然后返回一个新的状态。第二个参数是 <code>store</code> 的初始状态。这是一种便捷的手段，可以用已有的数据来初始化我们的应用。这个功能是像服务器端渲染或持久体验这样的过程的本质。第三个参数<code>enhancer</code>提供 API 来使用第三方的中间件来扩展<code>Redux</code>，基本上是插入一些自身没有提供的功能，例如处理异步流程的工具。</p>
+<p>创建好的<code>store</code> 具有四个方法:<code>getState、dispatch、subscribe</code>和 <code>replaceReducer</code> 。其中最重要的或许就是<code>dispatch</code>:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(changeVisibility(<span class="literal">false</span>));</span><br></pre></td></tr></table></figure></p>
+<p>这里我们使用的是 <code>action creator</code>。我们将其结果 (即 action 对象) 传给 <code>dispatch</code>方法。然后，它会传播给应用中的 <code>reducers</code>。</p>
+<p>在典型的<code>React</code>应用中，我们通常不会直接使用<code>getState 和 subscribe</code>，因为有辅助函数  可以将<code>组件</code>和 <code>store</code>联系起来并有效地订阅 <code>store</code> 的变化。作为订阅的一部分，我们自然可以收到当前的状态，所以不必自己去调用<code>getState</code>。<code>replaceReducer</code>是一个高级 API ，它用来交互 <code>store</code>所使用的当前 <code>reducer</code> 。</p>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p><code>reducer</code>函数大概是<code>Redux</code>中最精华的部分。<code>reducer</code>还有两个特点非常重要，没有它们的话基本上这种模式也不复存在。</p>
+<div class="note danger"><p>(1) 它必须是纯函数 - 这意味着在输入不变的情况下，永远应该返回相同的结果。 </p></div>
+<div class="note danger"><p>(2) 它应该没有副作用 - 像访问全局变量、发起异步请求或等待 promise 解析这样的操作都不应该用在此处。 </p></div>
+<p>下面是个很简单的计数器 reducer :</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counterReducer = function (state, action) &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.type === ADD) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; value: state.value + <span class="number">1</span> &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (action.type === SUBTRACT) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; value: state.value - <span class="number">1</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123; value: <span class="number">0</span> &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>它没有任何副作用，每次都是返回一个全新的对象。我们根据之前的状态和传入的动作类型来累加出新的值。</p>
+<h2 id="连接-React-组件"><a href="#连接-React-组件" class="headerlink" title="连接 React 组件"></a>连接 React 组件</h2><p>如果是在 <code>React</code>上下文中讨论<code>Redux</code>的话，那基本离不开 <a href="https://github.com/reactjs/react-redux" target="_blank" rel="noopener">react-redux</a> 模块。它提供两样东西来进行 <code>Redux</code> 到组件的连接。</p>
+<blockquote>
+<p>(1) <code>&lt;Provider&gt; 组件</code> - 它是一个组件，它接收 <code>store</code>并使得所有的子组件都可以通过 React 的 context API 来访问 <code>store</code>。</p>
+</blockquote>
+<p>例如:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Provider store=&#123; myStore &#125;&gt;</span><br><span class="line">  &lt;MyApp /&gt;</span><br><span class="line">&lt;/Provider&gt;</span><br></pre></td></tr></table></figure></p>
+<p>通常，我们只在应用中的单个地方使用它。</p>
+<blockquote>
+<p>(2) <code>connect 函数</code> - 它是一个函数，它负责订阅 <code>store</code>的更新和重新渲染组件。它是通过 <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-4/README.md#higher-order-component" target="_blank" rel="noopener">高阶组件</a> 实现的。</p>
+</blockquote>
+<p>这是它的函数签名:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connect(</span><br><span class="line">  [mapStateToProps],</span><br><span class="line">  [mapDispatchToProps],</span><br><span class="line">  [mergeProps],</span><br><span class="line">  [options]</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p><code>mapDispatchToProps</code>也是类似的，只是它接收的是 <code>dispatch</code>函数，而不是<code>state</code> 。这里是我们将派发动作定义成属性的地方。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapDispatchToProps = dispatch =&gt; (&#123;</span><br><span class="line">  changeVisibility: value =&gt; dispatch(changeVisibility(value))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>mergeProps</code>将 <code>mapStateToProps、 mapDispatchToProps</code>和发送给组件的属性进行合并，它赋予我们机会去累加出更适合的属性。例如，如果我们需要触发两个动作，我们可以将它们组合成一个单独的属性并将其发送给 React 。<code>options</code> 接收一组如何控制连接的设置。</p>
+<h2 id="使用-Redux-的简单计数器应用"><a href="#使用-Redux-的简单计数器应用" class="headerlink" title="使用 Redux 的简单计数器应用"></a>使用 Redux 的简单计数器应用</h2><p>使用上面所有的 API 来创建一个简单的计数器应用。<br><img src="/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-counter-app.png" alt="react"></p>
+<p>“Add” 和 “Subtract” 按钮只是改变 <code>store</code> 的值。”Visible” 和 “Hidden” 按钮用来控制计数器是否显示。</p>
+<h3 id="创建动作"><a href="#创建动作" class="headerlink" title="创建动作"></a>创建动作</h3><p>每个 <code>Redux</code> 的开始都是对动作类型建模及定义我们所要保存的状态。在这个示例中，会有三个操作:<code>增加、减少和管理可见性</code>。所有动作代码如下所示:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const ADD = 'ADD';</span><br><span class="line">const SUBTRACT = 'SUBTRACT';</span><br><span class="line">const CHANGE_VISIBILITY = 'CHANGE_VISIBILITY';</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add = () =&gt; (&#123; type: ADD &#125;);</span><br><span class="line"><span class="keyword">const</span> subtract = () =&gt; (&#123; type: SUBTRACT &#125;);</span><br><span class="line"><span class="keyword">const</span> changeVisibility = visible =&gt; (&#123;</span><br><span class="line">  type: CHANGE_VISIBILITY,</span><br><span class="line">  visible</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Store-及其-reducers"><a href="#Store-及其-reducers" class="headerlink" title="Store 及其 reducers"></a>Store 及其 reducers</h3><p>在解释 <code>store</code> 和 <code>reudcers</code>时，有些技术点是没有讨论到的。通常，我们会有多个 reducer ，因为要管理多种状态。<code>store</code> 只有一个，所以理论上只有一个状态对象。但是大多数生产环境的应用的状态都是状态切片的组合。每个切片代表应用的一部分。这个小示例拥有计数和可见性两个切片。所以初始状态应该是这样的:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">  counter: &#123;</span><br><span class="line">    value: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  visible: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>需要为这两部分分别定义 <code>reducer</code>。这样会带来灵活性并提升代码的可读性。想象一下，如果我们有一个拥有十个或更多状态切片的巨型应用，并且我们只使用单个 <code>reducer</code> 函数来进行维护，这样管理起来将会非常困难。</p>
+<p><code>Redux</code>提供辅助函数来让我们能够锁定<code>state</code>的某个特定部分并为其分配一个 <code>reducer</code>。它就是 <code>combineReducers</code> :<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore, combineReducers &#125; from 'redux';</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;</span><br><span class="line">  counter: function A() &#123; ... &#125;,</span><br><span class="line">  visible: function B() &#123; ... &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> store = createStore(rootReducer);</span><br></pre></td></tr></table></figure></p>
+<p>函数 A 只接收 <code>counter</code> 切片作为状态，并且只返回切片这部分的状态。函数 B 也是同样的，它接收布尔值 (visible 的值) 并且必须返回布尔值。</p>
+<p><code>counter</code> 切片的<code>reducer</code> 应该考虑到 ADD 和 SUBTRACT 两个动作，并基于动作来计算出新的 <code>counter</code> 状态。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counterReducer = function (state, action) &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.type === ADD) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; value: state.value + <span class="number">1</span> &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (action.type === SUBTRACT) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; value: state.value - <span class="number">1</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> state || &#123; value: <span class="number">0</span> &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>当 <code>store</code> 初始化时，每个 reducer 至少触发一次。最初运行的这一次，state 为 undefined ，action 为 <code>{ type: &quot;@@redux/INIT&quot;}</code> 。在这个实例中，reducer 应该返回数据的初始值 <code>{ value: 0 }</code> 。</p>
+<p>visible 的 reducer 相当简单，它只处理动作 <code>CHANGE_VISIBILITY</code> :<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> visibilityReducer = function (state, action) &#123;</span><br><span class="line">  <span class="keyword">if</span> (action.type === CHANGE_VISIBILITY) &#123;</span><br><span class="line">    <span class="keyword">return</span> action.visible;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>最后，我们需要将这两个 reducers 传给 combineReducers 来创建 rootReducer 。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;</span><br><span class="line">  counter: counterReducer,</span><br><span class="line">  visible: visibilityReducer</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="选择器-Selectors"><a href="#选择器-Selectors" class="headerlink" title="选择器 ( Selectors )"></a>选择器 ( Selectors )</h3><p>我们知道状态通常都是细化成多个状态切片。我们有专门的 <code>reducer</code>来负责更新数据，但是当涉及到获取状态数据时，我们仍然只是有一个对象。这里就是选择器 ( Selectors )派上用场的地方。选择器就是一个函数，它接收整个状态对象并提取出我们所需要的数据。例如，在这个小示例应用中我们需要两个数据:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getCounterValue = state =&gt; state.counter.value;</span><br><span class="line"><span class="keyword">const</span> getVisibility = state =&gt; state.visible;</span><br></pre></td></tr></table></figure></p>
+<p>这个计数器应用实在是太小了，完全体现不出选择器的威力。但是，在一个大项目中便截然不同。选择器的存在并不是为了少些几行代码，也不是为了可读性。选择器附带了这些内容，但它们也是上下文相关的，可能包含逻辑。由于它们可以访问整个状态，所以它们能够回答业务逻辑相关的问题。例如，“在 Y 页面用户是否有权限可以做 X 这件事”。这样的事通过一个选择器就可以完成。</p>
+<h3 id="React-组件"><a href="#React-组件" class="headerlink" title="React 组件"></a>React 组件</h3><p>先来处理管理计数器可见性的 UI 部分。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Visibility</span><span class="params">(&#123; changeVisibility &#125;)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123; () =&gt; changeVisibility(<span class="literal">true</span>) &#125;&gt;</span><br><span class="line">        Visible</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">      &lt;button onClick=&#123; () =&gt; changeVisibility(<span class="literal">false</span>) &#125;&gt;</span><br><span class="line">        Hidden</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> VisibilityConnected = connect(</span><br><span class="line">  null,</span><br><span class="line">  dispatch =&gt; (&#123;</span><br><span class="line">    changeVisibility: value =&gt; dispatch(changeVisibility(value))</span><br><span class="line">  &#125;)</span><br><span class="line">)(Visibility);</span><br></pre></td></tr></table></figure></p>
+<p>第二个组件略微有些复杂。将它命名为 Counter ，它渲染两个按钮和计数值。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Counter</span><span class="params">(&#123; value, add, subtract &#125;)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;Value: &#123; value &#125;&lt;/p&gt;</span><br><span class="line">      &lt;button onClick=&#123; add &#125;&gt;Add&lt;/button&gt;</span><br><span class="line">      &lt;button onClick=&#123; subtract &#125;&gt;Subtract&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CounterConnected = connect(</span><br><span class="line">  state =&gt; (&#123;</span><br><span class="line">    value: getCounterValue(state)</span><br><span class="line">  &#125;),</span><br><span class="line">  dispatch =&gt; (&#123;</span><br><span class="line">    add: () =&gt; dispatch(add()),</span><br><span class="line">    subtract: () =&gt; dispatch(subtract())</span><br><span class="line">  &#125;)</span><br><span class="line">)(Counter);</span><br></pre></td></tr></table></figure>
+<p>这里 mapStateToProps 和 mapDispatchToProps 都需要，因为我们想读取 store 中的数据，同时还要派发动作。这个组件要接收三个属性: <code>value、add 和 subtract</code>。</p>
+<p>最后要完成的就是 App 组件，我们在这里进行应用的组装。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">App</span><span class="params">(&#123; visible &#125;)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;VisibilityConnected /&gt;</span><br><span class="line">      &#123; visible &amp;&amp; &lt;CounterConnected /&gt; &#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> AppConnected = connect(</span><br><span class="line">  state =&gt; (&#123;</span><br><span class="line">    visible: getVisibility(state)</span><br><span class="line">  &#125;)</span><br><span class="line">)(App);</span><br></pre></td></tr></table></figure>
+<p>再一次需要对组件进行 connect 操作，因为我们想要控制计数器的显示。getVisibility 选择器返回布尔值，它表示是否渲染 CounterConnected 组件。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>Redux 是一种很棒的模式。JavaScript 社区将这种理念发扬下去，并使用一些新术语对其进行了增强。我认为一个典型的 Redux 应用应该是下面这样的:</p>
+<p><img src="/blog/blog2018/06/11/React开发常用设计模式-Redux/redux-reallife.jpg" alt="react"></p>
+<p>顺便一提，还没有介绍过副作用管理。那将是另外的新篇章了，它有自己的理念和解决方案。</p>
+<p>我们可以得出结论，Redux 本身是一种非常简单的模式。它传授了非常有用的技术，但不幸的是光靠它自身往往是不够的。我们迟早要引入更多的概念或模式。当然这没有那么糟糕，我们只是先提起计划一下。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
+  <p><span>本文标题:</span><a href="/blog/blog2018/06/11/React开发常用设计模式-Redux/">React开发常用设计模式-Redux</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 DRLong 的个人博客">DRLong</a></p>
+  <p><span>发布时间:</span>2018年06月11日 - 23:06</p>
+  <!-- <p><span>最后更新:</span>2018年09月17日 - 23:09</p> -->
+  <p><span>原始链接:</span><a href="/blog/blog2018/06/11/React开发常用设计模式-Redux/" title="React开发常用设计模式-Redux">https://duanruilong.github.io/blog2018/06/11/React开发常用设计模式-Redux/</a>
+复制文章链接=>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://duanruilong.github.io/blog2018/06/11/React开发常用设计模式-Redux/"  aria-label="复制成功！"></i></span>
+  </p>
+  <!--<p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  -->
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '文章链接,复制成功!',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
+          
+            <a href="/blog/tags/React/" rel="tag"><i class="fa fa-tag"></i>React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/blog2018/05/29/ES6攻略-五/" rel="next" title="ES6攻略(五)">
+                <i class="fa fa-chevron-left"></i> ES6攻略(五)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/blog2018/06/13/React开发常用设计模式-依赖注入/" rel="prev" title="React开发常用设计模式-依赖注入">
+                React开发常用设计模式-依赖注入 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.png"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">1.</span> <span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux-架构及其主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">Redux 架构及其主要特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动作-Actions"><span class="nav-number">1.2.</span> <span class="nav-text">动作 ( Actions )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Store"><span class="nav-number">1.3.</span> <span class="nav-text">Store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer"><span class="nav-number">1.4.</span> <span class="nav-text">Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接-React-组件"><span class="nav-number">1.5.</span> <span class="nav-text">连接 React 组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Redux-的简单计数器应用"><span class="nav-number">1.6.</span> <span class="nav-text">使用 Redux 的简单计数器应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建动作"><span class="nav-number">1.6.1.</span> <span class="nav-text">创建动作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Store-及其-reducers"><span class="nav-number">1.6.2.</span> <span class="nav-text">Store 及其 reducers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器-Selectors"><span class="nav-number">1.6.3.</span> <span class="nav-text">选择器 ( Selectors )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-组件"><span class="nav-number">1.6.4.</span> <span class="nav-text">React 组件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">1.7.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共72.0k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>
