@@ -78,7 +78,7 @@ function App() {
 `Store` 对象是一个 单例，它提供辅助函数 ( `getter` 和 `setter` ) 来读取/设置 `_flag` 属性。通过将 `setter` 传给` Switcher` 组件，我们能够更新外部数据。目前应用的工作流程大致如下:
 
 
-![单向数据流](React开发常用设计模式-单向数据流/react_store.jpg)
+![单向数据流](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_store.jpg)
 
 假设我们可以通过 `Store` 将 `flag` 值保存至服务端。当用户再使用时我们可以为其提供一个适当的初始值。如果用户上次离开时 `flag` 为 `true` ，那么我们应该显示 "lights on"，而不是默认值 "lights off" 。现在变得有一些麻烦，因为数据存在于两个地方。UI 和 `Store` 中都有自身的状态。我们需要进行双向通讯，`Store `到组件和组件到` Store` 。
 ```h
@@ -95,7 +95,7 @@ constructor(props) {
   ```
   工作流程改变后如下所示:
   
-  ![单向数据流](React开发常用设计模式-单向数据流/react_store1.jpg)
+  ![单向数据流](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_store1.jpg)
   
   以上这些导致了需要在两处管理状态。如果 `Store` 可以再根据系统中的其他操作更改其值，将演变成怎样一种情况？我们必须将这种变化传播给` Switcher` 组件，这样就会增加应用的复杂度。
 

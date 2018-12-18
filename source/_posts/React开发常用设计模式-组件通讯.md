@@ -16,7 +16,7 @@ top:
 # 组件通讯
 每个 React 组件就像一个独立运行的小型系统。它有自己的状态、输入和输出。
 
-![输入](React开发常用设计模式-组件通讯/reactput.png)
+![输入](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/reactput.png)
 
 # 输入
 React 组件的输入是它的 props 。传递数据的方式如下:

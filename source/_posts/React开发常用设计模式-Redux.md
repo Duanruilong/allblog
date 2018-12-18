@@ -16,7 +16,7 @@ top:
 # Redux
 
 ## Redux 架构及其主要特点
-![redux](React开发常用设计模式-Redux/redux-architecture.jpg)
+![redux](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/redux-architecture.jpg)
 
 类似于 [Flux](https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md) 架构，由视图组件 (React) 来派发动作。同一个动作也可能是由系统的其他部分派发的，例如引导逻辑。动作不是派发到中心枢纽中，而是直接派发到 `store `中。注意，我们说的是 `store`，而不是 `stores` ，这是因为在 `Redux` 中只有一个 `store` ，这是 `Redux` 与 `Flux` 的最重要的区别之一。决定数据如何改变的逻辑以纯函数 ( pure functions ) 的形式存在，我们称之为 `reducers` 。一旦 `store `接收到动作，它会将当前状态和给定动作发送给` reducer `并要求其返回一个新的状态。然后，在数据不可变的方式下， `reducer `需要返回新的状态。再然后， `store `更新自身的内部状态。最后，与 `store `连接的 `React `组件会重新渲染。
 
@@ -124,7 +124,7 @@ const mapDispatchToProps = dispatch => ({
 ## 使用 Redux 的简单计数器应用
 
 使用上面所有的 API 来创建一个简单的计数器应用。
-![react](React开发常用设计模式-Redux/redux-counter-app.png)
+![react](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/redux-counter-app.png)
 
 "Add" 和 "Subtract" 按钮只是改变 `store` 的值。"Visible" 和 "Hidden" 按钮用来控制计数器是否显示。
 ### 创建动作
@@ -276,7 +276,7 @@ const AppConnected = connect(
 
 Redux 是一种很棒的模式。JavaScript 社区将这种理念发扬下去，并使用一些新术语对其进行了增强。我认为一个典型的 Redux 应用应该是下面这样的:
 
-![react](React开发常用设计模式-Redux/redux-reallife.jpg)
+![react](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/redux-reallife.jpg)
 
 顺便一提，还没有介绍过副作用管理。那将是另外的新篇章了，它有自己的理念和解决方案。
 

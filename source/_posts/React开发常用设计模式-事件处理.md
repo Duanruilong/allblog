@@ -69,7 +69,7 @@ class Switcher extends React.Component {
 };
 ```
 运行结果：
-![运行结果](React开发常用设计模式-事件处理/react_3.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_3.png)
 
 附带一提，在处理函数需要和组件的上下文保持统一时，Facebook [推荐](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding) 的也是此技巧。
 
@@ -96,7 +96,7 @@ class Form extends React.Component {
 };
 ```
 运行结果：
-![运行结果](React开发常用设计模式-事件处理/react_4.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_4.png)
 
 
 # 结语

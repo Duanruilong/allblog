@@ -14,6 +14,6 @@ top:
 <!--more-->
 * [Web https://sangka.github.io/react-in-patterns-cn/](https://sangka.github.io/react-in-patterns-cn/)
 
-* [GitHub https://github.com/SangKa/react-in-patterns-cn](GitHub (https://github.com/SangKa/react-in-patterns-cn)
+<!-- * [GitHub https://github.com/SangKa/react-in-patterns-cn](GitHub (https://github.com/SangKa/react-in-patterns-cn) -->
 
-![设计模式](React 开发常用设计模式-前言/cover1.png)
+![设计模式](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/cover1.png)

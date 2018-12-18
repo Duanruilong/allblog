@@ -299,7 +299,7 @@ document.getElementById('userName').onkeyup = function(e){
 </script>
 ```
 运行效果：
-![运行效果：](ES6攻略/01.png)
+![运行效果：](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/es6/es6_1.png)
 
 - 3.对象简写
 es6提供了对象的简洁写法。虽然属性和方法都可以简写，但我觉得属性还是规规矩矩写键值对就好，不过方法的简写倒是省事不少。我们看一下如何书写：

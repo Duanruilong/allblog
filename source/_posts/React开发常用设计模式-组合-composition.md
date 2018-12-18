@@ -85,7 +85,7 @@ function App() {
 };
 ```
 运行结果：
-![运行结果](React开发常用设计模式-组合-composition/react_5.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_5.png)
 
 当遇到像 Header 这样的组件时，这种技术非常有用，它们需要对其嵌套的子元素进行决策，但并不关心它们的实际情况。
 # 高阶组件
@@ -188,7 +188,7 @@ function App() {
 }
 ```
 运行结果：
-![运行结果](React开发常用设计模式-组合-composition/react_6.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_6.png)
 
 
 这看起来有点怪怪的，但实际上它确实非常强大。例如，当某些父组件所知道的内容不需要传给子组件时。下面的示例是待办事项的列表。App 组件拥有全部的数据，并且它知道如何确定待办事项是否完成。`TodoList` 组件只是简单地封装了所需的 HTML 标记。
@@ -225,7 +225,7 @@ function App() {
 ```
 
 运行结果：
-![运行结果](React开发常用设计模式-组合-composition/react_7.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_7.png)
 
 
 注意观察 App 组件是如何不暴露数据结构的。`TodoList` 完全不知道 `label` 和 `status 属性。
@@ -256,7 +256,7 @@ return (
 ```
 
 运行结果：
-![运行结果](React开发常用设计模式-组合-composition/react_8.png)
+![运行结果](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/react_8.png)
 
 
 这两种模式 将函数作为 `children` 传入 和 `render prop` 是我最新非常喜欢的。当我们想要复用代码时，它们提供了灵活性和帮助。它们还是抽象命令式代码的强力方式。

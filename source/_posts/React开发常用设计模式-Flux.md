@@ -423,7 +423,7 @@ View(counterStoreSubscriber, actions.increase, actions.decrease);
 这样就完成了。视图订阅` store `并进行渲染，因为我们的` consumers `实际上就是 render 方法。
 
 # 在线示例
-![flex](React开发常用设计模式-Flux/flex.png)
+![flex](https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/flex.png)
 
 这里有 JSBin 的 [在线示例](http://jsbin.com/koxidu/embed?js,output)。如果你觉得这个示例过于简单的话，请查阅 [Fluxiny 仓库中的示例](https://github.com/krasimir/fluxiny/tree/master/example)。它使用 React 作为视图层。
 
