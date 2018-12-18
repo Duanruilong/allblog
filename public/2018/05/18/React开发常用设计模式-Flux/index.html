@@ -121,8 +121,8 @@
 <meta property="og:image" content="http://sangka-z.com/react-in-patterns-cn/chapter-8/fluxiny_store_change_view.jpg">
 <meta property="og:image" content="http://sangka-z.com/react-in-patterns-cn/chapter-8/fluxiny_store_view.jpg">
 <meta property="og:image" content="http://sangka-z.com/react-in-patterns-cn/chapter-8/fluxiny_action_creator.jpg">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/18/React开发常用设计模式-Flux/flex.png">
-<meta property="og:updated_time" content="2018-09-18T12:23:17.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/flex.png">
+<meta property="og:updated_time" content="2018-12-18T03:10:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React开发常用设计模式-Flux">
 <meta name="twitter:description" content="Flux 是一种构建用户界面的架构设计模式。它是由 Facebook 在它们的 F8 开发者大会上推出的。在此之后，许多公司都采纳了这个想法，这种模式用来构建前端应用似乎非常不错。Flux 通常和 React 搭配使用。React 是 Facebook 发布的另外一个库。在 日常工作 中使用的是 React+Flux/Redux ，敢说这种架构真的非常简单和灵活。该模式有助于更快地创建应用，同时使">
@@ -534,7 +534,7 @@
 <h1 id="整合各个部分"><a href="#整合各个部分" class="headerlink" title="整合各个部分"></a>整合各个部分</h1><p>这样，<code>store</code> 就完成了，它等待 dispatcher 发出的动作。视图我们也定义完了。现在来创建 <code>store</code> 的订阅者、动作并让这一切运转起来。</p>
 <figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; createAction, createSubscriber &#125; = Fluxiny.create();</span><br><span class="line"><span class="keyword">const</span> counterStoreSubscriber = createSubscriber(CounterStore);</span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">  increase: createAction(INCREASE),</span><br><span class="line">  decrease: createAction(DECREASE)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">View(counterStoreSubscriber, actions.increase, actions.decrease);</span><br></pre></td></tr></table></figure>
 <p>这样就完成了。视图订阅<code>store</code>并进行渲染，因为我们的<code>consumers</code>实际上就是 render 方法。</p>
-<h1 id="在线示例"><a href="#在线示例" class="headerlink" title="在线示例"></a>在线示例</h1><p><img src="/blog/2018/05/18/React开发常用设计模式-Flux/flex.png" alt="flex"></p>
+<h1 id="在线示例"><a href="#在线示例" class="headerlink" title="在线示例"></a>在线示例</h1><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react_type/flex.png" alt="flex"></p>
 <p>这里有 JSBin 的 <a href="http://jsbin.com/koxidu/embed?js,output" target="_blank" rel="noopener">在线示例</a>。如果你觉得这个示例过于简单的话，请查阅 <a href="https://github.com/krasimir/fluxiny/tree/master/example" target="_blank" rel="noopener">Fluxiny 仓库中的示例</a>。它使用 React 作为视图层。</p>
 <p>在本章中所讨论的 Flux 实现可以在 <a href="https://github.com/krasimir/fluxiny" target="_blank" rel="noopener">这里</a> 找到。可以 <a href="https://github.com/krasimir/fluxiny/tree/master/lib" target="_blank" rel="noopener">直接在浏览器中</a> 使用，也可以通过<a href="https://www.npmjs.com/package/fluxiny" target="_blank" rel="noopener"> npm 依赖 </a>进行安装。</p>
 
@@ -557,7 +557,7 @@
   <p><span>本文标题:</span><a href="/blog/2018/05/18/React开发常用设计模式-Flux/">React开发常用设计模式-Flux</a></p>
   <p><span>文章作者:</span><a href="/blog" title="访问 DRLong 的个人博客">DRLong</a></p>
   <p><span>发布时间:</span>2018年05月18日 - 00:05</p>
-  <!-- <p><span>最后更新:</span>2018年09月18日 - 20:09</p> -->
+  <!-- <p><span>最后更新:</span>2018年12月18日 - 11:12</p> -->
   <p><span>原始链接:</span><a href="/blog/2018/05/18/React开发常用设计模式-Flux/" title="React开发常用设计模式-Flux">https://duanruilong.github.io/2018/05/18/React开发常用设计模式-Flux/</a>
 复制文章链接==>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="/blog/2018/05/18/React开发常用设计模式-Flux/"  aria-label="复制成功！"></i></span>
   </p>

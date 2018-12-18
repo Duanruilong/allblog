@@ -483,7 +483,7 @@
   <entry>
     <title><![CDATA[React 开发常用设计模式-前言]]></title>
     <url>%2Fblog%2F2018%2F05%2F14%2FReact-%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%89%8D%E8%A8%80%2F</url>
-    <content type="text"><![CDATA[React 模式介绍了使用 React 开发时的一些常用设计模式，其中包括的技术有组合( composition )、数据流、依赖管理，等等。 Web https://sangka.github.io/react-in-patterns-cn/ GitHub https://github.com/SangKa/react-in-patterns-cn]]></content>
+    <content type="text"><![CDATA[React 模式介绍了使用 React 开发时的一些常用设计模式，其中包括的技术有组合( composition )、数据流、依赖管理，等等。 Web https://sangka.github.io/react-in-patterns-cn/]]></content>
       <categories>
         <category>React</category>
       </categories>
