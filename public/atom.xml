@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://duanruilong.github.io/"/>
-  <updated>2018-12-07T08:13:17.000Z</updated>
+  <updated>2018-12-19T03:38:00.000Z</updated>
   <id>https://duanruilong.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面向对象原则-高内聚、低耦合</title>
+    <link href="https://duanruilong.github.io/2018/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%88%99-%E9%AB%98%E5%86%85%E8%81%9A%E3%80%81%E4%BD%8E%E8%80%A6%E5%90%88/"/>
+    <id>https://duanruilong.github.io/2018/12/19/面向对象原则-高内聚、低耦合/</id>
+    <published>2018-12-19T03:21:27.000Z</published>
+    <updated>2018-12-19T03:38:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>面向对象原则：高内聚、低耦合;多聚合、少继承；使得各个业务模块的<code>“可重用性”</code>、<code>“移植性”</code>明显提升。</p><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/js/mxdxyz.jpg" alt="Javascript"></p><a id="more"></a><h1 id="高内聚、低耦合"><a href="#高内聚、低耦合" class="headerlink" title="高内聚、低耦合"></a>高内聚、低耦合</h1><ul><li>内聚：就是每个模块尽可能可以独立完成自己的功能，不依赖于其他外部模块的代码。 </li><li><p>耦合：就是模块与模块之间接口的复杂程度，模块之间的联系如果越复杂那么他们的耦合度就越高，会出现修改一处代码引发蝴蝶效应，牵一发而动全身。</p></li><li><p>结果：使得各个业务模块的<code>“可重用性”</code>、<code>“移植性”</code>明显提升；通常项目代码结构中各模块的内聚程度越高，那么模块间的耦合程度就越低</p></li></ul><h1 id="模块："><a href="#模块：" class="headerlink" title="模块："></a>模块：</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre><code>高内聚：尽可能类的每个成员方法只完成一件事（最大限度的聚合） 低耦合：减少类内部，一个成员方法调用另一个成员方法 </code></pre><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><pre><code>高内聚低耦合：减少类内部，对其他类的调用 </code></pre><h2 id="功能块"><a href="#功能块" class="headerlink" title="功能块"></a>功能块</h2><pre><code>高内聚低耦合：减少模块之间的交互复杂度（接口数量，参数数据）</code></pre><h1 id="多聚合、少继承"><a href="#多聚合、少继承" class="headerlink" title="多聚合、少继承"></a>多聚合、少继承</h1><ul><li>聚合：事物A由若干个事物B组成，体现在类与类之间的关系就是：“类B的实例”作为“类A”的“成员对象”出现。 </li><li>继承：顾名思义，体现在类与类之间的关系就是：“类B”被类A所继承<br>显然，当观察类B所具有的行为能力时，“聚合”方式更加清晰。 </li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;面向对象原则：高内聚、低耦合;多聚合、少继承；使得各个业务模块的&lt;code&gt;“可重用性”&lt;/code&gt;、&lt;code&gt;“移植性”&lt;/code&gt;明显提升。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/js/mxdxyz.jpg&quot; alt=&quot;Javascript&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
+    
+    
+      <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>Gitment使用 GitHub Issues 搭建评论系统</title>
@@ -97,9 +122,9 @@
       <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
   </entry>
   
@@ -176,9 +201,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -202,9 +227,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="React" scheme="https://duanruilong.github.io/tags/React/"/>
     
@@ -231,9 +256,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -257,9 +282,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="React" scheme="https://duanruilong.github.io/tags/React/"/>
     
@@ -286,9 +311,9 @@
       <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
   </entry>
   
@@ -311,9 +336,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -363,9 +388,9 @@
       <category term="Javascript" scheme="https://duanruilong.github.io/categories/Javascript/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
   </entry>
   
@@ -388,9 +413,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -415,9 +440,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -442,9 +467,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -469,9 +494,9 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
@@ -597,9 +622,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -624,9 +649,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -651,9 +676,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -678,9 +703,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -705,9 +730,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -732,9 +757,9 @@
       <category term="ES6" scheme="https://duanruilong.github.io/categories/ES6/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -759,9 +784,9 @@
       <category term="编程" scheme="https://duanruilong.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
       <category term="ES6" scheme="https://duanruilong.github.io/tags/ES6/"/>
     
@@ -788,38 +813,11 @@
       <category term="小程序" scheme="https://duanruilong.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-      <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
-    
       <category term="编程" scheme="https://duanruilong.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mongodb数据库的使用</title>
-    <link href="https://duanruilong.github.io/2018/05/21/mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://duanruilong.github.io/2018/05/21/mongodb数据库的使用/</id>
-    <published>2018-05-20T16:05:33.000Z</published>
-    <updated>2018-09-17T15:58:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>突然间需要使用这个东西了，调试还遇到了问题，所以还是简单了解一下他吧。</p><p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/mongodb_d.png" alt="js"></p><a id="more"></a><h1 id="一、mongodb的开启和关闭"><a href="#一、mongodb的开启和关闭" class="headerlink" title="一、mongodb的开启和关闭"></a>一、mongodb的开启和关闭</h1><h2 id="1-查找mongod是否可用"><a href="#1-查找mongod是否可用" class="headerlink" title="1. 查找mongod是否可用"></a>1. 查找mongod是否可用</h2><p><code>which mongod</code></p><h2 id="2-启动mongodb"><a href="#2-启动mongodb" class="headerlink" title="2. 启动mongodb"></a>2. 启动mongodb</h2><p>指定path 和log日志<br><code>mongod --dbpath /data2/db --port=27017 --fork /data2/db/log/mongod.log</code></p><h2 id="3-关闭数据库"><a href="#3-关闭数据库" class="headerlink" title="3. 关闭数据库"></a>3. 关闭数据库</h2><p><code>mongod --shutdown</code></p><h1 id="二、mongodb的操作"><a href="#二、mongodb的操作" class="headerlink" title="二、mongodb的操作"></a>二、mongodb的操作</h1><h2 id="1-连接服务器"><a href="#1-连接服务器" class="headerlink" title="1. 连接服务器"></a>1. 连接服务器</h2><p><code>mongod 115.29.137.34:27017</code></p><h2 id="2-使用数据库"><a href="#2-使用数据库" class="headerlink" title="2. 使用数据库"></a>2. 使用数据库</h2><p>(不存在的数据库也可以使用,插入数据之后会自动保存)<br><code>use mydb</code></p><h2 id="3-权限登陆"><a href="#3-权限登陆" class="headerlink" title="3. 权限登陆"></a>3. 权限登陆</h2><p><code>db.auth(&#39;username&#39;,&#39;password&#39;)</code></p><h2 id="4-展示数据库列表"><a href="#4-展示数据库列表" class="headerlink" title="4. 展示数据库列表"></a>4. 展示数据库列表</h2><p><code>show dbs</code></p><h2 id="5-插入数据"><a href="#5-插入数据" class="headerlink" title="5. 插入数据"></a>5. 插入数据</h2><p>(类似于mysql的表)<br><code>db.users.insert({&#39;name&#39;:&#39;xiaomo&#39;})</code><br><code>db.users.insert({&#39;name&#39;:&#39;xiaoming&#39;,&#39;age&#39;:25})</code><br><code>db.users.insert({&#39;name&#39;:&#39;xiaoming&#39;,&#39;age&#39;:24,&#39;sex&#39;:&#39;女&#39;})</code></p><h2 id="6-查询集合"><a href="#6-查询集合" class="headerlink" title="6. 查询集合"></a>6. 查询集合</h2><p>(前提是use了一个数据库)<br>有一个System.indexes 是索引<br><code>show collections</code></p><h2 id="7-不带条件查询"><a href="#7-不带条件查询" class="headerlink" title="7. 不带条件查询"></a>7. 不带条件查询</h2><p><code>db.users.find()</code></p><h2 id="8-带条件查询"><a href="#8-带条件查询" class="headerlink" title="8. 带条件查询"></a>8. 带条件查询</h2><p>(参数是一个对象)<br><code>db.users.find({&#39;name&#39;:&#39;xiaomo&#39;})</code></p><h2 id="9-更新数据"><a href="#9-更新数据" class="headerlink" title="9. 更新数据"></a>9. 更新数据</h2><p>(有三个参数,1:查询条件,2:更新的内容 3：更新的配置)<br><code>db.users.update({&#39;name&#39;:&#39;xiaomo&#39;,{$set:{&#39;name:&#39;xm}})</code>修改满足条件的第一条数据<br><code>db.users.update({&#39;name&#39;:&#39;xiaomo&#39;,{$set:{&#39;name:&#39;xm}},{multi:true})</code>修改所有满足条件的数据</p><h2 id="10-保存数据"><a href="#10-保存数据" class="headerlink" title="10. 保存数据"></a>10. 保存数据</h2><p>(只有一个参数，必须要传id，后面是要修改的数据)<br><code>db.users.save({&#39;id&#39;:&#39;objectId(574710a97a3afd63cde56a49)&#39;,&#39;age&#39;:30})</code></p><h2 id="11-删除数据"><a href="#11-删除数据" class="headerlink" title="11. 删除数据"></a>11. 删除数据</h2><p>(1:条件 2 是否删除所有符合条件的)<br><code>db.users.remove({&#39;name&#39;:&#39;xiaomoing&#39;},true)</code></p><h2 id="12-删除集合"><a href="#12-删除集合" class="headerlink" title="12. 删除集合"></a>12. 删除集合</h2><p><code>db.users.drop()</code></p><h1 id="三、使用mongoose操作数据库"><a href="#三、使用mongoose操作数据库" class="headerlink" title="三、使用mongoose操作数据库"></a>三、使用mongoose操作数据库</h1><h2 id="1-模块的介绍"><a href="#1-模块的介绍" class="headerlink" title="1. 模块的介绍"></a>1. 模块的介绍</h2><p>连接mongdodb的驱动</p><h2 id="2-配置和链接"><a href="#2-配置和链接" class="headerlink" title="2. 配置和链接"></a>2. 配置和链接</h2><p><code>npm install --save mongoose</code><br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require('mongoose');</span><br><span class="line">&lt;!-- var uri = 'mongodb://username:password@hostname:port/databasename'; --&gt;</span><br><span class="line">var uri = 'mongodb://xiaomo:xiaomo@115.29.137.34:27017/admin';</span><br><span class="line">mongoose.connect(uri);</span><br></pre></td></tr></table></figure></p><h2 id="3-Model-和Shema"><a href="#3-Model-和Shema" class="headerlink" title="3. Model 和Shema"></a>3. Model 和Shema</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// model.js</span></span><br><span class="line">var Schema = mongoose.Schema,</span><br><span class="line">    ObjectId = Schema.ObjectId;</span><br><span class="line"></span><br><span class="line">var BlogPost = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    author    : ObjectId,</span><br><span class="line">    title     : String,</span><br><span class="line">    body      : String,</span><br><span class="line">    date      : Date</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Model</span></span><br><span class="line">mongoose.model('blog',Schema);</span><br><span class="line"></span><br><span class="line">var Comment = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  name: &#123; type: String, default: 'hahaha' &#125;,</span><br><span class="line">  age: &#123; type: Number, min: <span class="number">18</span>, index: <span class="literal">true</span> &#125;,</span><br><span class="line">  bio: &#123; type: String, match: /[a-z]/ &#125;,</span><br><span class="line">  date: &#123; type: Date, <span class="keyword">default</span>: Date.now &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a setter</span></span><br><span class="line">Comment.path('name').set(function (v) &#123;</span><br><span class="line">  <span class="keyword">return</span> capitalize(v);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// middleware</span></span><br><span class="line">Comment.pre('save', function (next) &#123;</span><br><span class="line">  notify(this.get('email'));</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="4-创建文档"><a href="#4-创建文档" class="headerlink" title="4. 创建文档"></a>4. 创建文档</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//insert.js</span></span><br><span class="line">var mongoose ＝ require('mongoose');</span><br><span class="line">require('./model.js'); //执行</span><br><span class="line">var Blog = mongoose.model('blog');</span><br><span class="line">var blog = <span class="keyword">new</span> Blog(&#123;</span><br><span class="line">    name:'xiaomo',</span><br><span class="line">    age:<span class="number">25</span>,</span><br><span class="line">    bio:'don't know',</span><br><span class="line">    date:<span class="keyword">new</span> Date</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">book.save(function(err)&#123;</span><br><span class="line">    console.log('save status:'+err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure><h2 id="5-删除文档"><a href="#5-删除文档" class="headerlink" title="5. 删除文档"></a>5. 删除文档</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require('mongoose');</span><br><span class="line">require('./model.js');</span><br><span class="line">var Blog = mongoose.model('blog');</span><br><span class="line">Blog.findOne(&#123;'name':'xiaomo'&#125;,function(err,doc)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">  console.<span class="built_in">log</span>(err)</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(doc)&#123;</span><br><span class="line">  doc.reomove();</span><br><span class="line">&#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure><h2 id="6-简单查询"><a href="#6-简单查询" class="headerlink" title="6. 简单查询"></a>6. 简单查询</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require('mongoose');</span><br><span class="line">require('./model.js');</span><br><span class="line">var Blog = mongoose.model('blog');</span><br><span class="line">Blog.find(&#123;&#125;,function(err,doc)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">  console.<span class="built_in">log</span>(err)</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log('result',doc)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure><p>第一个满足条件的结果<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require('mongoose');</span><br><span class="line">require('./model.js');</span><br><span class="line">var Blog = mongoose.model('blog');</span><br><span class="line">Blog.findOne(&#123;'name':'xiaomo'&#125;,function(err,doc)&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">  console.<span class="built_in">log</span>(err)</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log('result',doc)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p><h2 id="7-条件语句"><a href="#7-条件语句" class="headerlink" title="7. 条件语句"></a>7. 条件语句</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// condation.js</span></span><br><span class="line"> var mongoose = require('mongoose');</span><br><span class="line"> require('./model.js');</span><br><span class="line"> var Blog = mongoose.model('blog');</span><br><span class="line"> <span class="comment">//名字是xiaomo或者xiaoming 可以用$or和$and</span></span><br><span class="line"> var condation = &#123;</span><br><span class="line">   $<span class="keyword">or</span>  $<span class="keyword">and</span>:[</span><br><span class="line">   &#123;'name':'xiaomo'&#125;,</span><br><span class="line">   &#123;'name':'xiaoming'&#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line"> Blog.find(condation,function(err,doc)&#123;</span><br><span class="line">   <span class="keyword">if</span>(err)&#123;</span><br><span class="line">   console.<span class="built_in">log</span>(err)</span><br><span class="line">   <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   console.log('result',doc)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure><h1 id="三、在项目中使用mongoose"><a href="#三、在项目中使用mongoose" class="headerlink" title="三、在项目中使用mongoose"></a>三、在项目中使用mongoose</h1><h2 id="1-生成项目"><a href="#1-生成项目" class="headerlink" title="1. 生成项目"></a>1. 生成项目</h2><p><code>koa koatest -e koatest</code></p><h2 id="2-安装依赖"><a href="#2-安装依赖" class="headerlink" title="2. 安装依赖"></a>2. 安装依赖</h2><p><code>cd koatest &amp;&amp; npm install</code></p><h2 id="3-安装mongoose"><a href="#3-安装mongoose" class="headerlink" title="3. 安装mongoose"></a>3. 安装mongoose</h2><p><code>npm install --save mongoose</code></p><h2 id="4-创建模型"><a href="#4-创建模型" class="headerlink" title="4. 创建模型"></a>4. 创建模型</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// models/users.server.model.js</span></span><br><span class="line">var mongoose = require('mongoose');</span><br><span class="line">var UserSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    uid:Number,</span><br><span class="line">    username:String,</span><br><span class="line">    createTime:Date,</span><br><span class="line">    lastLogin:Date</span><br><span class="line">  &#125;)</span><br><span class="line">module.exports = mongoose.model('User',UserSchema);</span><br></pre></td></tr></table></figure><h2 id="5-创建配置文件"><a href="#5-创建配置文件" class="headerlink" title="5. 创建配置文件"></a>5. 创建配置文件</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.js</span></span><br><span class="line"><span class="keyword">module</span>.exports=&#123;</span><br><span class="line">  mongodb:'mongodb://xiaomo:xiaomo@115.29.137.34:27017/admin'</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//config/mongoose.js</span></span><br><span class="line">var mongoose = require('mongoose');</span><br><span class="line">var config = require('./config.js');</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.exports=function()&#123;</span><br><span class="line">  var db = mongoose.connect(config.mongodb);</span><br><span class="line">  require('./../models/users.server.model.js');</span><br><span class="line">  <span class="keyword">return</span> db;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="6-操作mongdodb-代码"><a href="#6-操作mongdodb-代码" class="headerlink" title="6. 操作mongdodb 代码"></a>6. 操作mongdodb 代码</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//routers/users.js</span></span><br><span class="line">var router = require('koa-router')();</span><br><span class="line">var mongoose = require('mongoose');</span><br><span class="line">var User = mongoose.model('User');</span><br><span class="line">router.get(<span class="string">'/'</span>, function *(next) &#123;</span><br><span class="line">    <span class="comment">//add</span></span><br><span class="line">    var user = <span class="keyword">new</span> User(&#123;</span><br><span class="line">      uid:</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="keyword">this</span>.body = yield User.find(&#123;&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">module</span>.exports = router;</span><br></pre></td></tr></table></figure><p>  嗯嗯,就这样吧，完！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;突然间需要使用这个东西了，调试还遇到了问题，所以还是简单了解一下他吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/mongodb_d.png&quot; alt=&quot;js&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="mongoDB" scheme="https://duanruilong.github.io/categories/mongoDB/"/>
-    
-    
       <category term="Javascript" scheme="https://duanruilong.github.io/tags/Javascript/"/>
     
-      <category term="mongoDB" scheme="https://duanruilong.github.io/tags/mongoDB/"/>
-    
-      <category term="Node" scheme="https://duanruilong.github.io/tags/Node/"/>
+      <category term="小程序" scheme="https://duanruilong.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
