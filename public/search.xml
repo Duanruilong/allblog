@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AnyProxy简介移动端抓包工具]]></title>
+    <url>%2Fblog%2F2018%2F12%2F26%2FAnyProxy%E7%AE%80%E4%BB%8B%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[移动端的开发，难免需要抓包查看情况，在实际工作里开发移动端业务需求，找到了AnyProxy抓包神器，它是阿里巴巴基于 Node.js 开发的一款开源代理服务器，使用场景很广，满足日常需求开发和测试。 1. 简介 AnyProxy 是阿里巴巴基于 Node.js 开发的一款开源代理服务器。AnyProxy链接 代理服务器站在客户端和服务端的中间，它可以收集双方通信的每个比特。一个完整的代理请求过程为：客户端首先与代理服务器创建连接，接着根据代理服务所使用的代理协议，请求对目标服务器创建连接或者获取目标服务器的指定资源。一些代理协议允许代理服务器改变客户端的原始请求、目标服务器的原始响应。 AnyProxy 是完全可以灵活配置的代理服务器。它支持 https明文代理 ，且提供了 Web 界面便于观测请求情况，同时支持二次开发，可以用 JavaScript 来控制代理的全部流程，搭建前端个性化调试环境。 2. 安装安装 Node.js123~ brew update~ brew install node~ node --version 安装 AnyProxy（需要node8）12345~ 安装稳定正式版$ npm install -g anyproxy~ 最新测试版，需要使用最新版本 node 进行安装$ npm install -g anyproxy@beta~ 有时需要添加 sudo 使用AnyProxy1、启动 anyproxy1~ anyproxy 启动结果123 ~ anyproxy[AnyProxy Log][2018-12-26 11:42:19]: Http proxy started on port 8001[AnyProxy Log][2018-12-26 11:42:19]: web interface started on port 8002 2、启动浏览器1http://192.168.0.195:8002/ 或 http://127.0.0.1:8002/ 3、客户端配置代理 ip 端口号8001 启动anyproxy 配置 Https1、 生成 rootCA1234// 稳定版本生成方法~ sudo anyproxy --root// 最新版本生成方法~ anyproxy-ca 以支持 Https 方式重新启动 AnyProxy123~ anyproxy --intercept// 简写~ anyproxy -i 启动结果12345678910~ anyproxy -i[AnyProxy WARN][2018-12-26 11:55:54]: ROOT CA NOT INSTALLED YET? The rootCA is not trusted yet, install it to the trust store now? Yes[AnyProxy Log][2018-12-26 11:56:03]: About to trust the root CA, this may requires your passwordPassword:[AnyProxy Log][2018-12-26 11:56:07]: Root CA install, you are ready to intercept the https now[AnyProxy Log][2018-12-26 11:56:07]: The root CA file path is: /Users/xmaczone/.anyproxy/certificates/rootCA.crt[AnyProxy Log][2018-12-26 11:56:08]: Http proxy started on port 8001[AnyProxy Log][2018-12-26 11:56:08]: web interface started on port 8002 手机安装证书 拓展windows下安装AnyProxy抓取移动App Http请求]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>Javascript</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[asyncwait的使用以及注意事项]]></title>
+    <url>%2Fblog%2F2018%2F12%2F25%2Fasync-await%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%2F</url>
+    <content type="text"><![CDATA[async / await, 搭配 promise, 可以通过编写形似同步的代码来处理异步流程, 提高代码的简洁性和可读性. 这里介绍 async / await的基本用法和一些注意事项. async使用 async function 可以定义一个异步函数,其语法为:1async function name([param[, param[, ... param]]]) &#123; statements &#125; async 函数的返回值很特殊: 不管在函数体内 return 了什么值, async 函数的实际返回值总是一个 Promise 对象. 详细讲就是:若在 async 函数中 return 了一个值 a, 不管 a 值是什么类型, async 函数的实际返回值总是 Promise.resolve(a). 那么 Promise.resolve(a) 最终返回一个什么样的promise呢? 看一下MDN的介绍: Promise.resolve(value)方法返回一个以给定值解析后的Promise对象。但如果这个值是个thenable（即带有then方法），返回的promise会“跟随”这个thenable的对象，采用它的最终状态（指resolved/rejected/pending/settled）；否则以该值为成功状态返回promise对象。 来看一段代码有这样一个场景: 需要先通过 请求a 拿到 数据a, 然后通过通过 请求b 并携带发送 数据a 获取到 数据b, 拿到 数据b 之后再展示到页面上. 方案一:1234567891011121314151617181920async function getData() &#123; // 假装请求数据a var data_a = await new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; resolve('data_a'); &#125;, 1000); &#125;); // 假装请求数据b且此请求依赖数据a var data_b = await new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; resolve('data_b'); &#125;, 1000); &#125;); // 展示数据2 console.log(data_b);&#125;getData(); 上面依次获取到 数据a 和 数据b, 然后再展示 数据b. 既然 async函数总是返回一个promise, 那么也可以在一个 async 函数返回获取 数据b 的promise, 调用函数后再使用 then 方法拿到数据, 代码如下: 1234567891011121314151617181920212223async function getData() &#123; // 假装请求数据a var data_a = await new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; resolve('data_a_value'); &#125;, 1000); &#125;); // 假装请求数据b且此请求依赖数据a return new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; console.log(data_a); // ===&gt;data_a_value resolve('data_b_value'); &#125;, 1000); &#125;);&#125;getData().then((value) =&gt; &#123; console.log(value); // ===&gt;data_b_value &#125;);// 结果返回顺序data_a_valuedata_b_value await引用MDN的介绍: await 操作符用于等待一个 Promise 对象, 它只能在异步函数 async function 内部使用. await 的使用语法非常简单: 1[return_value] = await expression; 其中 expression 是一个 Promise 对象或者任何要等待的值; 而 await expression 的执行结果有以下几种情况: 若 expression 是一个 Promise 对象, 并且其以值 x 被 fulfilled, 则返回值为 x. 若 expression 是一个 Promise 对象, 并且其以异常 e 被 rejected, 则抛出异常 e. 若 expression 不是 Promise 对象, 则会将 expression 处理成一个以 expression 值被 fulfilled 的 Promise 对象, 然后返回这个 Promise 对象的最终值 (即 expression 值). 这种用法没太大意义, 因此实际使用时还是尽量在 await 后跟一个 Promise 对象. 另外需要注意的是, await 在等待 Promise 对象时会导致 async function 暂停执行, 一直到 Promise 对象决议之后才会 async function 继续执行. 通过一段代码来看一下: 1234567891011121314151617181920212223242526272829303132333435363738async function foo() &#123; var a = await new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; resolve(1); &#125;, 2000); &#125;); console.log(a); // 第2秒时输出: 1 try &#123; var b = await new Promise((resolve, reject) =&gt; &#123; setTimeout(() =&gt; &#123; reject(2); &#125;, 1000); &#125;) &#125; catch (e) &#123; console.log(e); // 第3秒时输出: 2 &#125; // 函数暂停2秒后再继续执行 var sleep = await new Promise((resolve) =&gt; &#123; setTimeout(() =&gt; &#123; console.log('sleep_value'); resolve('sleep'); &#125;, 2000); &#125;); var c = await 3; console.log(c); // 第5秒时输出: 3&#125;foo();// 结果返回顺序12sleep_value3]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>Javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[好的东西收藏于此]]></title>
     <url>%2Fblog%2F2018%2F12%2F24%2F%E5%A5%BD%E7%9A%84%E4%B8%9C%E8%A5%BF%E6%94%B6%E8%97%8F%E4%BA%8E%E6%AD%A4%2F</url>
     <content type="text"><![CDATA[这里会是一个知识的宝库，里面会有教程、文档、框架、方案、理论，大家慢慢去品味。 框架1、dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架。About DvaJS文档 链接 dva.js 知识导图 链接 AccountSystem 一个小型库存管理系统 链接 特性 易学易用，仅有 6 个 api，对 redux 用户尤其友好，配合 umi 使用后更是降低为 0 API elm 概念，通过 reducers, effects 和 subscriptions 组织 model 插件机制，比如 dva-loading 可以自动处理 loading 状态，不用一遍遍地写 showLoading 和 hideLoading 支持 HMR，基于 babel-plugin-dva-hmr 实现 components、routes 和 models 的 HMR 他是怎么来的？ Why dva and what’s dva 支付宝前端应用架构的发展和选择]]></content>
@@ -8,8 +34,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>React</tag>
       </tags>
   </entry>
@@ -21,8 +47,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -57,8 +83,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -95,8 +121,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -108,8 +134,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -122,8 +148,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -135,8 +161,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>React</tag>
         <tag>小程序</tag>
       </tags>
@@ -149,8 +175,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -161,8 +187,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -186,8 +212,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -198,8 +224,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -211,8 +237,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -224,8 +250,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -237,8 +263,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -298,8 +324,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -311,8 +337,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -324,8 +350,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -337,8 +363,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -350,8 +376,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -363,8 +389,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
       </tags>
   </entry>
@@ -376,8 +402,8 @@
         <category>编程</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>ES6</tag>
         <tag>CSS</tag>
       </tags>
@@ -390,8 +416,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -452,8 +478,8 @@
         <category>小程序</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -525,8 +551,8 @@
         <category>Javascript</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>编程</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
