@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SQLite 之 INSERT OR REPLACE使用]]></title>
+    <url>%2Fblog%2F2018%2F12%2F28%2FSQLite-%E4%B9%8B-INSERT-OR-REPLACE%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[SQLite是一个C语言库，它实现了一个 小型， 快速， 自包含， 高可靠性， 功能齐全的 SQL数据库引擎。SQLite是世界上使用最多的数据库引擎。它内置于所有移动电话和大多数计算机中，并且捆绑在人们每天使用的无数其他应用程序中。]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AnyProxy简介移动端抓包工具]]></title>
     <url>%2Fblog%2F2018%2F12%2F26%2FAnyProxy%E7%AE%80%E4%BB%8B%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%2F</url>
     <content type="text"><![CDATA[移动端的开发，难免需要抓包查看情况，在实际工作里开发移动端业务需求，找到了AnyProxy抓包神器，它是阿里巴巴基于 Node.js 开发的一款开源代理服务器，使用场景很广，满足日常需求开发和测试。 1. 简介 AnyProxy 是阿里巴巴基于 Node.js 开发的一款开源代理服务器。AnyProxy链接 代理服务器站在客户端和服务端的中间，它可以收集双方通信的每个比特。一个完整的代理请求过程为：客户端首先与代理服务器创建连接，接着根据代理服务所使用的代理协议，请求对目标服务器创建连接或者获取目标服务器的指定资源。一些代理协议允许代理服务器改变客户端的原始请求、目标服务器的原始响应。 AnyProxy 是完全可以灵活配置的代理服务器。它支持 https明文代理 ，且提供了 Web 界面便于观测请求情况，同时支持二次开发，可以用 JavaScript 来控制代理的全部流程，搭建前端个性化调试环境。 2. 安装安装 Node.js123~ brew update~ brew install node~ node --version 安装 AnyProxy（需要node8）12345~ 安装稳定正式版$ npm install -g anyproxy~ 最新测试版，需要使用最新版本 node 进行安装$ npm install -g anyproxy@beta~ 有时需要添加 sudo 使用AnyProxy1、启动 anyproxy1~ anyproxy 启动结果123 ~ anyproxy[AnyProxy Log][2018-12-26 11:42:19]: Http proxy started on port 8001[AnyProxy Log][2018-12-26 11:42:19]: web interface started on port 8002 2、启动浏览器1http://192.168.0.195:8002/ 或 http://127.0.0.1:8002/ 3、客户端配置代理 ip 端口号8001 启动anyproxy 配置 Https1、 生成 rootCA1234// 稳定版本生成方法~ sudo anyproxy --root// 最新版本生成方法~ anyproxy-ca 以支持 Https 方式重新启动 AnyProxy123~ anyproxy --intercept// 简写~ anyproxy -i 启动结果12345678910~ anyproxy -i[AnyProxy WARN][2018-12-26 11:55:54]: ROOT CA NOT INSTALLED YET? The rootCA is not trusted yet, install it to the trust store now? Yes[AnyProxy Log][2018-12-26 11:56:03]: About to trust the root CA, this may requires your passwordPassword:[AnyProxy Log][2018-12-26 11:56:07]: Root CA install, you are ready to intercept the https now[AnyProxy Log][2018-12-26 11:56:07]: The root CA file path is: /Users/xmaczone/.anyproxy/certificates/rootCA.crt[AnyProxy Log][2018-12-26 11:56:08]: Http proxy started on port 8001[AnyProxy Log][2018-12-26 11:56:08]: web interface started on port 8002 手机安装证书 拓展windows下安装AnyProxy抓取移动App Http请求]]></content>
