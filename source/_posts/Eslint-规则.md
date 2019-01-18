@@ -266,3 +266,85 @@ globals: {
 
 
 ```
+
+
+
+# 一些错误的正确修改
+
+## Prevent definitions of unused state (react/no-unused-state)
+
+以下模式被认为是警告:
+
+```h
+class MyComponent extends React.Component {
+  state = { foo: 0 };
+  render() {
+    return <SomeComponent />;
+  }
+}
+
+var UnusedGetInitialStateTest = createReactClass({
+  getInitialState: function() {
+    return { foo: 0 };
+  },
+  render: function() {
+    return <SomeComponent />;
+  }
+})
+
+```
+
+以下模式不被视为警告:
+
+```h
+class MyComponent extends React.Component {
+  state = { foo: 0 };
+  render() {
+    return <SomeComponent foo={this.state.foo} />;
+  }
+}
+
+var UnusedGetInitialStateTest = createReactClass({
+  getInitialState: function() {
+    return { foo: 0 };
+  },
+  render: function() {
+    return <SomeComponent foo={this.state.foo} />;
+  }
+})
+```
+
+## react prop-types
+
+propTypes能用来检测全部数据类型的变量，包括基本类型的的字符串，布尔值，数字，以及引用类型的对象，数组，函数，甚至还有ES6新增的符号类型
+
+```h
+
+
+Son.propTypes = {
+     optionalArray: PropTypes.array,//检测数组类型
+     optionalBool: PropTypes.bool,//检测布尔类型
+     optionalFunc: PropTypes.func,//检测函数（Function类型）
+     optionalNumber: PropTypes.number,//检测数字
+     optionalObject: PropTypes.object,//检测对象
+     optionalString: PropTypes.string,//检测字符串
+     optionalSymbol: PropTypes.symbol,//ES6新增的symbol类型
+}
+
+```
+
+## 使用parseInt()函数
+
+当使用parseInt()函数时，通常省略第二个参数 radix，并让函数尝试从第一个参数确定它是什么类型的数字。默认情况下，parseInt()将自动检测十进制和十六进制（通过0x前缀）。在 ECMAScript 5之前，parseInt()还会自动检测八进制文字，这会导致问题，因为许多开发人员认为领先的文字0会被忽略。
+
+不要这样做：
+
+```h
+var num = parseInt("071");      // 57
+```
+
+做这个：
+
+```h
+var num = parseInt("071", 10);  // 71
+```
