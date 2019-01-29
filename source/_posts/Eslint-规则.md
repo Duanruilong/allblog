@@ -348,3 +348,31 @@ var num = parseInt("071");      // 57
 ```h
 var num = parseInt("071", 10);  // 71
 ```
+
+
+## 条件逻辑里一定要加内容处理
+
+```h
+/*eslint no-empty: "error"*/
+
+if (foo) {
+    // empty
+}
+
+while (foo) {
+    /* empty */
+}
+
+try {
+    doSomething();
+} catch (ex) {
+    // continue regardless of error
+}
+
+try {
+    doSomething();
+} finally {
+    /* continue regardless of error */
+}
+
+```

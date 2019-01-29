@@ -1974,7 +1974,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff09ff;
+  background: #99ffe5;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3190,7 +3190,10 @@ pre .javascript .function {
   bottom: auto;
 }
 body {
-  background: url("https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/back_b.png");
+  background: -webkit-linear-gradient(#add9e4, #f7fbfc); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#add9e4, #f7fbfc); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#add9e4, #f7fbfc); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#add9e4, #f7fbfc); /* 标准的语法（必须放在最后） */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;

@@ -116,7 +116,7 @@
 <meta property="og:description" content="ESLint 由 JavaScript 红宝书 作者 Nicholas C. Zakas 编写， 2013 年发布第一个版本。 NCZ 的初衷不是重复造一个轮子，而是在实际需求得不到 JSHint 团队响应 的情况下做出的选择：以可扩展、每条规则独立、不内置编码风格为理念编写一个 lint 工具。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/eslint.png">
-<meta property="og:updated_time" content="2019-01-17T03:12:35.000Z">
+<meta property="og:updated_time" content="2019-01-29T07:55:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eslint 规则">
 <meta name="twitter:description" content="ESLint 由 JavaScript 红宝书 作者 Nicholas C. Zakas 编写， 2013 年发布第一个版本。 NCZ 的初衷不是重复造一个轮子，而是在实际需求得不到 JSHint 团队响应 的情况下做出的选择：以可扩展、每条规则独立、不内置编码风格为理念编写一个 lint 工具。">
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,473
+                  3,532
                 </span>
               
 
@@ -499,6 +499,7 @@
 <figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var num = parseInt(<span class="string">"071"</span>);      <span class="comment">// 57</span></span><br></pre></td></tr></table></figure>
 <p>做这个：</p>
 <figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var num = parseInt(<span class="string">"071"</span>, <span class="number">10</span>);  <span class="comment">// 71</span></span><br></pre></td></tr></table></figure>
+<h2 id="条件逻辑里一定要加内容处理"><a href="#条件逻辑里一定要加内容处理" class="headerlink" title="条件逻辑里一定要加内容处理"></a>条件逻辑里一定要加内容处理</h2><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*eslint no-empty: "error"*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">    <span class="comment">// empty</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (foo) &#123;</span><br><span class="line">    <span class="comment">/* empty */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125; <span class="keyword">catch</span> (ex) &#123;</span><br><span class="line">    <span class="comment">// continue regardless of error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    <span class="comment">/* continue regardless of error */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -518,7 +519,7 @@
   <p><span>本文标题:</span><a href="/blog/2019/01/14/Eslint-规则/">Eslint 规则</a></p>
   <p><span>文章作者:</span><a href="/blog" title="访问 DRLong 的个人博客">DRLong</a></p>
   <p><span>发布时间:</span>2019年01月14日 - 10:01</p>
-  <!-- <p><span>最后更新:</span>2019年01月17日 - 11:01</p> -->
+  <!-- <p><span>最后更新:</span>2019年01月29日 - 15:01</p> -->
   <p><span>原始链接:</span><a href="/blog/2019/01/14/Eslint-规则/" title="Eslint 规则">https://duanruilong.github.io/2019/01/14/Eslint-规则/</a>
 复制文章链接==>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="/blog/2019/01/14/Eslint-规则/"  aria-label="复制成功！"></i></span>
   </p>
@@ -860,7 +861,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件配置方式"><span class="nav-number">3.1.</span> <span class="nav-text">文件配置方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#env：你的脚本将要运行在什么环境中"><span class="nav-number">3.1.1.</span> <span class="nav-text">env：你的脚本将要运行在什么环境中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment可以预设好的其他环境的全局变量，如brower、node环境变量、es6环境变量、mocha环境变量等"><span class="nav-number">3.1.2.</span> <span class="nav-text">Environment可以预设好的其他环境的全局变量，如brower、node环境变量、es6环境变量、mocha环境变量等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rules：开启规则和发生错误时报告的等级"><span class="nav-number">3.2.</span> <span class="nav-text">rules：开启规则和发生错误时报告的等级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eslint-规则"><span class="nav-number">4.</span> <span class="nav-text">eslint 规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些错误的正确修改"><span class="nav-number">5.</span> <span class="nav-text">一些错误的正确修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prevent-definitions-of-unused-state-react-no-unused-state"><span class="nav-number">5.1.</span> <span class="nav-text">Prevent definitions of unused state (react/no-unused-state)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-prop-types"><span class="nav-number">5.2.</span> <span class="nav-text">react prop-types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用parseInt-函数"><span class="nav-number">5.3.</span> <span class="nav-text">使用parseInt()函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件配置方式"><span class="nav-number">3.1.</span> <span class="nav-text">文件配置方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#env：你的脚本将要运行在什么环境中"><span class="nav-number">3.1.1.</span> <span class="nav-text">env：你的脚本将要运行在什么环境中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment可以预设好的其他环境的全局变量，如brower、node环境变量、es6环境变量、mocha环境变量等"><span class="nav-number">3.1.2.</span> <span class="nav-text">Environment可以预设好的其他环境的全局变量，如brower、node环境变量、es6环境变量、mocha环境变量等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rules：开启规则和发生错误时报告的等级"><span class="nav-number">3.2.</span> <span class="nav-text">rules：开启规则和发生错误时报告的等级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eslint-规则"><span class="nav-number">4.</span> <span class="nav-text">eslint 规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些错误的正确修改"><span class="nav-number">5.</span> <span class="nav-text">一些错误的正确修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prevent-definitions-of-unused-state-react-no-unused-state"><span class="nav-number">5.1.</span> <span class="nav-text">Prevent definitions of unused state (react/no-unused-state)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-prop-types"><span class="nav-number">5.2.</span> <span class="nav-text">react prop-types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用parseInt-函数"><span class="nav-number">5.3.</span> <span class="nav-text">使用parseInt()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件逻辑里一定要加内容处理"><span class="nav-number">5.4.</span> <span class="nav-text">条件逻辑里一定要加内容处理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -896,7 +897,7 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共80.6k字</span>
+    <span class="post-count">博客全站共80.7k字</span>
   </div>
 </div>
 
