@@ -89,7 +89,7 @@
 <link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Javascript,React," />
+  <meta name="keywords" content="Javascript,编程,ES6," />
 
 
 
@@ -107,20 +107,20 @@
 
 
 
-<meta name="description" content="万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。">
-<meta name="keywords" content="Javascript,React">
+<meta name="description" content="ES6提供了新的数据结构Set, 它类似数组，但是成员的值都是唯一的，没有重复的值，Set本身是一个构造函数，用来生成Set数据结构。">
+<meta name="keywords" content="Javascript,编程,ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React开发常用设计模式-展示型组件和容器型组件">
-<meta property="og:url" content="https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/index.html">
+<meta property="og:title" content="ES6--Set和Map数据结构">
+<meta property="og:url" content="https://duanruilong.github.io/2019/01/29/ES6-Set和Map数据结构/index.html">
 <meta property="og:site_name" content="About-龙大">
-<meta property="og:description" content="万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。">
+<meta property="og:description" content="ES6提供了新的数据结构Set, 它类似数组，但是成员的值都是唯一的，没有重复的值，Set本身是一个构造函数，用来生成Set数据结构。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
-<meta property="og:updated_time" content="2018-09-18T12:23:58.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png">
+<meta property="og:updated_time" content="2019-01-29T09:02:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React开发常用设计模式-展示型组件和容器型组件">
-<meta name="twitter:description" content="万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png">
+<meta name="twitter:title" content="ES6--Set和Map数据结构">
+<meta name="twitter:description" content="ES6提供了新的数据结构Set, 它类似数组，但是成员的值都是唯一的，没有重复的值，Set本身是一个构造函数，用来生成Set数据结构。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png">
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/"/>
+  <link rel="canonical" href="https://duanruilong.github.io/2019/01/29/ES6-Set和Map数据结构/"/>
 
 
 
 
 
-  <title>React开发常用设计模式-展示型组件和容器型组件 | About-龙大</title>
+  <title>ES6--Set和Map数据结构 | About-龙大</title>
   
 
 
@@ -344,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/2019/01/29/ES6-Set和Map数据结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DRLong">
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React开发常用设计模式-展示型组件和容器型组件</h1>
+          <h1 class="post-title" itemprop="name headline">ES6--Set和Map数据结构</h1>
         
 
         <div class="post-meta">
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T23:34:58+08:00">
-                2018-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T16:57:32+08:00">
+                2019-01-29
               </time>
             
 
@@ -396,8 +396,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
+                  <a href="/blog/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
                   </a>
                 </span>
 
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,481
+                  1,319
                 </span>
               
 
@@ -464,26 +464,37 @@
       
 
       
-        <p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。</p>
-<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/react_d.png" alt="React"></p>
+        <p>ES6提供了新的数据结构Set, 它类似数组，但是成员的值都是唯一的，没有重复的值，Set本身是一个构造函数，用来生成Set数据结构。</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/es6_d.png" alt="ES6攻略"></p>
 <a id="more"></a>
-<h1 id="展示型组件和容器型组件"><a href="#展示型组件和容器型组件" class="headerlink" title="展示型组件和容器型组件"></a>展示型组件和容器型组件</h1><p>万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为<code>展示型组件</code>和<code>容器型组件</code>。</p>
-<p>我们先从一个简单示例开始，首先说明此示例的问题，然后将组件分成容器型组件和展示型组件。示例中使用的是 <code>Clock</code> 组件，它接收 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener">Date</a> 对象作为属性并显示实时时间。<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="title">extends</span> <span class="title">React</span>.<span class="title">Component</span> &#123;</span></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; time: <span class="keyword">this</span>.props.time &#125;;</span><br><span class="line">    <span class="keyword">this</span>._update = <span class="keyword">this</span>._updateTime.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> time = <span class="keyword">this</span>._formatTime(<span class="keyword">this</span>.state.time);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;</span><br><span class="line">        &#123; time.hours &#125; : &#123; time.minutes &#125; : &#123; time.seconds &#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._interval = setInterval(<span class="keyword">this</span>._update, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._interval);</span><br><span class="line">  &#125;</span><br><span class="line">  _formatTime(time) &#123;</span><br><span class="line">    var [ hours, minutes, seconds ] = [</span><br><span class="line">      time.getHours(),</span><br><span class="line">      time.getMinutes(),</span><br><span class="line">      time.getSeconds()</span><br><span class="line">    ].<span class="built_in">map</span>(num =&gt; num &lt; <span class="number">10</span> ? <span class="string">'0'</span> + num : num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; hours, minutes, seconds &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  _updateTime() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      time: <span class="keyword">new</span> Date(<span class="keyword">this</span>.state.time.getTime() + <span class="number">1000</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;Clock time=&#123; <span class="keyword">new</span> Date() &#125;/&gt;, ...);</span><br></pre></td></tr></table></figure></p>
-<p>在组件的构造函数中，我们初始化了组件的状态，这里只保存了当前时间。通过使用 <code>setInterval</code> ，我们每秒更新一次状态，然后组件会重新渲染。要想看起来像个真正的时钟，我们还使用了两个辅助函数: <code>_formatTime</code> 和<code>_updateTime</code> 。<code>_formatTime</code> 用来提取时分秒并确保它们是两位数的形式。<code>_updateTime</code> 用来将<code>time</code> 对象设置为当前时间加一秒。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>这个组件中它做了好几件事，似乎承担了太多的职责。</p>
-<ul>
-<li>它通过自身来修改状态。在组件中更改时间可能不是一个好主意，因为只有 Clock 组件知道当前时间。如果系统中的其他部分也需要此数据，那么将很难进行共享。</li>
-<li><code>_formatTime</code> 实际上做了两件事，它从时间对象中提取出所需信息，并确保这些值永远以两位数字的形式进行展示。这没什么问题，但如果提取操作不是函数的一部分那就更好了，因为函数绑定了 time 对象的类型。即此函数既要知道数据结构，同时又要对数据进行可视化处理。</li>
-</ul>
-<h1 id="提取出容器型组件"><a href="#提取出容器型组件" class="headerlink" title="提取出容器型组件"></a>提取出容器型组件</h1><p>容器型组件知道数据及其结构，以及数据的来源。它们知道是如何运转的，或所谓的业务逻辑。它们接收信息并对其进行处理，以方便展示型组件使用。通常，我们使用 <a href="https://github.com/krasimir/react-in-patterns/tree/master/patterns/higher-order-components" target="_blank" rel="noopener">高阶组件</a> 来创建容器型组件，因为它们为我们的自定义逻辑提供了缓冲区。</p>
-<p>下面是 <code>ClockContainer</code> 的代码:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clock/index.js</span></span><br><span class="line">import Clock from './Clock.jsx'; // &lt;-- 展示型组件</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ClockContainer</span> <span class="title">extends</span> <span class="title">React</span>.<span class="title">Component</span> &#123;</span></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; time: props.time &#125;;</span><br><span class="line">    <span class="keyword">this</span>._update = <span class="keyword">this</span>._updateTime.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;Clock &#123; ...<span class="keyword">this</span>._extract(<span class="keyword">this</span>.state.time) &#125;/&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>._interval = setInterval(<span class="keyword">this</span>._update, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    clearInterval(<span class="keyword">this</span>._interval);</span><br><span class="line">  &#125;</span><br><span class="line">  _extract(time) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      hours: time.getHours(),</span><br><span class="line">      minutes: time.getMinutes(),</span><br><span class="line">      seconds: time.getSeconds()</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  _updateTime() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      time: <span class="keyword">new</span> Date(<span class="keyword">this</span>.state.time.getTime() + <span class="number">1000</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>它接收 <code>time</code> (date 对象) 属性，使用<code>setInterval</code> 循环并了解数据 (<code>getHours</code>、<code>getMinutes</code> 和 <code>getSeconds</code>) 的详情。最后渲染展示型组件并传入时分秒三个数字。这里没有任何展示相关的内容。只有业务逻辑。</p>
-<h1 id="展示型组件"><a href="#展示型组件" class="headerlink" title="展示型组件"></a>展示型组件</h1><p>展示型组件只涉及组件的外在展现形式。它们会有附加的 HTML 标记来使得页面更加漂亮。这种组件没有任何绑定及依赖。通常都是实现成 <a href="https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components" target="_blank" rel="noopener">无状态组件</a>，它们没有内部状态。</p>
-<p>在本示例中，展示型组件只包含两位数的检查并返回 <code>&lt;h1&gt;</code> 标签:<br><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Clock/Clock.jsx</span></span><br><span class="line"><span class="function"><span class="keyword">export</span> <span class="keyword">default</span> function <span class="title">Clock</span><span class="params">(props)</span> </span>&#123;</span><br><span class="line">  var [ hours, minutes, seconds ] = [</span><br><span class="line">    props.hours,</span><br><span class="line">    props.minutes,</span><br><span class="line">    props.seconds</span><br><span class="line">  ].<span class="built_in">map</span>(num =&gt; num &lt; <span class="number">10</span> ? <span class="string">'0'</span> + num : num);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &lt;h1&gt;&#123; hours &#125; : &#123; minutes &#125; : &#123; seconds &#125;&lt;/h1&gt;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>将组件分成容器型组件和展示型组件可以增加组件的可复用性。不改变时间或不使用 JavaScript Date 对象的应用中，都可以使用 Clock 函数/组件。原因是它相当单纯，不需要对所需数据的详情有任何了解。</p>
-<p>容器型组件封装了逻辑，它们可以搭配不同的展示型组件使用，因为它们不参与任何展示相关的工作。我们上面所采用的方法是一个很好的示例，它阐明了容器型组件是如何不关心展示部分的内容的。我们可以很容易地从数字时钟切换到模拟时钟，唯一的变化就是替换 <code>render</code> 方法中的 ·<clock>· 组件。</clock></p>
-<p>测试也将变得更容易，因为组件承担的职责更少。容器型组件不关心 UI 。展示型组件只是纯粹地负责展示，它可以很好地预测出渲染后的 HTML 标记。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>容器型和展示型的并非是新概念，但是它真的非常适合 React 。它使得应用具有更好的结构，易于管理和扩展。</p>
+<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>Set构造函数可以结构一个数据作为参数，用来初始化</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let s = <span class="keyword">new</span> Set();</span><br><span class="line">let  s = <span class="keyword">new</span> Set( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>] );</span><br><span class="line">s</span><br><span class="line"><span class="comment">//Set&#123;1,2,3,4&#125;</span></span><br><span class="line">s.size</span><br><span class="line"><span class="comment">//4</span></span><br><span class="line">[...<span class="built_in">set</span>]</span><br><span class="line"><span class="comment">//[1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+<p>因此也出现了l两种数组去重的方法</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[...<span class="keyword">new</span> Set( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>] ) ]</span><br><span class="line"><span class="comment">//[1,2,3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">Array.from( <span class="keyword">new</span> Set( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>] )  )</span><br><span class="line"><span class="comment">//[1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+<p>Set实例的属性和方法<br>Set结构的实例有属性:<br>Set.prototype.constructor：构造函数，默认就是Set函数；<br>Set.prototype.size：返回Set实例的成员总数；<br>Set实例的方法分为两类：操作方法和遍历方法；<br>add(value)：添加某个值，返回Set结构本身<br>delete(value)：删除某个值，返回一个布尔值，表示删除是否成功；<br>has(value)：返回一个布尔值，表示该值是否为Set的成员；<br>clear() ：清除所有成员，没有返回值；</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let s = <span class="keyword">new</span> Set( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>] );</span><br><span class="line">s.add(<span class="number">4</span>);</span><br><span class="line">s.size</span><br><span class="line"><span class="comment">//5</span></span><br><span class="line">s.has(<span class="number">2</span>)</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line">s.<span class="keyword">delete</span>(<span class="number">2</span>)</span><br><span class="line">s.has(<span class="number">2</span>)</span><br><span class="line"><span class="comment">//fasle</span></span><br><span class="line">s.clear()</span><br></pre></td></tr></table></figure>
+<h2 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h2><p>Set结构的实例有四个遍历方法，可以用于遍历成员<br>keys()：返回键名的遍历器<br>values()：返回键值的遍历器<br>entries()：返回键值对的遍历器<br>forEach() :使用回调函数遍历每个成员</p>
+<p>###（1）keys()，values()，entries()</p>
+<p>keys方法、values方法、entries方法返回的都是遍历器对象（详见《Iterator 对象》一章）。由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let set = new Set(['red', 'green', 'blue']);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let item of <span class="built_in">set</span>.keys()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let item of <span class="built_in">set</span>.values()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let item of <span class="built_in">set</span>.entries()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ["red", "red"]</span></span><br><span class="line"><span class="comment">// ["green", "green"]</span></span><br><span class="line"><span class="comment">// ["blue", "blue"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="（2）forEach"><a href="#（2）forEach" class="headerlink" title="（2）forEach()"></a>（2）forEach()</h3><p>Set结构的实例的forEach方法，用于对每个成员执行某种操作，没有返回值。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let <span class="built_in">set</span> = <span class="keyword">new</span> Set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="built_in">set</span>.forEach((value, key) =&gt; console.<span class="built_in">log</span>(value * <span class="number">2</span>) )</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>JavaScript 的对象（Object），本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。</p>
+<p>ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = <span class="keyword">new</span> Map([</span><br><span class="line">[<span class="string">"name"</span>,<span class="string">"张三"</span>] , [<span class="string">"title"</span>,<span class="string">"Author"</span>] </span><br><span class="line">]);</span><br><span class="line"><span class="built_in">map</span>.size</span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="built_in">map</span>.has(<span class="string">"name"</span>)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">map</span>.get(<span class="string">"name"</span>)<span class="comment">//"张三"</span></span><br></pre></td></tr></table></figure>
+<h2 id="实例的属性好操作方法"><a href="#实例的属性好操作方法" class="headerlink" title="实例的属性好操作方法"></a>实例的属性好操作方法</h2><p>（1）size属性：返回 Map 结构的成员总数。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = <span class="keyword">new</span> Map();</span><br><span class="line">map.set('foo', true);</span><br><span class="line">map.set('bar', false);</span><br><span class="line"><span class="built_in">map</span></span><br><span class="line"><span class="comment">//Map &#123;"foo" =&gt; true, "bar" =&gt; false&#125;</span></span><br><span class="line"><span class="built_in">map</span>.size <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>（2）set(key, value)<br>set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> Map();</span><br><span class="line"></span><br><span class="line">m.set('edition', 6)        // 键是字符串</span><br><span class="line">m.set(262, 'standard')     // 键是数值</span><br><span class="line">m.set(undefined, 'nah')    // 键是 undefined</span><br></pre></td></tr></table></figure>
+<p>（3）get(key)<br>get方法读取key对应的键值，如果找不到key，返回undefined。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> Map([</span><br><span class="line">[<span class="string">"name"</span>,<span class="string">"MGT360124"</span>],[<span class="string">"age"</span>,<span class="number">18</span>]</span><br><span class="line">])</span><br><span class="line">m.get('name')</span><br><span class="line"><span class="comment">//"MGT360124"</span></span><br></pre></td></tr></table></figure>
+<p>（4）has(key),delete(key),clear()<br>has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> Map();</span><br><span class="line"></span><br><span class="line">m.set('edition', 6);</span><br><span class="line">m.set(262, 'standard');</span><br><span class="line">m.set(undefined, 'nah');</span><br><span class="line"></span><br><span class="line">m.has('edition')     // true</span><br><span class="line">m.has('years')       // false</span><br><span class="line">m.has(<span class="number">262</span>)           <span class="comment">// true</span></span><br><span class="line">m.has(undefined)     <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">m.<span class="keyword">delete</span>(undefined)</span><br><span class="line">m.has(undefined)       <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="Map遍历方法"><a href="#Map遍历方法" class="headerlink" title="Map遍历方法"></a>Map遍历方法</h2><p>Map结构原生提供三个遍历器生成函数和一个遍历方法;<br>keys()：返回键名的遍历器<br>values()：返回键值的遍历器<br>entries()：返回所有成员的遍历器<br>forEach()：遍历Map的所有成员<br>Map遍历的顺序就是插入的顺序</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = <span class="keyword">new</span> Map([</span><br><span class="line">  ['F', 'no'],</span><br><span class="line">  ['T',  'yes'],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let key of <span class="built_in">map</span>.keys()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F"</span></span><br><span class="line"><span class="comment">// "T"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let value of <span class="built_in">map</span>.values()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "no"</span></span><br><span class="line"><span class="comment">// "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (let item of <span class="built_in">map</span>.entries()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(item[<span class="number">0</span>], item[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">for</span> (let [key, value] of <span class="built_in">map</span>.entries()) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于使用map.entries()</span></span><br><span class="line"><span class="keyword">for</span> (let [key, value] of <span class="built_in">map</span>) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br></pre></td></tr></table></figure>
+<p>Map结构转为数组结构</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">map</span> = <span class="keyword">new</span> Map([</span><br><span class="line">  [1, 'one'],</span><br><span class="line">  [2, 'two'],</span><br><span class="line">  [3, 'three'],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">[...<span class="built_in">map</span>.keys()]</span><br><span class="line"><span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line">[...<span class="built_in">map</span>.values()]</span><br><span class="line"><span class="comment">// ['one', 'two', 'three']</span></span><br><span class="line"></span><br><span class="line">[...<span class="built_in">map</span>.entries()]</span><br><span class="line"><span class="comment">// [[1,'one'], [2, 'two'], [3, 'three']]</span></span><br><span class="line"></span><br><span class="line">[...<span class="built_in">map</span>]</span><br><span class="line"><span class="comment">// [[1,'one'], [2, 'two'], [3, 'three']]</span></span><br></pre></td></tr></table></figure>
+<p>Map 还有一个forEach方法，与数组的forEach方法类似，也可以实现遍历。</p>
 
       
     </div>
@@ -494,37 +505,6 @@
     <div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript"  src="https://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
-  <p><span>本文标题:</span><a href="/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/">React开发常用设计模式-展示型组件和容器型组件</a></p>
-  <p><span>文章作者:</span><a href="/blog" title="访问 DRLong 的个人博客">DRLong</a></p>
-  <p><span>发布时间:</span>2018年05月15日 - 23:05</p>
-  <!-- <p><span>最后更新:</span>2018年09月18日 - 20:09</p> -->
-  <p><span>原始链接:</span><a href="/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/" title="React开发常用设计模式-展示型组件和容器型组件">https://duanruilong.github.io/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/</a>
-复制文章链接==>    <span class=""  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="/blog/2018/05/15/React开发常用设计模式-展示型组件和容器型组件/"  aria-label="复制成功！"></i></span>
-  </p>
-  <!--<p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  -->
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    clipboard.on('success', $(function(){
-      $(".fa-clipboard").click(function(){
-        swal({   
-          title: "",   
-          text: '文章链接,复制成功!',   
-          html: false,
-          timer: 500,   
-          showConfirmButton: false
-        });
-      });
-    }));  
-</script>
-
       
     </div>
 
@@ -579,7 +559,9 @@
           
             <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
           
-            <a href="/blog/tags/React/" rel="tag"><i class="fa fa-tag"></i>React</a>
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/ES6/" rel="tag"><i class="fa fa-tag"></i>ES6</a>
           
         </div>
       
@@ -592,8 +574,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2018/05/15/小程序之旅——个人申请/" rel="next" title="小程序之旅——个人申请">
-                <i class="fa fa-chevron-left"></i> 小程序之旅——个人申请
+              <a href="/blog/2019/01/14/Eslint-规则/" rel="next" title="Eslint 规则">
+                <i class="fa fa-chevron-left"></i> Eslint 规则
               </a>
             
           </div>
@@ -601,10 +583,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2018/05/16/React开发常用设计模式-单向数据流/" rel="prev" title="React开发常用设计模式-单向数据流">
-                React开发常用设计模式-单向数据流 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -850,7 +828,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#展示型组件和容器型组件"><span class="nav-number">1.</span> <span class="nav-text">展示型组件和容器型组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提取出容器型组件"><span class="nav-number">3.</span> <span class="nav-text">提取出容器型组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#展示型组件"><span class="nav-number">4.</span> <span class="nav-text">展示型组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优点"><span class="nav-number">5.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历操作"><span class="nav-number">1.1.</span> <span class="nav-text">遍历操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）forEach"><span class="nav-number">1.1.1.</span> <span class="nav-text">（2）forEach()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例的属性好操作方法"><span class="nav-number">2.1.</span> <span class="nav-text">实例的属性好操作方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map遍历方法"><span class="nav-number">2.2.</span> <span class="nav-text">Map遍历方法</span></a></li></ol></li></ol></div>
             
 
           </div>
