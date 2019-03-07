@@ -574,3 +574,28 @@ gentie_productKey: #your-gentie-product-key
 gentie_productKey: #your-gentie-product-key
 ```
 
+
+# 23.给文章设置阅读量
+
+Hexo 目录下的 \themes\next\ _config.yml 文件
+
+```hash
+# 增加不算子访问数量统计
+busuanzi_count:
+  # count values only if the other configs are false
+  enable: true
+  # custom uv span for the whole site
+  site_uv: true
+  site_uv_header: <i class="fa fa-user"></i> 访问人数
+  site_uv_footer:
+  # custom pv span for the whole site
+  site_pv: true
+  site_pv_header: <i class="fa fa-eye"></i> 访问总量
+  site_pv_footer: 次
+  # custom pv span for one page only
+  page_pv: true
+  page_pv_header: <i class="fa fa-file-o"></i> 浏览
+  page_pv_footer: 次
+
+```
+
