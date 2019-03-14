@@ -599,3 +599,7 @@ busuanzi_count:
 
 ```
 
+# 24、在文章中嵌入 CodePen或 jsFiddle
+
+[链接](https://www.jianshu.com/p/79e808bbf0a8)
+
