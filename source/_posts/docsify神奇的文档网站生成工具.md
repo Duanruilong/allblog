@@ -119,8 +119,8 @@ cd docs && python -m SimpleHTTPServer 3000
 
 这是一份docsify开发的文档欢迎点击查看
 
-- [git地址](https://github.com/Duanruilong/qap_doc)
-- [线上预览](https://duanruilong.github.io/qap_doc)
+- [git地址](https://github.com/Duanruilong/doctry)
+- [线上预览](https://duanruilong.github.io/doctry)
 
 
 >  更加详细的设置配置参考[官方文档](https://docsify.js.org/#/zh-cn/)
