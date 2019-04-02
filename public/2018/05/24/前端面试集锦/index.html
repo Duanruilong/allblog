@@ -117,15 +117,15 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/webtry_d.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/react/reactSMZQ.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/state.jpg">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/vdom1.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/vdom2.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/vdom3.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/phases16.3.jpg">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/phases.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/flux.png">
-<meta property="og:image" content="https://duanruilong.github.io/blog/2018/05/24/前端面试集锦/error_boundary.png">
-<meta property="og:updated_time" content="2019-03-29T10:49:23.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/state.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/phases16.3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/phases.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/flux.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/error_boundary.png">
+<meta property="og:updated_time" content="2019-03-29T10:57:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试集锦">
 <meta name="twitter:description" content="这是一份关于面试的集锦，会收集广泛的面试点或者热点资讯，及时掌握前端的动态和储备自己的面试库，才可以在面试过程里游刃有余，持续积累。">
@@ -1816,7 +1816,7 @@
 </li>
 <li><h3 id="React-的状态是什么"><a href="#React-的状态是什么" class="headerlink" title="React 的状态是什么?"></a>React 的状态是什么?</h3><p> 组件的状态是一个对象，它包含某些信息，这些信息可能在组件的生命周期中发生更改。我们应该尽量使状态尽可能简单，并尽量减少有状态组件的数量。让我们创建一个包含消息状态的 User 组件：</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      message: <span class="string">'Welcome to React world'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;&#123;<span class="keyword">this</span>.state.message&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <img src="/blog/2018/05/24/前端面试集锦/state.jpg" alt="state"></p>
+<p> <img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/state.jpg" alt="state"></p>
 <p> 状态（State）与属性（Props）类似，但它是私有的，完全由组件控制。也就是说，除了它所属的组件外，任何组件都无法访问它。</p>
 <p> <strong><a href="#目录">⬆ 返回顶部</a></strong></p>
 </li>
@@ -1970,11 +1970,11 @@
 </li>
 <li><h3 id="Virtual-DOM-如何工作"><a href="#Virtual-DOM-如何工作" class="headerlink" title="Virtual DOM 如何工作?"></a>Virtual DOM 如何工作?</h3><p><em>Virtual DOM</em> 分为三个简单的步骤。</p>
 <ol>
-<li><p>每当任何底层数据发生更改时，整个 UI 都将以 Virtual DOM 的形式重新渲染。<br> <img src="/blog/2018/05/24/前端面试集锦/vdom1.png" alt="vdom"></p>
+<li><p>每当任何底层数据发生更改时，整个 UI 都将以 Virtual DOM 的形式重新渲染。<br> <img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom1.png" alt="vdom"></p>
 </li>
-<li><p>然后计算先前 Virtual DOM 对象和新的 Virtual DOM 对象之间的差异。<br> <img src="/blog/2018/05/24/前端面试集锦/vdom2.png" alt="vdom2"></p>
+<li><p>然后计算先前 Virtual DOM 对象和新的 Virtual DOM 对象之间的差异。<br> <img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom2.png" alt="vdom2"></p>
 </li>
-<li><p>一旦计算完成，真实的 DOM 将只更新实际更改的内容。<br> <img src="/blog/2018/05/24/前端面试集锦/vdom3.png" alt="vdom3"></p>
+<li><p>一旦计算完成，真实的 DOM 将只更新实际更改的内容。<br> <img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/vdom3.png" alt="vdom3"></p>
 </li>
 </ol>
 <p><strong><a href="#目录">⬆ 返回顶部</a></strong></p>
@@ -2023,9 +2023,9 @@
 <li><p><strong>Commit</strong> React 操作 DOM 并分别执行最后的生命周期： <code>componentDidMount()</code> 在 DOM 渲染完成后调用, <code>componentDidUpdate()</code> 在组件更新时调用,  <code>componentWillUnmount()</code> 在组件卸载时调用。<br>React 16.3+ 阶段 (也可以看<a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">交互式版本</a>)</p>
 </li>
 </ol>
-<p><img src="/blog/2018/05/24/前端面试集锦/phases16.3.jpg" alt="phases 16.3+"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/phases16.3.jpg" alt="phases 16.3+"></p>
 <p>React 16.3 之前</p>
-<p><img src="/blog/2018/05/24/前端面试集锦/phases.png" alt="phases 16.2"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/phases.png" alt="phases 16.2"></p>
 <p><strong><a href="#目录">⬆ 返回顶部</a></strong></p>
 </li>
 </ol>
@@ -2826,7 +2826,7 @@
 <h2 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React Redux"></a>React Redux</h2><ol>
 <li><h3 id="什么是-Flux"><a href="#什么是-Flux" class="headerlink" title="什么是 Flux?"></a>什么是 Flux?</h3><p><em>Flux</em> 是<em>应用程序设计范例</em>，用于替代更传统的 MVC 模式。它不是一个框架或库，而是一种新的体系结构，它补充了 React 和单向数据流的概念。在使用 React 时，Facebook 会在内部使用此模式。</p>
 <p>在 dispatcher，stores 和视图组件具有如下不同的输入和输出：</p>
-<p><img src="/blog/2018/05/24/前端面试集锦/flux.png" alt="flux"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/flux.png" alt="flux"></p>
 <p><strong><a href="#目录">⬆ 返回顶部</a></strong></p>
 </li>
 <li><h3 id="什么是-Redux"><a href="#什么是-Redux" class="headerlink" title="什么是 Redux?"></a>什么是 Redux?</h3><p><em>Redux</em> 是基于 <em>Flux设计模式</em> 的 JavaScript 应用程序的可预测状态容器。Redux 可以与 React 一起使用，也可以与任何其他视图库一起使用。它很小（约2kB）并且没有依赖性。</p>
@@ -3326,7 +3326,7 @@
 <p><strong><a href="#目录">⬆ 返回顶部</a></strong></p>
 </li>
 <li><h3 id="从错误边界跟踪组件堆栈有什么好处"><a href="#从错误边界跟踪组件堆栈有什么好处" class="headerlink" title="从错误边界跟踪组件堆栈有什么好处?"></a>从错误边界跟踪组件堆栈有什么好处?</h3><p>除了错误消息和 JavaScript 堆栈，React 16 将使用错误边界的概念显示带有文件名和行号的组件堆栈。例如，BuggyCounter 组件显示组件堆栈信息：</p>
-<p><img src="/blog/2018/05/24/前端面试集锦/error_boundary.png" alt="stacktrace"></p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/interview/error_boundary.png" alt="stacktrace"></p>
 <p><strong><a href="#目录">⬆ 返回顶部</a></strong></p>
 </li>
 <li><h3 id="在定义类组件时，什么是必须的方法"><a href="#在定义类组件时，什么是必须的方法" class="headerlink" title="在定义类组件时，什么是必须的方法?"></a>在定义类组件时，什么是必须的方法?</h3><p>在类组件中 render() 方法是唯一需要的方法。也就是说，对于类组件，除了 render() 方法之外的所有方法都是可选的。</p>
