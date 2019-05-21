@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Javascript,编程,ES6,React,dva," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架">
+<meta name="keywords" content="Javascript,编程,ES6,React,dva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dva.js学习梳理集">
+<meta property="og:url" content="https://duanruilong.github.io/2019/05/22/dva-js学习梳理集/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/dva.jpg">
+<meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/NAzeMyUoPMqxfRv.png">
+<meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/fiKKgDGuEJfSvxv.png">
+<meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/mHVRpjNYhVuFdsS.png">
+<meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/SWBwWTbZKqxwEPq.png">
+<meta property="og:updated_time" content="2019-05-21T17:15:25.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dva.js学习梳理集">
+<meta name="twitter:description" content="dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/dva.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/2019/05/22/dva-js学习梳理集/"/>
+
+
+
+
+
+  <title>dva.js学习梳理集 | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/2019/05/22/dva-js学习梳理集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">dva.js学习梳理集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-22T01:01:15+08:00">
+                2019-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/dva/" itemprop="url" rel="index">
+                    <span itemprop="name">dva</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,189
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/dva.jpg" alt="dva"></p>
+<a id="more"></a>
+<h1 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h1><ul>
+<li>es6 特性那么多，我需要全部学会吗?</li>
+<li>react component 有 3 种写法，我需要全部学会吗?</li>
+<li>reducer 的增删改应该怎么写?</li>
+<li>怎么做全局/局部的错误处理?</li>
+<li>怎么发异步请求?</li>
+<li>怎么处理复杂的异步业务逻辑?</li>
+<li>怎么配置路由?</li>
+<li>…</li>
+</ul>
+<p>这篇文档梳理了基于 <a href="https://github.com/dvajs/dva-cli" target="_blank" rel="noopener">dva-cli</a> 使用 <a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva</a> 的最小知识集，让你可以用最少的时间掌握创建类似 <a href="https://github.com/dvajs/dva-hackernews" target="_blank" rel="noopener">dva-hackernews</a> 的全部知识，并且不需要掌握额外的冗余知识。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#javascript-语言">JavaScript 语言</a><ul>
+<li><a href="#变量声明">变量声明</a><ul>
+<li><a href="#const-和-let">const 和 let</a></li>
+<li><a href="#模板字符串">模板字符串</a></li>
+<li><a href="#默认参数">默认参数</a></li>
+</ul>
+</li>
+<li><a href="#箭头函数">箭头函数</a></li>
+<li><a href="#模块的-import-和-export">模块的 Import 和 Export</a></li>
+<li><a href="#es6-对象和数组">ES6 对象和数组</a><ul>
+<li><a href="#析构赋值">析构赋值</a></li>
+<li><a href="#对象字面量改进">对象字面量改进</a></li>
+<li><a href="#spread-operator">Spread Operator</a></li>
+</ul>
+</li>
+<li><a href="#promises">Promises</a></li>
+<li><a href="#generators">Generators</a></li>
+</ul>
+</li>
+<li><a href="#react-component">React Component</a><ul>
+<li><a href="#stateless-functional-components">Stateless Functional Components</a></li>
+<li><a href="#jsx">JSX</a><ul>
+<li><a href="#component-嵌套">Component 嵌套</a></li>
+<li><a href="#classname">className</a></li>
+<li><a href="#javascript-表达式">JavaScript 表达式</a></li>
+<li><a href="#mapping-arrays-to-jsx">Mapping Arrays to JSX</a></li>
+<li><a href="#注释">注释</a></li>
+<li><a href="#spread-attributes">Spread Attributes</a></li>
+</ul>
+</li>
+<li><a href="#props">Props</a><ul>
+<li><a href="#proptypes">propTypes</a></li>
+<li><a href="#往下传数据">往下传数据</a></li>
+<li><a href="#往上传数据">往上传数据</a></li>
+</ul>
+</li>
+<li><a href="#css-modules">CSS Modules</a><ul>
+<li><a href="#理解-css-modules">理解 CSS Modules</a></li>
+<li><a href="#定义全局-css">定义全局 CSS</a></li>
+<li><a href="#classnames-package">classnames Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#reducer">Reducer</a><ul>
+<li><a href="#增删改">增删改</a></li>
+<li><a href="#嵌套数据的增删改">嵌套数据的增删改</a></li>
+</ul>
+</li>
+<li><a href="#effect">Effect</a><ul>
+<li><a href="#effects">Effects</a><ul>
+<li><a href="#put">put</a></li>
+<li><a href="#call">call</a></li>
+<li><a href="#select">select</a></li>
+</ul>
+</li>
+<li><a href="#错误处理">错误处理</a><ul>
+<li><a href="#全局错误处理">全局错误处理</a></li>
+<li><a href="#本地错误处理">本地错误处理</a></li>
+</ul>
+</li>
+<li><a href="#异步请求">异步请求</a><ul>
+<li><a href="#get-和-post">GET 和 POST</a></li>
+<li><a href="#统一错误处理">统一错误处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#subscription">Subscription</a><ul>
+<li><a href="#异步数据初始化">异步数据初始化</a><ul>
+<li><a href="#path-to-regexp-package">path-to-regexp Package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#router">Router</a><ul>
+<li><a href="#config-with-jsx-element-routerjs">Config with JSX Element (router.js)</a></li>
+<li><a href="#route-components">Route Components</a><ul>
+<li><a href="#通过-connect-绑定数据">通过 connect 绑定数据</a></li>
+<li><a href="#injected-props-eg-location">Injected Props (e.g. location)</a></li>
+</ul>
+</li>
+<li><a href="#基于-action-进行页面跳转">基于 action 进行页面跳转</a></li>
+</ul>
+</li>
+<li><a href="#dva-配置">dva 配置</a><ul>
+<li><a href="#redux-middleware">Redux Middleware</a></li>
+<li><a href="#history">history</a><ul>
+<li><a href="#切换-history-为-browserhistory">切换 history 为 browserHistory</a></li>
+<li><a href="#去除-hashhistory-下的-_k-查询参数">去除 hashHistory 下的 _k 查询参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#工具">工具</a><ul>
+<li><a href="#通过-dva-cli-创建项目">通过 dva-cli 创建项目</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="JavaScript-语言"><a href="#JavaScript-语言" class="headerlink" title="JavaScript 语言"></a>JavaScript 语言</h2><h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><h4 id="const-和-let"><a href="#const-和-let" class="headerlink" title="const 和 let"></a>const 和 let</h4><p>不要用 <code>var</code>，而是用 <code>const</code> 和 <code>let</code>，分别表示常量和变量。不同于 <code>var</code> 的函数作用域，<code>const</code> 和 <code>let</code> 都是块级作用域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> DELAY = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">count = count + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>模板字符串提供了另一种做字符串组合的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = <span class="string">'world'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`hello <span class="subst">$&#123;user&#125;</span>`</span>);  <span class="comment">// hello world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行</span></span><br><span class="line"><span class="keyword">const</span> content = <span class="string">`</span></span><br><span class="line"><span class="string">  Hello <span class="subst">$&#123;firstName&#125;</span>,</span></span><br><span class="line"><span class="string">  Thanks for ordering <span class="subst">$&#123;qty&#125;</span> tickets to <span class="subst">$&#123;event&#125;</span>.</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logActivity</span>(<span class="params">activity = <span class="string">'skiing'</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(activity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logActivity();  <span class="comment">// skiing</span></span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>函数的快捷写法，不需要通过 <code>function</code> 关键字创建函数，并且还可以省略 <code>return</code> 关键字。</p>
+<p>同时，箭头函数还会继承当前上下文的 <code>this</code> 关键字。</p>
+<p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>);  <span class="comment">// [2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map((<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">&#125;).bind(<span class="keyword">this</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="模块的-Import-和-Export"><a href="#模块的-Import-和-Export" class="headerlink" title="模块的 Import 和 Export"></a>模块的 Import 和 Export</h3><p><code>import</code> 用于引入模块，<code>export</code> 用于导出模块。</p>
+<p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入全部</span></span><br><span class="line"><span class="keyword">import</span> dva <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入部分</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Link, Route &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入全部并作为 github 对象</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> github <span class="keyword">from</span> <span class="string">'./services/github'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出默认</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br><span class="line"><span class="comment">// 部分导出，需 import &#123; App &#125; from './file'; 引入</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="title">extend</span> <span class="title">Component</span> </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="ES6-对象和数组"><a href="#ES6-对象和数组" class="headerlink" title="ES6 对象和数组"></a>ES6 对象和数组</h3><h4 id="析构赋值"><a href="#析构赋值" class="headerlink" title="析构赋值"></a>析构赋值</h4><p>析构赋值让我们从 Object 或 Array 里取部分数据存为变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">'guanguan'</span>, <span class="attr">age</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> &#123; name, age &#125; = user;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;name&#125;</span> : <span class="subst">$&#123;age&#125;</span>`</span>);  <span class="comment">// guanguan : 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">const</span> [foo, bar] = arr;</span><br><span class="line"><span class="built_in">console</span>.log(foo);  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>我们也可以析构传入的函数参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">state, &#123; payload &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> state.concat(payload);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>析构时还可以配 alias，让代码更具有语义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">state, &#123; payload: todo &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> state.concat(todo);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="对象字面量改进"><a href="#对象字面量改进" class="headerlink" title="对象字面量改进"></a>对象字面量改进</h4><p>这是析构的反向操作，用于重新组织一个 Object 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'duoduo'</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123; name, age &#125;;  <span class="comment">// &#123; name: 'duoduo', age: 8 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>定义对象方法时，还可以省去 <code>function</code> 关键字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    add() &#123;&#125;  <span class="comment">// 等同于 add: function() &#123;&#125;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *addRemote() &#123;&#125;  <span class="comment">// 等同于 addRemote: function*() &#123;&#125;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="Spread Operator"></a>Spread Operator</h4><p>Spread Operator 即 3 个点 <code>...</code>，有几种不同的使用方法。</p>
+<p>可用于组装数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = [<span class="string">'Learn dva'</span>];</span><br><span class="line">[...todos, <span class="string">'Learn antd'</span>];  <span class="comment">// ['Learn dva', 'Learn antd']</span></span><br></pre></td></tr></table></figure>
+<p>也可用于获取数组的部分项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">const</span> [first, ...rest] = arr;</span><br><span class="line">rest;  <span class="comment">// ['b', 'c']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// With ignore</span></span><br><span class="line"><span class="keyword">const</span> [first, , ...rest] = arr;</span><br><span class="line">rest;  <span class="comment">// ['c']</span></span><br></pre></td></tr></table></figure>
+<p>还可收集函数参数为数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">directions</span>(<span class="params">first, ...rest</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(rest);</span><br><span class="line">&#125;</span><br><span class="line">directions(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>);  <span class="comment">// ['b', 'c'];</span></span><br></pre></td></tr></table></figure>
+<p>代替 apply。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y, z</span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> args = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两句效果相同</span></span><br><span class="line">foo.apply(<span class="literal">null</span>, args);</span><br><span class="line">foo(...args);</span><br></pre></td></tr></table></figure>
+<p>对于 Object 而言，用于组合成新的 Object 。(ES2017 stage-2 proposal)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> bar = &#123;</span><br><span class="line">  b: <span class="number">3</span>,</span><br><span class="line">  c: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> d = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ret = &#123; ...foo, ...bar, d &#125;;  <span class="comment">// &#123; a:1, b:3, c:2, d:4 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>此外，在 JSX 中 Spread Operator 还可用于扩展 props，详见 <a href="#spread-attributes">Spread Attributes</a>。</p>
+<h3 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h3><p>Promise 用于更优雅地处理异步请求。比如发起异步请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/api/todos'</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">data</span> =&gt;</span> (&#123; data &#125;))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> (&#123; err &#125;));</span><br></pre></td></tr></table></figure>
+<p>定义 Promise 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> delay = <span class="function">(<span class="params">timeout</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, timeout);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">delay(<span class="number">1000</span>).then(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'executed'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h3><p>dva 的 effects 是通过 generator 组织的。Generator 返回的是迭代器，通过 <code>yield</code> 关键字实现暂停功能。</p>
+<p>这是一个典型的 dva effect，通过 <code>yield</code> 把异步逻辑通过同步的方式组织起来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'todos'</span>,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *addRemote(&#123; <span class="attr">payload</span>: todo &#125;, &#123; put, call &#125;) &#123;</span><br><span class="line">      <span class="keyword">yield</span> call(addTodo, todo);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'add'</span>, <span class="attr">payload</span>: todo &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="React-Component"><a href="#React-Component" class="headerlink" title="React Component"></a>React Component</h2><h3 id="Stateless-Functional-Components"><a href="#Stateless-Functional-Components" class="headerlink" title="Stateless Functional Components"></a>Stateless Functional Components</h3><p>React Component 有 3 种定义方式，分别是 <code>React.createClass</code>, <code>class</code> 和 <code>Stateless Functional Component</code>。推荐尽量使用最后一种，保持简洁和无状态。这是函数，不是 Object，没有 <code>this</code> 作用域，是 pure function。</p>
+<p>比如定义 App Component 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    props.dispatch(&#123; <span class="attr">type</span>: <span class="string">'app/create'</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &lt;div onClick=&#123;handleClick&#125;&gt;$&#123;props.name&#125;&lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  handleClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.props.dispatch(&#123; <span class="attr">type</span>: <span class="string">'app/create'</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;div onClick=&#123;this.handleClick.bind(this)&#125;&gt;$&#123;this.props.name&#125;&lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><h4 id="Component-嵌套"><a href="#Component-嵌套" class="headerlink" title="Component 嵌套"></a>Component 嵌套</h4><p>类似 HTML，JSX 里可以给组件添加子组件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">App</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Header</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">MainContent</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Footer</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">App</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="className"><a href="#className" class="headerlink" title="className"></a>className</h4><p><code>class</code> 是保留词，所以添加样式时，需用 <code>className</code> 代替 <code>class</code> 。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">"fancy"</span>&gt;</span>Hello dva<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="JavaScript-表达式"><a href="#JavaScript-表达式" class="headerlink" title="JavaScript 表达式"></a>JavaScript 表达式</h4><p>JavaScript 表达式需要用 <code>{}</code> 括起来，会执行并返回结果。</p>
+<p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&#123; <span class="keyword">this</span>.props.title &#125;&lt;<span class="regexp">/h1&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Mapping-Arrays-to-JSX"><a href="#Mapping-Arrays-to-JSX" class="headerlink" title="Mapping Arrays to JSX"></a>Mapping Arrays to JSX</h4><p>可以把数组映射为 JSX 元素列表。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &#123; <span class="keyword">this</span>.props.todos.map(<span class="function">(<span class="params">todo, i</span>) =&gt;</span> &lt;li key=&#123;i&#125;&gt;&#123;todo&#125;&lt;<span class="regexp">/li&gt;) &#125;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>尽量别用 <code>//</code> 做单行注释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;</span><br><span class="line">  &#123;<span class="comment">/* multiline comment */</span>&#125;</span><br><span class="line">  &#123;<span class="comment">/*</span></span><br><span class="line"><span class="comment">    multi</span></span><br><span class="line"><span class="comment">    line</span></span><br><span class="line"><span class="comment">    comment</span></span><br><span class="line"><span class="comment">    */</span>&#125;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// single line</span></span><br><span class="line">  &#125;</span><br><span class="line">  Hello</span><br><span class="line">&lt;<span class="regexp">/h1&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Spread-Attributes"><a href="#Spread-Attributes" class="headerlink" title="Spread Attributes"></a>Spread Attributes</h4><p>这是 JSX 从 ECMAScript6 借鉴过来的很有用的特性，用于扩充组件 props 。</p>
+<p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> attrs = &#123;</span><br><span class="line">  href: <span class="string">'http://example.org'</span>,</span><br><span class="line">  target: <span class="string">'_blank'</span>,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;a &#123;...attrs&#125;&gt;Hello&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> attrs = &#123;</span><br><span class="line">  href: <span class="string">'http://example.org'</span>,</span><br><span class="line">  target: <span class="string">'_blank'</span>,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;a href=&#123;attrs.href&#125; target=&#123;attrs.target&#125;&gt;Hello&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h3><p>数据处理在 React 中是非常重要的概念之一，分别可以通过 props, state 和 context 来处理数据。而在 dva 应用里，你只需关心 props 。</p>
+<h4 id="propTypes"><a href="#propTypes" class="headerlink" title="propTypes"></a>propTypes</h4><p>JavaScript 是弱类型语言，所以请尽量声明 propTypes 对 props 进行校验，以减少不必要的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">App.propTypes = &#123;</span><br><span class="line">  name: React.PropTypes.string.isRequired,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>内置的 prop type 有：</p>
+<ul>
+<li>PropTypes.array</li>
+<li>PropTypes.bool</li>
+<li>PropTypes.func</li>
+<li>PropTypes.number</li>
+<li>PropTypes.object</li>
+<li>PropTypes.string</li>
+</ul>
+<h4 id="往下传数据"><a href="#往下传数据" class="headerlink" title="往下传数据"></a>往下传数据</h4><p><img src="https://zos.alipayobjects.com/rmsportal/NAzeMyUoPMqxfRv.png" alt=""></p>
+<h4 id="往上传数据"><a href="#往上传数据" class="headerlink" title="往上传数据"></a>往上传数据</h4><p><img src="https://zos.alipayobjects.com/rmsportal/fiKKgDGuEJfSvxv.png" alt=""></p>
+<h3 id="CSS-Modules"><a href="#CSS-Modules" class="headerlink" title="CSS Modules"></a>CSS Modules</h3><p><img src="https://zos.alipayobjects.com/rmsportal/mHVRpjNYhVuFdsS.png" width="150" style="background:#fff;"></p>
+<h4 id="理解-CSS-Modules"><a href="#理解-CSS-Modules" class="headerlink" title="理解 CSS Modules"></a>理解 CSS Modules</h4><p>一张图理解 CSS Modules 的工作原理：</p>
+<p><img src="https://zos.alipayobjects.com/rmsportal/SWBwWTbZKqxwEPq.png" alt=""></p>
+<p><code>button</code> class 在构建之后会被重命名为 <code>ProductList_button_1FU0u</code> 。<code>button</code> 是 local name，而 <code>ProductList_button_1FU0u</code> 是 global name 。<strong>你可以用简短的描述性名字，而不需要关心命名冲突问题。</strong></p>
+<p>然后你要做的全部事情就是在 css/less 文件里写 <code>.button {...}</code>，并在组件里通过 <code>styles.button</code> 来引用他。</p>
+<h4 id="定义全局-CSS"><a href="#定义全局-CSS" class="headerlink" title="定义全局 CSS"></a>定义全局 CSS</h4><p>CSS Modules 默认是局部作用域的，想要声明一个全局规则，可用 <code>:global</code> 语法。</p>
+<p>比如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:global(.title)</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在引用的时候：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;App className=&#123;styles.title&#125; /&gt; <span class="comment">// red</span></span><br><span class="line">&lt;App className=<span class="string">"title"</span> /&gt;        <span class="comment">// green</span></span><br></pre></td></tr></table></figure>
+<h4 id="classnames-Package"><a href="#classnames-Package" class="headerlink" title="classnames Package"></a><code>classnames</code> Package</h4><p>在一些复杂的场景中，一个元素可能对应多个 className，而每个 className 又基于一些条件来决定是否出现。这时，<a href="https://github.com/JedWatson/classnames" target="_blank" rel="noopener">classnames</a> 这个库就非常有用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">'classnames'</span>;</span><br><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cls = classnames(&#123;</span><br><span class="line">    btn: <span class="literal">true</span>,</span><br><span class="line">    btnLarge: props.type === <span class="string">'submit'</span>,</span><br><span class="line">    btnSmall: props.type === <span class="string">'edit'</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;</span> <span class="attr">cls</span> &#125; /&gt;</span>;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这样，传入不同的 type 给 App 组件，就会返回不同的 className 组合：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;App type=<span class="string">"submit"</span> /&gt; <span class="comment">// btn btnLarge</span></span><br><span class="line">&lt;App type=<span class="string">"edit"</span> /&gt;   <span class="comment">// btn btnSmall</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p>reducer 是一个函数，接受 state 和 action，返回老的或新的 state 。即：<code>(state, action) =&gt; state</code></p>
+<h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><p>以 todos 为例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'todos'</span>,</span><br><span class="line">  state: [],</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    add(state, &#123; <span class="attr">payload</span>: todo &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> state.concat(todo);</span><br><span class="line">    &#125;,</span><br><span class="line">    remove(state, &#123; <span class="attr">payload</span>: id &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> state.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id !== id);</span><br><span class="line">    &#125;,</span><br><span class="line">    update(state, &#123; <span class="attr">payload</span>: updatedTodo &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> state.map(<span class="function"><span class="params">todo</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (todo.id === updatedTodo.id) &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123; ...todo, ...updatedTodo &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> todo;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套数据的增删改"><a href="#嵌套数据的增删改" class="headerlink" title="嵌套数据的增删改"></a>嵌套数据的增删改</h3><p>建议最多一层嵌套，以保持 state 的扁平化，深层嵌套会让 reducer 很难写和难以维护。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'app'</span>,</span><br><span class="line">  state: &#123;</span><br><span class="line">    todos: [],</span><br><span class="line">    loading: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    add(state, &#123; <span class="attr">payload</span>: todo &#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> todos = state.todos.concat(todo);</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state, todos &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>下面是深层嵌套的例子，应尽量避免。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'app'</span>,</span><br><span class="line">  state: &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">      b: &#123;</span><br><span class="line">        todos: [],</span><br><span class="line">        loading: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    add(state, &#123; <span class="attr">payload</span>: todo &#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> todos = state.a.b.todos.concat(todo);</span><br><span class="line">      <span class="keyword">const</span> b = &#123; ...state.a.b, todos &#125;;</span><br><span class="line">      <span class="keyword">const</span> a = &#123; ...state.a, b &#125;;</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state, a &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h2><p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'todos'</span>,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *addRemote(&#123; <span class="attr">payload</span>: todo &#125;, &#123; put, call &#125;) &#123;</span><br><span class="line">      <span class="keyword">yield</span> call(addTodo, todo);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'add'</span>, <span class="attr">payload</span>: todo &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Effects"><a href="#Effects" class="headerlink" title="Effects"></a>Effects</h3><h4 id="put"><a href="#put" class="headerlink" title="put"></a>put</h4><p>用于触发 action 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'todos/add'</span>, <span class="attr">payload</span>: <span class="string">'Learn Dva'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><p>用于调用异步逻辑，支持 promise 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">yield</span> call(fetch, <span class="string">'/todos'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>用于从 state 里获取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.todos);</span><br></pre></td></tr></table></figure>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><h4 id="全局错误处理"><a href="#全局错误处理" class="headerlink" title="全局错误处理"></a>全局错误处理</h4><p>dva 里，effects 和 subscriptions 的抛错全部会走 <code>onError</code> hook，所以可以在 <code>onError</code> 里统一处理错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = dva(&#123;</span><br><span class="line">  onError(e, dispatch) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.message);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>然后 effects 里的抛错和 reject 的 promise 就都会被捕获到了。</p>
+<h4 id="本地错误处理"><a href="#本地错误处理" class="headerlink" title="本地错误处理"></a>本地错误处理</h4><p>如果需要对某些 effects 的错误进行特殊处理，需要在 effect 内部加 <code>try catch</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *addRemote() &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// Your Code Here</span></span><br><span class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e.message);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="异步请求"><a href="#异步请求" class="headerlink" title="异步请求"></a>异步请求</h3><p>异步请求基于 whatwg-fetch，API 详见：<a href="https://github.com/github/fetch" target="_blank" rel="noopener">https://github.com/github/fetch</a></p>
+<h4 id="GET-和-POST"><a href="#GET-和-POST" class="headerlink" title="GET 和 POST"></a>GET 和 POST</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'../util/request'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GET</span></span><br><span class="line">request(<span class="string">'/api/todos'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// POST</span></span><br><span class="line">request(<span class="string">'/api/todos'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  body: <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="统一错误处理"><a href="#统一错误处理" class="headerlink" title="统一错误处理"></a>统一错误处理</h4><p>假如约定后台返回以下格式时，做统一的错误处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  status: <span class="string">'error'</span>,</span><br><span class="line">  message: <span class="string">''</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编辑 <code>utils/request.js</code>，加入以下中间件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseErrorMessage</span>(<span class="params">&#123; data &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; status, message &#125; = data;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="string">'error'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123; data &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，这类错误就会走到 <code>onError</code> hook 里。</p>
+<h2 id="Subscription"><a href="#Subscription" class="headerlink" title="Subscription"></a>Subscription</h2><p><code>subscriptions</code> 是订阅，用于订阅一个数据源，然后根据需要 dispatch 相应的 action。数据源可以是当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。格式为 <code>({ dispatch, history }) =&gt; unsubscribe</code> 。</p>
+<h3 id="异步数据初始化"><a href="#异步数据初始化" class="headerlink" title="异步数据初始化"></a>异步数据初始化</h3><p>比如：当用户进入 <code>/users</code> 页面时，触发 action <code>users/fetch</code> 加载用户数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.model(&#123;</span><br><span class="line">  subscriptions: &#123;</span><br><span class="line">    setup(&#123; dispatch, history &#125;) &#123;</span><br><span class="line">      history.listen(<span class="function">(<span class="params">&#123; pathname &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (pathname === <span class="string">'/users'</span>) &#123;</span><br><span class="line">          dispatch(&#123;</span><br><span class="line">            type: <span class="string">'users/fetch'</span>,</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="path-to-regexp-Package"><a href="#path-to-regexp-Package" class="headerlink" title="path-to-regexp Package"></a><code>path-to-regexp</code> Package</h4><p>如果 url 规则比较复杂，比如 <code>/users/:userId/search</code>，那么匹配和 userId 的获取都会比较麻烦。这是推荐用 <a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="noopener">path-to-regexp</a> 简化这部分逻辑。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pathToRegexp <span class="keyword">from</span> <span class="string">'path-to-regexp'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in subscription</span></span><br><span class="line"><span class="keyword">const</span> match = pathToRegexp(<span class="string">'/users/:userId/search'</span>).exec(pathname);</span><br><span class="line"><span class="keyword">if</span> (match) &#123;</span><br><span class="line">  <span class="keyword">const</span> userId = match[<span class="number">1</span>];</span><br><span class="line">  <span class="comment">// dispatch action with userId</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><h3 id="Config-with-JSX-Element-router-js"><a href="#Config-with-JSX-Element-router-js" class="headerlink" title="Config with JSX Element (router.js)"></a>Config with JSX Element (router.js)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"accounts"</span> component=&#123;Accounts&#125;/&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"statements"</span> component=&#123;Statements&#125;/&gt;</span><br><span class="line">&lt;<span class="regexp">/Route&gt;</span></span><br></pre></td></tr></table></figure>
+<p>详见：<a href="https://github.com/reactjs/react-router/blob/master/docs/guides/RouteConfiguration.md" target="_blank" rel="noopener">react-router</a></p>
+<h3 id="Route-Components"><a href="#Route-Components" class="headerlink" title="Route Components"></a>Route Components</h3><p>Route Components 是指 <code>./src/routes/</code> 目录下的文件，他们是 <code>./src/router.js</code> 里匹配的 Component。</p>
+<h4 id="通过-connect-绑定数据"><a href="#通过-connect-绑定数据" class="headerlink" title="通过 connect 绑定数据"></a>通过 connect 绑定数据</h4><p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state, ownProps</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    users: state.users,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps)(App);</span><br></pre></td></tr></table></figure>
+<p>然后在 App 里就有了 <code>dispatch</code> 和 <code>users</code> 两个属性。</p>
+<h4 id="Injected-Props-e-g-location"><a href="#Injected-Props-e-g-location" class="headerlink" title="Injected Props (e.g. location)"></a>Injected Props (e.g. location)</h4><p>Route Component 会有额外的 props 用以获取路由信息。</p>
+<ul>
+<li>location</li>
+<li>params</li>
+<li>children</li>
+</ul>
+<p>更多详见：<a href="https://github.com/reactjs/react-router/blob/master/docs/API.md#injected-props" target="_blank" rel="noopener">react-router</a></p>
+<h3 id="基于-action-进行页面跳转"><a href="#基于-action-进行页面跳转" class="headerlink" title="基于 action 进行页面跳转"></a>基于 action 进行页面跳转</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; routerRedux &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Inside Effects</span></span><br><span class="line"><span class="keyword">yield</span> put(routerRedux.push(<span class="string">'/logout'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Outside Effects</span></span><br><span class="line">dispatch(routerRedux.push(<span class="string">'/logout'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// With query</span></span><br><span class="line">routerRedux.push(&#123;</span><br><span class="line">  pathname: <span class="string">'/logout'</span>,</span><br><span class="line">  query: &#123;</span><br><span class="line">    page: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>除 <code>push(location)</code> 外还有更多方法，详见 <a href="https://github.com/reactjs/react-router-redux#pushlocation-replacelocation-gonumber-goback-goforward" target="_blank" rel="noopener">react-router-redux</a></p>
+<h2 id="dva-配置"><a href="#dva-配置" class="headerlink" title="dva 配置"></a>dva 配置</h2><h3 id="Redux-Middleware"><a href="#Redux-Middleware" class="headerlink" title="Redux Middleware"></a>Redux Middleware</h3><p>比如要添加 redux-logger 中间件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> createLogger <span class="keyword">from</span> <span class="string">'redux-logger'</span>;</span><br><span class="line"><span class="keyword">const</span> app = dva(&#123;</span><br><span class="line">  onAction: createLogger(),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注：onAction 支持数组，可同时传入多个中间件。</p>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><h4 id="切换-history-为-browserHistory"><a href="#切换-history-为-browserHistory" class="headerlink" title="切换 history 为 browserHistory"></a>切换 history 为 browserHistory</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; browserHistory &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line"><span class="keyword">const</span> app = dva(&#123;</span><br><span class="line">  history: browserHistory,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="去除-hashHistory-下的-k-查询参数"><a href="#去除-hashHistory-下的-k-查询参数" class="headerlink" title="去除 hashHistory 下的 _k 查询参数"></a>去除 hashHistory 下的 _k 查询参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRouterHistory &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createHashHistory &#125; <span class="keyword">from</span> <span class="string">'history'</span>;</span><br><span class="line"><span class="keyword">const</span> app = dva(&#123;</span><br><span class="line">  history: useRouterHistory(createHashHistory)(&#123; <span class="attr">queryKey</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="通过-dva-cli-创建项目"><a href="#通过-dva-cli-创建项目" class="headerlink" title="通过 dva-cli 创建项目"></a>通过 dva-cli 创建项目</h3><p>先安装 dva-cli 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install dva-cli -g</span><br></pre></td></tr></table></figure>
+<p>然后创建项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dva new myapp</span><br></pre></td></tr></table></figure>
+<p>最后，进入目录并启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> myapp</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
+          
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/ES6/" rel="tag"><i class="fa fa-tag"></i>ES6</a>
+          
+            <a href="/blog/tags/React/" rel="tag"><i class="fa fa-tag"></i>React</a>
+          
+            <a href="/blog/tags/dva/" rel="tag"><i class="fa fa-tag"></i>dva</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/03/29/使用prop-types进行属性确认/" rel="next" title="使用prop-types进行属性确认">
+                <i class="fa fa-chevron-left"></i> 使用prop-types进行属性确认
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.jpg"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#疑惑"><span class="nav-number">1.</span> <span class="nav-text">疑惑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-语言"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript 语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明"><span class="nav-number">1.2.1.</span> <span class="nav-text">变量声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#const-和-let"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">const 和 let</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认参数"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">默认参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的-Import-和-Export"><span class="nav-number">1.2.3.</span> <span class="nav-text">模块的 Import 和 Export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-对象和数组"><span class="nav-number">1.2.4.</span> <span class="nav-text">ES6 对象和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#析构赋值"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">析构赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象字面量改进"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">对象字面量改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Operator"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">Spread Operator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promises"><span class="nav-number">1.2.5.</span> <span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generators"><span class="nav-number">1.2.6.</span> <span class="nav-text">Generators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Component"><span class="nav-number">1.3.</span> <span class="nav-text">React Component</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stateless-Functional-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Stateless Functional Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">1.3.2.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Component-嵌套"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Component 嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#className"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript-表达式"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">JavaScript 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapping-Arrays-to-JSX"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">Mapping Arrays to JSX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Attributes"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">Spread Attributes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Props"><span class="nav-number">1.3.3.</span> <span class="nav-text">Props</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#propTypes"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">propTypes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往下传数据"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">往下传数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往上传数据"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">往上传数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Modules"><span class="nav-number">1.3.4.</span> <span class="nav-text">CSS Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解-CSS-Modules"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">理解 CSS Modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义全局-CSS"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">定义全局 CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#classnames-Package"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">classnames Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer"><span class="nav-number">1.4.</span> <span class="nav-text">Reducer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改"><span class="nav-number">1.4.1.</span> <span class="nav-text">增删改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套数据的增删改"><span class="nav-number">1.4.2.</span> <span class="nav-text">嵌套数据的增删改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effect"><span class="nav-number">1.5.</span> <span class="nav-text">Effect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Effects"><span class="nav-number">1.5.1.</span> <span class="nav-text">Effects</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#put"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">put</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">1.5.2.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局错误处理"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">全局错误处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地错误处理"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">本地错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请求"><span class="nav-number">1.5.3.</span> <span class="nav-text">异步请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-和-POST"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">GET 和 POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统一错误处理"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">统一错误处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subscription"><span class="nav-number">1.6.</span> <span class="nav-text">Subscription</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步数据初始化"><span class="nav-number">1.6.1.</span> <span class="nav-text">异步数据初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#path-to-regexp-Package"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">path-to-regexp Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">1.7.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-with-JSX-Element-router-js"><span class="nav-number">1.7.1.</span> <span class="nav-text">Config with JSX Element (router.js)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Components"><span class="nav-number">1.7.2.</span> <span class="nav-text">Route Components</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-connect-绑定数据"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">通过 connect 绑定数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Injected-Props-e-g-location"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">Injected Props (e.g. location)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-action-进行页面跳转"><span class="nav-number">1.7.3.</span> <span class="nav-text">基于 action 进行页面跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dva-配置"><span class="nav-number">1.8.</span> <span class="nav-text">dva 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux-Middleware"><span class="nav-number">1.8.1.</span> <span class="nav-text">Redux Middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history"><span class="nav-number">1.8.2.</span> <span class="nav-text">history</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换-history-为-browserHistory"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">切换 history 为 browserHistory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去除-hashHistory-下的-k-查询参数"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">去除 hashHistory 下的 _k 查询参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.9.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-dva-cli-创建项目"><span class="nav-number">1.9.1.</span> <span class="nav-text">通过 dva-cli 创建项目</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2018 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共128.6k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>
