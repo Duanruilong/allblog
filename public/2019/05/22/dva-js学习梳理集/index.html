@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/fiKKgDGuEJfSvxv.png">
 <meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/mHVRpjNYhVuFdsS.png">
 <meta property="og:image" content="https://zos.alipayobjects.com/rmsportal/SWBwWTbZKqxwEPq.png">
-<meta property="og:updated_time" content="2019-05-21T17:15:25.540Z">
+<meta property="og:updated_time" content="2019-05-21T17:21:21.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dva.js学习梳理集">
 <meta name="twitter:description" content="dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架">
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,189
+                  2,971
                 </span>
               
 
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  15
+                  14
                 </span>
               
             </div>
@@ -487,106 +487,6 @@
 <li>…</li>
 </ul>
 <p>这篇文档梳理了基于 <a href="https://github.com/dvajs/dva-cli" target="_blank" rel="noopener">dva-cli</a> 使用 <a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva</a> 的最小知识集，让你可以用最少的时间掌握创建类似 <a href="https://github.com/dvajs/dva-hackernews" target="_blank" rel="noopener">dva-hackernews</a> 的全部知识，并且不需要掌握额外的冗余知识。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#javascript-语言">JavaScript 语言</a><ul>
-<li><a href="#变量声明">变量声明</a><ul>
-<li><a href="#const-和-let">const 和 let</a></li>
-<li><a href="#模板字符串">模板字符串</a></li>
-<li><a href="#默认参数">默认参数</a></li>
-</ul>
-</li>
-<li><a href="#箭头函数">箭头函数</a></li>
-<li><a href="#模块的-import-和-export">模块的 Import 和 Export</a></li>
-<li><a href="#es6-对象和数组">ES6 对象和数组</a><ul>
-<li><a href="#析构赋值">析构赋值</a></li>
-<li><a href="#对象字面量改进">对象字面量改进</a></li>
-<li><a href="#spread-operator">Spread Operator</a></li>
-</ul>
-</li>
-<li><a href="#promises">Promises</a></li>
-<li><a href="#generators">Generators</a></li>
-</ul>
-</li>
-<li><a href="#react-component">React Component</a><ul>
-<li><a href="#stateless-functional-components">Stateless Functional Components</a></li>
-<li><a href="#jsx">JSX</a><ul>
-<li><a href="#component-嵌套">Component 嵌套</a></li>
-<li><a href="#classname">className</a></li>
-<li><a href="#javascript-表达式">JavaScript 表达式</a></li>
-<li><a href="#mapping-arrays-to-jsx">Mapping Arrays to JSX</a></li>
-<li><a href="#注释">注释</a></li>
-<li><a href="#spread-attributes">Spread Attributes</a></li>
-</ul>
-</li>
-<li><a href="#props">Props</a><ul>
-<li><a href="#proptypes">propTypes</a></li>
-<li><a href="#往下传数据">往下传数据</a></li>
-<li><a href="#往上传数据">往上传数据</a></li>
-</ul>
-</li>
-<li><a href="#css-modules">CSS Modules</a><ul>
-<li><a href="#理解-css-modules">理解 CSS Modules</a></li>
-<li><a href="#定义全局-css">定义全局 CSS</a></li>
-<li><a href="#classnames-package">classnames Package</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#reducer">Reducer</a><ul>
-<li><a href="#增删改">增删改</a></li>
-<li><a href="#嵌套数据的增删改">嵌套数据的增删改</a></li>
-</ul>
-</li>
-<li><a href="#effect">Effect</a><ul>
-<li><a href="#effects">Effects</a><ul>
-<li><a href="#put">put</a></li>
-<li><a href="#call">call</a></li>
-<li><a href="#select">select</a></li>
-</ul>
-</li>
-<li><a href="#错误处理">错误处理</a><ul>
-<li><a href="#全局错误处理">全局错误处理</a></li>
-<li><a href="#本地错误处理">本地错误处理</a></li>
-</ul>
-</li>
-<li><a href="#异步请求">异步请求</a><ul>
-<li><a href="#get-和-post">GET 和 POST</a></li>
-<li><a href="#统一错误处理">统一错误处理</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#subscription">Subscription</a><ul>
-<li><a href="#异步数据初始化">异步数据初始化</a><ul>
-<li><a href="#path-to-regexp-package">path-to-regexp Package</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#router">Router</a><ul>
-<li><a href="#config-with-jsx-element-routerjs">Config with JSX Element (router.js)</a></li>
-<li><a href="#route-components">Route Components</a><ul>
-<li><a href="#通过-connect-绑定数据">通过 connect 绑定数据</a></li>
-<li><a href="#injected-props-eg-location">Injected Props (e.g. location)</a></li>
-</ul>
-</li>
-<li><a href="#基于-action-进行页面跳转">基于 action 进行页面跳转</a></li>
-</ul>
-</li>
-<li><a href="#dva-配置">dva 配置</a><ul>
-<li><a href="#redux-middleware">Redux Middleware</a></li>
-<li><a href="#history">history</a><ul>
-<li><a href="#切换-history-为-browserhistory">切换 history 为 browserHistory</a></li>
-<li><a href="#去除-hashhistory-下的-_k-查询参数">去除 hashHistory 下的 _k 查询参数</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#工具">工具</a><ul>
-<li><a href="#通过-dva-cli-创建项目">通过 dva-cli 创建项目</a></li>
-</ul>
-</li>
-</ul>
 <h2 id="JavaScript-语言"><a href="#JavaScript-语言" class="headerlink" title="JavaScript 语言"></a>JavaScript 语言</h2><h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><h4 id="const-和-let"><a href="#const-和-let" class="headerlink" title="const 和 let"></a>const 和 let</h4><p>不要用 <code>var</code>，而是用 <code>const</code> 和 <code>let</code>，分别表示常量和变量。不同于 <code>var</code> 的函数作用域，<code>const</code> 和 <code>let</code> 都是块级作用域。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> DELAY = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">count = count + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>模板字符串提供了另一种做字符串组合的方法。</p>
@@ -1074,7 +974,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#疑惑"><span class="nav-number">1.</span> <span class="nav-text">疑惑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-语言"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript 语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明"><span class="nav-number">1.2.1.</span> <span class="nav-text">变量声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#const-和-let"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">const 和 let</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认参数"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">默认参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的-Import-和-Export"><span class="nav-number">1.2.3.</span> <span class="nav-text">模块的 Import 和 Export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-对象和数组"><span class="nav-number">1.2.4.</span> <span class="nav-text">ES6 对象和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#析构赋值"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">析构赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象字面量改进"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">对象字面量改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Operator"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">Spread Operator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promises"><span class="nav-number">1.2.5.</span> <span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generators"><span class="nav-number">1.2.6.</span> <span class="nav-text">Generators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Component"><span class="nav-number">1.3.</span> <span class="nav-text">React Component</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stateless-Functional-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Stateless Functional Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">1.3.2.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Component-嵌套"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Component 嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#className"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript-表达式"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">JavaScript 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapping-Arrays-to-JSX"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">Mapping Arrays to JSX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Attributes"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">Spread Attributes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Props"><span class="nav-number">1.3.3.</span> <span class="nav-text">Props</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#propTypes"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">propTypes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往下传数据"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">往下传数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往上传数据"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">往上传数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Modules"><span class="nav-number">1.3.4.</span> <span class="nav-text">CSS Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解-CSS-Modules"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">理解 CSS Modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义全局-CSS"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">定义全局 CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#classnames-Package"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">classnames Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer"><span class="nav-number">1.4.</span> <span class="nav-text">Reducer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改"><span class="nav-number">1.4.1.</span> <span class="nav-text">增删改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套数据的增删改"><span class="nav-number">1.4.2.</span> <span class="nav-text">嵌套数据的增删改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effect"><span class="nav-number">1.5.</span> <span class="nav-text">Effect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Effects"><span class="nav-number">1.5.1.</span> <span class="nav-text">Effects</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#put"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">put</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">1.5.2.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局错误处理"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">全局错误处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地错误处理"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">本地错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请求"><span class="nav-number">1.5.3.</span> <span class="nav-text">异步请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-和-POST"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">GET 和 POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统一错误处理"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">统一错误处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subscription"><span class="nav-number">1.6.</span> <span class="nav-text">Subscription</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步数据初始化"><span class="nav-number">1.6.1.</span> <span class="nav-text">异步数据初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#path-to-regexp-Package"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">path-to-regexp Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">1.7.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-with-JSX-Element-router-js"><span class="nav-number">1.7.1.</span> <span class="nav-text">Config with JSX Element (router.js)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Components"><span class="nav-number">1.7.2.</span> <span class="nav-text">Route Components</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-connect-绑定数据"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">通过 connect 绑定数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Injected-Props-e-g-location"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">Injected Props (e.g. location)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-action-进行页面跳转"><span class="nav-number">1.7.3.</span> <span class="nav-text">基于 action 进行页面跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dva-配置"><span class="nav-number">1.8.</span> <span class="nav-text">dva 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux-Middleware"><span class="nav-number">1.8.1.</span> <span class="nav-text">Redux Middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history"><span class="nav-number">1.8.2.</span> <span class="nav-text">history</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换-history-为-browserHistory"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">切换 history 为 browserHistory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去除-hashHistory-下的-k-查询参数"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">去除 hashHistory 下的 _k 查询参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.9.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-dva-cli-创建项目"><span class="nav-number">1.9.1.</span> <span class="nav-text">通过 dva-cli 创建项目</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#疑惑"><span class="nav-number">1.</span> <span class="nav-text">疑惑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-语言"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript 语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明"><span class="nav-number">1.1.1.</span> <span class="nav-text">变量声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#const-和-let"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">const 和 let</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板字符串"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认参数"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">默认参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的-Import-和-Export"><span class="nav-number">1.1.3.</span> <span class="nav-text">模块的 Import 和 Export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-对象和数组"><span class="nav-number">1.1.4.</span> <span class="nav-text">ES6 对象和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#析构赋值"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">析构赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象字面量改进"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">对象字面量改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Operator"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">Spread Operator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promises"><span class="nav-number">1.1.5.</span> <span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generators"><span class="nav-number">1.1.6.</span> <span class="nav-text">Generators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Component"><span class="nav-number">1.2.</span> <span class="nav-text">React Component</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stateless-Functional-Components"><span class="nav-number">1.2.1.</span> <span class="nav-text">Stateless Functional Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">1.2.2.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Component-嵌套"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Component 嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#className"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">className</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript-表达式"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">JavaScript 表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapping-Arrays-to-JSX"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">Mapping Arrays to JSX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spread-Attributes"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">Spread Attributes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Props"><span class="nav-number">1.2.3.</span> <span class="nav-text">Props</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#propTypes"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">propTypes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往下传数据"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">往下传数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#往上传数据"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">往上传数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Modules"><span class="nav-number">1.2.4.</span> <span class="nav-text">CSS Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解-CSS-Modules"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">理解 CSS Modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义全局-CSS"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">定义全局 CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#classnames-Package"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">classnames Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducer"><span class="nav-number">1.3.</span> <span class="nav-text">Reducer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改"><span class="nav-number">1.3.1.</span> <span class="nav-text">增删改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套数据的增删改"><span class="nav-number">1.3.2.</span> <span class="nav-text">嵌套数据的增删改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effect"><span class="nav-number">1.4.</span> <span class="nav-text">Effect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Effects"><span class="nav-number">1.4.1.</span> <span class="nav-text">Effects</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#put"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">put</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">1.4.2.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局错误处理"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">全局错误处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地错误处理"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">本地错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请求"><span class="nav-number">1.4.3.</span> <span class="nav-text">异步请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-和-POST"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">GET 和 POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统一错误处理"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">统一错误处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subscription"><span class="nav-number">1.5.</span> <span class="nav-text">Subscription</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步数据初始化"><span class="nav-number">1.5.1.</span> <span class="nav-text">异步数据初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#path-to-regexp-Package"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">path-to-regexp Package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">1.6.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Config-with-JSX-Element-router-js"><span class="nav-number">1.6.1.</span> <span class="nav-text">Config with JSX Element (router.js)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Components"><span class="nav-number">1.6.2.</span> <span class="nav-text">Route Components</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-connect-绑定数据"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">通过 connect 绑定数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Injected-Props-e-g-location"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">Injected Props (e.g. location)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-action-进行页面跳转"><span class="nav-number">1.6.3.</span> <span class="nav-text">基于 action 进行页面跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dva-配置"><span class="nav-number">1.7.</span> <span class="nav-text">dva 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux-Middleware"><span class="nav-number">1.7.1.</span> <span class="nav-text">Redux Middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history"><span class="nav-number">1.7.2.</span> <span class="nav-text">history</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切换-history-为-browserHistory"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">切换 history 为 browserHistory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去除-hashHistory-下的-k-查询参数"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">去除 hashHistory 下的 _k 查询参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.8.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-dva-cli-创建项目"><span class="nav-number">1.8.1.</span> <span class="nav-text">通过 dva-cli 创建项目</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1110,7 +1010,7 @@
     </span>
   </div>
   <div class="theme-info">
-    <span class="post-count">博客全站共128.6k字</span>
+    <span class="post-count">博客全站共128.4k字</span>
   </div>
 </div>
 
