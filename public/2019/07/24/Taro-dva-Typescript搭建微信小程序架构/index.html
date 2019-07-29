@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "dc2acf9e"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Javascript,编程,dva,Typescript," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="About-龙大" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/drlicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="微信小程序的开发目前是很热的一个领域，有很多的开发模式，找到一种属于自己的方法才会使得开发顺心顺利。 此架构是使用 Taro + dva + typescript 构建前端开发  京东凹凸实验室的React框架Taro很成熟，又是大厂在维护更新迭代，不用担心没人维护的问题，他有自己的UI还有物料社区，比起原生小程序方便很多，支持多端，一处代码，多处运行，微信小程序、H5、百度小程序、支付宝小程序、">
+<meta name="keywords" content="Javascript,编程,dva,Typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Taro+dva+Typescript 搭建微信小程序架构">
+<meta property="og:url" content="https://duanruilong.github.io/2019/07/24/Taro-dva-Typescript搭建微信小程序架构/index.html">
+<meta property="og:site_name" content="About-龙大">
+<meta property="og:description" content="微信小程序的开发目前是很热的一个领域，有很多的开发模式，找到一种属于自己的方法才会使得开发顺心顺利。 此架构是使用 Taro + dva + typescript 构建前端开发  京东凹凸实验室的React框架Taro很成熟，又是大厂在维护更新迭代，不用担心没人维护的问题，他有自己的UI还有物料社区，比起原生小程序方便很多，支持多端，一处代码，多处运行，微信小程序、H5、百度小程序、支付宝小程序、">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/taro.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/taro/tdt1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/taro/tdt2.jpg">
+<meta property="og:updated_time" content="2019-07-29T02:52:36.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Taro+dva+Typescript 搭建微信小程序架构">
+<meta name="twitter:description" content="微信小程序的开发目前是很热的一个领域，有很多的开发模式，找到一种属于自己的方法才会使得开发顺心顺利。 此架构是使用 Taro + dva + typescript 构建前端开发  京东凹凸实验室的React框架Taro很成熟，又是大厂在维护更新迭代，不用担心没人维护的问题，他有自己的UI还有物料社区，比起原生小程序方便很多，支持多端，一处代码，多处运行，微信小程序、H5、百度小程序、支付宝小程序、">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/taro.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duanruilong.github.io/2019/07/24/Taro-dva-Typescript搭建微信小程序架构/"/>
+
+
+
+
+
+  <title>Taro+dva+Typescript 搭建微信小程序架构 | About-龙大</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/Duanruilong">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+    </a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">About-龙大</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不忘初心，继续前进。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duanruilong.github.io/blog/2019/07/24/Taro-dva-Typescript搭建微信小程序架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DRLong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/drl.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="About-龙大">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Taro+dva+Typescript 搭建微信小程序架构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T16:28:20+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4,156
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  22
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>微信小程序的开发目前是很热的一个领域，有很多的开发模式，找到一种属于自己的方法才会使得开发顺心顺利。</p>
+<p>此架构是使用 Taro + dva + typescript 构建前端开发</p>
+<ul>
+<li>京东凹凸实验室的React框架Taro很成熟，又是大厂在维护更新迭代，不用担心没人维护的问题，他有自己的UI还有物料社区，比起原生小程序方便很多，支持多端，一处代码，多处运行，微信小程序、H5、百度小程序、支付宝小程序、字节跳动小程序、QQ轻应用、快应用、ReactNative；</li>
+<li>数据管理是Redux集成的dva框架，是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架；</li>
+<li>TypeScript就是所谓的JavaScript超集。它不是JavaScript的替代品，也不会为JavaScript代码添加任何新功能。相反，TypeScript允许程序员在其代码中使用面向对象的构造，然后将其转换为JavaScript。它还包括类型安全和编译时类型检查等便利功能。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/blog/taro.jpg" alt="Taro"></p>
+<a id="more"></a>
+<blockquote>
+<p>资料</p>
+</blockquote>
+<p><a href="https://taro.aotu.io/" target="_blank" rel="noopener">Taro官网地址：https://taro.aotu.io/</a><br><a href="https://dvajs.com/guide/" target="_blank" rel="noopener">dva官网地址：https://dvajs.com/guide/</a></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="前期工作准备"><a href="#前期工作准备" class="headerlink" title="前期工作准备"></a>前期工作准备</h2><p>cli 工具安装:</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 cli</span><br><span class="line">$ npm install -g @tarojs/cli</span><br><span class="line"></span><br><span class="line"># OR 使用 yarn 安装 cli</span><br><span class="line">$ yarn global add @tarojs/cli</span><br><span class="line"></span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 cli</span><br><span class="line">$ cnpm install -g @tarojs/cli</span><br></pre></td></tr></table></figure>
+<p>使用命令创建模板项目:</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ taro init Taro_dva_Typescript</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/taro/tdt1.jpg" alt="Taro"></p>
+<h2 id="安装配置文件"><a href="#安装配置文件" class="headerlink" title="安装配置文件"></a>安装配置文件</h2><p>安装dva</p>
+<p><code>cnpm install --save dva-core dva-loading</code></p>
+<ul>
+<li><code>dva-core</code>：封装了 redux 和 redux-saga的一个插件</li>
+<li><code>dva-loading</code>：管理页面的loading状态</li>
+</ul>
+<p>安装@tarojs/redux</p>
+<p><code>cnpm install --save redux @tarojs/redux @tarojs/redux-h5 redux-thunk redux-logger</code></p>
+<h1 id="配置项目文件"><a href="#配置项目文件" class="headerlink" title="配置项目文件"></a>配置项目文件</h1><p>去除不需要的文件，添加实际需要的一些文件，先删除<code>./ssrc/page</code>下的index文件夹，后期使用命令行生成完整结构的文件夹。</p>
+<p>在<code></code>/src`目录下根据自己的实际需求进行一下配置：</p>
+<ul>
+<li><code>assets</code>: 一些静态资源，比如：image、iconfont</li>
+<li><code>config</code>: 项目配置文件</li>
+<li><code>components</code>: 项目编写的一些共用组件</li>
+<li><code>types</code>: 项目公共的Typescript类型声明</li>
+<li><code>models</code>: 项目dva插件model函数的引用或者是一些共用的js文件</li>
+<li><code>utils</code>: 项目里封装的一些插件</li>
+</ul>
+<h2 id="项目一些具体配置操作"><a href="#项目一些具体配置操作" class="headerlink" title="项目一些具体配置操作"></a>项目一些具体配置操作</h2><h3 id="1、在-src-config下创建index-ts，添加项目配置信息"><a href="#1、在-src-config下创建index-ts，添加项目配置信息" class="headerlink" title="1、在./src/config下创建index.ts，添加项目配置信息"></a>1、在<code>./src/config</code>下创建index.ts，添加项目配置信息</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 这里为了方便测试使用 Easy Mock 模拟接口数据</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">export const ONLINEHOST = 'https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist';</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * mock 接口</span></span><br><span class="line"><span class="comment"> * */</span> </span><br><span class="line">export const MOCKHOST = 'https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist';</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 是否mock</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ISMOCK = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这是一个全局的分享信息 不用每一个都去写</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SHAREINFO = &#123;</span><br><span class="line">    'title': '分享标题',</span><br><span class="line">    'path': '路径',</span><br><span class="line">    'imageUrl': '图片'</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、在-src-utils下创建dva-ts，配置dva"><a href="#2、在-src-utils下创建dva-ts，配置dva" class="headerlink" title="2、在./src/utils下创建dva.ts，配置dva"></a>2、在<code>./src/utils</code>下创建dva.ts，配置dva</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; create &#125; from <span class="string">"dva-core"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createLogger &#125; from <span class="string">"redux-logger"</span>;</span><br><span class="line"><span class="keyword">import</span>  createLoading  from <span class="string">"dva-loading"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let app</span><br><span class="line">let store</span><br><span class="line">let dispatch</span><br><span class="line">let registered</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">createApp</span><span class="params">(opt)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// redux 的日志</span></span><br><span class="line">    opt.onAction = [createLogger()]</span><br><span class="line">    app = create(opt)</span><br><span class="line">    app.use(createLoading(&#123;&#125;))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!registered) &#123;</span><br><span class="line">        opt.models.forEach(model =&gt; app.model(model));</span><br><span class="line">    &#125;</span><br><span class="line">    registered = <span class="literal">true</span>;</span><br><span class="line">    app.start()</span><br><span class="line"></span><br><span class="line">    store = app._store;</span><br><span class="line">    app.getStore = () =&gt; store;</span><br><span class="line">    app.use(&#123;</span><br><span class="line">        onError(err)&#123;</span><br><span class="line">            console.<span class="built_in">log</span>(err);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    dispatch = store.dispatch;</span><br><span class="line">    app.dispatch = dispatch;</span><br><span class="line">    <span class="keyword">return</span> app;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    createApp,</span><br><span class="line">    getDispatch()&#123;</span><br><span class="line">        <span class="keyword">return</span> app.dispatch</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、在-src-utils下创建tips-ts，整合封装微信原生弹窗"><a href="#3、在-src-utils下创建tips-ts，整合封装微信原生弹窗" class="headerlink" title="3、在./src/utils下创建tips.ts，整合封装微信原生弹窗"></a>3、在<code>./src/utils</code>下创建tips.ts，整合封装微信原生弹窗</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> Taro from <span class="string">"@tarojs/taro"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; node &#125; from <span class="string">"_@types_prop-types@15.7.1@@types/prop-types"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 整合封装微信的原生弹窗</span></span><br><span class="line"><span class="comment"> * 提示、加载、工具类</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Tips</span> &#123;</span></span><br><span class="line">	<span class="keyword">static</span> isLoading = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** </span></span><br><span class="line"><span class="comment">	 * 提示信息</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="title">toast</span><span class="params">(title: <span class="built_in">string</span>, onHide?: ()</span> </span>=&gt; <span class="keyword">void</span>) &#123;</span><br><span class="line">		Taro.showToast(&#123;</span><br><span class="line">			title: title,</span><br><span class="line">			icon: 'node',</span><br><span class="line">			mask: <span class="literal">true</span>,</span><br><span class="line">			duration: <span class="number">1500</span></span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// 去除结束回调函数</span></span><br><span class="line">		<span class="keyword">if</span> (onHide) &#123;</span><br><span class="line">			setTimeout(() =&gt; &#123;</span><br><span class="line">				onHide();</span><br><span class="line">			&#125;, <span class="number">500</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** </span></span><br><span class="line"><span class="comment">	 * 加载提示弹窗</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	static loding(title:'加载中',force = false)&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.isLoading &amp;&amp; !force) &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.isLoading = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">if</span> (Taro.showLoading) &#123;</span><br><span class="line">			Taro.showLoading(&#123;</span><br><span class="line">				title:title,</span><br><span class="line">				mask:<span class="literal">true</span></span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			Taro.showNavigationBarLoading() <span class="comment">//导航条加载动画</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** </span></span><br><span class="line"><span class="comment">	 * 加载完成</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">static</span> loaded()&#123;</span><br><span class="line">		let duration = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.isLoading) &#123;</span><br><span class="line">			<span class="keyword">this</span>.isLoading = <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">if</span> (Taro.hideLoading) &#123;</span><br><span class="line">				Taro.hideLoading()</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				Taro.hideNavigationBarLoading(); <span class="comment">//导航条加载动画</span></span><br><span class="line">			&#125;</span><br><span class="line">			duration = <span class="number">500</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 设定隐藏的动画时长为500ms,防止直接toast时出现问题</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Promise(resolve =&gt; setTimeout(resolve,duration))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** </span></span><br><span class="line"><span class="comment">	 * 弹出提示框</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> success(title,duration = <span class="number">1500</span>)&#123;</span><br><span class="line">		Taro.showToast(&#123;</span><br><span class="line">			title: title,</span><br><span class="line">			icon: 'success',</span><br><span class="line">			duration: duration,</span><br><span class="line">			mask:<span class="literal">true</span></span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">if</span> (duration &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Promise(resolve =&gt; setTimeout(resolve,duration))</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4、在-src-config下创建requestConfig-ts，统一配置请求接口"><a href="#4、在-src-config下创建requestConfig-ts，统一配置请求接口" class="headerlink" title="4、在./src/config下创建requestConfig.ts，统一配置请求接口"></a>4、在<code>./src/config</code>下创建requestConfig.ts，统一配置请求接口</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 请求公共参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> commonParame = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 请求的映射文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> requestConfig = &#123;</span><br><span class="line">    loginUrl:'/api/user/wechat-auth' // 微信的登陆接口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5、在-src-utils下创建common-ts，共用函数"><a href="#5、在-src-utils下创建common-ts，共用函数" class="headerlink" title="5、在./src/utils下创建common.ts，共用函数"></a>5、在<code>./src/utils</code>下创建common.ts，共用函数</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 共用函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> repeat = (str = <span class="string">'0'</span>, times) =&gt; (<span class="keyword">new</span> Array(times + <span class="number">1</span>)).join(str);</span><br><span class="line"><span class="comment">// 时间前面 +0 </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> pad = (num, maxLength = <span class="number">2</span>) =&gt; repeat(<span class="string">'0'</span>, maxLength - num.toString().length) + num;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局的公共变量</span></span><br><span class="line"><span class="keyword">export</span> let globalData: any = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 时间格式装换函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> formatTime = time =&gt; &#123;</span><br><span class="line">    `$&#123;pad(time.getHours())&#125;:$&#123;pad(time.getMinutes())&#125;:$&#123;pad(time.getSeconds())&#125;.$&#123;pad(time.getMilliseconds(), <span class="number">3</span>)&#125;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6、在-src-utils下创建logger-ts，封装log函数"><a href="#6、在-src-utils下创建logger-ts，封装log函数" class="headerlink" title="6、在./src/utils下创建logger.ts，封装log函数"></a>6、在<code>./src/utils</code>下创建logger.ts，封装log函数</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 封装logo函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">import &#123; formatTime &#125; from './common';</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> defaults = &#123;</span><br><span class="line">	level: 'log',</span><br><span class="line">	logger: console,</span><br><span class="line">	logErrors: <span class="literal">true</span>,</span><br><span class="line">	colors: &#123;</span><br><span class="line">		title:'logger',</span><br><span class="line">		req:'#9e9e9e',</span><br><span class="line">		res:'#4caf50',</span><br><span class="line">		error:'#f20404',</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">printBuffer</span><span class="params">(logEntry, options)</span></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> &#123;logger,colors&#125; = options;</span><br><span class="line">	let &#123;title,started,req,res&#125; = logEntry;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Message</span></span><br><span class="line">	const headerCSS = ['color:gray; font-weight:lighter;']</span><br><span class="line">	<span class="keyword">const</span> styles = s =&gt; `color $&#123;s&#125;; font-weight: bold`;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// render</span></span><br><span class="line">	logger.group(`%c $&#123;title&#125; @$&#123;formatTime(started)&#125;`, ...headerCSS);</span><br><span class="line">	logger.log('%c req', styles(colors.req), req)</span><br><span class="line">	logger.log('%c res', styles(colors.res), res)</span><br><span class="line">	logger.groupEnd()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface LogEntry&#123;</span><br><span class="line">	started ? : object  <span class="comment">// 触发时间</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">createLogger</span><span class="params">(options: LogEntry = &#123;&#125;)</span></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> loggerOptions = Object.assign(&#123;&#125;, defaults, options)</span><br><span class="line">	<span class="keyword">const</span> logEntry = options</span><br><span class="line">	logEntry.started = <span class="keyword">new</span> Date();</span><br><span class="line">	printBuffer(logEntry, Object.assign(&#123;&#125;, loggerOptions))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">	defaults,</span><br><span class="line">	createLogger,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7、在-src-utils下创建request-ts，封装http请求"><a href="#7、在-src-utils下创建request-ts，封装http请求" class="headerlink" title="7、在./src/utils下创建request.ts，封装http请求"></a>7、在<code>./src/utils</code>下创建request.ts，封装http请求</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> Taro,&#123; Component &#125; from <span class="string">"@tarojs/taro"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ISMOCK,MAINHOST &#125; from <span class="string">"../config"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; commonParame,requestConfig &#125; from <span class="string">"../config/requestConfig"</span>;</span><br><span class="line"><span class="keyword">import</span> Tips from <span class="string">"./tips"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装请求</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">declare type Methohs = <span class="string">"GET"</span> | <span class="string">"OPTIONS"</span> | <span class="string">"HEAD"</span> | <span class="string">"PUT"</span> | <span class="string">"DELETE"</span> | <span class="string">"TRACE"</span> | <span class="string">"CONNECT"</span>;</span><br><span class="line">declare type Headers = &#123; [key :<span class="built_in">string</span>]:<span class="built_in">string</span>&#125;;</span><br><span class="line">declare type Datas = &#123;method : Methohs; [key: <span class="built_in">string</span>] : any;&#125;;</span><br><span class="line">interface Options&#123;</span><br><span class="line">    url: <span class="built_in">string</span>;</span><br><span class="line">    host?: <span class="built_in">string</span>;</span><br><span class="line">    method?: Methohs;</span><br><span class="line">    data?: Datas;</span><br><span class="line">    header?: Headers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Request</span> &#123;</span></span><br><span class="line">    <span class="comment">// 登陆时的promise</span></span><br><span class="line">    <span class="keyword">static</span> loginReadyPromise: Promise&lt;any&gt; = Promise.resolve()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 正在登陆</span></span><br><span class="line">    <span class="keyword">static</span> isLoading: boolean = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出的API对象</span></span><br><span class="line">    <span class="keyword">static</span> apiLists: &#123; [key: <span class="built_in">string</span>]: () =&gt; any;&#125; = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// token</span></span><br><span class="line">    <span class="keyword">static</span> token: <span class="built_in">string</span> = <span class="string">''</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">    // 开始处理options</span><br><span class="line">    static conbineOptions(opts, data: Datas, method: Methohs): Options &#123;</span><br><span class="line">        typeof opts ===  'string' &amp;&amp; (opts = &#123;url: opts&#125;)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            data: &#123; ...commonParame, ...opts.data, ...data &#125;,</span><br><span class="line">            method: opts.method || data.method || method || 'GET',</span><br><span class="line">            url: `$&#123;opts.host || MAINHOST&#125;$&#123;opts.url&#125;`</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">getToken</span><span class="params">()</span></span>&#123;</span><br><span class="line">        !this.token &amp;&amp; (this.token = Taro.getStorageSync('token'))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.token</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 登陆</span></span><br><span class="line">    <span class="keyword">static</span> login()&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.isLoading) &#123;</span><br><span class="line">            <span class="keyword">this</span>.loginReadyPromise = <span class="keyword">this</span>.onLogining()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.loginReadyPromise</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> onLogining()&#123;</span><br><span class="line">        <span class="keyword">this</span>.isLoading = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Promise(async (resolve, reject) =&gt; &#123;</span><br><span class="line">            <span class="comment">// 获取code</span></span><br><span class="line">            <span class="keyword">const</span> &#123; code &#125; = await Taro.login();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> &#123; data &#125; = await Taro.request(&#123;</span><br><span class="line">                url: `$&#123;MAINHOST&#125;$&#123;requestConfig.loginUrl&#125;`,</span><br><span class="line">                data:&#123;code: code&#125;</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (data.code !== <span class="number">0</span> || !data.data || !data.data.token) &#123;</span><br><span class="line">                reject()</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 基于 Taro.request 的 request 请求</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * */</span> </span><br><span class="line">    <span class="keyword">static</span> async request(opts: Options) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Taro.request 请求</span></span><br><span class="line">        <span class="keyword">const</span> res = await Taro.request(opts);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 是否mock</span></span><br><span class="line">        <span class="keyword">if</span>(ISMOCK) <span class="keyword">return</span> res.data;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求失败</span></span><br><span class="line">        <span class="keyword">if</span> (res.data.code === <span class="number">99999</span>) &#123;</span><br><span class="line">            await <span class="keyword">this</span>.login();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.request(opts)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求成功</span></span><br><span class="line">        <span class="keyword">if</span> (res.data) &#123;</span><br><span class="line">            <span class="keyword">return</span> res.data</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求错误</span></span><br><span class="line">        const edata = &#123; ...res.data, err : (res.data &amp;&amp; res.data.msg) || '网络错误 ~'&#125;</span><br><span class="line">        Tips.toast(edata.err)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Error(edata.err)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * 创建请求函数</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">static</span> creatRequests(opts: Options | <span class="built_in">string</span>) : () =&gt; &#123;&#125; &#123;</span><br><span class="line">       console.log('opts==&gt;',opts);</span><br><span class="line">       <span class="keyword">return</span> async (data=&#123;&#125;, method: Methods = <span class="string">"GET"</span>) =&gt; &#123;</span><br><span class="line">           <span class="keyword">const</span> _opts = <span class="keyword">this</span>.conbineOptions(opts, data, method)</span><br><span class="line">           <span class="keyword">const</span> res = await <span class="keyword">this</span>.request(_opts)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/** </span></span><br><span class="line"><span class="comment">    * 抛出API方法</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">static</span> <span class="title">getApiList</span><span class="params">(requestConfig)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!Object.keys(requestConfig).length) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Object.keys(requestConfig).forEach((key)=&gt;&#123;</span><br><span class="line">            <span class="keyword">this</span>.apiLists[key] = <span class="keyword">this</span>.creatRequests(requestConfig[key])</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.apiLists</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Api = Request.getApiList(requestConfig)</span><br><span class="line">Component.prototype.$api = Api</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Api as any</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：</p>
+</blockquote>
+<p>在这里tslint会报这样的错：<code>类型“Component&lt;any, any&gt;”上不存在属性“$api”</code>。，因为没有添加声明，需在./src目录下创建<code>app-shim.d.ts</code></p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 添加taro等自定义类型</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">import Taro,&#123; Component &#125; from '@tarojs/taro'</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在Component上定义自定义方法类型</span></span><br><span class="line">declare module '@tarojs/taro' &#123;</span><br><span class="line">    interface Component &#123;</span><br><span class="line">        $api: any</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明</span></span><br><span class="line">declare let require: any;</span><br><span class="line">declare let dispatch: any</span><br></pre></td></tr></table></figure>
+<h3 id="8、在-src-config下创建taroConfig-ts，封装taro小程序的一些方法"><a href="#8、在-src-config下创建taroConfig-ts，封装taro小程序的一些方法" class="headerlink" title="8、在./src/config下创建taroConfig.ts，封装taro小程序的一些方法"></a>8、在<code>./src/config</code>下创建taroConfig.ts，封装taro小程序的一些方法</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import Taro,&#123; Component &#125; from '@tarojs/taro'</span><br><span class="line">import &#123; SHAREINFO &#125; from '../config/index'</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 封装taro小程序的一些方法</span></span><br><span class="line"><span class="comment"> *  - 方法改写</span></span><br><span class="line"><span class="comment"> *  - utils 挂载</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// navigateTo 超过8次后，强行进行redirectTo,避免页面卡顿</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> nav = Taro.navigateTo</span><br><span class="line"> Taro.navigateTo = (data) =&gt; &#123;</span><br><span class="line">     <span class="keyword">if</span> (Taro.getCurrentPages().length &gt; <span class="number">8</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> Taro.redirectTo(data)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> nav(data)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载分享方法 Component</span></span><br><span class="line"></span><br><span class="line">Component.prototype.onShareAppMessage = function () &#123;</span><br><span class="line">    <span class="keyword">return</span> SHAREINFO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件生成脚本"><a href="#配置文件生成脚本" class="headerlink" title="配置文件生成脚本"></a>配置文件生成脚本</h2><h3 id="1、在根目录下创建scripts文件夹，添加-scripts-template-js"><a href="#1、在根目录下创建scripts文件夹，添加-scripts-template-js" class="headerlink" title="1、在根目录下创建scripts文件夹，添加./scripts/template.js"></a>1、在根目录下创建scripts文件夹，添加<code>./scripts/template.js</code></h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> *  pages 页面快速生成脚本</span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> *  npm run tem '文件名‘</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">const fs = require('fs')</span><br><span class="line"><span class="keyword">const</span> dirName = process.argv[<span class="number">2</span>]</span><br><span class="line"><span class="keyword">const</span> capPirName = dirName.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase() + dirName.substring(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!dirName) &#123;</span><br><span class="line">    console.log('文件名不能为空');</span><br><span class="line">    console.log('用法：npm run tem test');</span><br><span class="line">    process.<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面模板构建</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> indexTep = `</span><br><span class="line">    import Taro, &#123; Component, Config &#125; from '@tarojs/taro'</span><br><span class="line">    import &#123; View &#125; from '@tarojs/components'</span><br><span class="line">    <span class="comment">// import &#123; connect &#125; from '@tarojs/redux'</span></span><br><span class="line">    <span class="comment">// import Api from '../../utils/request'</span></span><br><span class="line">    <span class="comment">// import Tips from '../../utils/tips'</span></span><br><span class="line">    import &#123; $&#123;capPirName&#125;Props, $&#123;capPirName&#125;State &#125; from './$&#123;dirName&#125;.interface'</span><br><span class="line">    import './$&#123;dirName&#125;.scss'</span><br><span class="line">    <span class="comment">// import &#123;  &#125; from '../../components'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// @connect((&#123; $&#123;dirName&#125; &#125;) =&gt; (&#123;</span></span><br><span class="line">    <span class="comment">//     ...$&#123;dirName&#125;,</span></span><br><span class="line">    <span class="comment">// &#125;))</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> $&#123;</span>capPirName&#125; extends Component&lt;$&#123;capPirName&#125;Props,$&#123;capPirName&#125;State &gt; &#123;</span><br><span class="line">    config:Config = &#123;</span><br><span class="line">        navigationBarTitleText: '页面标题'</span><br><span class="line">    &#125;</span><br><span class="line">    constructor(props: $&#123;capPirName&#125;Props) &#123;</span><br><span class="line">        super(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        &lt;View className='fx-$&#123;dirName&#125;-wrap'&gt;</span><br><span class="line">            页面内容</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> $&#123;capPirName&#125;</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="comment">// scss 文件模板</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> scssTep = `</span><br><span class="line">    @<span class="keyword">import</span> <span class="string">"../../assets/scss/variables"</span>;</span><br><span class="line">    .#&#123;$prefix&#125; &#123;</span><br><span class="line">        &amp;-$&#123;dirName&#125;-wrap &#123;</span><br><span class="line">            width: <span class="number">100</span>%;</span><br><span class="line">            min-height: <span class="number">100</span>Vh;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="comment">// config 接口地址配置模板</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> configTep =`</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        test:'/wechat/perfect-info',  //XX接口</span><br><span class="line">    &#125;</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口请求模板</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> serviceTep =`</span><br><span class="line">    import Api from '../../utils/request'</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> testApi = data =&gt; Api.test(</span><br><span class="line">        data</span><br><span class="line">    )</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="comment">// model 模板</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> modelTep = `</span><br><span class="line">    <span class="comment">// import Taro from '@tarojs/taro';</span></span><br><span class="line">    <span class="comment">// import * as $&#123;dirName&#125;Api from './service';</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        namespace: '$&#123;dirName&#125;',</span><br><span class="line">        state: &#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        </span><br><span class="line">        effects: &#123;&#125;,</span><br><span class="line">        </span><br><span class="line">        reducers: &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> interfaceTep = `</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * $&#123;dirName&#125;.state 参数类型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> * @interface $&#123;capPirName&#125;State</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> interface $&#123;capPirName&#125;State &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * $&#123;dirName&#125;.props 参数类型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> * @interface $&#123;capPirName&#125;Props</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> interface $&#123;capPirName&#125;Props &#123;&#125;</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line">fs.mkdirSync(`./src/pages/$&#123;dirName&#125;`); <span class="comment">// mkdir $1</span></span><br><span class="line">process.chdir(`./src/pages/$&#123;dirName&#125;`); <span class="comment">// cd $1</span></span><br><span class="line"></span><br><span class="line">fs.writeFileSync(`$&#123;dirName&#125;.tsx`, indexTep); <span class="comment">//tsx</span></span><br><span class="line">fs.writeFileSync(`$&#123;dirName&#125;.scss`, scssTep); <span class="comment">// scss</span></span><br><span class="line">fs.writeFileSync('config.ts', configTep); // config</span><br><span class="line">fs.writeFileSync('service.ts', serviceTep); // service</span><br><span class="line">fs.writeFileSync('model.ts', modelTep); // model</span><br><span class="line">fs.writeFileSync(`$&#123;dirName&#125;.interface.ts`, interfaceTep); <span class="comment">// interface</span></span><br><span class="line">process.<span class="built_in">exit</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后</p>
+</blockquote>
+<p>在根目录的<code>package.json</code>的scripts里加上对应的命令</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"tep"</span>: <span class="string">"node scripts/template"</span>,</span><br><span class="line">  <span class="string">"com"</span>: <span class="string">"node scripts/component"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、自动生成脚本文件夹"><a href="#2、自动生成脚本文件夹" class="headerlink" title="2、自动生成脚本文件夹"></a>2、自动生成脚本文件夹</h3><p><code>cnpm run tep index</code></p>
+<p>page文件夹下生成了一个index的文件夹，里面包含</p>
+<ul>
+<li>config.ts</li>
+<li>index.interface.ts</li>
+<li>index.scss</li>
+<li>index.tsx</li>
+<li>model.ts</li>
+<li>service.ts</li>
+</ul>
+<h2 id="配置业务代码"><a href="#配置业务代码" class="headerlink" title="配置业务代码"></a>配置业务代码</h2><h3 id="1、先在src目录下创建models文件夹，集合项目里的model关系。"><a href="#1、先在src目录下创建models文件夹，集合项目里的model关系。" class="headerlink" title="1、先在src目录下创建models文件夹，集合项目里的model关系。"></a>1、先在<code>src</code>目录下创建<code>models</code>文件夹，集合项目里的<code>model</code>关系。</h3><figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import index from '../pages/index/model';</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>[</span><br><span class="line">    index</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>项目目前只有<code>index</code>页面，<code>export default</code>这里的数组就只有<code>index</code>，需要注意这里是<code>[]</code>数组。</p>
+<h3 id="2、修改非常主要的文件app-tsx"><a href="#2、修改非常主要的文件app-tsx" class="headerlink" title="2、修改非常主要的文件app.tsx"></a>2、修改非常主要的文件<code>app.tsx</code></h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import Taro, &#123; Component, Config &#125; from '@tarojs/taro'</span><br><span class="line"><span class="keyword">import</span> <span class="string">"@tarojs/async-await"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; from <span class="string">"@tarojs/redux"</span>;</span><br><span class="line">import dva from './utils/dva';</span><br><span class="line">import './utils/request';</span><br><span class="line">import &#123; globalData &#125; from './utils/common';</span><br><span class="line"></span><br><span class="line">import models from './models'</span><br><span class="line">import Index from './pages/index'</span><br><span class="line">import './app.scss'</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果需要在 h5 环境中开启 React Devtools</span></span><br><span class="line"><span class="comment">// 取消以下注释：</span></span><br><span class="line"><span class="comment">// if (process.env.NODE_ENV !== 'production' &amp;&amp; process.env.TARO_ENV === 'h5')  &#123;</span></span><br><span class="line"><span class="comment">//   require('nerv-devtools')</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dvaApp = dva.createApp(&#123;</span><br><span class="line">  initialState:&#123;&#125;,</span><br><span class="line">  models:  models,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = dvaApp.getStore();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="title">extends</span> <span class="title">Component</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 指定config的类型声明为: Taro.Config</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型</span></span><br><span class="line"><span class="comment">   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string</span></span><br><span class="line"><span class="comment">   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  config: Config = &#123;</span><br><span class="line">    pages: [</span><br><span class="line">      'pages/index/index'</span><br><span class="line">    ],</span><br><span class="line">    window: &#123;</span><br><span class="line">      backgroundTextStyle: 'light',</span><br><span class="line">      navigationBarBackgroundColor: '#fff',</span><br><span class="line">      navigationBarTitleText: 'WeChat',</span><br><span class="line">      navigationBarTextStyle: 'black'</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   *  1.小程序打开的参数 globalData.extraData.xx</span></span><br><span class="line"><span class="comment">   *  2.从二维码进入的参数 globalData.extraData.xx</span></span><br><span class="line"><span class="comment">   *  3.获取小程序的设备信息 globalData.systemInfo</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function">async <span class="title">componentDidMount</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取参数</span></span><br><span class="line">    <span class="keyword">const</span> referrerInfo = <span class="keyword">this</span>.$router.params.referrerInfo</span><br><span class="line">    <span class="keyword">const</span> query = <span class="keyword">this</span>.$router.params.query</span><br><span class="line">    !globalData.extraData &amp;&amp; (globalData.extraData = &#123;&#125;)</span><br><span class="line">    <span class="keyword">if</span> (referrerInfo &amp;&amp; referrerInfo.extraData) &#123;</span><br><span class="line">      globalData.extraData = referrerInfo.extraData</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (query) &#123;</span><br><span class="line">      globalData.extraData = &#123;</span><br><span class="line">        ...globalData.extraData,</span><br><span class="line">        ...query</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取设备信息</span></span><br><span class="line">    <span class="keyword">const</span> sys = await Taro.getSystemInfo()</span><br><span class="line">    sys &amp;&amp; (globalData.systemInfo = sys)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidShow () &#123;&#125;</span><br><span class="line"></span><br><span class="line">  componentDidHide () &#123;&#125;</span><br><span class="line"></span><br><span class="line">  componentDidCatchError () &#123;&#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;Index /&gt;</span><br><span class="line">      &lt;/Provider&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Taro.render(&lt;App /&gt;, document.getElementById('app'))</span><br></pre></td></tr></table></figure>
+<h3 id="3、修改接口请求-src-pages-index-config-ts文件"><a href="#3、修改接口请求-src-pages-index-config-ts文件" class="headerlink" title="3、修改接口请求./src/pages/index/config.ts文件"></a>3、修改接口请求<code>./src/pages/index/config.ts</code>文件</h3><p>一个获取列表数据接口</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  getList: '/getlist', //getlist接口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4、修改-src-config-requestConfig-ts文件的映射关系"><a href="#4、修改-src-config-requestConfig-ts文件的映射关系" class="headerlink" title="4、修改./src/config/requestConfig.ts文件的映射关系"></a>4、修改<code>./src/config/requestConfig.ts</code>文件的映射关系</h3><p>引入<code>index</code>页面的刚刚创建的<code>config</code>文件</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> index from <span class="string">"../pages/index/config"</span>; <span class="comment">// index的接口</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 请求公共参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> commonParame = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 请求的映射文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> requestConfig = &#123;</span><br><span class="line">    loginUrl:'/api/user/wechat-auth', // 微信的登陆接口</span><br><span class="line">    ...index</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5、修改-src-pages-index-service-ts里的接口请求"><a href="#5、修改-src-pages-index-service-ts里的接口请求" class="headerlink" title="5、修改./src/pages/index/service.ts里的接口请求"></a>5、修改<code>./src/pages/index/service.ts</code>里的接口请求</h3><p>还是依据之前的<code>getlist</code>接口</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import Api from '../../utils/request'</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getList = (data) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> Api.getList(data)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6、修改-src-pages-index-index-interface-ts里的参数类型"><a href="#6、修改-src-pages-index-index-interface-ts里的参数类型" class="headerlink" title="6、修改./src/pages/index/index.interface.ts里的参数类型"></a>6、修改<code>./src/pages/index/index.interface.ts</code>里的参数类型</h3><p>根据项目具体的参数，自行进行配置</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * index.state 参数类型</span></span><br><span class="line"><span class="comment"> * @interface IndexState</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> interface IndexState &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * index.props 参数类型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @export</span></span><br><span class="line"><span class="comment"> * @interface IndexProps</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> interface IndexProps &#123;</span><br><span class="line">    dispatch?: any,</span><br><span class="line">    data?: Array&lt;DataInterface&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> interface DataInterface &#123;</span><br><span class="line">    des:<span class="built_in">string</span>,</span><br><span class="line">    lunar:<span class="built_in">string</span>,</span><br><span class="line">    thumbnail_pic_s:<span class="built_in">string</span>,</span><br><span class="line">    title:<span class="built_in">string</span>,</span><br><span class="line">    _id:<span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7、修改-src-pages-index-model-ts里effects函数"><a href="#7、修改-src-pages-index-model-ts里effects函数" class="headerlink" title="7、修改./src/pages/index/model.ts里effects函数"></a>7、修改<code>./src/pages/index/model.ts</code>里<code>effects</code>函数</h3><p>在这里创建页面需要请求的接口，链接<code>service</code>里的接口发起数据请求,这里以<code>getList</code>为例。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// import Taro from '@tarojs/taro';</span></span><br><span class="line">import * as indexApi from './service';</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  namespace: 'index',</span><br><span class="line">  state: &#123;</span><br><span class="line">    data:[],</span><br><span class="line">    v:'1.0',</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  effects: &#123;</span><br><span class="line">    *getList(&#123; payload &#125;,&#123;select, call, put&#125;)&#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; error, result&#125; = yield call(indexApi.getList,&#123;</span><br><span class="line">        ...payload</span><br><span class="line">      &#125;)</span><br><span class="line">      console.log('数据接口返回',result);</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">        <span class="function">yield <span class="title">put</span><span class="params">(&#123;</span></span></span><br><span class="line">          type: 'save',</span><br><span class="line">          payload: &#123;</span><br><span class="line">            data:result.data</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  reducers: &#123;</span><br><span class="line">    save(state, &#123; payload &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state, ...payload &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8、修改-src-pages-index-index-tsx里页面结构"><a href="#8、修改-src-pages-index-index-tsx里页面结构" class="headerlink" title="8、修改./src/pages/index/index.tsx里页面结构"></a>8、修改<code>./src/pages/index/index.tsx</code>里页面结构</h3><p>这里简单的实现列表新闻页面。</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import Taro, &#123; Component, Config &#125; from '@tarojs/taro'</span><br><span class="line">import &#123; View, Text&#125; from '@tarojs/components'</span><br><span class="line">import &#123; connect &#125; from '@tarojs/redux'</span><br><span class="line"><span class="comment">// import Api from '../../utils/request'</span></span><br><span class="line"><span class="comment">// import Tips from '../../utils/tips'</span></span><br><span class="line">import &#123; IndexProps, IndexState &#125; from './index.interface'</span><br><span class="line">import './index.scss'</span><br><span class="line"><span class="comment">// import &#123;  &#125; from '../../components'</span></span><br><span class="line"></span><br><span class="line">@connect((&#123; index &#125;) =&gt; (&#123;</span><br><span class="line">    ...index,</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="title">extends</span> <span class="title">Component</span>&lt;IndexProps,IndexState &gt; &#123;</span></span><br><span class="line">  config:Config = &#123;</span><br><span class="line">    navigationBarTitleText: 'taro_dva_typescript'</span><br><span class="line">  &#125;</span><br><span class="line">  constructor(props: IndexProps) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async getList() &#123;</span><br><span class="line">    await <span class="keyword">this</span>.props.dispatch(&#123;</span><br><span class="line">      type: 'index/getList',</span><br><span class="line">      payload: &#123;&#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getList()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; data &#125; = <span class="keyword">this</span>.props</span><br><span class="line">    console.log('this.props===&gt;&gt;',data);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View className='fx-index-wrap'&gt;</span><br><span class="line">          &lt;View className='index-topbar'&gt;New资讯&lt;/View&gt;</span><br><span class="line">          &lt;View className='index-data'&gt;</span><br><span class="line">            &#123;</span><br><span class="line">              data &amp;&amp; data.<span class="built_in">map</span>((item,index) =&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> (</span><br><span class="line">                  &lt;View className='index-list' key=&#123;index&#125;&gt;</span><br><span class="line">                    &lt;View className='index-title'&gt;&#123;item.title&#125;&lt;/View&gt;</span><br><span class="line">                    &lt;View className='index-img' style=&#123;`background-image: url($&#123;item.thumbnail_pic_s&#125;)`&#125;&gt;&lt;/View&gt;</span><br><span class="line">                  &lt;/View&gt;</span><br><span class="line">                )</span><br><span class="line">              &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">          &lt;/View&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Index</span><br></pre></td></tr></table></figure>
+<h3 id="9、修改-src-pages-index-index-scss首页的样式"><a href="#9、修改-src-pages-index-index-scss首页的样式" class="headerlink" title="9、修改./src/pages/index/index.scss首页的样式"></a>9、修改<code>./src/pages/index/index.scss</code>首页的样式</h3><p>这里的写法是<code>sass</code>的语法糖</p>
+<figure class="highlight h"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"../../assets/scss/variables"</span>;</span><br><span class="line"></span><br><span class="line">.#&#123;$prefix&#125; &#123;</span><br><span class="line"></span><br><span class="line">  &amp;-index-wrap &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    min-height: <span class="number">100</span>vh;</span><br><span class="line">    .index &#123;</span><br><span class="line">      &amp;-topbar &#123;</span><br><span class="line">        padding: <span class="number">10</span>rpx <span class="number">50</span>rpx;</span><br><span class="line">        text-align: center;</span><br><span class="line">        font-weight: bold;</span><br><span class="line">        color: #<span class="number">333</span>;</span><br><span class="line">        font-size: <span class="number">30</span>rpx;</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      <span class="comment">// &amp;-data &#123;</span></span><br><span class="line">      <span class="comment">// &#125;</span></span><br><span class="line">       </span><br><span class="line">      &amp;-title &#123;</span><br><span class="line">        font-size: <span class="number">28</span>rpx;</span><br><span class="line">        color: #<span class="number">666</span>;</span><br><span class="line">        width: <span class="number">100</span>%;</span><br><span class="line">        font-weight: bold;</span><br><span class="line">      &#125;</span><br><span class="line">      &amp;-<span class="built_in">list</span>&#123;</span><br><span class="line">        border-bottom: <span class="number">1</span>rpx solid <span class="meta">#eee;</span></span><br><span class="line">        padding-bottom: <span class="number">20</span>rpx;</span><br><span class="line">        margin: <span class="number">20</span>rpx <span class="number">24</span>rpx;</span><br><span class="line">        display: flex;</span><br><span class="line">        flex-direction: row;</span><br><span class="line">        justify-content: space-between;</span><br><span class="line">        align-items: center</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">      &amp;-img &#123;</span><br><span class="line">        width: <span class="number">70</span>%;</span><br><span class="line">        height: <span class="number">200</span>rpx;</span><br><span class="line">        background-repeat: no-repeat;</span><br><span class="line">        background-size: contain;</span><br><span class="line">        background-position: right center;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h1><p>运行小程序编译命令</p>
+<p><code>cnpm run dev:weapp</code></p>
+<p>等待项目编译完成，会在项目根目录下生成一个<code>dist</code>,打开微信小程序开发者根据，导入本地刚刚生成的<code>dist</code>文件，就成功启动了项目。</p>
+<p>效果预览图：</p>
+<p><img src="https://raw.githubusercontent.com/Duanruilong/phone_drl/master/image/taro/tdt2.jpg" alt="Taro"></p>
+<hr>
+<p>如有啥问题欢迎讨论，共同学习。</p>
+<p>项目示例Github地址：<a href="https://github.com/Duanruilong/taro_dva_typescript" target="_blank" rel="noopener">https://github.com/Duanruilong/taro_dva_typescript</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;margin-top:20px">-------------我是一条分割线<i class="fa fa-heartbeat"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: block;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/blog/images/wechatpay.png" alt="DRLong WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/blog/images/alipay.png" alt="DRLong Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i>Javascript</a>
+          
+            <a href="/blog/tags/编程/" rel="tag"><i class="fa fa-tag"></i>编程</a>
+          
+            <a href="/blog/tags/dva/" rel="tag"><i class="fa fa-tag"></i>dva</a>
+          
+            <a href="/blog/tags/Typescript/" rel="tag"><i class="fa fa-tag"></i>Typescript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/07/01/AQL-基本语法-用法/" rel="next" title="AQL 基本语法&用法">
+                <i class="fa fa-chevron-left"></i> AQL 基本语法&用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+            
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/blog/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/drl.jpg"
+               alt="DRLong" />
+          <p class="site-author-name" itemprop="name">DRLong</p>
+           
+              <p class="site-description motion-element" itemprop="description">不断耕耘，点滴积累，则有结果。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/archives/">
+                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Duanruilong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.csdn.net/?c=c86d4a3b87b88780c760ae55c41d4705" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-map-signs"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/5504265682/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=614208872&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                    
+                      QQ
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              DRL的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://space.bilibili.com/91427434/#/" title="哔哩哔哩" target="_blank">哔哩哔哩</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/people/duan-rui-long-16/activities" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://juejin.im/user/5856b3461b69e60056dd1fc1" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前期工作准备"><span class="nav-number">1.1.</span> <span class="nav-text">前期工作准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">安装配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置项目文件"><span class="nav-number">2.</span> <span class="nav-text">配置项目文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目一些具体配置操作"><span class="nav-number">2.1.</span> <span class="nav-text">项目一些具体配置操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、在-src-config下创建index-ts，添加项目配置信息"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、在./src/config下创建index.ts，添加项目配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、在-src-utils下创建dva-ts，配置dva"><span class="nav-number">2.1.2.</span> <span class="nav-text">2、在./src/utils下创建dva.ts，配置dva</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、在-src-utils下创建tips-ts，整合封装微信原生弹窗"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、在./src/utils下创建tips.ts，整合封装微信原生弹窗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、在-src-config下创建requestConfig-ts，统一配置请求接口"><span class="nav-number">2.1.4.</span> <span class="nav-text">4、在./src/config下创建requestConfig.ts，统一配置请求接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、在-src-utils下创建common-ts，共用函数"><span class="nav-number">2.1.5.</span> <span class="nav-text">5、在./src/utils下创建common.ts，共用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、在-src-utils下创建logger-ts，封装log函数"><span class="nav-number">2.1.6.</span> <span class="nav-text">6、在./src/utils下创建logger.ts，封装log函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、在-src-utils下创建request-ts，封装http请求"><span class="nav-number">2.1.7.</span> <span class="nav-text">7、在./src/utils下创建request.ts，封装http请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、在-src-config下创建taroConfig-ts，封装taro小程序的一些方法"><span class="nav-number">2.1.8.</span> <span class="nav-text">8、在./src/config下创建taroConfig.ts，封装taro小程序的一些方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件生成脚本"><span class="nav-number">2.2.</span> <span class="nav-text">配置文件生成脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、在根目录下创建scripts文件夹，添加-scripts-template-js"><span class="nav-number">2.2.1.</span> <span class="nav-text">1、在根目录下创建scripts文件夹，添加./scripts/template.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、自动生成脚本文件夹"><span class="nav-number">2.2.2.</span> <span class="nav-text">2、自动生成脚本文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置业务代码"><span class="nav-number">2.3.</span> <span class="nav-text">配置业务代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、先在src目录下创建models文件夹，集合项目里的model关系。"><span class="nav-number">2.3.1.</span> <span class="nav-text">1、先在src目录下创建models文件夹，集合项目里的model关系。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、修改非常主要的文件app-tsx"><span class="nav-number">2.3.2.</span> <span class="nav-text">2、修改非常主要的文件app.tsx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、修改接口请求-src-pages-index-config-ts文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">3、修改接口请求./src/pages/index/config.ts文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、修改-src-config-requestConfig-ts文件的映射关系"><span class="nav-number">2.3.4.</span> <span class="nav-text">4、修改./src/config/requestConfig.ts文件的映射关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、修改-src-pages-index-service-ts里的接口请求"><span class="nav-number">2.3.5.</span> <span class="nav-text">5、修改./src/pages/index/service.ts里的接口请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、修改-src-pages-index-index-interface-ts里的参数类型"><span class="nav-number">2.3.6.</span> <span class="nav-text">6、修改./src/pages/index/index.interface.ts里的参数类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、修改-src-pages-index-model-ts里effects函数"><span class="nav-number">2.3.7.</span> <span class="nav-text">7、修改./src/pages/index/model.ts里effects函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、修改-src-pages-index-index-tsx里页面结构"><span class="nav-number">2.3.8.</span> <span class="nav-text">8、修改./src/pages/index/index.tsx里页面结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、修改-src-pages-index-index-scss首页的样式"><span class="nav-number">2.3.9.</span> <span class="nav-text">9、修改./src/pages/index/index.scss首页的样式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目启动"><span class="nav-number">3.</span> <span class="nav-text">项目启动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2018 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart" style="color:red"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DRLong   </span>
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+  <div class="theme-info">
+    <span class="post-count">博客全站共136.7k字</span>
+  </div>
+</div>
+
+
+<div class="powered-by">
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  
+</body>
+</html>

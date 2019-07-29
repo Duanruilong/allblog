@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Taro+dva+Typescript 搭建微信小程序架构]]></title>
+    <url>%2Fblog%2F2019%2F07%2F24%2FTaro-dva-Typescript%E6%90%AD%E5%BB%BA%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[微信小程序的开发目前是很热的一个领域，有很多的开发模式，找到一种属于自己的方法才会使得开发顺心顺利。 此架构是使用 Taro + dva + typescript 构建前端开发 京东凹凸实验室的React框架Taro很成熟，又是大厂在维护更新迭代，不用担心没人维护的问题，他有自己的UI还有物料社区，比起原生小程序方便很多，支持多端，一处代码，多处运行，微信小程序、H5、百度小程序、支付宝小程序、字节跳动小程序、QQ轻应用、快应用、ReactNative； 数据管理是Redux集成的dva框架，是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架； TypeScript就是所谓的JavaScript超集。它不是JavaScript的替代品，也不会为JavaScript代码添加任何新功能。相反，TypeScript允许程序员在其代码中使用面向对象的构造，然后将其转换为JavaScript。它还包括类型安全和编译时类型检查等便利功能。 资料 Taro官网地址：https://taro.aotu.io/dva官网地址：https://dvajs.com/guide/ 开始前期工作准备cli 工具安装: 12345678# 使用 npm 安装 cli$ npm install -g @tarojs/cli# OR 使用 yarn 安装 cli$ yarn global add @tarojs/cli# OR 安装了 cnpm，使用 cnpm 安装 cli$ cnpm install -g @tarojs/cli 使用命令创建模板项目: 12$ taro init Taro_dva_Typescript 安装配置文件安装dva cnpm install --save dva-core dva-loading dva-core：封装了 redux 和 redux-saga的一个插件 dva-loading：管理页面的loading状态 安装@tarojs/redux cnpm install --save redux @tarojs/redux @tarojs/redux-h5 redux-thunk redux-logger 配置项目文件去除不需要的文件，添加实际需要的一些文件，先删除./ssrc/page下的index文件夹，后期使用命令行生成完整结构的文件夹。 在/src`目录下根据自己的实际需求进行一下配置： assets: 一些静态资源，比如：image、iconfont config: 项目配置文件 components: 项目编写的一些共用组件 types: 项目公共的Typescript类型声明 models: 项目dva插件model函数的引用或者是一些共用的js文件 utils: 项目里封装的一些插件 项目一些具体配置操作1、在./src/config下创建index.ts，添加项目配置信息12345678910111213141516171819202122232425262728/** * 这里为了方便测试使用 Easy Mock 模拟接口数据 * * https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist*/export const ONLINEHOST = 'https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist';/** * mock 接口 * */ export const MOCKHOST = 'https://www.easy-mock.com/mock/5d38269ffb233553ab0d10ad/getlist';/** * 是否mock*/export const ISMOCK = true;/** * 这是一个全局的分享信息 不用每一个都去写 */export const SHAREINFO = &#123; 'title': '分享标题', 'path': '路径', 'imageUrl': '图片' &#125; 2、在./src/utils下创建dva.ts，配置dva12345678910111213141516171819202122232425262728293031323334353637383940414243import &#123; create &#125; from "dva-core";import &#123; createLogger &#125; from "redux-logger";import createLoading from "dva-loading";let applet storelet dispatchlet registeredfunction createApp(opt) &#123; // redux 的日志 opt.onAction = [createLogger()] app = create(opt) app.use(createLoading(&#123;&#125;)) if (!registered) &#123; opt.models.forEach(model =&gt; app.model(model)); &#125; registered = true; app.start() store = app._store; app.getStore = () =&gt; store; app.use(&#123; onError(err)&#123; console.log(err); &#125; &#125;) dispatch = store.dispatch; app.dispatch = dispatch; return app;&#125;export default&#123; createApp, getDispatch()&#123; return app.dispatch &#125;&#125; 3、在./src/utils下创建tips.ts，整合封装微信原生弹窗12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485import Taro from "@tarojs/taro";import &#123; node &#125; from "_@types_prop-types@15.7.1@@types/prop-types";/** * 整合封装微信的原生弹窗 * 提示、加载、工具类*/export default class Tips &#123; static isLoading = false; /** * 提示信息 */ static toast(title: string, onHide?: () =&gt; void) &#123; Taro.showToast(&#123; title: title, icon: 'node', mask: true, duration: 1500 &#125;); // 去除结束回调函数 if (onHide) &#123; setTimeout(() =&gt; &#123; onHide(); &#125;, 500); &#125; &#125; /** * 加载提示弹窗 */ static loding(title:'加载中',force = false)&#123; if (this.isLoading &amp;&amp; !force) &#123; return &#125; this.isLoading = true; if (Taro.showLoading) &#123; Taro.showLoading(&#123; title:title, mask:true &#125;) &#125;else&#123; Taro.showNavigationBarLoading() //导航条加载动画 &#125; &#125; /** * 加载完成 */ static loaded()&#123; let duration = 0; if (this.isLoading) &#123; this.isLoading = false; if (Taro.hideLoading) &#123; Taro.hideLoading() &#125; else &#123; Taro.hideNavigationBarLoading(); //导航条加载动画 &#125; duration = 500; &#125; // 设定隐藏的动画时长为500ms,防止直接toast时出现问题 return new Promise(resolve =&gt; setTimeout(resolve,duration)) &#125; /** * 弹出提示框 */ static success(title,duration = 1500)&#123; Taro.showToast(&#123; title: title, icon: 'success', duration: duration, mask:true &#125;) if (duration &gt; 0) &#123; return new Promise(resolve =&gt; setTimeout(resolve,duration)) &#125; &#125;&#125; 4、在./src/config下创建requestConfig.ts，统一配置请求接口12345678910111213/** * 请求公共参数*/export const commonParame = &#123;&#125;/** * 请求的映射文件*/export const requestConfig = &#123; loginUrl:'/api/user/wechat-auth' // 微信的登陆接口&#125; 5、在./src/utils下创建common.ts，共用函数12345678910111213141516171819/** * 共用函数*/export const repeat = (str = '0', times) =&gt; (new Array(times + 1)).join(str);// 时间前面 +0 export const pad = (num, maxLength = 2) =&gt; repeat('0', maxLength - num.toString().length) + num;// 全局的公共变量export let globalData: any = &#123;&#125;// 时间格式装换函数export const formatTime = time =&gt; &#123; `$&#123;pad(time.getHours())&#125;:$&#123;pad(time.getMinutes())&#125;:$&#123;pad(time.getSeconds())&#125;.$&#123;pad(time.getMilliseconds(), 3)&#125;`&#125; 6、在./src/utils下创建logger.ts，封装log函数1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950/** * 封装logo函数*/import &#123; formatTime &#125; from './common';const defaults = &#123; level: 'log', logger: console, logErrors: true, colors: &#123; title:'logger', req:'#9e9e9e', res:'#4caf50', error:'#f20404', &#125;&#125;function printBuffer(logEntry, options)&#123; const &#123;logger,colors&#125; = options; let &#123;title,started,req,res&#125; = logEntry; // Message const headerCSS = ['color:gray; font-weight:lighter;'] const styles = s =&gt; `color $&#123;s&#125;; font-weight: bold`; // render logger.group(`%c $&#123;title&#125; @$&#123;formatTime(started)&#125;`, ...headerCSS); logger.log('%c req', styles(colors.req), req) logger.log('%c res', styles(colors.res), res) logger.groupEnd()&#125;interface LogEntry&#123; started ? : object // 触发时间&#125;function createLogger(options: LogEntry = &#123;&#125;)&#123; const loggerOptions = Object.assign(&#123;&#125;, defaults, options) const logEntry = options logEntry.started = new Date(); printBuffer(logEntry, Object.assign(&#123;&#125;, loggerOptions))&#125;export &#123; defaults, createLogger,&#125; 7、在./src/utils下创建request.ts，封装http请求123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140import Taro,&#123; Component &#125; from "@tarojs/taro";import &#123; ISMOCK,MAINHOST &#125; from "../config";import &#123; commonParame,requestConfig &#125; from "../config/requestConfig";import Tips from "./tips";// 封装请求declare type Methohs = "GET" | "OPTIONS" | "HEAD" | "PUT" | "DELETE" | "TRACE" | "CONNECT";declare type Headers = &#123; [key :string]:string&#125;;declare type Datas = &#123;method : Methohs; [key: string] : any;&#125;;interface Options&#123; url: string; host?: string; method?: Methohs; data?: Datas; header?: Headers;&#125;export class Request &#123; // 登陆时的promise static loginReadyPromise: Promise&lt;any&gt; = Promise.resolve() // 正在登陆 static isLoading: boolean = false // 导出的API对象 static apiLists: &#123; [key: string]: () =&gt; any;&#125; = &#123;&#125; // token static token: string = '' // 开始处理options static conbineOptions(opts, data: Datas, method: Methohs): Options &#123; typeof opts === 'string' &amp;&amp; (opts = &#123;url: opts&#125;) return &#123; data: &#123; ...commonParame, ...opts.data, ...data &#125;, method: opts.method || data.method || method || 'GET', url: `$&#123;opts.host || MAINHOST&#125;$&#123;opts.url&#125;` &#125; &#125; static getToken()&#123; !this.token &amp;&amp; (this.token = Taro.getStorageSync('token')) return this.token &#125; // 登陆 static login()&#123; if (!this.isLoading) &#123; this.loginReadyPromise = this.onLogining() &#125; return this.loginReadyPromise &#125; static onLogining()&#123; this.isLoading = true; return new Promise(async (resolve, reject) =&gt; &#123; // 获取code const &#123; code &#125; = await Taro.login(); const &#123; data &#125; = await Taro.request(&#123; url: `$&#123;MAINHOST&#125;$&#123;requestConfig.loginUrl&#125;`, data:&#123;code: code&#125; &#125;) if (data.code !== 0 || !data.data || !data.data.token) &#123; reject() return &#125; &#125;) &#125; /** * 基于 Taro.request 的 request 请求 * * */ static async request(opts: Options) &#123; // Taro.request 请求 const res = await Taro.request(opts); // 是否mock if(ISMOCK) return res.data; // 请求失败 if (res.data.code === 99999) &#123; await this.login(); return this.request(opts) &#125; // 请求成功 if (res.data) &#123; return res.data &#125; // 请求错误 const edata = &#123; ...res.data, err : (res.data &amp;&amp; res.data.msg) || '网络错误 ~'&#125; Tips.toast(edata.err) throw new Error(edata.err) &#125; /** * 创建请求函数 */ static creatRequests(opts: Options | string) : () =&gt; &#123;&#125; &#123; console.log('opts==&gt;',opts); return async (data=&#123;&#125;, method: Methods = "GET") =&gt; &#123; const _opts = this.conbineOptions(opts, data, method) const res = await this.request(_opts) return res; &#125; &#125; /** * 抛出API方法 */ static getApiList(requestConfig)&#123; if (!Object.keys(requestConfig).length) &#123; return &#123;&#125; &#125; Object.keys(requestConfig).forEach((key)=&gt;&#123; this.apiLists[key] = this.creatRequests(requestConfig[key]) &#125;) return this.apiLists &#125;&#125;const Api = Request.getApiList(requestConfig)Component.prototype.$api = Apiexport default Api as any 注： 在这里tslint会报这样的错：类型“Component&lt;any, any&gt;”上不存在属性“$api”。，因为没有添加声明，需在./src目录下创建app-shim.d.ts 1234567891011121314151617/** * 添加taro等自定义类型*/import Taro,&#123; Component &#125; from '@tarojs/taro'// 在Component上定义自定义方法类型declare module '@tarojs/taro' &#123; interface Component &#123; $api: any &#125;&#125;// 声明declare let require: any;declare let dispatch: any 8、在./src/config下创建taroConfig.ts，封装taro小程序的一些方法12345678910111213141516171819202122232425262728import Taro,&#123; Component &#125; from '@tarojs/taro'import &#123; SHAREINFO &#125; from '../config/index'/** * 封装taro小程序的一些方法 * - 方法改写 * - utils 挂载*/// navigateTo 超过8次后，强行进行redirectTo,避免页面卡顿 const nav = Taro.navigateTo Taro.navigateTo = (data) =&gt; &#123; if (Taro.getCurrentPages().length &gt; 8) &#123; return Taro.redirectTo(data) &#125; return nav(data) &#125;// 挂载分享方法 ComponentComponent.prototype.onShareAppMessage = function () &#123; return SHAREINFO&#125; 配置文件生成脚本1、在根目录下创建scripts文件夹，添加./scripts/template.js123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132/** * pages 页面快速生成脚本 * * npm run tem '文件名‘*/const fs = require('fs')const dirName = process.argv[2]const capPirName = dirName.substring(0, 1).toUpperCase() + dirName.substring(1);if (!dirName) &#123; console.log('文件名不能为空'); console.log('用法：npm run tem test'); process.exit(0);&#125;// 页面模板构建const indexTep = ` import Taro, &#123; Component, Config &#125; from '@tarojs/taro' import &#123; View &#125; from '@tarojs/components' // import &#123; connect &#125; from '@tarojs/redux' // import Api from '../../utils/request' // import Tips from '../../utils/tips' import &#123; $&#123;capPirName&#125;Props, $&#123;capPirName&#125;State &#125; from './$&#123;dirName&#125;.interface' import './$&#123;dirName&#125;.scss' // import &#123; &#125; from '../../components' // @connect((&#123; $&#123;dirName&#125; &#125;) =&gt; (&#123; // ...$&#123;dirName&#125;, // &#125;)) class $&#123;capPirName&#125; extends Component&lt;$&#123;capPirName&#125;Props,$&#123;capPirName&#125;State &gt; &#123; config:Config = &#123; navigationBarTitleText: '页面标题' &#125; constructor(props: $&#123;capPirName&#125;Props) &#123; super(props) this.state = &#123;&#125; &#125; componentDidMount() &#123; &#125; render() &#123; return ( &lt;View className='fx-$&#123;dirName&#125;-wrap'&gt; 页面内容 &lt;/View&gt; ) &#125; &#125; export default $&#123;capPirName&#125;`// scss 文件模板const scssTep = ` @import "../../assets/scss/variables"; .#&#123;$prefix&#125; &#123; &amp;-$&#123;dirName&#125;-wrap &#123; width: 100%; min-height: 100Vh; &#125; &#125;`// config 接口地址配置模板const configTep =` export default &#123; test:'/wechat/perfect-info', //XX接口 &#125;`// 接口请求模板const serviceTep =` import Api from '../../utils/request' export const testApi = data =&gt; Api.test( data )`// model 模板const modelTep = ` // import Taro from '@tarojs/taro'; // import * as $&#123;dirName&#125;Api from './service'; export default &#123; namespace: '$&#123;dirName&#125;', state: &#123; &#125;, effects: &#123;&#125;, reducers: &#123;&#125; &#125;`const interfaceTep = `/** * $&#123;dirName&#125;.state 参数类型 * * @export * @interface $&#123;capPirName&#125;State */export interface $&#123;capPirName&#125;State &#123;&#125;/** * $&#123;dirName&#125;.props 参数类型 * * @export * @interface $&#123;capPirName&#125;Props */export interface $&#123;capPirName&#125;Props &#123;&#125;`fs.mkdirSync(`./src/pages/$&#123;dirName&#125;`); // mkdir $1process.chdir(`./src/pages/$&#123;dirName&#125;`); // cd $1fs.writeFileSync(`$&#123;dirName&#125;.tsx`, indexTep); //tsxfs.writeFileSync(`$&#123;dirName&#125;.scss`, scssTep); // scssfs.writeFileSync('config.ts', configTep); // configfs.writeFileSync('service.ts', serviceTep); // servicefs.writeFileSync('model.ts', modelTep); // modelfs.writeFileSync(`$&#123;dirName&#125;.interface.ts`, interfaceTep); // interfaceprocess.exit(0); 最后 在根目录的package.json的scripts里加上对应的命令 123456"scripts": &#123; ... "tep": "node scripts/template", "com": "node scripts/component"&#125; 2、自动生成脚本文件夹cnpm run tep index page文件夹下生成了一个index的文件夹，里面包含 config.ts index.interface.ts index.scss index.tsx model.ts service.ts 配置业务代码1、先在src目录下创建models文件夹，集合项目里的model关系。1234567import index from '../pages/index/model';export default[ index] 项目目前只有index页面，export default这里的数组就只有index，需要注意这里是[]数组。 2、修改非常主要的文件app.tsx1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889import Taro, &#123; Component, Config &#125; from '@tarojs/taro'import "@tarojs/async-await";import &#123; Provider &#125; from "@tarojs/redux";import dva from './utils/dva';import './utils/request';import &#123; globalData &#125; from './utils/common';import models from './models'import Index from './pages/index'import './app.scss'// 如果需要在 h5 环境中开启 React Devtools// 取消以下注释：// if (process.env.NODE_ENV !== 'production' &amp;&amp; process.env.TARO_ENV === 'h5') &#123;// require('nerv-devtools')// &#125;const dvaApp = dva.createApp(&#123; initialState:&#123;&#125;, models: models,&#125;)const store = dvaApp.getStore();class App extends Component &#123; /** * 指定config的类型声明为: Taro.Config * * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型 * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型 */ config: Config = &#123; pages: [ 'pages/index/index' ], window: &#123; backgroundTextStyle: 'light', navigationBarBackgroundColor: '#fff', navigationBarTitleText: 'WeChat', navigationBarTextStyle: 'black' &#125; &#125; /** * * 1.小程序打开的参数 globalData.extraData.xx * 2.从二维码进入的参数 globalData.extraData.xx * 3.获取小程序的设备信息 globalData.systemInfo */ async componentDidMount () &#123; // 获取参数 const referrerInfo = this.$router.params.referrerInfo const query = this.$router.params.query !globalData.extraData &amp;&amp; (globalData.extraData = &#123;&#125;) if (referrerInfo &amp;&amp; referrerInfo.extraData) &#123; globalData.extraData = referrerInfo.extraData &#125; if (query) &#123; globalData.extraData = &#123; ...globalData.extraData, ...query &#125; &#125; // 获取设备信息 const sys = await Taro.getSystemInfo() sys &amp;&amp; (globalData.systemInfo = sys) &#125; componentDidShow () &#123;&#125; componentDidHide () &#123;&#125; componentDidCatchError () &#123;&#125; render () &#123; return ( &lt;Provider store=&#123;store&#125;&gt; &lt;Index /&gt; &lt;/Provider&gt; ) &#125;&#125;Taro.render(&lt;App /&gt;, document.getElementById('app')) 3、修改接口请求./src/pages/index/config.ts文件一个获取列表数据接口 1234export default &#123; getList: '/getlist', //getlist接口&#125; 4、修改./src/config/requestConfig.ts文件的映射关系引入index页面的刚刚创建的config文件 123456789101112131415161718import index from "../pages/index/config"; // index的接口/** * 请求公共参数*/export const commonParame = &#123;&#125;/** * 请求的映射文件*/export const requestConfig = &#123; loginUrl:'/api/user/wechat-auth', // 微信的登陆接口 ...index&#125; 5、修改./src/pages/index/service.ts里的接口请求还是依据之前的getlist接口 12345678import Api from '../../utils/request'export const getList = (data) =&gt; &#123; return Api.getList(data)&#125; 6、修改./src/pages/index/index.interface.ts里的参数类型根据项目具体的参数，自行进行配置 123456789101112131415161718192021222324252627/** * index.state 参数类型 * @interface IndexState */export interface IndexState &#123;&#125;/** * index.props 参数类型 * * @export * @interface IndexProps */export interface IndexProps &#123; dispatch?: any, data?: Array&lt;DataInterface&gt;&#125;export interface DataInterface &#123; des:string, lunar:string, thumbnail_pic_s:string, title:string, _id:string&#125; 7、修改./src/pages/index/model.ts里effects函数在这里创建页面需要请求的接口，链接service里的接口发起数据请求,这里以getList为例。 123456789101112131415161718192021222324252627282930313233343536// import Taro from '@tarojs/taro';import * as indexApi from './service';export default &#123; namespace: 'index', state: &#123; data:[], v:'1.0', &#125;, effects: &#123; *getList(&#123; payload &#125;,&#123;select, call, put&#125;)&#123; const &#123; error, result&#125; = yield call(indexApi.getList,&#123; ...payload &#125;) console.log('数据接口返回',result); if (!error) &#123; yield put(&#123; type: 'save', payload: &#123; data:result.data &#125;, &#125;) &#125; &#125; &#125;, reducers: &#123; save(state, &#123; payload &#125;) &#123; return &#123; ...state, ...payload &#125;; &#125;, &#125;&#125; 8、修改./src/pages/index/index.tsx里页面结构这里简单的实现列表新闻页面。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859import Taro, &#123; Component, Config &#125; from '@tarojs/taro'import &#123; View, Text&#125; from '@tarojs/components'import &#123; connect &#125; from '@tarojs/redux'// import Api from '../../utils/request'// import Tips from '../../utils/tips'import &#123; IndexProps, IndexState &#125; from './index.interface'import './index.scss'// import &#123; &#125; from '../../components'@connect((&#123; index &#125;) =&gt; (&#123; ...index,&#125;))class Index extends Component&lt;IndexProps,IndexState &gt; &#123; config:Config = &#123; navigationBarTitleText: 'taro_dva_typescript' &#125; constructor(props: IndexProps) &#123; super(props) this.state = &#123;&#125; &#125; async getList() &#123; await this.props.dispatch(&#123; type: 'index/getList', payload: &#123;&#125; &#125;) &#125; componentDidMount() &#123; this.getList() &#125; render() &#123; const &#123; data &#125; = this.props console.log('this.props===&gt;&gt;',data); return ( &lt;View className='fx-index-wrap'&gt; &lt;View className='index-topbar'&gt;New资讯&lt;/View&gt; &lt;View className='index-data'&gt; &#123; data &amp;&amp; data.map((item,index) =&gt; &#123; return ( &lt;View className='index-list' key=&#123;index&#125;&gt; &lt;View className='index-title'&gt;&#123;item.title&#125;&lt;/View&gt; &lt;View className='index-img' style=&#123;`background-image: url($&#123;item.thumbnail_pic_s&#125;)`&#125;&gt;&lt;/View&gt; &lt;/View&gt; ) &#125;) &#125; &lt;/View&gt; &lt;/View&gt; ) &#125;&#125;export default Index 9、修改./src/pages/index/index.scss首页的样式这里的写法是sass的语法糖 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647@import "../../assets/scss/variables";.#&#123;$prefix&#125; &#123; &amp;-index-wrap &#123; width: 100%; min-height: 100vh; .index &#123; &amp;-topbar &#123; padding: 10rpx 50rpx; text-align: center; font-weight: bold; color: #333; font-size: 30rpx; &#125; // &amp;-data &#123; // &#125; &amp;-title &#123; font-size: 28rpx; color: #666; width: 100%; font-weight: bold; &#125; &amp;-list&#123; border-bottom: 1rpx solid #eee; padding-bottom: 20rpx; margin: 20rpx 24rpx; display: flex; flex-direction: row; justify-content: space-between; align-items: center &#125; &amp;-img &#123; width: 70%; height: 200rpx; background-repeat: no-repeat; background-size: contain; background-position: right center; &#125; &#125; &#125; &#125; 项目启动运行小程序编译命令 cnpm run dev:weapp 等待项目编译完成，会在项目根目录下生成一个dist,打开微信小程序开发者根据，导入本地刚刚生成的dist文件，就成功启动了项目。 效果预览图： 如有啥问题欢迎讨论，共同学习。 项目示例Github地址：https://github.com/Duanruilong/taro_dva_typescript]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>编程</tag>
+        <tag>dva</tag>
+        <tag>Typescript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AQL 基本语法&用法]]></title>
     <url>%2Fblog%2F2019%2F07%2F01%2FAQL-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-%E7%94%A8%E6%B3%95%2F</url>
     <content type="text"><![CDATA[ArangoDB查询语言（AQL）类似于结构化查询语言（SQL） 在它的目的。两者都支持读取和修改集合数据，但AQL不支持数据定义操作，例如创建和删除数据库，集合和索引。 虽然有些关键字重叠，但AQL语法与SQL不同。例如，SQL WHERE和AQL FILTER子句是等效的，因为它们都定义了返回结果的条件。但是，SQL使用预定义的序列来确定WHERE语句必须在哪里出现。在AQL中，子句从左到右执行，因此FILTER查询中子句的位置决定了它的优先级。 尽管有这些差异，任何具有SQL背景的人都应该没有学习AQL的困难。 一、数据预览本次使用的数据共有43条，每条数据包含姓氏、年龄、活动状态和特征等六个字段 其中每个特征都有一个随机字母作为文档密钥。特质标签有英文和德文。 地点由地名和经纬度组成： 二、基本的CRUD创建集合：在创建文档之前，需要创造一个放置它的集合，集合可以通过Web界面，arangosh或驱动程序来创建。AQL无法创建集合。 单击Web界面中的COLLECTIONS，然后单击Add Collection并键入 Charactersname。使用保存确认。新集合就出现在了列表中。 插入单个对象：使用AQL插入文档 1234567INSERT &#123; "name": "Ned", "surname": "Stark", "alive": true, "age": 41, "traits": ["A","H","C","N","P"]&#125; INTO Characters 语法： INSERT document INTO collectionName 该文档是一个对象，由属性键和值对组成。属性键的引号在AQL中是可选的。键总是字符串，而属性值可以有不同的类型： null boolean (true, false) number (integer and floating point) string array object 批量插入对象：AQL不允许INSERT在单个查询中针对同一集合的多个操作。但是可以使用FOR循环体，插入多个文档。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647LET data = [ &#123; "name": "Robert", "surname": "Baratheon", "alive": false, "traits": ["A","H","C"] &#125;, &#123; "name": "Jaime", "surname": "Lannister", "alive": true, "age": 36, "traits": ["A","F","B"] &#125;, &#123; "name": "Catelyn", "surname": "Stark", "alive": false, "age": 40, "traits": ["D","H","C"] &#125;, &#123; "name": "Cersei", "surname": "Lannister", "alive": true, "age": 36, "traits": ["H","E","F"] &#125;, &#123; "name": "Daenerys", "surname": "Targaryen", "alive": true, "age": 16, "traits": ["D","H","C"] &#125;, &#123; "name": "Jorah", "surname": "Mormont", "alive": false, "traits": ["A","B","C","F"] &#125;, &#123; "name": "Petyr", "surname": "Baelish", "alive": false, "traits": ["E","G","F"] &#125;, &#123; "name": "Viserys", "surname": "Targaryen", "alive": false, "traits": ["O","L","N"] &#125;, &#123; "name": "Jon", "surname": "Snow", "alive": true, "age": 16, "traits": ["A","B","C","F"] &#125;, &#123; "name": "Sansa", "surname": "Stark", "alive": true, "age": 13, "traits": ["D","I","J"] &#125;, &#123; "name": "Arya", "surname": "Stark", "alive": true, "age": 11, "traits": ["C","K","L"] &#125;, &#123; "name": "Robb", "surname": "Stark", "alive": false, "traits": ["A","B","C","K"] &#125;, &#123; "name": "Theon", "surname": "Greyjoy", "alive": true, "age": 16, "traits": ["E","R","K"] &#125;, &#123; "name": "Bran", "surname": "Stark", "alive": true, "age": 10, "traits": ["L","J"] &#125;, &#123; "name": "Joffrey", "surname": "Baratheon", "alive": false, "age": 19, "traits": ["I","L","O"] &#125;, &#123; "name": "Sandor", "surname": "Clegane", "alive": true, "traits": ["A","P","K","F"] &#125;, &#123; "name": "Tyrion", "surname": "Lannister", "alive": true, "age": 32, "traits": ["F","K","M","N"] &#125;, &#123; "name": "Khal", "surname": "Drogo", "alive": false, "traits": ["A","C","O","P"] &#125;, &#123; "name": "Tywin", "surname": "Lannister", "alive": false, "traits": ["O","M","H","F"] &#125;, &#123; "name": "Davos", "surname": "Seaworth", "alive": true, "age": 49, "traits": ["C","K","P","F"] &#125;, &#123; "name": "Samwell", "surname": "Tarly", "alive": true, "age": 17, "traits": ["C","L","I"] &#125;, &#123; "name": "Stannis", "surname": "Baratheon", "alive": false, "traits": ["H","O","P","M"] &#125;, &#123; "name": "Melisandre", "alive": true, "traits": ["G","E","H"] &#125;, &#123; "name": "Margaery", "surname": "Tyrell", "alive": false, "traits": ["M","D","B"] &#125;, &#123; "name": "Jeor", "surname": "Mormont", "alive": false, "traits": ["C","H","M","P"] &#125;, &#123; "name": "Bronn", "alive": true, "traits": ["K","E","C"] &#125;, &#123; "name": "Varys", "alive": true, "traits": ["M","F","N","E"] &#125;, &#123; "name": "Shae", "alive": false, "traits": ["M","D","G"] &#125;, &#123; "name": "Talisa", "surname": "Maegyr", "alive": false, "traits": ["D","C","B"] &#125;, &#123; "name": "Gendry", "alive": false, "traits": ["K","C","A"] &#125;, &#123; "name": "Ygritte", "alive": false, "traits": ["A","P","K"] &#125;, &#123; "name": "Tormund", "surname": "Giantsbane", "alive": true, "traits": ["C","P","A","I"] &#125;, &#123; "name": "Gilly", "alive": true, "traits": ["L","J"] &#125;, &#123; "name": "Brienne", "surname": "Tarth", "alive": true, "age": 32, "traits": ["P","C","A","K"] &#125;, &#123; "name": "Ramsay", "surname": "Bolton", "alive": true, "traits": ["E","O","G","A"] &#125;, &#123; "name": "Ellaria", "surname": "Sand", "alive": true, "traits": ["P","O","A","E"] &#125;, &#123; "name": "Daario", "surname": "Naharis", "alive": true, "traits": ["K","P","A"] &#125;, &#123; "name": "Missandei", "alive": true, "traits": ["D","L","C","M"] &#125;, &#123; "name": "Tommen", "surname": "Baratheon", "alive": true, "traits": ["I","L","B"] &#125;, &#123; "name": "Jaqen", "surname": "H'ghar", "alive": true, "traits": ["H","F","K"] &#125;, &#123; "name": "Roose", "surname": "Bolton", "alive": true, "traits": ["H","E","F","A"] &#125;, &#123; "name": "The High Sparrow", "alive": true, "traits": ["H","M","F","O"] &#125;]FOR d IN data INSERT d INTO Characters 语法： LET variableName = valueExpression LET关键字定义了同名称的变量数据和对象值的数列，格式为[ {...}, {...}, ... ] FOR variableName IN expression 用于迭代数据数组的每个元素 。在每个循环中，将一个元素分配给变量d。然后在INSERT语句中使用此变量。相当于下面的格式： 12345678910111213141516INSERT &#123; "name": "Robert", "surname": "Baratheon", "alive": false, "traits": ["A","H","C"]&#125; INTO CharactersINSERT &#123; "name": "Jaime", "surname": "Lannister", "alive": true, "age": 36, "traits": ["A","F","B"]&#125; INTO Characters... 检索检索集合中的所有文档： 12FOR c IN Characters RETURN c 语法： FOR variableName IN collectionName 对于集合中的每个文档，依次分配给变量c，然后根据循环体返回该文档。 选取其中一个文档如下： 12345678910&#123; &quot;_key&quot;: &quot;2861650&quot;, &quot;_id&quot;: &quot;Characters/2861650&quot;, &quot;_rev&quot;: &quot;_V1bzsXa---&quot;, &quot;name&quot;: &quot;Ned&quot;, &quot;surname&quot;: &quot;Stark&quot;, &quot;alive&quot;: true, &quot;age&quot;: 41, &quot;traits&quot;: [&quot;A&quot;,&quot;H&quot;,&quot;C&quot;,&quot;N&quot;,&quot;P&quot;] &#125;, 该文档包含我们存储的四个属性，以及数据库系统添加的另外三个属性： _key：文档键，用户可以在创建文档时提供文档键，也可以自动分配唯一值，不能改变，只读 _id：集合名/文档键，只读 _rev：系统管理的修订版ID，只读 检索特定文档：123RETURN DOCUMENT("Characters", "2861650")// --- or ---RETURN DOCUMENT("Characters/2861650") 返回： 123456789101112[ &#123; "_key": "2861650", "_id": "Characters/2861650", "_rev": "_V1bzsXa---", "name": "Ned", "surname": "Stark", "alive": true, "age": 41, "traits": ["A","H","C","N","P"] &#125;] 语法： DOCUMENT() 使用_key或_id检索特定文档，该函数还允许一次获取多个文档 123RETURN DOCUMENT("Characters", ["2861650", "2861653"])// --- or ---RETURN DOCUMENT(["Characters/2861650", "Characters/2861653"]) 更新文档：修改现有文件： 123UPDATE "2861650" WITH &#123; alive: false &#125; IN Characters语法：UPDATE documentKey WITH object IN collectionName 用列出的属性更新指定的文档（如果它们不存在则添加它们），但保持其余不变。要替换整个文档内容，则要使用REPLACE函数： 1234567REPLACE "2861650" WITH &#123; name: "Ned", surname: "Stark", alive: false, age: 41, traits: ["A","H","C","N","P"]&#125; IN Characters 该函数也适用于循环，例如为所有文档添加新属性： 12FOR c IN Characters UPDATE c WITH &#123; season: 1 &#125; IN Characters 删除文件：语法： REMOVE _key IN Collectiosname 要从集合中完全删除文档，需要执行REMOVE操作。它的工作方式与其他修改操作类似，但没有WITH子句： 1REMOVE "2861650" IN Characters 三、匹配文件语法： FILTER 查找满足比_key相等更复杂的条件的文档，能够为要匹配的文档制定任意条件。 等于条件： 123FOR c IN Characters FILTER c.name == "Ned" RETURN c 过滤条件如下：“ 字符文档的属性name必须等于字符串Ned ”。如果条件适用，则返回字符文档。 范围条件：123FOR c IN Characters FILTER c.age &gt;= 13 RETURN c.name 多种条件： 12345678910FOR c IN Characters FILTER c.age &lt; 13 FILTER c.age != null RETURN &#123; name: c.name, age: c.age &#125;//orFOR c IN Characters FILTER c.age &lt; 13 AND c.age != null RETURN &#123; name: c.name, age: c.age &#125; 替代条件： 123FOR c IN Characters FILTER c.name == "Jon" OR c.name == "Joffrey" RETURN &#123; name: c.name, surname: c.surname &#125; 四、排序和限制限制语法：LIMIT() LIMIT后面跟着一个最大显示数的数字,限制结果显示行数。 123FOR c IN Characters LIMIT 5 RETURN c.name 还可以使用LIMIT来跳过一定数量的记录返回下一个n个文档： 123FOR c IN Characters LIMIT 2, 5 RETURN c.name 排序语法：SORT() DESC降序来反转排序顺序 1234FOR c IN Characters SORT c.name DESC LIMIT 10 RETURN c.name 多个字段排序12345678FOR c IN Characters FILTER c.surname SORT c.surname, c.name LIMIT 10 RETURN &#123; surname: c.surname, name: c.name &#125; 此处FILTER的作用是仅保留surname为非空记录 五、组合语法：MERGE() MERGE()的功能是将对象组合在一起。因为使用了原始字符属性{ traits: … }，所以后者被合并覆盖。 12FOR c IN Characters RETURN MERGE(c, &#123; traits: DOCUMENT("Traits", c.traits)[*].en &#125; ) 六、图操作创建图： 语法： INSERT { _from: _id(A), _to: _id(B) } INTO ChildOf 实例：首先，创建一个新的集合，并确保将集合类型更改为Edge。 然后，通过查询多个集合的数据，将结果存入边集合中 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364LET data = [ //关系数据 &#123; "parent": &#123; "name": "Ned", "surname": "Stark" &#125;, "child": &#123; "name": "Robb", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Ned", "surname": "Stark" &#125;, "child": &#123; "name": "Sansa", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Ned", "surname": "Stark" &#125;, "child": &#123; "name": "Arya", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Ned", "surname": "Stark" &#125;, "child": &#123; "name": "Bran", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Catelyn", "surname": "Stark" &#125;, "child": &#123; "name": "Robb", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Catelyn", "surname": "Stark" &#125;, "child": &#123; "name": "Sansa", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Catelyn", "surname": "Stark" &#125;, "child": &#123; "name": "Arya", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Catelyn", "surname": "Stark" &#125;, "child": &#123; "name": "Bran", "surname": "Stark" &#125; &#125;, &#123; "parent": &#123; "name": "Ned", "surname": "Stark" &#125;, "child": &#123; "name": "Jon", "surname": "Snow" &#125; &#125;, &#123; "parent": &#123; "name": "Tywin", "surname": "Lannister" &#125;, "child": &#123; "name": "Jaime", "surname": "Lannister" &#125; &#125;, &#123; "parent": &#123; "name": "Tywin", "surname": "Lannister" &#125;, "child": &#123; "name": "Cersei", "surname": "Lannister" &#125; &#125;, &#123; "parent": &#123; "name": "Tywin", "surname": "Lannister" &#125;, "child": &#123; "name": "Tyrion", "surname": "Lannister" &#125; &#125;, &#123; "parent": &#123; "name": "Cersei", "surname": "Lannister" &#125;, "child": &#123; "name": "Joffrey", "surname": "Baratheon" &#125; &#125;, &#123; "parent": &#123; "name": "Jaime", "surname": "Lannister" &#125;, "child": &#123; "name": "Joffrey", "surname": "Baratheon" &#125; &#125;]FOR rel in data LET parentId = FIRST( //FIRST()提取第一个元素 FOR c IN Characters FILTER c.name == rel.parent.name //筛选条件 FILTER c.surname == rel.parent.surname LIMIT 1 RETURN c._id //返回_id ) LET childId = FIRST( FOR c IN Characters FILTER c.name == rel.child.name FILTER c.surname == rel.child.surname LIMIT 1 RETURN c._id ) FILTER parentId != null AND childId != null //剔除_id都为空的记录 INSERT &#123; _from: childId, _to: parentId &#125; INTO ChildOf //将数据插入边集合 RETURN NEW //返回数据 也可以直接创建边数据： 1INSERT &#123; _from: "Characters/robb", _to: "Characters/ned" &#125; INTO ChildOf 遍历图： 语法： 12345FOR v IN 1..1 OUTBOUND _id ChildOf RETURN v.name其中1..1为遍历深度 实例： 1234FOR c IN Characters FILTER c.name == "Bran" FOR v IN 1..1 OUTBOUND c ChildOf RETURN v.name 返回 1234[ "Ned", "Catelyn"] 遍历的情况如下图： 若是反向遍历，则需要使用到INBOUND关键字： 123456789FOR c IN Characters FILTER c.name == "Tywin" FOR v IN 2..2 INBOUND c ChildOf RETURN DISTINCT v.name输出：[ "Joffrey"] 遍历情况如下： 需要注意的是，“1..1”限制了遍历深度为1，“2..2”限制了遍历深度为2，而”1..2”限制遍历深度既可以为1也可以为2。 七、地理空间查询地点数据创建地点集合： 录入地点数据： 12345678910111213LET places = [ &#123; "name": "Dragonstone", "coordinate": [ 55.167801, -6.815096 ] &#125;, &#123; "name": "King's Landing", "coordinate": [ 42.639752, 18.110189 ] &#125;, &#123; "name": "The Red Keep", "coordinate": [ 35.896447, 14.446442 ] &#125;, &#123; "name": "Yunkai", "coordinate": [ 31.046642, -7.129532 ] &#125;, &#123; "name": "Astapor", "coordinate": [ 31.50974, -9.774249 ] &#125;, &#123; "name": "Winterfell", "coordinate": [ 54.368321, -5.581312 ] &#125;, &#123; "name": "Vaes Dothrak", "coordinate": [ 54.16776, -6.096125 ] &#125;, &#123; "name": "Beyond the wall", "coordinate": [ 64.265473, -21.094093 ] &#125;]FOR place IN places INSERT place INTO Locations 设置地理空间索引： 在COLLECTIONS界面，添加新的Indexes，设置为coordinate字段： 查找附近的位置语法： NEAR() 找到最接近的坐标参考点 123456FOR loc IN NEAR(Locations, 53.35, -6.26, 3) RETURN &#123; name: loc.name, latitude: loc.coordinate[0], longitude: loc.coordinate[1] &#125; 输出： 1234567891011121314151617[ &#123; "name": "Vaes Dothrak", "latitude": 54.16776, "longitude": -6.096125 &#125;, &#123; "name": "Winterfell", "latitude": 54.368321, "longitude": -5.581312 &#125;, &#123; "name": "Dragonstone", "latitude": 55.167801, "longitude": -6.815096 &#125;] 查找半径内的位置语法： WITHIN() 从参考点搜索给定半径内的位置 123456FOR loc IN WITHIN(Locations, 53.35, -6.26, 200 * 1000) RETURN &#123; name: loc.name, latitude: loc.coordinate[0], longitude: loc.coordinate[1] &#125; 输出 123456789101112[ &#123; "name": "Vaes Dothrak", "latitude": 54.16776, "longitude": -6.096125 &#125;, &#123; "name": "Winterfell", "latitude": 54.368321, "longitude": -5.581312 &#125;] 按距离查找位置：语法： NEAR()或WITHIN() 通过添加一个可选的第五个参数返回到参考点的距离。必须是一个字符串： 1234567FOR loc IN NEAR(Locations, 53.35, -6.26, 3, "distance") RETURN &#123; name: loc.name, latitude: loc.coordinate[0], longitude: loc.coordinate[1], distance: loc.distance / 1000 &#125; 输出： 1234567891011121314151617181920[ &#123; "name": "Vaes Dothrak", "latitude": 54.16776, "longitude": -6.096125, "distance": 91.56658640314431 &#125;, &#123; "name": "Winterfell", "latitude": 54.368321, "longitude": -5.581312, "distance": 121.66399816395028 &#125;, &#123; "name": "Dragonstone", "latitude": 55.167801, "longitude": -6.815096, "distance": 205.31879386198324 &#125;] 使用AQL遇到的问题： 问题1：如何对查询结果进行计数并返回？ 解决方法： 1RETURN COUNT(FOR v IN visitors FILTER v.ip == "127.0.0.1" RETURN 1)]]></content>
@@ -34,8 +48,8 @@
         <category>Ant Design</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
         <tag>Ant Design</tag>
       </tags>
   </entry>
@@ -47,9 +61,9 @@
         <category>dva</category>
       </categories>
       <tags>
+        <tag>React</tag>
         <tag>Javascript</tag>
         <tag>编程</tag>
-        <tag>React</tag>
         <tag>ES6</tag>
         <tag>dva</tag>
       </tags>
@@ -103,9 +117,9 @@
         <category>编程</category>
       </categories>
       <tags>
+        <tag>React</tag>
         <tag>Javascript</tag>
         <tag>编程</tag>
-        <tag>React</tag>
         <tag>CSS</tag>
       </tags>
   </entry>
@@ -150,14 +164,14 @@
   <entry>
     <title><![CDATA[好的东西收藏于此]]></title>
     <url>%2Fblog%2F2018%2F12%2F24%2F%E5%A5%BD%E7%9A%84%E4%B8%9C%E8%A5%BF%E6%94%B6%E8%97%8F%E4%BA%8E%E6%AD%A4%2F</url>
-    <content type="text"><![CDATA[这里会是一个知识的宝库，里面会有教程、文档、框架、方案、理论，大家慢慢去品味。 框架1、dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架。About DvaJS文档 链接 dva.js 知识导图 链接 AccountSystem 一个小型库存管理系统 链接 特性 易学易用，仅有 6 个 api，对 redux 用户尤其友好，配合 umi 使用后更是降低为 0 API elm 概念，通过 reducers, effects 和 subscriptions 组织 model 插件机制，比如 dva-loading 可以自动处理 loading 状态，不用一遍遍地写 showLoading 和 hideLoading 支持 HMR，基于 babel-plugin-dva-hmr 实现 components、routes 和 models 的 HMR 他是怎么来的？ Why dva and what’s dva 支付宝前端应用架构的发展和选择 2、AntD Admin 一套优秀的中后台前端解决方案About 在线演示 - 链接 使用文档 - 链接 常见问题 - 链接 更新日志 - 链接 特性 国际化，源码中抽离翻译字段，按需加载语言包 动态权限，不同权限对应不同菜单 优雅美观，Ant Design 设计体系 Mock 数据，本地数据调试 3、12 步 30 分钟，完成用户管理的 CURD 应用 (react+dva+antd)About git链接 链接 实现日志 链接 Roadhog 是一个包含 dev、build 和 test 的命令行工具，他基于 react-dev-utils，和 create-react-app 的体验保持一致。你可以想象他为可配置版的 create-react-app。链接 4、Ant Design of VueAbout Ant Design 的 Vue 实现，开发和服务于企业级后台产品。 链接 特性 提炼自企业级中后台产品的交互语言和视觉风格。 开箱即用的高质量 Vue 组件。 共享Ant Design of React设计工具体系。 5、Vue-baidu-mapAbout Vue 2.x的百度地图组件\ 特性 git链接 文档地址 6、 Vue-element-adminAbout 一个神奇的vue后台管理系统 特性 git链接 7、 Vue-element-adminAbout 用Vue和LESS简单、快速建立许多漂亮的简历，并创建你最好的简历 特性 git链接 8、 ElementAbout 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库 特性 git链接 文档地址 工具1、docsifyAbout文档地址一个神奇的文档网站生成工具 docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。 特性 无需构建，写完文档直接发布 容易使用并且轻量 (~19kB gzipped) 智能的全文搜索 提供多套主题 丰富的 API 支持 Emoji 兼容 IE10+ 支持 SSR (example)]]></content>
+    <content type="text"><![CDATA[这里会是一个知识的宝库，里面会有教程、文档、框架、方案、理论，大家慢慢去品味。 框架—React 1、dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架。About DvaJS文档 链接 dva.js 知识导图 链接 AccountSystem 一个小型库存管理系统 链接 特性 易学易用，仅有 6 个 api，对 redux 用户尤其友好，配合 umi 使用后更是降低为 0 API elm 概念，通过 reducers, effects 和 subscriptions 组织 model 插件机制，比如 dva-loading 可以自动处理 loading 状态，不用一遍遍地写 showLoading 和 hideLoading 支持 HMR，基于 babel-plugin-dva-hmr 实现 components、routes 和 models 的 HMR 他是怎么来的？ Why dva and what’s dva 支付宝前端应用架构的发展和选择 2、AntD Admin 一套优秀的中后台前端解决方案About 在线演示 - 链接 使用文档 - 链接 常见问题 - 链接 更新日志 - 链接 特性 国际化，源码中抽离翻译字段，按需加载语言包 动态权限，不同权限对应不同菜单 优雅美观，Ant Design 设计体系 Mock 数据，本地数据调试 3、12 步 30 分钟，完成用户管理的 CURD 应用 (react+dva+antd)About git链接 链接 实现日志 链接 Roadhog 是一个包含 dev、build 和 test 的命令行工具，他基于 react-dev-utils，和 create-react-app 的体验保持一致。你可以想象他为可配置版的 create-react-app。链接 框架—Vue 1、Ant Design of VueAbout Ant Design 的 Vue 实现，开发和服务于企业级后台产品。 链接 特性 提炼自企业级中后台产品的交互语言和视觉风格。 开箱即用的高质量 Vue 组件。 共享Ant Design of React设计工具体系。 2、Vue-baidu-mapAbout Vue 2.x的百度地图组件\ 特性 git链接 文档地址 3、 Vue-element-adminAbout 一个神奇的vue后台管理系统 特性 git链接 4、 Vue-element-adminAbout 用Vue和LESS简单、快速建立许多漂亮的简历，并创建你最好的简历 特性 git链接 5、 ElementAbout 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库 特性 git链接 文档地址 实战实验 1、基于React 编写的基于Taro + Dva构建的适配不同端（微信/百度/支付宝小程序、H5、React-Native 等）的时装衣橱技术栈React + Taro + Dva + Sass + ES6/ES7 特性 git链接 taro文档地址 工具 1、docsifyAbout文档地址一个神奇的文档网站生成工具 docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会生成将 .md 转成 .html 文件，所有转换工作都是在运行时进行。 特性 无需构建，写完文档直接发布 容易使用并且轻量 (~19kB gzipped) 智能的全文搜索 提供多套主题 丰富的 API 支持 Emoji 兼容 IE10+ 支持 SSR (example)]]></content>
       <categories>
         <category>编程</category>
       </categories>
       <tags>
+        <tag>React</tag>
         <tag>Javascript</tag>
         <tag>编程</tag>
-        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -192,8 +206,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>React</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -255,9 +269,9 @@
         <category>编程</category>
       </categories>
       <tags>
+        <tag>React</tag>
         <tag>Javascript</tag>
         <tag>编程</tag>
-        <tag>React</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -282,9 +296,9 @@
         <category>编程</category>
       </categories>
       <tags>
+        <tag>React</tag>
         <tag>Javascript</tag>
         <tag>编程</tag>
-        <tag>React</tag>
         <tag>小程序</tag>
       </tags>
   </entry>
@@ -397,8 +411,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -409,8 +423,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -421,8 +435,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -433,8 +447,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -563,8 +577,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -575,8 +589,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -587,8 +601,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -612,8 +626,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -624,8 +638,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -636,8 +650,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -648,8 +662,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -660,8 +674,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
         <tag>React</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -684,8 +698,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>React</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -696,8 +710,8 @@
         <category>React</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>React</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
