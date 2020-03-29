@@ -139,6 +139,8 @@ p.say()
 如果要判断一个运行中函数的 this 绑定， 就需要找到这个函数的直接调用位置。 找到之后
 就可以顺序应用下面这四条规则来判断 this 的绑定对象。
 
+`“this 永远指向最后调用它的那个对象”`
+
 - new 调用：绑定到新创建的对象，注意：显示return函数或对象，返回值不是新创建的对象，而是显式返回的函数或对象。
 
 - call 或者 apply（ 或者 bind） 调用：严格模式下，绑定到指定的第一个参数。非严格模式下，`null和undefined`，指向全局对象（浏览器中是window），其余值指向被new Object()包装的对象。
@@ -283,6 +285,27 @@ HTTP 响应中包含一个状态码，用来表示服务器对客户端响应的
  
 
 ## 数组去重
+
+
+在ES6的时代，有个非常快速且简单的方法，使用`new Set()`以及`Array.from()`或者`展开运算符(...)`
+
+```h
+
+var fruits = [“banana”, “apple”, “orange”, “watermelon”, “apple”, “orange”, “grape”, “apple”];
+
+
+// 方法一
+var uniqueFruits = Array.from(new Set(fruits));
+console.log(uniqueFruits); // returns [“banana”, “apple”, “orange”, “watermelon”, “grape”]
+// 方法二
+var uniqueFruits2 = […new Set(fruits)];
+console.log(uniqueFruits2); // returns [“banana”, “apple”, “orange”, “watermelon”, “grape”]
+
+
+```
+
+
+
 
 - 第一种： 通过ES6新特性Set()
 ```
@@ -589,6 +612,65 @@ GET参数通过URL传递，POST放在Request body中。
 ```
 
 
+## 浏览器的回流与重绘
+
+浏览器使用流式布局模型 (Flow Based Layout)。
+浏览器会把HTML解析成DOM，把CSS解析成CSSOM，DOM和CSSOM合并就产生了Render Tree。
+有了RenderTree，我们就知道了所有节点的样式，然后计算他们在页面上的大小和位置，最后把节点绘制到页面上。
+由于浏览器使用流式布局，对Render Tree的计算通常只需要遍历一次就可以完成，但table及其内部元素除外，他们可能需要多次计算，通常要花3倍于同等元素的时间，这也是为什么要避免使用table布局的原因之一。
+
+`回流必将引起重绘，重绘不一定会引起回流`
+`回流比重绘的代价要更高`
+
+
+1、回流 (Reflow)
+
+> 当Render Tree中部分或全部元素的尺寸、结构、或某些属性发生改变时，浏览器重新渲染部分或全部文档的过程称为回流。
+
+```h
+
+会导致回流的操作：
+
+页面首次渲染
+浏览器窗口大小发生改变
+元素尺寸或位置发生改变
+元素内容变化（文字数量或图片大小等等）
+元素字体大小变化
+添加或者删除可见的DOM元素
+激活CSS伪类（例如：:hover）
+查询某些属性或调用某些方法
+
+```
+
+2、重绘 (Repaint)
+
+> 当页面中元素样式的改变并不影响它在文档流中的位置时（例如：color、background-color、visibility等），浏览器会将新样式赋予给元素并重新绘制它，这个过程称为重绘。
+
+3、如何避免
+
+> CSS
+
+避免使用table布局。
+尽可能在DOM树的最末端改变class。
+避免设置多层内联样式。
+将动画效果应用到position属性为absolute或fixed的元素上。
+避免使用CSS表达式（例如：calc()）。
+
+> JavaScript
+
+避免频繁操作样式，最好一次性重写style属性，或者将样式列表定义为class并一次性更改class属性。
+避免频繁操作DOM，创建一个documentFragment，在它上面应用所有DOM操作，最后再把它添加到文档中。
+也可以先为元素设置display: none，操作结束后再把它显示出来。因为在display属性为none的元素上进行的DOM操作不会引发回流和重绘。
+避免频繁读取会引发回流/重绘的属性，如果确实需要多次使用，就用一个变量缓存起来。
+对具有复杂动画的元素使用绝对定位，使它脱离文档流，否则会引起父元素及后续元素频繁回流。
+
+
+
+
+
+***
+
+***
 
 
 # 前端的一些知识模块
@@ -790,7 +872,9 @@ relative定位原点是自己，absolute定位原点是离自己最近的父元�
 
 
 
+***
 
+***
 
 # CSS
 
