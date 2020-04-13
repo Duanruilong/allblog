@@ -26,10 +26,34 @@ JavaScript中的对象都有一个特殊的 prototype 内置属性，其实就�
 几乎所有的对象在创建时 prototype 属性都会被赋予一个非空的值，我们可以把这个属性当作一个备用的仓库
 当试图引用对象的属性时会出发get操作，第一步时检查对象本身是否有这个属性，如果有就使用它，没有就去原型中查找。一层层向上直到Object.prototype顶层
 
-基于原型扩展描述一下原型链，什么是原型链，原型的继承，ES5和ES6继承与不同点。
+每个函数都有一个 prototype 属性，就是我们经常在各种例子中看到的那个 prototype ，比如：
+
+```h
+
+function Person() {
+
+}
+// 虽然写在注释里，但是你要注意：
+// prototype是函数才会有的属性
+Person.prototype.name = 'Kevin';
+var person1 = new Person();
+var person2 = new Person();
+console.log(person1.name) // Kevin
+console.log(person2.name) // Kevin
+
+```
+
+那这个函数的 prototype 属性到底指向的是什么呢？是这个函数的原型吗？
+
+其实，函数的 prototype 属性指向了一个对象，这个对象正是调用该构造函数而创建的实例的原型，也就是这个例子中的 person1 和 person2 的原型。
+
+那什么是原型呢？你可以这样理解：`每一个JavaScript对象(null除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型"继承"属性`。
+
+![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
 **每一个实例对象都有一个私有属性`__proto__`,指向它的构造函数的原型对象`(prototype)`**
 
+![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype4.png)
 
 ## 原型链
 
@@ -687,6 +711,51 @@ flex布局，简单布局，圣杯布局和双飞翼布局，响应式布局，�
 移动端，自动化构建，WEB安全，项目优化，项目重构，职业规划，学习，团队协作
 
 作为一名前端工程师，应该有一颗随时学习的心态，学会总结，对于有些知识点我们应该时常记住。
+
+
+
+## flex布局
+
+
+`flex: 0 1 auto`
+
+```
+
+不会增长变大占据flex容器中额外的剩余空间（flex-grow:0）
+
+会收缩变小以适合容器（flex-shrink:1) 
+
+尺寸根据自身宽高属性进行调整（flex-basis:auto）
+
+```
+
+flex财产分配三剑客
+最后再说说一开始提到的`flex-grow，flex-shrink和flex-basis`。
+
+一定要牢记这3个属性默认值，不然遇到只有1~2个参数时候，根本不知道什么意思。
+
+`flex-grow`
+flex-grow指定了容器剩余空间多余时候的分配规则，默认值是0，多余空间不分配。
+
+`flex-shrink`
+flex-shrink指定了容器剩余空间不足时候的分配规则，默认值是1，空间不足要分配。
+
+`flex-basis`
+flex-basis则是指定了固定的分配数量，默认值是auto。如会忽略设置的同时设置width或者height属性。flex-basis包含大量的细节知识，这个可以专门开一篇文章深入探讨。
+
+
+`1个值`
+如果flex的属性值只有一个值，则：
+如果是数值，例如flex: 1，则这个1表示flex-grow，此时flex-shrink和flex-basis都使用默认值，分别是1和auto。
+如果是长度值，例如flex: 100px，则这个100px显然指flex-basis，因为3个缩写CSS属性中只有flex-basis的属性值是长度值。此时flex-grow和flex-shrink都使用默认值，分别是0和1。
+
+`2个值`
+如果flex的属性值有两个值，则第1个值一定指flex-grow，第2个值根据值的类型不同表示不同的CSS属性，具体规则如下：
+如果第2个值是数值，例如flex: 1 2，则这个2表示flex-shrink，此时flex-basis使用默认值auto。
+如果第2个值是长度值，例如flex: 1 100px，则这个100px指flex-basis，此时flex-shrink都使用默认值0。
+
+`3个值`
+如果flex的属性值有三个值，则这3个值分别表示flex-grow，flex-shrink和flex-basis。这个顺序该如何记忆，时间久了岂不是很容易忘记。这个告诉大家我的邪恶记忆法，叫做“能大能小的鸡鸡”。grow是增加变大意思，shrink是收缩变小的意思，而basis是基（鸡）础基（鸡）准的意思，于是连起来就是“能大能小的鸡鸡”
 
 # HTML
 
